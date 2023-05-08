@@ -1,21 +1,23 @@
 @charset "utf-8";
+
 .main {
 	margin: auto;
 	width: 1200px;
 }
-	.sjz ul {
-	  list-style-type: none;
-	  margin: 0;
-	  padding: 0;
-	  overflow: hidden;
-	}
+
+.sjz ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
 
 .sjz li {
-	  float: left;
-	}
+	float: left;
+}
 
 .sjz li {
-	  display: block;
-	  padding: 6px;
-	  background-color: #eee;
-	}
+	display: block;
+	padding: 6px;
+	background-color: #eee;
+}
