@@ -9,8 +9,11 @@
 	width: 1920px;
 }
 
-.sjz ul {
+ul {
 	list-style-type: none;
+}
+
+.sjz ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
