@@ -3,13 +3,12 @@
 /*这是一条注释*/
 
 .hello_world {
-	margin: auto;
-	text-align: center;
+	text-align: center;	/*标题居中文字*/
 }
 
 .main {
-	margin: auto;
-	width: 1920px;
+	margin: auto;		/*外边距自动对齐*/
+	width: 1920px;		/*大页面宽度设置1920像素*/
 }
 
 
