@@ -3,53 +3,60 @@
 /*这是一条注释*/
 
 .hello_world {
-	text-align: center;	/*标题居中文字*/
+    text-align: center;
+    /*标题居中文字*/
 }
 
 .main {
-	margin: auto;		/*外边距自动对齐*/
-	width: 1920px;		/*大页面宽度设置1920像素*/
+    margin: auto;
+    /*外边距自动对齐*/
+    width: 1920px;
+    /*大页面宽度设置1920像素*/
 }
 
 
 ul {
-	list-style-type: none; 	/*列表小圆点变消失*/
-	margin: 0; 		/*清除外边距*/
-  	padding: 0;		/*清除内边距*/
+    list-style-type: none;
+    /*列表小圆点变消失*/
+    margin: 0;
+    /*清除外边距*/
+    padding: 0;
+    /*清除内边距*/
 }
 
 
 /*时间轴横排导航栏样式*/
 .sjz ul {
-	overflow: hidden;	/*超出部分隐藏*/
+    overflow: hidden;
+    /*超出部分隐藏*/
 }
 
 .sjz li {
-	float: left;
+    float: left;
 }
 
 .sjz li {
-	display: block;
-	padding: 6px;
-	background-color: #eee;
+    display: block;
+    padding: 6px;
+    background-color: #eee;
 }
 
 
 /*大世界竖排导航栏样式*/
 .dsj ul {
-  width: 80px;
-  background-color: #f1f1f1;
-  border: 1px solid #555;
+    width: 80px;
+    background-color: #f1f1f1;
+    border: 1px solid #555;
 }
 
 .dsj li {
-  display: block;
-  color: #000;
-  padding: 3px 0px;
-  text-decoration: none;
+    display: block;
+    color: #000;
+    padding: 3px 0px;
+    text-decoration: none;
 }
 
 .dsj li {
-  text-align: center;
-  border-bottom: 1px solid #555;
+    text-align: center;
+    border-bottom: 1px solid #555;
 }
