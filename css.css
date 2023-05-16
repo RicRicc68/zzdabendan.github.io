@@ -15,11 +15,13 @@
 
 ul {
 	list-style-type: none; /*列表小圆点变消失*/
+	margin: 0; /*清除外边距*/
+  	padding: 0;/*清除内边距*/
 }
 
+
+/*时间轴横排导航栏样式*/
 .sjz ul {
-	margin: 0;
-	padding: 0;
 	overflow: hidden;
 }
 
@@ -31,4 +33,26 @@ ul {
 	display: block;
 	padding: 6px;
 	background-color: #eee;
+}
+
+
+/*大世界竖排导航栏样式*/
+.dsj li
+
+.dsj ul {
+  width: 200px;
+  background-color: #f1f1f1;
+  border: 1px solid #555;
+}
+
+.dsj li {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.dsj li {
+  text-align: center;
+  border-bottom: 1px solid #555;
 }
