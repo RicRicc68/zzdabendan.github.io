@@ -34,12 +34,13 @@ ul {
 
 .sjz li {
     float: left;
+    /*浮动*/
 }
 
 .sjz li {
-    display: block;
-    padding: 6px;
-    background-color: #eee;
+    display: block;             /*块级元素*/
+    padding: 6px;               /*内边距*/
+    background-color: #eee;     /*背景颜色*/
     border: 1px solid #555;     /*边框_单线_1像素*/
 }
 
