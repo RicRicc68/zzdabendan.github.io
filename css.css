@@ -2,6 +2,10 @@
 
 /*这是一条注释*/
 
+html {
+    background-color: #FFF;     /*网页背景颜色*/
+}
+
 .hello_world {
     text-align: center;     /*标题居中文字*/
 }
