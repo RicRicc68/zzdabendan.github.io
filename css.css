@@ -14,6 +14,7 @@ body {
 .main {
     margin: auto;       /*外边距自动对齐*/
     width: 1920px;      /*大页面宽度设置1920像素*/
+    background-color: #FFF;     /*大页面背景颜色*/
 }
 
 ul {
