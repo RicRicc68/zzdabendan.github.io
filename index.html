@@ -7,6 +7,8 @@
     <title>zzdabendan</title>
 
     <style>
+
+
         /*颜色        
 
         div { border-width: 00px;}
@@ -21,412 +23,130 @@
         <h1>秋处露秋寒霜降</h1>
         <h1>冬雪雪冬小大寒</h1>
         */
-        html {
-            background-color: #000;
-        }
-
-        div {
-            background-color: #fff;
-        }
-
-        .时间线 {
-            background-color: rgb(225, 0, 255);
-        }
-
-        .时间线 h1 {
-            color: #fff;
-        }
-
-        /*格式化 内边距和外边距*/
-        *,
-        body,
-        div,
-        h1,
-        h2,
-        h3,
-        h4,
-        p {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        /*格式化 主页大小*/
-        .main {
-            width: 3500px;
-            height: 100%;
-            margin: auto;
-        }
-
-        /* 1.宽度 2.高度 3.外边距自动居中*/
-
-        /*纵横布局*/
-        /*横布局*/
-        .时间 {
-            width: 100%;
-            height: 546px;
-        }
-
-        .时间线 {
-            width: 100%;
-            height: 40px;
-            margin: 0 0 10px 0;
-        }
-
-        .时代国家 {
-            width: 100%;
-            height: 40px;
-            margin: 0 0 10px 0;
-        }
-
-        .春秋冬夏 {
-            width: 100%;
-            height: 40px;
-            margin: 0 0 10px 0;
-        }
-
-        .春,
-        .夏,
-        .秋,
-        .冬 {
-            width: 25%;
-            height: 100%;
-            float: left;
-        }
-
-        .二十四节气 {
-            width: 16.66%;
-            height: 100%;
-            float: left;
-        }
-
-        .日升月落 {
-            width: 100%;
-            height: 150px;
-            margin: 0 0 10px 0;
-        }
-
-        .朝时,
-        .日出,
-        .日入,
-        .夜半 {
-            width: 25%;
-            height: 50%;
-            float: left;
-        }
-
-        .时辰 {
-            width: 100%;
-            height: 50%;
-            float: left;
-        }
-
-        .十二时辰 {
-            width: 33.33%;
-            height: 100%;
-            float: left;
-        }
-
-        .小时 {
-            width: 100%;
-            height: 50%;
-            float: left;
-        }
-
-        .时 {
-            width: 16.666%;
-            height: 50%;
-            float: left;
-        }
-
-        .每日计划 {
-            width: 100%;
-            height: 50%;
-            float: left;
-        }
-
-        .生老病死 {
-            width: 100%;
-            height: 150px;
-            margin: 0 0 10px 0;
-        }
-
-        .男身,
-        .女身 {
-            width: 100%px;
-            height: 30px;
-        }
-
-        .男子阶段,
-        .女子阶段 {
-            width: 12.5%;
-            height: 100%;
-            float: left;
-        }
-
-        .心念呼吸 {
-            width: 100%;
-            height: 60px;
-            margin: 0 0 10px 0;
-        }
-
-        .初心,
-        .智谋,
-        .决断,
-        .成败 {
-            width: 24.8%;
-            height: 100%;
-            float: left;
-        }
-
-        /*纵布局*/
-        .大地 {
-            width: 100%;
-            height: 1000px;
-        }
-
-        .宇宙银河太阳系 {
-            width: 5%;
-            height: 100%;
-        }
-
-        .地球大陆板块社会世界国家 {
-            width: 6%;
-            height: 100%;
-        }
-
-        .中国城市地区 {
-            width: 44%;
-            height: 100%;
-        }
-
-        .行政区划 {
-            width: 19%;
-            height: 100%;
-            float: left;
-        }
-
-        .公民,
-        .企业 {
-            width: 81%;
-            float: left;
-        }
-
-        .家庭物品 {
-            width: 21%;
-            height: 100%;
-        }
-
-        .电脑手机 {
-            width: 100%;
-            height: 200px;
-        }
-
-        .制造,
-        .销售,
-        .规划,
-        .采购,
-        .部署,
-        .支持,
-        .升级或停用 {
-            width: 5%;
-            height: 100%;
-            float: left;
-        }
-
-        .操作 {
-            width: 65%;
-            height: 100%;
-            float: left;
-        }
-
-        .营养锻炼 {
-            width: 100%;
-            height: 200px;
-        }
-
-        .种植栽培,
-        .浇灌采收,
-        .销售,
-        .采购,
-        .清洗,
-        .煮饭,
-        .食用,
-        .发霉,
-        .丢弃,
-        .发酵分解？ {
-            width: 3%;
-            height: 100%;
-            float: left;
-        }
-
-        .存放 {
-            width: 60%;
-            height: 100%;
-            float: left;
-        }
-
-        .食物 {
-            width: 100%;
-            height: 50%;
-            float: left;
-        }
-
-        .厨具,
-        .餐具 {
-            width: 50%;
-            height: 50%;
-            float: left;
-        }
-
-        .运动器材 {
-            width: 100%;
-            height: 100%;
-        }
-
-        .衣物床铺 {
-            width: 100%;
-            height: 200px;
-        }
-
-        .制作,
-        .采购,
-        .使用,
-        .清洗,
-        .晾晒,
-        .缝补,
-        .丢弃,
-        .回收 {
-            width: 5%;
-            height: 100%;
-            float: left;
-        }
-
-        .存放 {
-            width: 60%;
-            float: left;
-        }
-
-        .衣物,
-        .床铺 {
-            width: 100%;
-        }
-
-        .厚,
-        .适中,
-        .薄 {
-            width: 32.2%;
-            float: left;
-        }
-
-
-        .人体心神身 {
-            width: 23.1%;
-            height: 100%;
-        }
-
-        .天籁 {
-            width: 74%;
-            height: 250px;
-            float: left;
-        }
-
-        .买课 {
-            width: 25%;
-            height: 250px;
-            float: left;
-        }
-
-        .马斯洛需求层次表 {
-            width: 36%;
-            height: 80%;
-            float: left;
-        }
-
-        .目标计划 {
-            width: 63%;
-            height: 50%;
-            float: left;
-        }
-
-        .肌肉 {
-            width: 100%;
-            float: left;
-        }
-
-        .解剖学,
-        .中原武术文化 {
-            width: 50%;
-            float: left;
-        }
-
-        .小钱钱 {
-            width: 100%;
-            float: left;
-        }
-
-        /*浮动*/
-        .宇宙银河太阳系 {
-            float: left;
-        }
-
-        .地球大陆板块社会世界国家 {
-            float: left;
-        }
-
-        .中国城市地区 {
-            float: left;
-        }
-
-        .家庭物品 {
-            float: left;
-        }
-
-        .人体心神身 {
-            float: left;
-        }
-
-
-
-        /*字体大小*/
-        h1 {
-            font-size: 1.75em;
-            /* 40px/16=2.5em */
-        }
-
-        h2 {
-            font-size: 1.25em;
-        }
-
-        h3 {
-            font-size: 1em;
-        }
-
-        h4 {
-            font-size: 1em;
-        }
-
-        /*边框线条*/
-        div {
-            border-style: solid;
-            border-width: 0.1px 0px 0px 0px;
-        }
-
-        .小时,
-        .时间,
-        .男子阶段,
-        .女子阶段,
-        .初心,
-        .智谋,
-        .决断,
-        .成败 {
-            border-style: solid;
-            border-width: 0px;
-        }
-
-        .辰 {
-            border-style: solid;
-            border-width: 0px;
-        }
+        html { background-color: #000;}
+        div { background-color: #fff;}
+        .时间线 { background-color: rgb(225, 0, 255);}
+        .时间线 h1 {color: #fff;}
+
+    /*边框线条*/
+        div { border-style: solid; border-width: 0.1px 0.1px 0px 0px;}
+        .小时,.时间,.男子阶段,.女子阶段,.初心,.智谋,.决断,.成败 { border-style: solid; border-width: 0px;}
+        .辰 { border-style: solid; border-width: 0px;}
+
+/*格式化 内边距和外边距*/
+        *,body,div,h1,h2,h3,h4,p { margin: 0px; padding: 0px;}
+
+/*格式化 主页大小*/
+    .main { width: 3400px; height: 100%; margin: auto;}  /* 1.宽度 2.高度 3.外边距自动居中*/
+    /*纵横布局
+        /*横布局
+        .时间 { width: 100%; height: 546px; }
+            .时间线   { width: 100%; height: 40px; margin: 0 0 10px 0;}
+
+            .时代国家 { width: 100%; height: 40px; margin: 0 0 10px 0;}
+
+            .春秋冬夏 { width: 100%; height: 40px; margin: 0 0 10px 0;}
+                .春,.夏,.秋,.冬 { width: 25%; height: 100%; float: left;}
+                .二十四节气     { width: 16.66%; height: 100%; float: left;}
+
+            .日升月落 { width: 100%; height: 150px; margin: 0 0 10px 0;}
+                .朝时,.日出,.日入,.夜半 { width: 25%; height: 50%; float: left;}
+                    .时辰       { width: 100%; height: 50%; float: left;}
+                        .十二时辰   { width: 33.33%; height: 100%; float: left;}
+                    .小时       { width: 100%; height: 50%; float: left;}
+                        .时         { width: 16.666%; height: 50%; float: left;}
+                .每日计划   { width: 100%; height: 50%; float: left;}
+
+            .生老病死 { width: 100%; height: 150px;margin: 0 0 10px 0;}
+                .男身,.女身          { width: 100%px; height: 30px;}
+                .男子阶段,.女子阶段   { width: 12.5%; height: 100%; float: left;}
+
+            .心念呼吸 { width: 100%; height: 60px; margin: 0 0 10px 0;}
+                .初心,.智谋,.决断,.成败{ width: 24.8%; height: 100%; float: left;}
+
+        /*纵布局
+        .大地 { width: 100%; height: 1000px;}
+            .宇宙银河太阳系 { width: 5%; height: 100%; }
+            .地球大陆板块社会世界国家 { width: 6%; height: 100% ;}
+            .中国城市地区 { width: 44%; height: 100%;}
+                .行政区划 { width: 19%; height: 100%; float: left;}
+                .公民,.企业 {width: 81%; float: left;}
+
+            .家庭物品 { width: 21%; height: 100%;}
+
+                .电脑手机  { width: 100%;  height: 200px; }
+                    .制造,.销售,.规划,.采购,.部署,.支持,.升级或停用 { width: 5%; height: 100%; float: left; }
+                    .操作 { width: 65%; height: 100%; float: left; }
+
+                .营养锻炼 { width: 100%; height: 200px;}
+                    .种植栽培,.浇灌采收,.销售,.采购,.清洗,.煮饭,.食用,.发霉,.丢弃,.发酵分解？ { width: 3%; height: 100%; float: left; }
+                    .存放 { width: 60%;  height: 100%; float: left; }
+                        .食物  { width: 100%;  height: 50%; float: left; }
+                        .厨具,.餐具  { width: 50%;  height: 50%; float: left; }
+                    .运动器材  { width: 100%; height: 100%;}
+
+                .衣物床铺 { width: 100%; height: 200px;}
+                .制作,.采购,.使用,.清洗,.晾晒,.缝补,.丢弃,.回收 { width: 5%; height: 100%; float: left; }
+                .存放 { width: 60%; float: left; }
+                    .衣物,.床铺 { width: 100%;}
+                        .厚,.适中,.薄{ width: 32.2%; float: left;}
+
+
+            .人体心神身 { width: 23.1%; height: 100%;}
+                .天籁 { width: 74%; height: 250px; float: left;}
+                .买课 { width: 25%; height: 250px; float: left;}
+                .马斯洛需求层次表 { width: 36%; height: 80%; float: left;}
+                .目标计划{ width: 63%; height: 50%; float: left;}
+                .肌肉{ width: 100%; float: left;}
+                    .解剖学,.中原武术文化 {width: 50%; float: left;} 
+                .小钱钱{ width: 100%; float: left;}
+
+    /*浮动
+        .宇宙银河太阳系 { float: left;}
+        .地球大陆板块社会世界国家 { float: left;}
+        .中国城市地区 { float: left;}
+        .家庭物品 { float: left;}
+        .人体心神身 { float: left;}
+*/
+    /*flex布局*/
+    .main { display: flex; background-color: blue; flex-direction: column; }
+
+    .时间{ display: flex; flex-direction: column; flex-grow: 1; }
+        .时间线 { display: flex; flex-direction: row; flex-grow: 1;}
+        .时代国家 { display: flex; flex-direction: row; flex-grow: 1;}
+        .春秋冬夏 { display: flex; flex-direction: row; flex-grow: 1;}
+            .春,.夏,.秋,.冬 { display: flex; flex-direction: row;  flex-grow: 1; }
+        .日升月落 { display: flex; flex-direction: row; flex-grow: 1;}
+            .二十四节气{display: flex; flex-direction: row;  flex-grow: 1; }
+                .朝时,.日出,.日入,.夜半 { display: flex; flex-direction: column;  flex-grow: 1; }
+                    .时辰,.十二时辰,.小时,.时{ display: flex; flex-direction: row;  flex-grow: 1; }
+        .生老病死 { display: flex; flex-direction: column; flex-grow: 1;}
+            .男身,.女身 { display: flex; flex-direction: row; flex-grow: 1;}
+                .男子阶段,.女子阶段  { display: flex; flex-direction: row; flex-grow: 1;}
+        .心念呼吸 { display: flex; flex-direction: row; flex-grow: 1;}
+            .初心,.智谋,.决断,.成败 { display: flex; flex-direction: row; flex-grow: 1;}
+
+    .大地 { display: flex; flex-direction: row; flex-grow: 1; }
+        .宇宙银河太阳系 {}
+        .地球大陆板块社会世界国家 {}
+        .中国城市地区{ display: flex; flex-direction: row; }
+        .家庭物品 { display: flex; flex-direction: column; }
+            .房间清洁,.电脑手机,.营养锻炼,.衣物床铺 { display: flex; flex-direction: row; }
+                .衣物,.床铺 { display: flex; flex-direction: row; }
+        .人体心神身  { display: flex; flex-direction: column; }
+            .人籁 { display: flex; flex-direction: row; }
+    
+
+    /*字体大小*/
+        h1 { font-size: 1.75em; /* 40px/16=2.5em */}
+        h2 { font-size: 1.25em; }
+        h3 { font-size: 1em; }
+        h4 { font-size: 1em; }
+
+
+        
+
+
     </style>
 
 
@@ -440,206 +160,133 @@
         <div class="时间">
 
             <div class="时间线">
-                <h1>2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020
-                    2021 2022 2023年 2024</h1>
+                <h1>2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023年 2024</h1>
             </div>
 
             <div class="时代国家">
-                <h1>石器时代 青铜器时代 铁器时代 蒸汽时代 电气时代 狩猎时代 农耕时代 封建时代 工业时代 信息时代 数字经济时代 未来智能大语言VR元宇宙时代</h1>
+                <h1>石器时代 青铜器时代 铁器时代 蒸汽时代 电气时代 狩猎时代 农耕时代 封建时代 工业时代 信息时代 数字经济时代 未来智能大语言VR元宇宙遥遥领先时代</h1>
             </div>
 
             <div class="春秋冬夏">
 
                 <div class="春">
-                    <div class="二十四节气">
-                        <h1>春</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>雨</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>惊</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>春</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>清</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>谷天</h1>
-                    </div>
-
+                    <div class="二十四节气"><h1>立春</h1></div>
+                    <div class="二十四节气"><h1>雨水</h1></div>
+                    <div class="二十四节气"><h1>惊蛰</h1></div>
+                    <div class="二十四节气"><h1>春分</h1></div>
+                    <div class="二十四节气"><h1>清明</h1></div>
+                    <div class="二十四节气"><h1>谷天</h1></div>
+                    
                 </div>
 
                 <div class="夏">
-                    <div class="二十四节气">
-                        <h1>夏</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>满</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>芒</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>夏</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>暑</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>相连</h1>
-                    </div>
+                    <div class="二十四节气"><h1>立夏</h1></div>
+                    <div class="二十四节气"><h1>小满</h1></div>
+                    <div class="二十四节气"><h1>芒种</h1></div>
+                    <div class="二十四节气"><h1>夏至</h1></div>
+                    <div class="二十四节气"><h1>小暑</h1></div>
+                    <div class="二十四节气"><h1>相连</h1></div>
 
                 </div>
 
                 <div class="秋">
-                    <div class="二十四节气">
-                        <h1>秋</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>处</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>露</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>秋</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>寒</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>霜降</h1>
-                    </div>
+                    <div class="二十四节气"><h1>立秋</h1></div>
+                    <div class="二十四节气"><h1>处暑</h1></div>
+                    <div class="二十四节气"><h1>白露</h1></div>
+                    <div class="二十四节气"><h1>秋分</h1></div>
+                    <div class="二十四节气"><h1>寒霜</h1></div>
+                    <div class="二十四节气"><h1>霜降</h1></div>
 
                 </div>
 
                 <div class="冬">
-                    <div class="二十四节气">
-                        <h1>冬</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>雪</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>雪</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>冬</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>小寒</h1>
-                    </div>
-                    <div class="二十四节气">
-                        <h1>大寒</h1>
-                    </div>
+                    <div class="二十四节气"><h1>立冬</h1></div>
+                    <div class="二十四节气"><h1>小雪</h1></div>
+                    <div class="二十四节气"><h1>大雪</h1></div>
+                    <div class="二十四节气"><h1>冬至</h1></div>
+                    <div class="二十四节气"><h1>小寒</h1></div>
+                    <div class="二十四节气"><h1>大寒</h1></div>
 
                 </div>
 
             </div>
 
+            <h1>日升月落</h1>
             <div class="日升月落">
-                <h1>日升月落</h1>
-
-                <div class="朝时">
-                    <div class="时辰">
-                        <div class="十二时辰">
-                            <h1>子</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>丑</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>寅 朝时</h1>
-                        </div>
-                    </div>
-                    <div class="小时">
-                        <div class="时">23</div>
-                        <div class="时">24</div>
-                        <div class="时">1</div>
-                        <div class="时">2</div>
-                        <div class="时">3</div>
-                        <div class="时">4</div>
-                    </div>
-                </div>
-
-                <div class="日出">
-                    <div class="时辰">
-                        <div class="十二时辰">
-                            <h1>卯</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>辰</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>巳 日中</h1>
-                        </div>
-                    </div>
-                    <div class="小时">
-                        <div class="时">5</div>
-                        <div class="时">6</div>
-                        <div class="时">7</div>
-                        <div class="时">8</div>
-                        <div class="时">9</div>
-                        <div class="时">10</div>
-                    </div>
-                </div>
-
-                <div class="日入">
-                    <div class="时辰">
-                        <div class="十二时辰">
-                            <h1>午</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>未</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>申 日入</h1>
-                        </div>
-                    </div>
-                    <div class="小时">
-                        <div class="时">11</div>
-                        <div class="时">12</div>
-                        <div class="时">13</div>
-                        <div class="时">14</div>
-                        <div class="时">15</div>
-                        <div class="时">16</div>
-                    </div>
-                </div>
-
-                <div class="夜半">
-                    <div class="时辰">
-                        <div class="十二时辰">
-                            <h1>酉</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>戌</h1>
-                        </div>
-                        <div class="十二时辰">
-                            <h1>亥 夜半</h1>
-                        </div>
-                    </div>
-                    <div class="小时">
-                        <div class="时">17</div>
-                        <div class="时">18</div>
-                        <div class="时">19</div>
-                        <div class="时">20</div>
-                        <div class="时">21</div>
-                        <div class="时">22</div>
-                    </div>
-                </div>
-
-                <div class="每日计划">
-                    <h2>睡觉觉 睡觉觉 ZZzZZZ 睡觉觉 睡觉觉 ZZzZZZ 睡觉觉 ZZzZZZ 睡觉觉 睡觉觉 ZZzZZZ 睡觉觉 起床 舒展 洗漱 早餐 午餐 晚餐 睡觉<h2>
-                </div>
 
 
+                    <div class="朝时">
+                        
+                        <div class="时辰">
+                            <div class="十二时辰"><h1>子</h1></div>
+                            <div class="十二时辰"><h1>丑</h1></div>
+                            <div class="十二时辰"><h1>寅 朝时</h1></div>
+                        </div>
+                        <div class="小时">
+                            <div class="时">23</div>
+                            <div class="时">24</div>
+                            <div class="时">1</div>
+                            <div class="时">2</div>
+                            <div class="时">3</div>
+                            <div class="时">4</div>
+                        </div>
+                    </div>
+
+                    <div class="日出">
+                        <div class="时辰">
+                            <div class="十二时辰"><h1>卯</h1></div>
+                            <div class="十二时辰"><h1>辰</h1></div>
+                            <div class="十二时辰"><h1>巳 日中</h1></div>
+                        </div>
+                        <div class="小时">
+                            <div class="时">5</div>
+                            <div class="时">6</div>
+                            <div class="时">7</div>
+                            <div class="时">8</div>
+                            <div class="时">9</div>
+                            <div class="时">10</div>
+                        </div>
+                    </div>
+
+                    <div class="日入">
+                        <div class="时辰">
+                            <div class="十二时辰"><h1>午</h1></div>
+                            <div class="十二时辰"><h1>未</h1></div>
+                            <div class="十二时辰"><h1>申 日入</h1></div>
+                        </div>
+                        <div class="小时">
+                            <div class="时">11</div>
+                            <div class="时">12</div>
+                            <div class="时">13</div>
+                            <div class="时">14</div>
+                            <div class="时">15</div>
+                            <div class="时">16</div>
+                        </div>
+                    </div>
+
+                    <div class="夜半">
+                        <div class="时辰">
+                            <div class="十二时辰"><h1>酉</h1></div>
+                            <div class="十二时辰"><h1>戌</h1></div>
+                            <div class="十二时辰"><h1>亥 夜半</h1></div>
+                        </div>
+                        <div class="小时">
+                            <div class="时">17</div>
+                            <div class="时">18</div>
+                            <div class="时">19</div>
+                            <div class="时">20</div>
+                            <div class="时">21</div>
+                            <div class="时">22</div>
+                        </div>
+                    </div>
             </div>
+                    <div class="每日计划">
+                        <h2>睡觉觉 睡觉觉 ZZzZZZ 睡觉觉 睡觉觉 ZZzZZZ 睡觉觉  ZZzZZZ 睡觉觉 睡觉觉 ZZzZZZ 睡觉觉 起床 舒展 洗漱 早餐 午餐 晚餐 睡觉<h2>
+                        <h2>躺躺躺 躺躺躺躺 躺躺 躺躺躺 躺躺躺躺 躺躺躺躺躺 躺躺躺 躺躺躺躺 躺躺躺躺躺 躺躺躺 躺躺躺躺 坐 站 走 </h2>
+                    </div>
 
             <div class="生老病死">
-                <h1>生老病死8011 胚胎 婴儿 孩童 少年 青年 中年 老人</h1>
+            <h1>生老病死8011 胚胎 婴儿 孩童 少年 青年 中年 老人</h1>
                 <div class="男身">
                     <div class="男子阶段">0 1 2 3 4 5 6 7 8小学</div>
                     <div class="男子阶段">9 10 11 12 13 14 15 16初中高中</div>
@@ -649,11 +296,10 @@
                     <div class="男子阶段">48</div>
                     <div class="男子阶段">56</div>
                     <div class="男子阶段">64</div>
-
                 </div>
 
+            <h1>生老病死8800+胚胎 婴儿 孩童 少年 青年 中年 老人</h1>
                 <div class="女身">
-                    <h1>生老病死8800+胚胎 婴儿 孩童 少年 青年 中年 老人</h1>
                     <div class="女子阶段"> 1 2 3 4 5 6 7小学</div>
                     <div class="女子阶段">8 9 10 11 12 13 14初中高中</div>
                     <div class="女子阶段">15 16 17 18 19 20 21大学实习工作</div>
@@ -662,21 +308,18 @@
                     <div class="女子阶段">36 37 38 39 40 41 42</div>
                     <div class="女子阶段">49</div>
                     <div class="女子阶段">56</div>
-
                 </div>
 
 
 
             </div>
 
+            <h1>心念呼吸</h1>
             <div class="心念呼吸">
-                <h1>心念呼吸</h1>
-                <div class="">
                     <div class="初心">初心</div>
                     <div class="智谋">智谋</div>
                     <div class="决断">决断</div>
                     <div class="成败">成败</div>
-                </div>
             </div>
 
         </div>
@@ -688,7 +331,7 @@
                 <h2>大大太阳</h2>
                 <h2>大大月亮</h2>
             </div>
-
+           
 
 
             <div class="地球大陆板块社会世界国家">
@@ -708,261 +351,197 @@
                 <h2>北冰洋</h2>
                 云风 雨雷 雪冰 农田 工厂 江湖 海洋 矿场
             </div>
-
+            
 
 
             <div class="中国城市地区">
-                <h1>中华人民共和国</h1>
 
                 <div class="行政区划">
+                    <h1>中华人民共和国</h1>
                     <h2>华北地区</h2>
                     <h2>东北地区</h2>
                     <h2>华东地区</h2>
-                    <h3>...........江西省南昌市xxxx.........小笨蛋的家</h3>
+                        <h3>...........江西省南昌市xxxx.........小笨蛋的家</h3>
                     <h2>华中地区</h2>
                     <h2>华南地区</h2>
                     <h2>西南地区</h2>
                     <h2>西北地区</h2>
                     <h2>港澳台地区</h2>
                 </div>
-
-                <div class="公民">
-                    <h1>公民</h1>
-                    <h2>户籍 教育 就业 税收 社保 交通 农业生产 住房 法律援助 文化旅游 婚姻 生育 出入境 医疗卫生 养老 殡葬 港澳台侨胞</h2>
-                </div>
-
-                <div class="企业">
-                    <h1>企业</h1>
-                    <h2>物质 生产</h2>
-                    <h2>信息 消费</h2>
-                    <p>工程 知识 项目 技术 </p>
-                    <div class="公司">
-                        <h2>公司</h2>立项 招标 投标 验收 规划 搭建 运行 维护 废弃 ?
+                <div>
+                    <div class="公民">
+                        <h1>公民</h1>
+                        <h2>户籍 教育 就业 税收 社保 交通 农业生产 住房 法律援助 文化旅游 婚姻 生育 出入境 医疗卫生 养老 殡葬 港澳台侨胞</h2>
                     </div>
-                    <p>火电水电风电核电太阳能电 发电 输电 变电 配电 用电 中国芯 信息通讯 软件 京东淘宝网购 商品分类目录 物流快递分拣运输发货 客服</p>
-                    <p>央视网 哔哩哔哩 会员中心 用户中心 关注 收藏 历史 稍后再看 稿件中心 排行 分区 学习搞笑鬼畜科技美食 直播中心 抖音快手 虎牙斗鱼</p>
-                    <div class="学校">
+                    
+                    <div class="企业">
+                        <h1>企业</h1>
+                            <h2>物质 生产</h2>
+                            <h2>信息 消费</h2>
+                                <p>工程 知识 项目 技术 </p>
+                        <div class="公司"><h2>公司</h2>立项 招标 投标 验收 规划 搭建 运行 维护 废弃 ?</div>
+                                <p>火电水电风电核电太阳能电 发电 输电 变电 配电 用电 中国芯 信息通讯 软件 京东淘宝网购 商品分类目录  物流快递分拣运输发货 客服</p> 
+                                <p>央视网 哔哩哔哩 会员中心 用户中心 关注 收藏 历史 稍后再看 稿件中心 排行 分区 学习搞笑鬼畜科技美食 直播中心 抖音快手 虎牙斗鱼</p>
+                        <div class="学校">
                         <h1>学校</h1>
-
+                            
                         <div class="小学">开学 月考 期中 月考 期末 寒假 暑假 毕业</div>
                         <div class="初中">开学 月考 期中 月考 期末 寒假 暑假 毕业</div>
                         <div class="高中">开学 周考 周考 周考 月考 期中 周考 周考 周考 月考 周考 周考 周考 期末 寒假 暑假 毕业</div>
                         <div class="大学">开学 期中 期末 寒假 暑假 实习 毕业</div>
                         <h2>语文 数学 English 历史 地理 生物 政治 物理 化学 信息技术 通用技术 体育 美术 音乐 本科 专科</h2>
                     </div>
-
                 </div>
+                
             </div>
-
+                </div>
+                
 
 
             <div class="家庭物品">
                 <h1>物品整理 花费计算</h1>
+                
+                    <div class="房间清洁">
+                        <h2>清洁用品 行李背包</h2>
 
-                <div class="房间清洁">
-                    <h2>清洁用品 行李背包</h2>
-
-                </div>
-
-
-
-                <div class="电脑手机">
-                    <div class="制造">
-                        <h2>制造</h2>
-                    </div>
-                    <div class="销售">
-                        <h2>销售</h2>
-                    </div>
-                    <div class="规划">
-                        <h2>规划</h2>
-                    </div>
-                    <div class="采购">
-                        <h2>采购</h2>
-                    </div>
-                    <div class="部署">
-                        <h2>部署</h2>
-                    </div>
-                    <div class="操作">
-                        <h2>操作</h2>
-                        <div class="电脑">
-                            <h2>电脑</h2>
-                            <h3>......文件整理</h3>
-                            <h4>.........思路格式化</h4>
-                            <h4>.........念</h4>
-                            <h4>.........每日计划</h4>
-                            <h4>.........年度计划</h4>
-                        </div>
-
-
-                        <div class="手机">
-                            <h2>手机</h2>
-
-                        </div>
-
-                    </div>
-                    <div class="支持">
-                        <h2>支持</h2>
-                    </div>
-                    <div class="升级或停用">
-                        <h2>升级或停用</h2>
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="营养锻炼">
-                    <div class="种植栽培">
-                        <h2>种植栽培</h2>
-                    </div>
-                    <div class="浇灌采收">
-                        <h2>浇灌采收</h2>
-                    </div>
-                    <div class="销售">
-                        <h2>销售</h2>
-                    </div>
-                    <div class="采购">
-                        <h2>采购</h2>
-                    </div>
-                    <div class="清洗">
-                        <h2>清洗</h2>
-                    </div>
-                    <div class="煮饭">
-                        <h2>煮饭</h2>
-                    </div>
-                    <div class="食用">
-                        <h2>食用</h2>
-                    </div>
-                    <div class="存放">
-                        <h2>存放</h2>
-                        <div class="食物">
-                            <h2>食物</h2>
-                        </div>
-                        <div class="餐具">
-                            <h2>餐具</h2>
-                        </div>
-                        <div class="厨具">
-                            <h2>厨具</h2>
-                        </div>
-
-                    </div>
-                    <div class="发霉">
-                        <h2>发霉</h2>
-                    </div>
-                    <div class="丢弃">
-                        <h2>丢弃</h2>
-                    </div>
-                    <div class="发酵分解？">
-                        <h2>发酵分解？</h2>
                     </div>
 
 
 
-
-                </div>
-                <div class="运动器具">
-                    <h2>运动器具</h2>
-                </div>
-
-
-                <div class="衣物床铺">
-
-                    <div class="制作">
-                        <h2>制作</h2>
-                    </div>
-                    <div class="采购">
-                        <h2>采购</h2>
-                    </div>
-                    <div class="使用">
-                        <h2>使用</h2>
-                    </div>
-                    <div class="清洗">
-                        <h2>清洗</h2>
-                    </div>
-                    <div class="晾晒">
-                        <h2>晾晒</h2>
-                    </div>
-                    <div class="存放">
-                        <h2>存放</h2>
-                        <div class="衣物">
-                            <h2>衣物</h2>
-                            <div class="厚">
-                                <h2>厚</h2>
-                                <div class="">外衣</div>
-                                <div class="">内衣</div>
-                                <div class="">外裤</div>
-                                <div class="">内裤</div>
-                                <div class="">袜子</div>
-                                <div class="">鞋子</div>
+                    <div class="电脑手机">
+                        <div class="制造"><h2>制造</h2></div>
+                        <div class="销售"><h2>销售</h2></div>
+                        <div class="规划"><h2>规划</h2></div>
+                        <div class="采购"><h2>采购</h2></div>
+                        <div class="部署"><h2>部署</h2></div>
+                        <div class="操作"><h2>操作</h2>
+                            <div class="电脑">
+                                <h2>电脑</h2>
+                                    <h3>......文件整理</h3>
+                                        <h4>.........思路格式化</h4>
+                                        <h4>.........念</h4>
+                                        <h4>.........每日计划</h4>
+                                        <h4>.........年度计划</h4>
                             </div>
-                            <div class="适中">
-                                <h2>适中</h2>
-                                <div class="">外衣</div>
-                                <div class="">内衣</div>
-                                <div class="">外裤</div>
-                                <div class="">内裤</div>
-                                <div class="">袜子</div>
-                                <div class="">鞋子</div>
+                           
+
+                            <div class="手机">
+                                <h2>手机</h2>
+                            
                             </div>
-                            <div class="薄">
-                                <h2>薄</h2>
-                                <div class="">外衣</div>
-                                <div class="">内衣</div>
-                                <div class="">外裤</div>
-                                <div class="">内裤</div>
-                                <div class="">袜子</div>
-                                <div class="">鞋子</div>
+                        
+                        </div>
+                        <div class="支持"><h2>支持</h2></div>
+                        <div class="升级或停用"><h2>升级或停用</h2></div>
+                               
+
+                    </div>
+
+
+
+                    <div class="营养锻炼">
+                        <div class="种植栽培"><h2>种植栽培</h2></div>
+                        <div class="浇灌采收"><h2>浇灌采收</h2></div>
+                        <div class="销售"><h2>销售</h2></div>
+                        <div class="采购"><h2>采购</h2></div>
+                        <div class="清洗"><h2>清洗</h2></div>
+                        <div class="煮饭"><h2>煮饭</h2></div>
+                        <div class="食用"><h2>食用</h2></div>
+                        <div class="存放"><h2>存放</h2>
+                            <div class="食物"><h2>食物</h2></div>
+                            <div class="餐具"><h2>餐具</h2></div>
+                            <div class="厨具"><h2>厨具</h2></div>
+                        
+                        </div>
+                        <div class="发霉"><h2>发霉</h2></div>
+                        <div class="丢弃"><h2>丢弃</h2></div>
+                        <div class="发酵分解？"><h2>发酵分解？</h2></div>
+
+                        
+
+                        
+                    </div>
+                        <div class="运动器具"><h2>运动器具</h2></div>
+
+
+                    <div class="衣物床铺">
+
+                        <div class="制作"><h2>制作</h2></div>
+                        <div class="采购"><h2>采购</h2></div>
+                        <div class="使用"><h2>使用</h2></div>
+                        <div class="清洗"><h2>清洗</h2></div>
+                        <div class="晾晒"><h2>晾晒</h2></div>
+                        <div class="存放"><h2>存放</h2>
+                            <div class="衣物">
+                                <h2>衣物</h2>
+                                <div class="厚">
+                                    <h2>厚</h2>
+                                    <div class="">外衣</div>
+                                    <div class="">内衣</div>
+                                    <div class="">外裤</div>
+                                    <div class="">内裤</div>
+                                    <div class="">袜子</div>
+                                    <div class="">鞋子</div>
+                                </div>
+                                <div class="适中">
+                                    <h2>适中</h2>
+                                    <div class="">外衣</div>
+                                    <div class="">内衣</div>
+                                    <div class="">外裤</div>
+                                    <div class="">内裤</div>
+                                    <div class="">袜子</div>
+                                    <div class="">鞋子</div>
+                                </div>
+                                <div class="薄">
+                                    <h2>薄</h2>
+                                    <div class="">外衣</div>
+                                    <div class="">内衣</div>
+                                    <div class="">外裤</div>
+                                    <div class="">内裤</div>
+                                    <div class="">袜子</div>
+                                    <div class="">鞋子</div>
+                                </div>
+                            </div>
+                            
+                            <div class="床铺">
+                                <h2>床铺</h2>
+                                <div class="厚">
+                                    <div class="">枕套</div>
+                                    <div class="">枕芯</div>
+                                    <div class="">被套</div>
+                                    <div class="">被芯</div>
+                                    <div class="">床单</div>
+                                    <div class="">床垫</div>
+                                </div>
+    
+                                <div class="适中">
+                                    <div class="">枕套</div>
+                                    <div class="">枕芯</div>
+                                    <div class="">被套</div>
+                                    <div class="">被芯</div>
+                                    <div class="">床单</div>
+                                    <div class="">床垫</div>
+                                </div>
+                                <div class="薄">
+                                    <div class="">枕套</div>
+                                    <div class="">枕芯</div>
+                                    <div class="">被套</div>
+                                    <div class="">被芯</div>
+                                    <div class="">床单</div>
+                                    <div class="">床垫</div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="床铺">
-                            <h2>床铺</h2>
-                            <div class="厚">
-                                <div class="">枕套</div>
-                                <div class="">枕芯</div>
-                                <div class="">被套</div>
-                                <div class="">被芯</div>
-                                <div class="">床单</div>
-                                <div class="">床垫</div>
-                            </div>
-
-                            <div class="适中">
-                                <div class="">枕套</div>
-                                <div class="">枕芯</div>
-                                <div class="">被套</div>
-                                <div class="">被芯</div>
-                                <div class="">床单</div>
-                                <div class="">床垫</div>
-                            </div>
-                            <div class="薄">
-                                <div class="">枕套</div>
-                                <div class="">枕芯</div>
-                                <div class="">被套</div>
-                                <div class="">被芯</div>
-                                <div class="">床单</div>
-                                <div class="">床垫</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="缝补">
-                        <h2>缝补</h2>
-                    </div>
-                    <div class="丢弃">
-                        <h2>丢弃</h2>
-                    </div>
-                    <div class="回收">
-                        <h2>回收</h2>
-                    </div>
+                        <div class="缝补"><h2>缝补</h2></div>
+                        <div class="丢弃"><h2>丢弃</h2></div>
+                        <div class="回收"><h2>回收</h2></div>
 
 
-                </div>
+                    </div>
 
 
             </div>
-
-
-
+            
             <div class="人体心神身">
 
                 <div class="天籁">
@@ -972,110 +551,97 @@
                         <p>有的聪明，有的笨；</p>
                         <p>有的让人喜欢，有的烦？</p>
                     </h2>
-                    <p>----</p>
+                        <p>----</p>
                     <h2>
                         <p>没有眼睛，看不见美丽的色彩；</p>
                         <p>没有耳朵，听不到美妙的声音；</p>
                         <p>更多的人是智慧上的残缺，没办法理解最高的智慧；</p>
 
                     </h2>
-                </div>
-                <div class="买课">
-                    <p>你是不是学习学不会</p>
-                    <p>你是不是锻炼没效果</p>
-                    <p>不要￥998，</p>
-                    <p>只要￥9.8快来购买吧呜</p>
-                    <p>梦想电脑积攒进度￥0.00/10888</p>
-                    <p>66kg-58kg</p>
+                    
                 </div>
 
-                <div class="马斯洛需求层次表">
-                    <h1>马斯洛需求层次表</h1>
-                    <h2>超越</h2>
-                    <h2>自我实现</h2>
-                    <h2>审美需求</h2>
-                    <h2>认知需求</h2>
-                    <h2>尊重需求</h2>
-                    <h2>归属与爱的需求</h2>
-                    <h2>安全需求</h2>
-                    <h2>生理需求</h2>
-                </div>
+                    <div class="人籁">
 
+                        <div class="买课">
+                            <p>你是不是学习学不会</p>
+                            <p>你是不是锻炼没效果</p>
+                            <p>不要￥998，</p>
+                            <p>只要￥9.8快来购买吧呜</p>
+                            <p>梦想电脑积攒进度￥0.00/10888</p>
+                            <p>66kg-58kg</p>
+                        </div>
 
+                        <div class="马斯洛需求层次表">
+                            <h1>马斯洛需求层次表</h1>
+                                <h2>超越</h2>
+                                <h2>自我实现</h2>
+                                <h2>审美需求</h2>
+                                <h2>认知需求</h2>
+                                <h2>尊重需求</h2>
+                                <h2>归属与爱的需求</h2>
+                                <h2>安全需求</h2>
+                                <h2>生理需求</h2>
+                        </div>
 
-                <div class="目标计划">
-                    <h1>目标计划</h1>
-                    <div class="大肌肉">
-                        <h1>大肌肉</h1>
-                        <div class="肌肉">
-                            <div class="解剖学">
-                                <h2>解剖学</h2>
-
-                                <div class="运动系统">
-                                    <h2>运动系统</h2>骨骼，关节，骨骼肌
-
-                                    <div class="骨骼">颅骨，脊椎，长骨，短骨，不规则骨头</div>
-                                    <div class="骨骼肌">胸肌，背肌，腹肌，臀肌</div>
-
+                        <div class="目标计划">
+                                <h1>目标计划 钱钱房房车车肌肉手机电脑</h1>
+                                <div class="大肌肉"><h1>大肌肉</h1>
+                                    <div class="肌肉">
+                                        <div class="解剖学">
+                                            <h2>解剖学</h2>
+                    
+                                            <div class="运动系统">
+                                                <h2>运动系统</h2>骨骼，关节，骨骼肌
+                                                
+                                                <div class="骨骼">颅骨，脊椎，长骨，短骨，不规则骨头</div>
+                                                <div class="骨骼肌">胸肌，背肌，腹肌，臀肌</div>
+                                            
+                                            </div>
+                    
+                                            <div class=""><h2>消化系统</h2></div>
+                                            <div class=""><h2>呼吸系统</h2></div>
+                                            <div class=""><h2>神经系统</h2></div>
+                                            <div class=""><h2>循环系统</h2></div>
+                                            <div class=""><h2>泌尿系统</h2></div>
+                                            <div class=""><h2>内分泌系统</h2></div>
+                                            <div class=""><h2>生殖系统</h2></div>
+                                        </div>
+                    
+                                        <div class="中原武术文化">
+                                            <h2>中原武术文化</h2>
+                                            五湖四海 抱拳礼 起源发展特征概念流派 少林武当
+                                            <p>炼精化气</p> 
+                                            <p>练气化神</p> 
+                                            <p>炼神返虚</p>
+                                            <h2>中医养生气功</h2>
+                                            <h2>中国居民膳食指南（2022版）</h2>
+                                            菜谱
+                                        </div>
+                    
+                                    </div>
+                                
                                 </div>
-
-                                <div class="">
-                                    <h2>消化系统</h2>
+                                <div class="小钱钱"><h1>小钱钱</h1>
+                                
                                 </div>
-                                <div class="">
-                                    <h2>呼吸系统</h2>
-                                </div>
-                                <div class="">
-                                    <h2>神经系统</h2>
-                                </div>
-                                <div class="">
-                                    <h2>循环系统</h2>
-                                </div>
-                                <div class="">
-                                    <h2>泌尿系统</h2>
-                                </div>
-                                <div class="">
-                                    <h2>内分泌系统</h2>
-                                </div>
-                                <div class="">
-                                    <h2>生殖系统</h2>
-                                </div>
-                            </div>
-
-                            <div class="中原武术文化">
-                                <h2>中原武术文化</h2>
-                                五湖四海 抱拳礼 起源发展特征概念流派 少林武当
-                                <p>炼精化气</p>
-                                <p>练气化神</p>
-                                <p>炼神返虚</p>
-                                <h2>中医养生气功</h2>
-                                <h2>中国居民膳食指南（2022版）</h2>
-                                菜谱
-                            </div>
+                                <div class=""></div>
+                                <div class=""></div>
+                                <div class=""></div>
 
                         </div>
 
+                        <h2>记忆期待<p>深深的歌声</p><p>出生时父母的目光</p></h2>
                     </div>
-                    <div class="小钱钱">
-                        <h1>小钱钱</h1>
-
-                    </div>
-                    <div class=""></div>
-                    <div class=""></div>
-                    <div class=""></div>
-
-                </div>
-
-
-
+                    
+                    
                 <div>
-                    <h2>记忆期待<p>深深的歌声</p>
-                        <p>出生时父母的目光</p>
-                    </h2>
+
+                
                 </div>
 
 
-
+                    
             </div>
 
 
@@ -1084,7 +650,7 @@
 
     </div>
 
-
+    
     <div class="Weblist">
 
         <H1>网页书签</H1>
@@ -1213,12 +779,12 @@
     </div>
 
     <h1>日志</h1>
-    <ul>
-        <li>2023-05-03 github 学习教程【【网站搭建】4分钟用GitHub搭建个人(博客)网站！小白专属！-哔哩哔哩】https://b23.tv/uMtNvwi</li>
-        <li>2023-05-05 Dw</li>
-        <li>2023-08-09 网页书签</li>
-        <li>2023-09-09 船新升级</li>
-    </ul>
+        <ul>
+            <li>2023-05-03 github 学习教程【【网站搭建】4分钟用GitHub搭建个人(博客)网站！小白专属！-哔哩哔哩】https://b23.tv/uMtNvwi</li>
+            <li>2023-05-05 Dw</li>
+            <li>2023-08-09 网页书签</li>
+            <li>2023-09-09 船新升级</li>
+        </ul>
 
 
 </body>
