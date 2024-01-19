@@ -9,8 +9,10 @@
         * {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif; /* 设置字体 */
-            font-size: 12px; /* 设置字体大小 */
+            font-family: Arial, sans-serif;
+            /* 设置字体 */
+            font-size: 12px;
+            /* 设置字体大小 */
         }
 
         ul {
@@ -20,11 +22,13 @@
         .header {
             width: auto;
             text-align: center;
+            height: 10vh;
         }
 
         .main {
             display: flex;
             flex-direction: row;
+            height: 90vh;
         }
 
         .时间 {
@@ -46,12 +50,35 @@
         .四季 {
             display: flex;
             flex-direction: row;
+            height: 100%;
         }
 
-        .年,
-        .月,
+        .四季 ul {
+
+            height: 100%;
+        }
+
+        .年 {
+            flex-grow: 1;
+            height: 100%;
+        }
+
+        .月 {
+            flex-grow: 1;
+            height: 100%;
+        }
+
         .日 {
             flex-grow: 1;
+            height: 100%;
+        }
+
+        .月 li {
+            height: 8.33%;
+        }
+
+        .日 li {
+            height: 4.16%;
         }
     </style>
 </head>
@@ -60,6 +87,8 @@
     <div class="header">
         <h1>好看，好用的人生规划</h1>
     </div>
+
+
     <div class="main">
         <div class="时间">
             <h3>时间</h3>
@@ -117,9 +146,13 @@
                 </div>
             </div>
         </div>
+
+
         <div class="身体">
             <h3>2</h3>
         </div>
+
+
         <div class="家">
             <h3>3</h3>
         </div>
