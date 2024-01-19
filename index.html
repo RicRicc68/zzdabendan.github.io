@@ -6,9 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>规划</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
         .header {
             width: auto;
             text-align: center;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .时间 {
+            background-color: #666666;
+            flex-grow: 50;
+        }
+
+        .身体 {
+            background-color: #999999;
+            flex-grow: 515;
+        }
+
+        .家 {
+            background-color: #cccccc;
+            flex-grow: 515;
+        }
+
+        .四季 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .年,
+        .月,
+        .日 {
+            flex-grow: 1;
         }
     </style>
 </head>
@@ -17,7 +57,70 @@
     <div class="header">
         <h1>好看，好用的人生规划</h1>
     </div>
-    <div class="main"></div>
+    <div class="main">
+        <div class="时间">
+            <h3>时间</h3>
+            <div class="四季">
+                <div class="年">
+                    <ul>
+                        <li>2023</li>
+                    </ul>
+                </div>
+                <div class="月">
+                    <ul>
+                        <li>一月</li>
+                        <li>二月</li>
+                        <li>三月</li>
+                        <li>四月</li>
+                        <li>五月</li>
+                        <li>六月</li>
+                        <li>七月</li>
+                        <li>八月</li>
+                        <li>九月</li>
+                        <li>十月</li>
+                        <li>十一月</li>
+                        <li>十二月</li>
+
+                    </ul>
+                </div>
+                <div class="日">
+                    <ul>
+                        <li>1时</li>
+                        <li>2时</li>
+                        <li>3时</li>
+                        <li>4时</li>
+                        <li>5时</li>
+                        <li>6时</li>
+                        <li>7时</li>
+                        <li>8时</li>
+                        <li>9时</li>
+                        <li>10时</li>
+                        <li>11时</li>
+                        <li>12时</li>
+                        <li>13时</li>
+                        <li>14时</li>
+                        <li>15时</li>
+                        <li>16时</li>
+                        <li>17时</li>
+                        <li>18时</li>
+                        <li>19时</li>
+                        <li>20时</li>
+                        <li>21时</li>
+                        <li>22时</li>
+                        <li>23时</li>
+                        <li>24时</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="身体">
+            <h3>2</h3>
+        </div>
+        <div class="家">
+            <h3>3</h3>
+        </div>
+    </div>
 </body>
 
 </html>
