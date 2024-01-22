@@ -25,7 +25,8 @@
             text-align: center;
             height: 5vh;
         }
-        h1{
+
+        h1 {
             line-height: 5vh;
         }
 
@@ -176,6 +177,269 @@
             <h3>3</h3>
         </div>
     </div>
+
+    <!DOCTYPE html>
+    <html lang="zh">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>书签网页</title>
+        <style>
+            .书签 {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .世界组织 {
+                background-color: #aaa;
+            }
+
+            .政府 {
+                background-color: #ccc;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #333;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="书签">
+
+            <div class="世界组织">
+                <h1>世界组织</h1>
+                <ul id="bookmarks">
+                    <!-- 书签将在这里显示 -->
+                </ul>
+            </div>
+
+            <div class="政府">
+                <h1>政府</h1>
+                <ul id="bookmarks2">
+                    <!-- 书签将在这里显示 -->
+                </ul>
+            </div>
+
+            <div class="企业">
+                <h1>企业</h1>
+                <ul id="bookmarks3">
+                    <!-- 书签将在这里显示 -->
+                </ul>
+            </div>
+
+            <div class="教育">
+                <h1>教育</h1>
+                <ul id="bookmarks4">
+                    <!-- 书签将在这里显示 -->
+                </ul>
+            </div>
+
+        </div>
+
+        <script>
+
+
+            // 世界组织——示例书签数据
+            const bookmarks = [
+                { title: ' 国家智慧教育公共服务平台 ', url: ' https://www.smartedu.cn/ ' },
+                { title: ' 美国国家标准协会 ', url: ' https://www.ansi.org/ ' },
+                { title: ' IEEE ', url: ' https://www.ieee.org/ ' },
+                { title: ' IETF ', url: ' https://www.ietf.org/ ' },
+                { title: ' ISO国际标准化组织 ', url: ' https://www.iso.org/home.html ' },
+
+            ];
+
+            // 将书签添加到网页中
+            const bookmarksList = document.getElementById('bookmarks');
+            bookmarks.forEach(bookmark => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = bookmark.url;
+                link.textContent = bookmark.title;
+                listItem.appendChild(link);
+                bookmarksList.appendChild(listItem);
+            });
+
+            // 政府——示例书签数据
+            const bookmarks2 = [
+                { title: '  19高考卷 ', url: '  http://edu.people.com.cn/GB/n1/2019/0608/c116076-31125588.html?ivk_sa=1024609v ' },
+                { title: '  中国军网 ', url: '  http://www.81.cn/ ' },
+                { title: '  腹肌训练15分钟 ', url: '  http://www.81.cn/lj/2020-04/17/content_9794412.htm ' },
+                { title: '  江西信息学院官网 ', url: '  http://www.jxcia.com/ ' },
+                { title: '  人民日报 ', url: '  http://www.people.cn/ ' },
+                { title: '  清华大学官网 ', url: '  https//www.tsinghua.edu.cn/ ' },
+                { title: '  国家法律法规数据库 ', url: '  https://flk.npc.gov.cn/index.html ' },
+                { title: '  终身教育平台 ', url: '  https://le.ouchn.cn/home+ ' },
+                { title: '  国家企业信用信息公示系统 ', url: '  https://shiming.gsxt.gov.cn/index.html ' },
+                { title: '  CCTV ', url: '  https://sports.cctv.com/tabletennis/ ' },
+                { title: '  央视网 ', url: '  https://www.cctv.com/ ' },
+                { title: '  中国营养学会 ', url: '  https://www.cnsoc.org/ ' },
+                { title: '  中国政府网 ', url: '  https://www.gov.cn/ ' },
+                { title: '  北京大学官网 ', url: '  https://www.pku.edu.cn ' },
+                { title: '  软考 ', url: '  https://www.ruankao.org.cn/ ' },
+                { title: '  中国计算机技术职业资格网 ', url: '  https://www.ruankao.org.cn/introduction/zgsz ' },
+                { title: '  国家智慧教育公共服务平台 ', url: '  https://www.smartedu.cn/ ' },
+
+            ];
+
+            // 将书签添加到网页中
+            const bookmarks2List = document.getElementById('bookmarks2');
+            bookmarks2.forEach(bookmark2 => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = bookmark2.url;
+                link.textContent = bookmark2.title;
+                listItem.appendChild(link);
+                bookmarks2List.appendChild(listItem);
+            });
+
+
+            // 企业——示例书签数据
+            const bookmarks3 = [
+                { title: '  神舟  ', url: '  http://archive.hasee.com/Chinese/download/computer.aspx  ' },
+                { title: '  zabbix监控  ', url: '  http://grandage.cn/  ' },
+                { title: '  电信  ', url: '  http://www.chinatelecom.com.cn/  ' },
+                { title: '  联通  ', url: '  http://www.chinaunicom.com.cn/  ' },
+                { title: '  火狐浏览器  ', url: '  http://www.firefox.com.cn/  ' },
+                { title: '  国家电网  ', url: '  http://www.sgcc.com.cn/  ' },
+                { title: '  apache网站服务器  ', url: '  https://apache.org/  ' },
+                { title: '  ChatGPT  ', url: '  https://chat-gpt.org/zh  ' },
+                { title: '  visual studio code  ', url: '  https://code.visualstudio.com/  ' },
+                { title: '  GitHub  ', url: '  https://github.com/  ' },
+                { title: '  QQ  ', url: '  https://im.qq.com/index/  ' },
+                { title: '  移动  ', url: '  https://it.10086.cn/indexc.html  ' },
+                { title: '  kubernetes  ', url: '  https://kubernetes.io/zh-cn/  ' },
+                { title: '  比亚迪  ', url: '  https://mall.bydauto.com.cn/pc/  ' },
+                { title: '  联想    ', url: '  https://newsupport.lenovo.com.cn/notebook.html  ' },
+                { title: '  nginx网站服务器  ', url: '  https://nginx.org/en/  ' },
+                { title: '  惠普   ', url: '  https://support.hp.com/cn-zh/drivers  ' },
+                { title: '  联想  ', url: '  https://support.lenovo.com/  ' },
+                { title: '  微信  ', url: '  https://weixin.qq.com/  ' },
+                { title: '  文泉书局  ', url: '  https://wqbook.wqxuetang.com/  ' },
+                { title: '  网易  ', url: '  https://www.163.com/  ' },
+                { title: '  360官网  ', url: '  https://www.360.cn/  ' },
+                { title: '  宏碁  ', url: '  https://www.acer.com.cn/support.html?type=1  ' },
+                { title: '  阿里巴巴  ', url: '  https://www.alibabagroup.com/about-alibaba#culture-and-values  ' },
+                { title: '  AMD  ', url: '  https://www.amd.com/zh-hans  ' },
+                { title: '  Apple  ', url: '  https://www.apple.com.cn/  ' },
+                { title: '  华硕 / ROG  ', url: '  https://www.asus.com.cn/support/Download-Center/  ' },
+                { title: '  百度  ', url: '  https://www.baidu.com/  ' },
+                { title: '  国家能源集团  ', url: '  https://www.ceic.com/  ' },
+                { title: '  Cisco  ', url: '  https://www.cisco.com/c/zh_cn/index.html  ' },
+                { title: '  七彩虹   ', url: '  https://www.colorful.cn/product.aspx?mid=158  ' },
+                { title: '  戴尔/ 外星人  ', url: '  https://www.dell.com/support/home/zh-cn/Products?app=drivers  ' },
+                { title: '  容器  ', url: '  https://www.docker.com/  ' },
+                { title: '  GNU  ', url: '  https://www.gnu.org/  ' },
+                { title: '  谷歌浏览器  ', url: '  https://www.google.cn/intl/zh-CN/chrome/  ' },
+                { title: '  H3C  ', url: '  https://www.h3c.com/cn/  ' },
+                { title: '  海康威视  ', url: '  https://www.hikvision.com/cn/  ' },
+                { title: '  HWAWEI  ', url: '  https://www.huawei.com/cn/  ' },
+                { title: '  华为  ', url: '  https://www.huawei.com/cn/  ' },
+                { title: '  Intel  ', url: '  https://www.intel.cn/content/www/cn/zh/homepage.html  ' },
+                { title: '  pycharm  ', url: '  https://www.jetbrains.com/pycharm/  ' },
+                { title: '  linux kernel  ', url: '  https://www.kernel.org/  ' },
+                { title: '  kubernetes社区  ', url: '  https://www.kubernetes.org.cn/  ' },
+                { title: '  联想  ', url: '  https://www.lenovo.com.cn/  ' },
+                { title: '  龙芯  ', url: '  https://www.loongson.cn/  ' },
+                { title: '  机械师  ', url: '  https://www.machenike.com/offline/driverUnit  ' },
+                { title: '  机械革命  ', url: '  https://www.mechrevo.com/service/  ' },
+                { title: '  小米  ', url: '  https://www.mi.com/  ' },
+                { title: '  Microsoft  ', url: '  https://www.microsoft.com/zh-cn/  ' },
+                { title: '  微软官方安装工具下载：  ', url: '  https://www.microsoft.com/zh-cn/software-download  ' },
+                { title: '  微星B450主板驱动  ', url: '  https://www.msi.cn/Motherboard/B450I-GAMING-PLUS-AC/support  ' },
+                { title: '  微星   ', url: '  https://www.msi.cn/support/download/  ' },
+                { title: '  Nvdia  ', url: '  https://www.nvidia.cn/  ' },
+                { title: '  Python  ', url: '  https://www.python.org/  ' },
+                { title: '  腾讯  ', url: '  https://www.qq.com/  ' },
+                { title: '  Redhat Linux 红帽  ', url: '  https://www.redhat.com/zh  ' },
+                { title: '  锐捷  ', url: '  https://www.ruijie.com.cn/  ' },
+                { title: '  深信服  ', url: '  https://www.sangfor.com.cn/  ' },
+                { title: '  雷神  ', url: '  https://www.thunderobot.com/service/download.html  ' },
+                { title: '  统信操作系统  ', url: '  https://www.uniontech.com/  ' },
+                { title: '  Vmware虚拟机  ', url: '  https://www.vmware.com/cn.html  ' },
+                { title: '  WPS办公软件  ', url: '  https://www.wps.cn/  ' },
+                { title: '  ssh工具  ', url: '  https://www.xshell.com/zh/xshell/  ' },
+                { title: '  长江储存  ', url: '  https://www.ymtc.com/  ' },
+            ];
+
+
+
+            // 将书签添加到网页中
+            const bookmarks3List = document.getElementById('bookmarks3');
+            bookmarks3.forEach(bookmark3 => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = bookmark3.url;
+                link.textContent = bookmark3.title;
+                listItem.appendChild(link);
+                bookmarks3List.appendChild(listItem);
+            });
+
+
+            // 教育——示例书签数据
+            const bookmarks4 = [
+
+
+                { title: ' sao热风工作室 ', url: ' http://www.gpbeta.com/post/tag/sao-utils/ ' },
+                { title: ' 鸿鹄论坛 ', url: ' https://bbs.hh010.com/ ' },
+                { title: ' 鸟哥的linux ', url: ' https://linux.vbird.org/linux_basic/ ' },
+                { title: ' 博客园 ', url: ' https://www.cnblogs.com/ ' },
+                { title: ' CSDN ', url: ' https://www.csdn.net/ ' },
+                { title: ' 慕课 ', url: ' https://www.icourse163.org/ ' },
+                { title: ' 中国大学MOOC ', url: ' https://www.icourse163.org/ ' },
+                { title: ' Linux ', url: ' https://www.linuxprobe.com/ ' },
+                { title: ' 渐构 ', url: ' https://www.modevol.com/ ' },
+                { title: ' 菜鸟教程 ', url: ' https://www.runoob.com/ ' },
+                { title: ' 万维网 ', url: ' https://www.w3school.com.cn/index.html ' },
+                { title: ' 学习强国 ', url: ' https://www.xuexi.cn/ ' },
+                { title: ' 羽兔网 ', url: ' https://www.yutu.cn/ ' },
+                { title: ' 萌娘百科 ', url: ' https://zh.moegirl.org.cn/Mainpage ' },
+
+
+            ];
+
+            // 将书签添加到网页中
+            const bookmarks4List = document.getElementById('bookmarks4');
+            bookmarks4.forEach(bookmark4 => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = bookmark4.url;
+                link.textContent = bookmark4.title;
+                listItem.appendChild(link);
+                bookmarks4List.appendChild(listItem);
+            });
+
+
+
+
+        </script>
+
+
+
+
+    </body>
+
+    </html>
 </body>
 
 </html>
