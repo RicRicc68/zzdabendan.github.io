@@ -1,183 +1,356 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="Zh-cn">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>规划</title>
+    <title>Document</title>
     <style>
-        * {
+        /*==========================================1-元素初始化 */
+        html,
+        body,
+        div,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        main,
+        footer,
+        nav,
+        ul,
+        li,
+        ol,
+        a {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             /* 设置字体 */
-            font-size: 12px;
+            font-size: 16px;
             /* 设置字体大小 */
+            text-align: center;
         }
 
-        ul {
+
+        ul,
+        ol {
             list-style-type: none;
-            text-align: center;
+        }
+
+        /*==========================================2-结构页面布局*/
+        .主页 {
+            background-color: #000000;
+            height: 99vh;
+            width: 99.5vw;
+            margin: auto;
+            padding: 0;
         }
 
         .header {
-            width: auto;
-            text-align: center;
-            height: 5vh;
+            background-color: #bbbbbb;
+            height: 5%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
         }
 
-        h1 {
+        .nav {
+            background-color: #bbbbbb;
+            height: 5%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
+        }
+
+        .main {
+            background-color: #bbbbbb;
+            height: 85%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
+
+        }
+
+        .footer {
+            background-color: #bbbbbb;
+            height: 5%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
+        }
+
+        /*==========================================3-内容填写*/
+        .标题 {
             line-height: 5vh;
         }
 
         .main {
             display: flex;
             flex-direction: row;
-            height: 95vh;
         }
 
         .时间 {
-            background-color: #666666;
-            flex-grow: 30;
-            height: 100%;
+            flex-grow: 108;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
         }
 
         .身体 {
-            background-color: #999999;
-            flex-grow: 525;
+            flex-grow: 486;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
         }
 
         .家 {
-            background-color: #cccccc;
-            flex-grow: 525;
+            flex-grow: 486;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
         }
 
-        .四季 {
+        .时间 {
             display: flex;
             flex-direction: row;
-            height: 100%;
         }
 
-        .四季 ul {
-
-            height: 100%;
-        }
-
-        .年 {
-            flex-grow: 1;
-            height: 100%;
-        }
-
-        .月 {
-            flex-grow: 1;
-            height: 100%;
-        }
-
+        .年,
+        .月,
         .日 {
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
+        }
+
+        .春,
+        .夏,
+        .秋,
+        .冬 {
+            flex-grow: 1;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
+        }
+
+        .年 ul {
+            height: 100%;
+        }
+        .月 ul {
+            height: 100%;
+        }
+        .日 ul {
             height: 100%;
         }
 
-        .月 li {
-            height: 8.33%;
+        .月分 {
+            height: 33.3%;
+        }
+        .日分 {
+            height: 16.6%;
         }
 
-        .日 li {
-            height: 4.16%;
+
+
+        .身体 {
+            display: flex;
+            flex-direction: column;
         }
 
-        .a1 {
-            background-color: green;
+        .初心,
+        .谋划,
+        .决断,
+        .成败 {
+            flex-grow: 1;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
         }
 
-        .a2 {
-            background-color: yellow;
+        .家 {
+            display: flex;
+            flex-direction: column;
         }
 
-        .a3 {
-            background-color: gold;
-        }
-
-        .a4 {
-            background-color: aqua;
+        .物品,
+        .清洁,
+        .行动,
+        .结果 {
+            flex-grow: 1;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: white;
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <h1>好看，好用的人生规划</h1>
-    </div>
 
+    <div class="主页">
 
-    <div class="main">
-        <div class="时间">
-            <div class="四季">
+        <div class="header">
+            <h3 class="标题">好看，好用的人生规划</h3>
+        </div>
+
+        <div class="nav">
+            <h3>nav</h3>
+        </div>
+
+        <div class="main">
+
+            <div class="时间">
+
                 <div class="年">
-                    <ul>
-                        <li>2023</li>
-                    </ul>
+                    <div class="春">
+                        <ul>
+                            <li>小孩</li>
+                        </ul>
+                    </div>
+                    <div class="夏">
+                        <ul>
+                            <li>成人</li>
+                        </ul>
+                    </div>
+                    <div class="秋">
+                        <ul>
+                            <li>老人</li>
+                        </ul>
+                    </div>
+                    <div class="冬">
+                        <ul>
+                            <li>死人</li>
+                        </ul>
+                    </div>
+
                 </div>
                 <div class="月">
-                    <ul>
-                        <li class="a1">一月</li>
-                        <li class="a1">二月</li>
-                        <li class="a1">三月</li>
-                        <li class="a2">四月</li>
-                        <li class="a2">五月</li>
-                        <li class="a2">六月</li>
-                        <li class="a3">七月</li>
-                        <li class="a3">八月</li>
-                        <li class="a3">九月</li>
-                        <li class="a4">十月</li>
-                        <li class="a4">十一月</li>
-                        <li class="a4">十二月</li>
+                    <div class="春">
+                        <ul>
+                            <li class="月分">1月</li>
+                            <li class="月分">2月</li>
+                            <li class="月分">3月</li>
+                        </ul>
 
-                    </ul>
+                    </div>
+
+                    <div class="夏">
+                        <ul>
+                            <li class="月分">4月</li>
+                            <li class="月分">5月</li>
+                            <li class="月分">6月</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="秋">
+                        <ul>
+                            <li class="月分">7月</li>
+                            <li class="月分">8月</li>
+                            <li class="月分">9月</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="冬">
+                        <ul>
+                            <li class="月分">10月</li>
+                            <li class="月分">11月</li>
+                            <li class="月分">12月</li>
+                        </ul>
+
+                    </div>
                 </div>
                 <div class="日">
-                    <ul>
-                        <li class="a1">1时</li>
-                        <li class="a1">2时</li>
-                        <li class="a1">3时</li>
-                        <li class="a1">4时</li>
-                        <li class="a1">5时</li>
-                        <li class="a1">6时</li>
-                        <li class="a2">7时</li>
-                        <li class="a2">8时</li>
-                        <li class="a2">9时</li>
-                        <li class="a2">10时</li>
-                        <li class="a2">11时</li>
-                        <li class="a2">12时</li>
-                        <li class="a3">13时</li>
-                        <li class="a3">14时</li>
-                        <li class="a3">15时</li>
-                        <li class="a3">16时</li>
-                        <li class="a3">17时</li>
-                        <li class="a3">18时</li>
-                        <li class="a4">19时</li>
-                        <li class="a4">20时</li>
-                        <li class="a4">21时</li>
-                        <li class="a4">22时</li>
-                        <li class="a4">23时</li>
-                        <li class="a4">24时</li>
+                    <div class="春">
+                        <ul>
+                            <li class="日分">1时</li>
+                            <li class="日分">2时</li>
+                            <li class="日分">3时</li>
+                            <li class="日分">4时</li>
+                            <li class="日分">5时</li>
+                            <li class="日分">6时</li>
+                        </ul>
+                    </div>
 
-                    </ul>
+                    <div class="夏">
+                        <ul>
+                            <li class="日分">7时</li>
+                            <li class="日分">8时</li>
+                            <li class="日分">9时</li>
+                            <li class="日分">10时</li>
+                            <li class="日分">11时</li>
+                            <li class="日分">12时</li>
+                        </ul>
+                    </div>
+
+                    <div class="秋">
+                        <ul>
+                            <li class="日分">13时</li>
+                            <li class="日分">14时</li>
+                            <li class="日分">15时</li>
+                            <li class="日分">16时</li>
+                            <li class="日分">17时</li>
+                            <li class="日分">18时</li>
+                        </ul>
+                    </div>
+
+                    <div class="冬">
+                        <ul>
+                            <li class="日分">19时</li>
+                            <li class="日分">20时</li>
+                            <li class="日分">21时</li>
+                            <li class="日分">22时</li>
+                            <li class="日分">23时</li>
+                            <li class="日分">24时</li>
+                        </ul>
+                    </div>
                 </div>
+
+
+
             </div>
+
+            <div class="身体">
+                <div class="初心"></div>
+                <div class="谋划"></div>
+                <div class="决断"></div>
+                <div class="成败"></div>
+            </div>
+
+            <div class="家">
+                <div class="物品"></div>
+                <div class="清洁"></div>
+                <div class="行动"></div>
+                <div class="结果"></div>
+            </div>
+
         </div>
 
-
-        <div class="身体">
-            <h3>2</h3>
+        <div class="footer">
+            <h3>footer</h3>
         </div>
 
-
-        <div class="家">
-            <h3>3</h3>
-        </div>
     </div>
+</body>
 
+</html>
     <!DOCTYPE html>
     <html lang="zh">
 
