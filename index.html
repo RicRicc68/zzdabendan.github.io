@@ -6,357 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /*==========================================1-元素初始化 */
-        html,
-        body,
-        div,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        header,
-        main,
-        footer,
-        nav,
-        ul,
-        li,
-        ol,
-        a {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            /* 设置字体 */
-            font-size: 16px;
-            /* 设置字体大小 */
-            text-align: center;
-        }
-
-
-        ul,
-        ol {
-            list-style-type: none;
-        }
-
-        /*==========================================2-结构页面布局*/
-        .主页 {
-            background-color: #000000;
-            height: 99vh;
-            width: 99.5vw;
-            margin: auto;
-            padding: 0;
-        }
-
-        .header {
-            background-color: #bbbbbb;
-            height: 5%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .nav {
-            background-color: #bbbbbb;
-            height: 5%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .main {
-            background-color: #bbbbbb;
-            height: 85%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-
-        }
-
-        .footer {
-            background-color: #bbbbbb;
-            height: 5%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        /*==========================================3-内容填写*/
-        .标题 {
-            line-height: 5vh;
-        }
-
-        .main {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .时间 {
-            flex-grow: 54;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .身体 {
-            flex-grow: 513;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .家 {
-            flex-grow: 513;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .时间 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .年,
-        .月,
-        .日 {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .春,
-        .夏,
-        .秋,
-        .冬 {
-            flex-grow: 1;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .年 ul {
-            height: 100%;
-        }
-        .月 ul {
-            height: 100%;
-        }
-        .日 ul {
-            height: 100%;
-        }
-
-        .月分 {
-            height: 33.3%;
-        }
-        .日分 {
-            height: 16.6%;
-        }
-
-
-
-        .身体 {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .初心,
-        .谋划,
-        .决断,
-        .成败 {
-            flex-grow: 1;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-
-        .家 {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .物品,
-        .清洁,
-        .行动,
-        .结果 {
-            flex-grow: 1;
-            border-style: solid;
-            border-width: 0.5px;
-            border-color: white;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="主页">
-
-        <div class="header">
-            <h3 class="标题">好看，好用的人生规划</h3>
-        </div>
-
-        <div class="nav">
-            <h3>nav</h3>
-        </div>
-
-        <div class="main">
-
-            <div class="时间">
-
-                <div class="年">
-                    <div class="春">
-                        <ul>
-                            <li>小孩</li>
-                        </ul>
-                    </div>
-                    <div class="夏">
-                        <ul>
-                            <li>成人</li>
-                        </ul>
-                    </div>
-                    <div class="秋">
-                        <ul>
-                            <li>老人</li>
-                        </ul>
-                    </div>
-                    <div class="冬">
-                        <ul>
-                            <li>死人</li>
-                        </ul>
-                    </div>
-
-                </div>
-                <div class="月">
-                    <div class="春">
-                        <ul>
-                            <li class="月分">1月</li>
-                            <li class="月分">2月</li>
-                            <li class="月分">3月</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="夏">
-                        <ul>
-                            <li class="月分">4月</li>
-                            <li class="月分">5月</li>
-                            <li class="月分">6月</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="秋">
-                        <ul>
-                            <li class="月分">7月</li>
-                            <li class="月分">8月</li>
-                            <li class="月分">9月</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="冬">
-                        <ul>
-                            <li class="月分">10月</li>
-                            <li class="月分">11月</li>
-                            <li class="月分">12月</li>
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="日">
-                    <div class="春">
-                        <ul>
-                            <li class="日分">1时</li>
-                            <li class="日分">2时</li>
-                            <li class="日分">3时</li>
-                            <li class="日分">4时</li>
-                            <li class="日分">5时</li>
-                            <li class="日分">6时</li>
-                        </ul>
-                    </div>
-
-                    <div class="夏">
-                        <ul>
-                            <li class="日分">7时</li>
-                            <li class="日分">8时</li>
-                            <li class="日分">9时</li>
-                            <li class="日分">10时</li>
-                            <li class="日分">11时</li>
-                            <li class="日分">12时</li>
-                        </ul>
-                    </div>
-
-                    <div class="秋">
-                        <ul>
-                            <li class="日分">13时</li>
-                            <li class="日分">14时</li>
-                            <li class="日分">15时</li>
-                            <li class="日分">16时</li>
-                            <li class="日分">17时</li>
-                            <li class="日分">18时</li>
-                        </ul>
-                    </div>
-
-                    <div class="冬">
-                        <ul>
-                            <li class="日分">19时</li>
-                            <li class="日分">20时</li>
-                            <li class="日分">21时</li>
-                            <li class="日分">22时</li>
-                            <li class="日分">23时</li>
-                            <li class="日分">24时</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-
-            </div>
-
-            <div class="身体">
-                <div class="初心"></div>
-                <div class="谋划"></div>
-                <div class="决断"></div>
-                <div class="成败"></div>
-            </div>
-
-            <div class="家">
-                <div class="物品"></div>
-                <div class="清洁"></div>
-                <div class="行动"></div>
-                <div class="结果"></div>
-            </div>
-
-        </div>
-
-        <div class="footer">
-            <h3>footer</h3>
-        </div>
-
-    </div>
-</body>
-<!DOCTYPE html>
-<html lang="Zh-cn">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
         html,
         body,
         div,
@@ -448,14 +97,32 @@
         </div>
 
         <div class="nav">
-            <div class="感觉">感觉</div>
+            <div class="感觉">
+                我的直播间
+                <iframe src="http://live.bilibili.com/21648980" width="100%" height="100%"></iframe>
+            </div>
             <div class="接受">接受</div>
             <div class="想法">想法</div>
         </div>
 
         <div class="main">
-            <div class="谋划">谋划
-                
+            <div class="谋划">
+                <ul>
+                    <li>了解身体结构</li>
+                    <li>了解营养搭配</li>
+                    <li>了解运动训练</li>
+                    <li>了解肌肉</li>
+                    <li>了解呼吸</li>
+                    <li>了解心情</li>
+                    <li>按时午休</li>
+                    <li>了解说话发声</li>
+                    <li>了解沟通</li>
+                    <li>了解表达技巧</li>
+                    <li>了解思维</li>
+                    <li>了解认识自我</li>
+
+                </ul>
+
             </div>
             <div class="日记">日记</div>
 
@@ -468,7 +135,6 @@
     </div>
 </body>
 
-</html>
 </html>
     <!DOCTYPE html>
     <html lang="zh">
