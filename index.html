@@ -85,7 +85,7 @@
             width: 100%;
         }
 
-        .谋划 li{
+        .谋划 li {
             color: white;
         }
 
@@ -94,9 +94,11 @@
             border-radius: 100% 100% 100% 100%;
             height: 300px;
         }
-        
-        
 
+
+        .文本溢出处理 {
+            overflow: scroll;
+        }
 
 
         .书签 {
@@ -120,9 +122,6 @@
         a:hover {
             text-decoration: underline;
         }
-
-
-
     </style>
 </head>
 
@@ -137,7 +136,7 @@
 
         <div class="nav">
             <div class="感觉">
-                <iframe src="https://live.bilibili.com/h5/21648980" title="我的直播间" class="我的直播间" >
+                <iframe src="https://live.bilibili.com/h5/21648980" title="我的直播间" class="我的直播间">
 
                 </iframe>
             </div>
@@ -145,7 +144,7 @@
             <div class="接受">眼鼻口耳身心</div>
 
             <div class="想法">
-                <br />想看想听想吃想说想抓想走   达成度：25.305%
+                <br />想看想听想吃想说想抓想走 达成度：25.305%
             </div>
         </div>
 
@@ -213,7 +212,8 @@
                     <li style="background-color:rgb(98, 0, 0);">空</li>
                     <li style="background-color:rgb(97, 0, 0);">空</li>
                     <li style="background-color:rgb(96, 0, 0);">空</li>
-                    <li style="background-color:rgb(95, 0, 0);">认识武术 武意武德抱拳礼 炼精化气 练气化神 炼神返虚 易骨 易经 易髓 招熟 懂劲 神明 少林 站桩 中正 外三合 手与足合 肩与胯合 肘与膝合 内三合 心与意合 意与气合 气与力合</li>
+                    <li style="background-color:rgb(95, 0, 0);">认识武术 武意武德抱拳礼 炼精化气 练气化神 炼神返虚 易骨 易经 易髓 招熟 懂劲 神明 少林 站桩 中正
+                        外三合 手与足合 肩与胯合 肘与膝合 内三合 心与意合 意与气合 气与力合</li>
                     <li style="background-color:rgb(94, 0, 0);">空</li>
                     <li style="background-color:rgb(93, 0, 0);">空</li>
                     <li style="background-color:rgb(92, 0, 0);">空</li>
@@ -271,10 +271,11 @@
                     <hr />
                     <br />30000多天，每个人都有的命，人应该用来做什么呢，是否存在一件事，只要做了所有人都能开心。谦
                     <br />曲线运动
-                    <br />山清阴 开 天 清 有 虚 动 刚 热 强 生 存 轻 薄 真 分 明 窄 空 方 大 远 先 长 高 东 南 平 上 右 前 古 朝 快 久 新 同 雄
-                    <br />海浊阳 闭 地 浊 无 实 静 柔 冷 弱 死 亡 重 厚 假 合 暗 宽 满 圆 小 近 后 短 低 西 北 尖 下 左 后 今 夕 慢 暂 旧 异 雌
-                </ul>
-                <hr />
+                    <li class="文本溢出处理">山清阴 开 天 清 有 虚 动 刚 热 强 生 存 轻 薄 真 分 明 窄 空 方 大 远 先 长 高 东 南 平 上 右 前 古 朝 快 久 新 同 雄
+                    </li>
+                    <li class="文本溢出处理">海浊阳 闭 地 浊 无 实 静 柔 冷 弱 死 亡 重 厚 假 合 暗 宽 满 圆 小 近 后 短 低 西 北 尖 下 左 后 今 夕 慢 暂 旧 异 雌
+                    </li>
+                    <hr />
             </div>
             <div class="日记">
                 <br />22岁零5月，在过去22个春秋冬夏共8000日：
@@ -315,7 +316,8 @@
             <ul>
 
                 <li>2023-05-03 github 学习教程【【网站搭建】4分钟用GitHub搭建个人(博客)网站！小白专属！-哔哩哔哩】
-                    <a href="https://b23.tv/uMtNvwi" target="_blank">https://b23.tv/uMtNvwi</a></li>
+                    <a href="https://b23.tv/uMtNvwi" target="_blank">https://b23.tv/uMtNvwi</a>
+                </li>
                 <li>2023-05-05 Dw</li>
                 <li>2023-08-09 网页书签</li>
                 <li>2023-09-09 船新升级</li>
@@ -336,33 +338,33 @@
                             <!-- 书签将在这里显示 -->
                         </ul>
                     </div>
-            
+
                     <div class="政府">
                         <h1>政府</h1>
                         <ul id="bookmarks2">
                             <!-- 书签将在这里显示 -->
                         </ul>
                     </div>
-            
+
                     <div class="企业">
                         <h1>企业</h1>
                         <ul id="bookmarks3">
                             <!-- 书签将在这里显示 -->
                         </ul>
                     </div>
-            
+
                     <div class="教育">
                         <h1>教育</h1>
                         <ul id="bookmarks4">
                             <!-- 书签将在这里显示 -->
                         </ul>
                     </div>
-            
+
                 </div>
-            
+
                 <script>
-            
-            
+
+
                     // 世界组织——示例书签数据
                     const bookmarks = [
                         { title: ' 国家智慧教育公共服务平台 ', url: ' https://www.smartedu.cn/ ' },
@@ -370,9 +372,9 @@
                         { title: ' IEEE ', url: ' https://www.ieee.org/ ' },
                         { title: ' IETF ', url: ' https://www.ietf.org/ ' },
                         { title: ' ISO国际标准化组织 ', url: ' https://www.iso.org/home.html ' },
-            
+
                     ];
-            
+
                     // 将书签添加到网页中
                     const bookmarksList = document.getElementById('bookmarks');
                     bookmarks.forEach(bookmark => {
@@ -383,7 +385,7 @@
                         listItem.appendChild(link);
                         bookmarksList.appendChild(listItem);
                     });
-            
+
                     // 政府——示例书签数据
                     const bookmarks2 = [
                         { title: '  19高考卷 ', url: '  http://edu.people.com.cn/GB/n1/2019/0608/c116076-31125588.html?ivk_sa=1024609v ' },
@@ -403,9 +405,9 @@
                         { title: '  软考 ', url: '  https://www.ruankao.org.cn/ ' },
                         { title: '  中国计算机技术职业资格网 ', url: '  https://www.ruankao.org.cn/introduction/zgsz ' },
                         { title: '  国家智慧教育公共服务平台 ', url: '  https://www.smartedu.cn/ ' },
-            
+
                     ];
-            
+
                     // 将书签添加到网页中
                     const bookmarks2List = document.getElementById('bookmarks2');
                     bookmarks2.forEach(bookmark2 => {
@@ -416,8 +418,8 @@
                         listItem.appendChild(link);
                         bookmarks2List.appendChild(listItem);
                     });
-            
-            
+
+
                     // 企业——示例书签数据
                     const bookmarks3 = [
                         { title: '  神舟  ', url: '  http://archive.hasee.com/Chinese/download/computer.aspx  ' },
@@ -484,10 +486,10 @@
                         { title: '  WPS办公软件  ', url: '  https://www.wps.cn/  ' },
                         { title: '  ssh工具  ', url: '  https://www.xshell.com/zh/xshell/  ' },
                         { title: '  长江储存  ', url: '  https://www.ymtc.com/  ' },
-                        ];
-            
-            
-            
+                    ];
+
+
+
                     // 将书签添加到网页中
                     const bookmarks3List = document.getElementById('bookmarks3');
                     bookmarks3.forEach(bookmark3 => {
@@ -498,12 +500,12 @@
                         listItem.appendChild(link);
                         bookmarks3List.appendChild(listItem);
                     });
-            
-            
+
+
                     // 教育——示例书签数据
                     const bookmarks4 = [
-            
-            
+
+
                         { title: ' sao热风工作室 ', url: ' http://www.gpbeta.com/post/tag/sao-utils/ ' },
                         { title: ' 鸿鹄论坛 ', url: ' https://bbs.hh010.com/ ' },
                         { title: ' 鸟哥的linux ', url: ' https://linux.vbird.org/linux_basic/ ' },
@@ -518,10 +520,10 @@
                         { title: ' 学习强国 ', url: ' https://www.xuexi.cn/ ' },
                         { title: ' 羽兔网 ', url: ' https://www.yutu.cn/ ' },
                         { title: ' 萌娘百科 ', url: ' https://zh.moegirl.org.cn/Mainpage ' },
-            
-            
+
+
                     ];
-            
+
                     // 将书签添加到网页中
                     const bookmarks4List = document.getElementById('bookmarks4');
                     bookmarks4.forEach(bookmark4 => {
@@ -532,15 +534,15 @@
                         listItem.appendChild(link);
                         bookmarks4List.appendChild(listItem);
                     });
-            
-            
-            
-            
+
+
+
+
                 </script>
-            
+
             </div>
         </div>
-        
+
 
     </div>
 </body>
