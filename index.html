@@ -73,9 +73,7 @@
 
         }
 
-        .感觉{
-            flex-direction: column;
-        }
+
 
         .感觉,
         .接受,
@@ -84,6 +82,23 @@
         .日记 {
             flex-grow: 1;
         }
+
+        .感觉{
+            margin: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .我的直播间 {
+            margin: auto;
+            border-radius: 100% 100% 100% 100%;
+            height: 300px;
+        }
+        .音乐{
+            margin: auto;
+        }
+
+
 
         .经历图 {
             width: 100%;
@@ -94,10 +109,7 @@
         }
 
 
-        .我的直播间 {
-            border-radius: 100% 100% 100% 100%;
-            height: 300px;
-        }
+
 
 
         .文本溢出处理 {
@@ -155,7 +167,7 @@
 
                 <iframe src="https://live.bilibili.com/h5/21648980" title="我的直播间" class="我的直播间"></iframe>
 
-                <audio controls="controls"><source src="./01草原放牧.MP3" type="audio/mp3" /></audio>
+                <audio controls="controls" class="音乐"><source src="./01草原放牧.MP3" type="audio/mp3" /></audio>
 
             </div>
 
@@ -305,8 +317,11 @@
                 <p>看过好多网站<a href="./书签.html" class="书签">书签</a>，感觉好开心。</p>
 
 
-                
-                <div>
+                <div class="directory" onclick="toggleContent(this)">
+                    <h3>过去</h3>
+                </div>
+
+                <div class="content">
                     <table border="1" class="日历">
             
                     <tr><td rowspan="12">2001年</td><td>1月</td></tr>
@@ -607,8 +622,12 @@
                     <tr><td>10月</td></tr>
                     <tr><td>11月</td></tr>
                     <tr><td>12月</td></tr>
-            
-                    <tr><td rowspan="53">2024年</td><td rowspan="5">1月</td><!--头部--><td class="日">1月1日</td><td class="日">1月2日</td><td class="日">1月3日</td><td class="日">1月4日</td><td class="日">1月5日</td><td class="日">1月6日</td><td class="日">1月7日</td></tr>
+
+
+                    
+                    <tr><td rowspan="53" class="directory" onclick="toggleContent(this)">2024年</td>
+                        <td rowspan="5">1月</td><!--头部-->
+                        <td class="日">1月1日</td><td class="日">1月2日</td><td class="日">1月3日</td><td class="日">1月4日</td><td class="日">1月5日</td><td class="日">1月6日</td><td class="日">1月7日</td></tr>
                     <tr><td class="日">1月8日</td><td class="日">1月9日</td><td class="日">1月10日</td><td class="日">1月11日</td><td class="日">1月12日</td><td class="日">1月13日</td><td class="日">1月14日</td></tr>
                     <tr><td class="日">1月15日</td><td class="日">1月16日</td><td class="日">1月17日</td><td class="日">1月17日</td><td class="日">1月19日</td><td class="日">1月20日</td><td class="日">1月21日</td></tr>
                     <tr><td class="日">1月22日</td><td class="日">1月23日</td><td class="日">1月24日</td><td class="日">1月25日</td><td class="日">1月26日</td><td class="日">1月27日</td><td class="日">1月28日</td></tr>
@@ -706,6 +725,19 @@
 
 
     </div>
+
+
+    <script>
+        function toggleContent(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
 </body>
 
 </html>
