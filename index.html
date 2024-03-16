@@ -161,10 +161,47 @@
             border:solid 1px;
         }
 
+
+
+
+
+
+        .fixed-nav {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .fixed-nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        .fixed-nav a:last-child {
+            border-bottom: none;
+        }
+
+
+
+
+
+
     </style>
 </head>
 
 <body>
+    
+    <div class="fixed-nav">
+        <a href="#top">回到顶部</a>
+        <a href="#bottom">去到底部</a>
+    </div>
+
 
     <div class="主页">
 
@@ -2432,6 +2469,21 @@
                 content.style.display = "none";
             }
         }
+
+
+
+        document.querySelector('.fixed-nav a[href="#top"]').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.querySelector('.fixed-nav a[href="#bottom"]').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        });
+
+
+
     </script>
 
 </body>
