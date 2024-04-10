@@ -124,6 +124,10 @@
 
 
 
+         #天地阴阳 {
+    width: 100%;
+    overflow: auto;}
+
 
         .世界组织 {
             background-color: #aaa;
@@ -212,8 +216,8 @@
 
         <div class="nav">
             <div class="感觉">
-                <div class="阴阳">
-                    <img src="./天地阴阳.png" alt="天地阴阳" style="width: 100%;"><!---->
+                <div id="天地阴阳">
+                    <img id="draggableImage" src="天地阴阳.png" alt="可拖动的图片">
                 </div>
                 <div class="你呀">
                     <h1>你呀</h1>
@@ -2487,6 +2491,44 @@
             e.preventDefault();
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         });
+
+
+
+
+
+
+
+
+
+        const 天地阴阳 = document.getElementById('天地阴阳');
+const draggableImage = document.getElementById('draggableImage');
+
+let isDragging = false;
+let startX, startY, offsetX, offsetY;
+
+draggableImage.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    offsetX = draggableImage.offsetLeft;
+    offsetY = draggableImage.offsetTop;
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const x = e.clientX - startX + offsetX;
+    const y = e.clientY - startY + offsetY;
+    draggableImage.style.left = `${x}px`;
+    draggableImage.style.top = `${y}px`;
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+
+
+
 
 
 
