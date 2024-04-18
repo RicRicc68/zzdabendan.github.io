@@ -256,6 +256,10 @@
 
             <div class="想法">
                 <br />想看想听想吃想说想抓想走 达成度：25.305%
+                    <div id="目标">
+                    <img  id="draggableImage2"  src="./img/目标.png" alt="目标" style="height: 200px;">
+                    </div>
+                    
             </div>
         </div>
 
@@ -2528,6 +2532,38 @@ document.addEventListener('mousemove', (e) => {
     const y = e.clientY - startY + offsetY;
     draggableImage.style.left = `${x}px`;
     draggableImage.style.top = `${y}px`;
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+
+
+
+
+
+
+const 目标 = document.getElementById('目标');
+const draggableImage2 = document.getElementById('draggableImage2');
+
+let isDragging = false;
+let startX, startY, offsetX, offsetY;
+
+draggableImage2.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    offsetX = draggableImage2.offsetLeft;
+    offsetY = draggableImage2.offsetTop;
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const x = e.clientX - startX + offsetX;
+    const y = e.clientY - startY + offsetY;
+    draggableImage2.style.left = `${x}px`;
+    draggableImage2.style.top = `${y}px`;
 });
 
 document.addEventListener('mouseup', () => {
