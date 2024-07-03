@@ -3,149 +3,155 @@
 
 <head>
     <meta charset="UTF-8">
-   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-    <title>zzdabendan.github.io</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>4</title>
+
     <style>
+        /*结构布局*/
+        /*框架
+        .全 {}
+
+        .上 {}
+        .左 {}
+        .中 {}
+        .右 {}
+
+        .下 {}
+        .人生 {}
+        .时间 {}
+        .天地 {}
+        .经验 {}
+        .智慧 {}
+*/
+
+        /*盒模型设置*/
+
+        /*内外边距设置*/
+        *,
         html,
         body,
         div,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        header,
-        main,
-        footer,
-        nav,
         ul,
-        li,
         ol,
-        a,
-        iframe {
+        li {
             margin: 0;
             padding: 0;
-            text-align: center;
-            font-size: 16px;
         }
 
-        ul {
-            list-style-type: none;
-        }
-
-
-        /*
-        .页面{
-            width: 1400px;
-            margin: auto;
-        }
-
-        .直播,.感觉,.直播间{
-            margin: auto;
-        }
-
-        img{
-            width: 100vw;
-        }
-
-
-        .我的直播间{
-        border-radius: 100% 100% 100% 100%;
-        width: 200px;
-        height: 200px;
-        margin: auto;
-
-        }
-*/
-        div,p {
-
+        /*边框设置*/
+        div,
+        p {
             border-style: solid;
             border-width: 0px;
         }
 
-
-
-        table a{
-            font-size: 20px;
-        }
-
-
-        .页面 {
-            width: 1080px;
-            height: 2600px;
-
+        .全 {
             margin: auto;
         }
 
-        .感觉 {
-            height: 792px;
+        /*宽度设置*/
+        .全 {
+            width: 100vw;
+            min-width: 500px;
+        }
+
+        .中 {
+            min-width: 400px;
+        }
+
+        /*.右 {min-width: 400px;}
+                .左 {min-width: 400px;}*/
+
+        /*高度设置*/
+
+
+
+        /*位置设置*/
+
+        .上 {
             display: flex;
             flex-direction: row;
         }
 
-        .感知 {
-            height: 1584px;
+        .左 {
+            flex-grow: 1;
+            width: 33%;
         }
 
-
-        .过去 {
-            flex-grow: 320;
+        .中 {
+            flex-grow: 1;
+            width: 33%;
             display: flex;
             flex-direction: column;
-            text-align: right;
         }
 
-        .现在 {
-            flex-grow: 440;
+        .右 {
+            flex-grow: 1;
+            width: 33%;
+        }
+
+
+        .下 {
             display: flex;
             flex-direction: column;
-            text-align: center;
         }
 
-        .未来 {
-            flex-grow: 320;
-            display: flex;
-            flex-direction: column;
-            /**/background-image: url("./img/胸胸.png");
-            background-size: cover;
+        .人生 {
+            flex-grow: 1;
+        }
 
-            text-align: left;
+        .时间 {
+            flex-grow: 1;
+        }
+
+        .天地 {
+            flex-grow: 1;
+        }
+
+        .经验 {
+            flex-grow: 1;
+        }
+
+        .智慧 {
+            flex-grow: 1;
         }
 
 
-        .总结 {
-            height: 100px;
-            width: 320px;
-        }
-
-        .直播 {
-            height: 440px;
-            width: 440px;
+        /*组件布局样式*/
+        .根 {
             margin: auto;
         }
 
-        /**/
-        .根根{
-            background-image: url("./img/火.jpg");
-
-        }
-
-        .规划 {
-            height: 100px;
-            width: 320px;
-
-        }
-
         .直播间 {
-
             border-radius: 100% 100% 100% 100%;
-
-
         }
 
-
-
+                /*临时样式*/
+        *{
+            background-color: black;
+            color: white;
+        }
+        *{
+            overflow: auto;
+        }
+        table{
+            border-collapse: collapse; /* 合并边框 */
+            width: 100%; /* 设置表格宽度为100% */
+        }
+        td {
+            white-space: nowrap; /* 禁止文本换行 */
+            overflow: hidden; /* 隐藏超出单元格的内容 */
+            text-overflow: ellipsis; /* 超出部分显示省略号 */
+            /*border: 1px solid white; /* 设置单元格边框 */
+            
+        }
+        .天地{
+            background-image: url("./img/倾斜世界地图黑色裁切.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            min-height: 365px;
+        }
         .人生 {
             height: 264px;
             background-image: url("./img/人生w.png");
@@ -153,528 +159,336 @@
             overflow: auto;
         }
 
-        .时间 {
-            height: 364px;
-        }
-
-        .世界 {
-            height: 264px;
-            background-image: url("./img/斜世界地图windows.jpg");
-        }
-
-        .天地 {
-            height: 296px;
-        }
-        .人格 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .人格 p{
-            flex-grow: 1;
-        }
-
-        .智慧 {
-            height: 396px;
-        }
 
 
-        iframe:focus {
-            outline: none;
-        }
+        /*文本设置*/
+        /*字体设置*/
 
-        iframe[seamless] {
-            display: block;
-        }
+
+
+        /*  隐藏内容
+                
+            			<!--表格时间轴一类--><table style="font-size: 10px;">
+				<!--第 1 行--><tr>
+					<td>表格时间轴</td><td>单位</td><td>  </td><td>  </td>
+				</tr>
+
+				<!--第 2 行--><tr>
+					<td>  </td><td>  </td><td>  </td><td>  </td>
+				</tr>
+
+				<!--第 3 行--><tr>
+					<td>绕恒星周期</td><td>年</td><td>1</td><td>2</td>
+				</tr>
+
+				<!--第 4 行--><tr>
+					<td>12分</td><td>月</td><td>12</td><td>24</td>
+				</tr>
+
+				<!--第 5 行--><tr>
+					<td>7日分</td><td>周</td><td>50</td><td>100</td>
+				</tr>
+
+				<!--第 6 行--><tr>
+					<td>行星自转周期</td><td>日</td><td>365</td><td>730</td>
+				</tr>
+
+				<!--第 7 行--><tr>
+					<td>24分</td><td>时</td><td>8760</td><td>17520</td>
+				</tr>
+
+				<!--第 8 行--><tr>
+					<td>60分</td><td>分</td><td>525600</td><td>1051200</td>
+				</tr>
+
+				<!--第 9 行--><tr>
+					<td>60分</td><td>秒</td><td>31536000</td><td>63072000</td>
+				</tr>
+
+			</table>
+            
+            */
     </style>
+
 </head>
 
-
-
 <body>
+    <!---->
+    <div class="全">
 
+        <div class="上">
+            <div class="左">1</div>
 
-
-
-    <div class="页面">
-
-        <div class="感觉">
-            <div class="过去">
-
-                <div class="总结">
-                    过去总结<br>
-                    8000天
+            <div class="中">
+                <div>2</div>
+                <div class="根">
+                    <iframe src="https://live.bilibili.com/h5/21648980" title="直播间" class="直播间" height="400px"
+                        width="400px" frameborder="0" style="border:none;"></iframe>
                 </div>
-                <br>
-                ________：看过<br>
-                ________：闻过<br>
-                ________：尝过<br>
-                ________：说过<br>
-                ________：听过<br>
-                ________：抓过<br>
-                ________：走过<br>
-                ________：想过<br>
-                ________：答过<br>
-                ________：学过<br>
-                ________：玩过<br>
-                ________：记过<br>
-                ________：忘过<br>
 
             </div>
 
-            <div class="现在">
-                <div class="直播">
-                    <iframe src="https://live.bilibili.com/h5/21648980" title="直播间" class="直播间" height="440" width="440"
-                        frameborder="0" style="border:none;"></iframe>
-                </div>
+            <div class="右">3</div>
 
-                <div class="根根">
-                    眼：在看<br>
-                    鼻：在闻<br>
-                    口：在吃<br>
-                    耳：在听<br>
-                    手：在抓<br>
-                    脚：在走<br>
-                    身：在做<br>
-                    心：在想<br>
-                </div>
-                
-                <table>
-                    <tr>
-                        <td>生命值:<br>8284/18250</td>
-                        <td>体力值:<br>$%^&/$^&</td>
-                        <td>财力值:<br>xxxx/10000</td>
-
-                    </tr>
-                </table>
-
-            </div>
-
-            <div class="未来">
-
-                <div class="规划">未来规划</div><br>
-                想看：￥1,000,000/买房<br>
-                想闻：________<br>
-                想吃：土豆鸡蛋蔬菜饼<br>
-                想说：________<br>
-                想听：________<br>
-                想抓：_大笨蛋_<br>
-                想走：________<br>
-                想做：________<br>
-                想问：________<br>
-                想学：________<br>
-                想玩：________<br>
-                死记：________<br>
-                硬背：__负债28年饭饭的人<br>
-
-            </div>
         </div>
 
 
-        <div class="感知">
+        <div class="下">
+            <div class="人生">4</div>
 
-            <div class="分类">
-                <div class="人生">
-                    人生<br>
+            <div class="时间">
+                <div class="轴">
 
 
-                    <table style="font-size: 16px;">
+                    <!--表格时间轴三类-->
+                    <table style="font-size: 10px;">
+                        <!--第 1 行-->
                         <tr>
-                            <td>时代的人</td>
-                        </tr>
-                        
-                        <tr>
-                            
-                            <td>出生的人</td>
-                            <td>有名字的人</td>
-                            <td>志欲的人</td>
-                            <td>初心的人</td>
-                            <td>智谋的人</td>
-                            <td>决断的人</td>
-                            <td>教室的人</td>
-                            <td>聊天的人</td>
-                            <td>亲密的人</td>
-                            <td>有利的人</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>有关系的人</td>
-                            <td>认识的人</td>
+                            <td>人生时间轴</td>
+                            <td>单位</td>
+                            <td> </td>
+                            <td> </td>
                         </tr>
 
-
+                        <!--第 2 行-->
                         <tr>
-                            <td>0岁的你</td>
-                            <td>1岁的你</td>
-                            <td>2岁的你</td>
-                            <td>3岁的你</td>
-                            <td>4岁的你</td>
-                            <td>5岁的你</td>
-                            <td>6岁的你</td>
-                            <td>7岁的你</td>
-                            <td>8岁的你</td>
-                            <td>9岁的你</td>
-                            <td>10岁的你</td>
-                            <td>11岁的你</td>
-                            <td>12岁的你</td>
-                            <td>13岁的你</td>
-                            <td>14岁的你</td>
-                            <td>15岁的你</td>
-                            <td>16岁的你</td>
-                            <td>17岁的你</td>
-                            <td>18岁的你</td>
-                            <td>19岁的你</td>
-                            <td>20岁的你</td>
-                            <td>21岁的你</td>
-                            <td>22岁的你</td>
-                            <td>23岁的你</td>
-                            <td>24岁的你</td>
-                            <td>25岁的你</td>
-                            <td>26岁的你</td>
-                            <td>27岁的你</td>
-                            <td>28岁的你</td>
-                            <td>29岁的你</td>
-                            <td>30岁的你</td>
-                            <td>31岁的你</td>
-                            <td>32岁的你</td>
-                            <td>33岁的你</td>
-                            <td>34岁的你</td>
-                            <td>35岁的你</td>
-                            <td>36岁的你</td>
-                            <td>37岁的你</td>
-                            <td>38岁的你</td>
-                            <td>39岁的你</td>
-                            <td>40岁的你</td>
-                            <td>41岁的你</td>
-                            <td>42岁的你</td>
-                            <td>43岁的你</td>
-                            <td>44岁的你</td>
-                            <td>45岁的你</td>
-                            <td>46岁的你</td>
-                            <td>47岁的你</td>
-                            <td>48岁的你</td>
-                            <td>49岁的你</td>
-                            <td>50岁的你</td>
-                            <td>0岁的你</td>
-                            <td>1岁的你</td>
-                            <td>2岁的你</td>
-                            <td>3岁的你</td>
-                            <td>4岁的你</td>
-                            <td>5岁的你</td>
-                            <td>6岁的你</td>
-                            <td>7岁的你</td>
-                            <td>8岁的你</td>
-                            <td>9岁的你</td>
-                            <td>10岁的你</td>
-                            <td>11岁的你</td>
-                            <td>12岁的你</td>
-                            <td>13岁的你</td>
-                            <td>14岁的你</td>
-                            <td>15岁的你</td>
-                            <td>16岁的你</td>
-                            <td>17岁的你</td>
-                            <td>18岁的你</td>
-                            <td>19岁的你</td>
-                            <td>20岁的你</td>
-                            <td>21岁的你</td>
-                            <td>22岁的你</td>
-                            <td>23岁的你</td>
-                            <td>24岁的你</td>
-                            <td>25岁的你</td>
-                            <td>26岁的你</td>
-                            <td>27岁的你</td>
-                            <td>28岁的你</td>
-                            <td>29岁的你</td>
-                            <td>30岁的你</td>
-                            <td>31岁的你</td>
-                            <td>32岁的你</td>
-                            <td>33岁的你</td>
-                            <td>34岁的你</td>
-                            <td>35岁的你</td>
-                            <td>36岁的你</td>
-                            <td>37岁的你</td>
-                            <td>38岁的你</td>
-                            <td>39岁的你</td>
-                            <td>40岁的你</td>
-                            <td>41岁的你</td>
-                            <td>42岁的你</td>
-                            <td>43岁的你</td>
-                            <td>44岁的你</td>
-                            <td>45岁的你</td>
-                            <td>46岁的你</td>
-                            <td>47岁的你</td>
-                            <td>48岁的你</td>
-                            <td>49岁的你</td>
-                            <td>50岁的你</td>
-
+                            <td>人生周期</td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
                         </tr>
-                        <tr>
-                            <td>出生的你</td>
-                            <td>老去的你</td>        
-                            <td>念名字的你</td>
-                            <td>老去的你</td>
-                            <td>老去的你</td>
-                            <td>老去的你</td>
-                            <td>老去的你</td>
-                            <td>老去的你</td>
-                            <td>老去的你</td>
 
-                        </tr>
+                        <!--第 3 行-->
                         <tr>
-                            <td>上学</td>
-                            <td>小</td>
-                            <td>初</td>
-                            <td>高</td>
-                            <td>大</td>
-                            <td>工作</td>
-                            <td>一</td>
-                            <td>二</td>
-                            <td>三</td>
-                            <td>四</td>
-                            <td>五</td>
+                            <td>绕恒星周期</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                            <td>31</td>
+                            <td>32</td>
+                            <td>33</td>
+                            <td>34</td>
+                            <td>35</td>
+                            <td>36</td>
+                            <td>37</td>
+                            <td>38</td>
+                            <td>39</td>
+                            <td>40</td>
+                            <td>41</td>
+                            <td>42</td>
+                            <td>43</td>
+                            <td>44</td>
+                            <td>45</td>
+                            <td>46</td>
+                            <td>47</td>
+                            <td>48</td>
+                            <td>49</td>
+                            <td>50</td>
+                            <td>51</td>
+                        </tr>
+
+                        <!--第 4 行-->
+                        <tr>
+                            <td>月</td>
+                            <td>12</td>
+                            <td>24</td>
+                            <td>36</td>
+                        </tr>
+
+                        <!--第 5 行-->
+                        <tr>
+                            <td>周</td>
+                            <td>52</td>
+                            <td>104</td>
+                            <td>156</td>
+                        </tr>
+
+                        <!--第 6 行-->
+                        <tr>
+                            <td>日</td>
+                            <td>365</td>
+                            <td>730</td>
+                            <td>1095</td>
+                        </tr>
+
+                        <!--第 7 行-->
+                        <tr>
+                            <td>时</td>
+                            <td>8760</td>
+                            <td>17520</td>
+                            <td>26280</td>
+                        </tr>
+
+                        <!--第 8 行-->
+                        <tr>
+                            <td>分</td>
+                            <td>525,600</td>
+                            <td>1051200</td>
+                            <td>1051200</td>
+                        </tr>
+
+                        <!--第 9 行-->
+                        <tr>
+                            <td>秒</td>
+                            <td>31,536,000</td>
+                            <td>31536000</td>
+                            <td>63072000</td>
                         </tr>
 
                     </table>
-                    
-                    
-                    
-
-                </div>
-
-                <div class="时间">
-                    恒星：时钟：时间：年季月日时分秒：人生表，年周日表，日时分表，日常作息表，物品清点分类财务表<br>
-                    <p style="font-size: 16px;">2001 2006 2011 2016 2021 2026 2031 2036 2041 2046 2051 2056 2061 2066 2071 2076 2081 2086 2091 2096 2101</p>
-
-                    <!--
-                        <p>
-                            <img src="./img/日常目标计划.jpg" alt="日常目标计划" height="242px" >
-                        </p>
-                    -->
-                </div>
-
-                <div class="世界">
-                    地图<br>
-                    <table  style="font-size: 16px;">
 
 
+
+
+                    <!--表格时间轴二类-->
+                    <table style="font-size: 10px;">
+                        <!--第 1 行-->
                         <tr>
-                            <td><ul>
-                                <li>衣服</li>
-                                <li>裤子</li>
-                                <li>鞋子</li>
-                                <li>袜子</li>
-                            </ul></td>
-
-                            <td><ul>
-                                <li>枕头</li>
-                                <li>被子</li>
-                            </ul></td>
-
-                            <td><ul>
-                                <li>烧水壶</li>
-                                <li>电磁炉</li>
-                                <li>电饭煲</li>
-                                <li>平底锅</li>
-                                <li></li>
-                                <li></li>
-                            </ul></td>
-
-                            <td><ul>
-                                <li>计算机</li>
-                                <li><a href="./书签.html">网站链接</a></li>
-                                <li>用途分类</li>
-                                <li>设备来源分类</li>
-                                <li>文件类型分类</li>
-                                <li><a href="./dabendan.html">旧网页</a></li>
-                            </ul></td>
-
-                            <td><ul>
-                                <li></li>
-                            </ul></td>
-
-                            <td><ul><li></li></ul></td>
+                            <td>一天时间轴</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+                            <td> </td>
+                            <td> </td>
                         </tr>
 
+                        <!--第 2 行-->
                         <tr>
-                            <td>房屋</td><td>卧室</td></td><td>床铺</td><td>行李</td><td>电脑资料</td>
+                            <td>行星自转周期</td>
+                            <td>单位</td>
+                            <td> </td>
+                            <td> </td>
                         </tr>
 
+                        <!--第 3 行-->
                         <tr>
-                            <td>国家</td><td>城市</td><td>郊区</td><td>乡镇</td>
+                            <td>时</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
                         </tr>
 
+                        <!--第 4 行-->
                         <tr>
-                            <td>宇宙</td><td>银河</td><td>太阳</td><td>地球</td><td>月亮</td><td>太空</td><td>大陆</td><td>海洋</td><td>山脉</td><td>河川</td><td>平原</td><td>森林</td>
+                            <td>分</td>
+                            <td>60</td>
+                            <td>120</td>
+                            <td>240</td>
+                            <td>300</td>
+                            <td>360</td>
+                            <td>420</td>
+                            <td>480</td>
+                            <td>540</td>
+                            <td>600</td>
+                            <td>660</td>
+                            <td>720</td>
+                            <td>780</td>
+                            <td>840</td>
+                            <td>900</td>
+                            <td>960</td>
+                            <td>1020</td>
+                            <td>1080</td>
+                            <td>1140</td>
+                            <td>1200</td>
+                            <td>1260</td>
+                            <td>1320</td>
+                            <td>1380</td>
+                            <td>1440</td>
                         </tr>
+
+                        <!--第 5 行-->
+                        <tr style="width: 100%;">
+                            <td>秒</td>
+                            <td>3600</td>
+                            <td>7200</td>
+                            <td>10800</td>
+
+                            <td>14400</td>
+                            <td>18000</td>
+                            <td>21600</td>
+                            <td>25200</td>
+                            <td>28800</td>
+                            <td>32400</td>
+                            <td>36000</td>
+                            <td>39600</td>
+                            <td>43200</td>
+                            <td>46800</td>
+                            <td>54000</td>
+                            <td>57600</td>
+                            <td>61200</td>
+                            <td>64800</td>
+                            <td>68400</td>
+                            <td>72000</td>
+                            <td>75600</td>
+                            <td>79200</td>
+                            <td>82800</td>
+                            <td>86400</td>
+                            
+                        </tr>
+
+
                     </table>
-                        
-<td></td>
+
+
+
+
 
 
                 </div>
             </div>
 
-
-            <div class="模式">
-                <div class="天地">
-                    经验<br>
-                    天清阴开刚动冷存死高胜空虚上大方多好福荣难正前左东南劳同亲男雄丑聪天天天天天天天天天天<br>
-                    地浊阳闭柔静热亡生低败满实下小圆少坏祸辱易斜后右西北逸异疏女雌美笨地地地地地地地地地地
-                    <div class="人格" style="font-size: 16px;">
-                        <p>困而不学<br>
-                            困而学者<br>
-                            学而知之<br>
-                            生而知之<br>
-                        </p>
-
-                            <p>
-                            知之者<br>
-                            好之者<br>
-                            乐之者<br>
-                        </p>
-
-                            <p>
-                            有读了后直有不知手之舞之足之蹈之者<br>
-                            有读了后知好之者<br>
-                            有读了后其中得一两句喜者<br>
-                            有读了全然无事者<br>
-                            </p>
-
-                        <p>你的能力是银牌<br>
-                            人际关系是金牌<br>
-                            思维是王牌<br>
-                        </p>
-                        <p>没有眼睛看不见好看的色彩，<br>
-                            没有耳朵听不见好听的音乐，<br>
-                            大多人是智慧上的残缺，不能理解大智慧<br>
-
-                             
-                        </p>
-
-                        <p>智慧，日知，知日，<br>
-                            没有好心的的彗是害人害己扫帚星</p>
-                    </div>
-                    
-                </div>
-                <div class="智慧">
-
-                    模式<br>
-                    <span style="font-size: 20px;"><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13309557106657149463">周易</a> 智慧 <a href="https://xinghuo.xfyun.cn/spark">讯飞星火AI</a><br>
-                    </span>
-                    <table style="font-size: 20px;">
-                        <tr>
-                            <td>新华字典</td>
-                            <td><a href="https://article.xuexi.cn/articles/video/index.html?art_id=1722488951212945037&part_id=11373351405991540829&study_style_id=video_default&study_comment_disable=0&source=share&share_to=wx_single"><span>数学</span></a></td>
-                            <td>历史</td>
-                            <td><a href="#"><span>高中历史</span>（暂无）</a></td>
-                            <td><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=3946106751411072835"><span>史记</span></a></td>
-                            <td><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13862435948621566870"><span>资治通鉴</span></a></td>
-                            <td><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13893768322542028263"><span>左传</span></a></td>
-                            <td><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=4013797740511894090"><span>汉书</span></a></td>
-                            <td><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=15112075378884835644"><span>后汉书</span></a></td>
-                            <td><a href="ml.html">目录</a></td>
-                        </tr>
-
-                        <tr>
-                            <td>英文</td>
-                            <td>数学</td>
-                            <td>物理</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>词典</td>
-                            <td>数学</td>
-                            <td>化学</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>诗歌</td>
-                            <td>数学</td>
-                            <td>生物</td>
-                            <td>人体系统解剖</td>
-                            <td>体育运动训练</td>
-                            <td>减脂塑性锻炼</td>
-                        </tr>
-
-                        <tr>
-                            <td>人口普查</td>
-                            <td>数学</td>
-                            <td>地理</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>职业分类</td>
-                            <td>数学</td>
-                            <td>地理</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>学科分类</td>
-                            <td>数学</td>
-                            <td>地理</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>法律</td>
-                            <td><a href="https://www.gov.cn/guoqing/2018-03/22/content_5276318.htm"><span>中国宪法</span></a></td>
-                            <td><a href="https://flk.npc.gov.cn/detail2.html?ZmY4MDgwODE3MjlkMWVmZTAxNzI5ZDUwYjVjNTAwYmY%3D"><span>民法典</span></a></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=12995548286028235933"><span>中国思想史</span></a></td>
-                            <td><a href="https://wap.cnki.net/touch/web/XinKeBook/Article/DZ2107120243.html"><span>鬼谷子(大佬解说版)</span></a></td>
-                            <td><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=16172963354818853871"><span>孙子兵法(节4篇)</span></a></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://e.huawei.com/cn/talent/cert/#/careerCert"><span>赚钱考证</span></a></td>
-                            <td><a href="https://www.ruankao.org.cn/"><span>认证证书</span></a></td>
-                            <td>考编</td>
-                            <td>学习</td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>沟通</td>
-                            <td>合作</td>
-                            <td>世界</td>
-                            <td>人生</td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-
-                </div>
-            </div>
-
+            <div class="天地">天地6</div>
+            <div class="经验">7</div>
+            <div class="智慧">8</div>
         </div>
 
     </div>
-
-
-
-
-
-
 </body>
 
 </html>
