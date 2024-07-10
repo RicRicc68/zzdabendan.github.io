@@ -9,6 +9,7 @@
 
     <style>
         /*结构布局*/
+
         /*框架
         .全 {}
         .片 {}
@@ -24,9 +25,13 @@
         .天地 {}
         .经验 {}
         .智慧 {}
-*/
+        */
+
+
 
         /*盒模型设置*/
+
+
 
         /*内外边距设置*/
         *,
@@ -40,6 +45,18 @@
             padding: 0;
         }
 
+        
+        .全面 {
+            margin: auto;
+        }
+        .全 {
+            margin: auto;
+        }
+
+        
+
+
+
         /*边框设置*/
         div,
         p {
@@ -47,18 +64,22 @@
             border-width: 0px;
         }
 
-        .全 {
-            margin: auto;
+
+        .片 {
+            border-right: solid 1px #fff;
         }
+
 
         /*宽度设置*/
         .全 {
-            /*width: 1080px;
-            
-            */
+            /*width: 1080px;          */
             width: 90vw;
             min-width: 90vw;
+        }
 
+        .片 {
+            width: 10vw;
+            min-width: 10vw;
         }
 
 
@@ -208,10 +229,14 @@
 
 
         /*临时样式*/
-        .全,
-        html {
+        .全,.片 {
             background-color: black;
             color: white;
+        }
+
+        html {
+            background-color: white;
+            color: black;
         }
 
         * {
@@ -339,8 +364,6 @@
     <!---->
 
     <div class="全面">
-
-
 
 
         <div class="片">
