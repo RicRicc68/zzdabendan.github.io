@@ -59,6 +59,7 @@
 
         }
 
+   
 
 
 
@@ -115,7 +116,11 @@
 
         .行李{
             width: 100%;
+            table-layout: fixed;/*宽度自动调整*/
         }
+
+
+
 
 
         /**/
@@ -150,11 +155,23 @@
 
         /*位置设置*/
 
+/*
+        tr{
+            display: flex;
+            flex-direction: row;
+        }
+
+        td{
+            flex-grow: 1;
+        }
+
         .上 {
             display: flex;
             flex-direction: column;
 
         }
+*/
+
 
         .上上 {
             display: flex;
@@ -881,7 +898,7 @@
 
                     地图<br>
 
-                    <table class="行李" border="1">
+                    <table class="行李" border="1" >
                         <!-- 第1行 -->
                         <tr>
                             <td>
