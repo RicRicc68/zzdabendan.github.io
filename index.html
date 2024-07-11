@@ -45,20 +45,21 @@
             padding: 0;
         }
 
-        
+
         .全面 {
             margin: auto;
         }
+
         .全 {
             margin: auto;
         }
 
-        .上{
+        .上 {
             margin-bottom: 20px;
 
         }
 
-        
+
 
 
 
@@ -69,10 +70,31 @@
             border-width: 0px;
         }
 
+        /*
+        table {
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+            border-left: 1px dashed blue;
+            border-right: 1px dashed blue;
+        }
+
+        */
+        .行李 {
+            border: 1px solid white;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            /* 合并边框 */
+            /*width: 100%;  设置表格宽度为100% */
+        }
+
 
         .片 {
             border-right: solid 1px #fff;
         }
+
 
 
         /*宽度设置*/
@@ -87,10 +109,17 @@
             min-width: 10vw;
         }
 
-        .中{
+        .中 {
             width: 356px;
         }
 
+
+        /**/
+        .中,
+        .左,
+        .右 {
+            width: 33%;
+        }
 
 
         /*
@@ -99,17 +128,23 @@
         .右 {min-width: 400px;}
         */
 
+        /*
+        .行李 td {
+            width: 100px;
+        }
+        */      
+
 
 
         /*高度设置*/
         .中 {
-
             height: 365px;
         }
 
 
-        /*位置设置*/
 
+
+        /*位置设置*/
 
         .上 {
             display: flex;
@@ -128,33 +163,21 @@
 
         }
 
-        /**/
-        .中,
-        .左,
-        .右 {
 
-            width: 33%;
-        }
 
 
 
         .左 {
-
-
             display: flex;
             flex-direction: column;
         }
 
         .中 {
-
             display: flex;
             flex-direction: column;
-
         }
 
         .右 {
-
-
             display: flex;
             flex-direction: column;
         }
@@ -220,7 +243,7 @@
             color: red;
         }
 
-    
+
 
 
         /*文本设置*/
@@ -244,11 +267,14 @@
             background-color: wheat;
             color: white;
         }
+
         .片 {
             background-color: black;
             color: white;
         }
-        .上,.下{
+
+        .上,
+        .下 {
             background-color: black;
         }
 
@@ -263,11 +289,7 @@
             overflow: auto;
         }
 
-        table {
-            border-collapse: collapse;
-            /* 合并边框 */
-            /*width: 100%;  设置表格宽度为100% */
-        }
+
 
         td {
             white-space: nowrap;
@@ -277,7 +299,6 @@
             text-overflow: ellipsis;
             /* 超出部分显示省略号 */
             /*border: 1px solid white; /* 设置单元格边框 */
-
         }
 
         .天地 {
@@ -293,7 +314,6 @@
             background-image: url("./img/人生w.png");
             background-repeat: no-repeat;
             background-position: center;
-
             overflow: auto;
         }
 
@@ -301,18 +321,15 @@
             display: flex;
             flex-direction: row;
             /*width: 100%;*/
-
         }
 
         .人格 p {
-
             margin: auto;
             padding: auto;
         }
 
         .经验 {
             text-align: center;
-
         }
 
         .中 {
@@ -321,13 +338,13 @@
             background-position: center;
         }
 
-        .根根ul {
+        .根根 ul {
             display: flex;
             flex-direction: column;
         }
 
 
-        .全面{
+        .全面 {
             display: flex;
             flex-direction: row;
             border-right: 1px solid white;
@@ -739,7 +756,7 @@
 
 
                         <!--表格时间轴二类-->
-                        <table style="font-size: 10px;">
+                        <table>
                             <!--第 1 行-->
                             <tr>
                                 <td>一天时间轴</td>
@@ -859,9 +876,9 @@
                 <div class="天地">
 
                     地图<br>
-                    <table style="font-size: 16px;">
 
-
+                    <table class="行李" border="1">
+                        <!-- 第1行 -->
                         <tr>
                             <td>
                                 <ul>
@@ -901,22 +918,36 @@
                                 </ul>
                             </td>
 
+
                             <td>
                                 <ul>
-                                    <li></li>
+                                    <li>1</li>
                                 </ul>
                             </td>
 
                             <td>
                                 <ul>
-                                    <li></li>
+                                    <li>2</li>
                                 </ul>
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <ul>
+                                    <li>2</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>2</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>2</li>
+                                </ul>
+                            </td>
                         </tr>
 
+                        <!-- 第2行 -->
                         <tr>
                             <td>房屋</td>
                             <td>卧室</td>
@@ -927,12 +958,28 @@
                         </tr>
 
                         <tr>
+                            <td>老家1</td>
+                            <td>老家2</td>
+                            <td>家3</td>
+                            <td>家4</td>
+                            <td>家5</td>
+                            <td>家6</td>
+                            <td>家7</td>
+                            <td>家8</td>
+                            <td>隐蔽处9</td>
+                            <td>隐蔽处10</td>
+
+                        </tr>
+
+                        <!-- 第3行 -->
+                        <tr>
                             <td>国家</td>
                             <td>城市</td>
                             <td>郊区</td>
                             <td>乡镇</td>
                         </tr>
 
+                        <!-- 第4行 -->
                         <tr>
                             <td>宇宙</td>
                             <td>银河</td>
@@ -947,6 +994,7 @@
                             <td>平原</td>
                             <td>森林</td>
                         </tr>
+
                     </table>
 
                 </div>
@@ -956,7 +1004,7 @@
 
                     天清阴开刚动冷存死高胜空虚上大方多好福荣难正前左东南劳同亲男雄丑聪天天天天天天天天天天<br>
                     地浊阳闭柔静热亡生低败满实下小圆少坏祸辱易斜后右西北逸异疏女雌美笨地地地地地地地地地地
-                    <div class="人格" style="font-size: 16px;">
+                    <div class="人格">
                         <p>困而不学<br>
                             困而学者<br>
                             学而知之<br>
@@ -995,11 +1043,10 @@
                 <div class="智慧">
 
                     模式<br>
-                    <span style="font-size: 20px;"><a
-                            href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13309557106657149463">周易</a>
+                    <span><a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13309557106657149463">周易</a>
                         智慧 <a href="https://xinghuo.xfyun.cn/spark">讯飞星火AI</a><br>
                     </span>
-                    <table style="font-size: 20px;">
+                    <table>
                         <tr>
                             <td>新华字典</td>
                             <td><a
