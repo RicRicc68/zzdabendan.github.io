@@ -86,8 +86,7 @@
 
 
         table {
-            border-collapse: collapse;
-            /* 合并边框 */
+            border-collapse: collapse; /* 合并边框 */
             /*width: 100%;  设置表格宽度为100% */
         }
 
@@ -100,7 +99,7 @@
 
         /*宽度设置*/
         .全 {
-            /*width: 1080px;          */
+            /*width: 1080px; */
             width: 90vw;
             min-width: 90vw;
         }
@@ -234,6 +233,25 @@
         .智慧 {
             flex-grow: 1;
         }
+
+/*
+        .物品 {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100vw
+
+        }
+            */
+
+        /*
+        .个数 {
+            display: flex;
+            flex-direction: column;
+        }
+            */
+
+
 
 
         /*组件布局样式*/
@@ -897,9 +915,9 @@
 
                     <table class="行李" border="1" >
                         <!-- 第1行 -->
-                        <tr>
-                            <td>
-                                <dl class="物品">
+                        <tr class="物品">
+                            <td class="个数">
+                                <dl>
                                     <dt style="color: red;">夏衣</dt>
                                     <dd>衣服</dd>
                                     <dd>裤子</dd>
@@ -907,8 +925,9 @@
                                     <dd>袜子</dd>
                                 </dl>
                             </td>
-                            <td>
-                                <dl class="物品">
+
+                            <td class="个数">
+                                <dl>
                                     <dt style="color: red;">冬衣</dt>
                                     <dd>衣服</dd>
                                     <dd>裤子</dd>
@@ -917,8 +936,8 @@
                                 </dl>
                             </td>
 
-                            <td>
-                                <dl class="物品">
+                            <td class="个数">
+                                <dl>
                                     <dt style="color: red;">床铺</dt>
                                     <dd>枕头</dd>
                                     <dd>枕套</dd>
@@ -929,20 +948,20 @@
                                 </dl>
                             </td>
 
-                            <td>
-                                <dl class="物品">
+                            <td class="个数">
+                                <dl>
                                     <dt style="color: red;">食物</dt>
-                                    <dd>1</dd>
-                                    <dd>2</dd>
-                                    <dd>3</dd>
-                                    <dd>4</dd>
+                                    <dd>凉白开水</dd>
+                                    <dd>水果</dd>
+                                    <dd>米面</dd>
+                                    <dd>油烟</dd>
                                     <dd>5</dd>
                                     <dd>6</dd>
                                 </dl>
                             </td>
 
-                            <td>
-                                <dl class="物品">
+                            <td class="个数">
+                                <dl>
                                     <dt style="color: red;">厨具</dt>
                                     <dd>烧水壶</dd>
                                     <dd>电磁炉</dd>
@@ -954,8 +973,8 @@
                                 </dl>
                             </td>
 
-                            <td>
-                                <dl class="物品">
+                            <td class="个数">
+                                <dl>
                                     <dt style="color: red;">计算机</dt>
                                     <dd><a href="./书签.html">网站链接</a></dd>
                                     <dd>用途分类</dd>
