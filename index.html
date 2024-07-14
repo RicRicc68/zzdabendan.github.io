@@ -92,14 +92,16 @@
         /*宽度设置*/
         .全 {
             /*width: 1080px; */
-            width: 90vw;
-            min-width: 90vw;
+            width: 100vw;
+            min-width: 100vw;
         }
 
+        /*
         .片 {
             width: 10vw;
             min-width: 10vw;
         }
+            */
 
         .中 {
             width: 356px;
@@ -151,6 +153,15 @@
         .中 {
             height: 365px;
         }
+
+        /*z轴设置*/
+        .全{
+            z-index: 998;
+        }
+        .片{
+            z-index: 999;
+        }
+
 	
 
 
@@ -175,13 +186,23 @@
 
 
 
+        .片{
+            float: left;
+        }
 
         .目录 {
+            
             position: fixed;
             top: 0;
             left: 0;
-            width: 10vw;
+            
+
+            
+            width: 5vw;
+            /*
             height: 100vh;
+            */
+
             border: 1px solid #73AD21;
             }
 
@@ -330,6 +351,7 @@
         .片 {
             background-color: black;
             color: white;
+
         }
 
         .上,
