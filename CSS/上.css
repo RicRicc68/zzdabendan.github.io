@@ -1,0 +1,31 @@
+/*
+.大
+.片
+.全
+.上
+.身左
+.空1
+.左
+.身体
+.身右
+.感觉
+.感下
+.中
+.空2
+.右
+.下
+.人生
+.时间
+.地图
+.经验
+.模式
+*/
+
+.身体{background-image:url("./IMG/身体-骨架.jpg");}
+.身体{background-repeat:no-repeat;}
+.身体{background-position:center;}
+
+
+.直播间{ border-radius: 100% 100% 100% 100%; }
+
+.空1{height: 594px}

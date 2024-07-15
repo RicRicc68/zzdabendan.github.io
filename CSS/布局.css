@@ -1,0 +1,79 @@
+/*
+.大
+.片
+.全
+.上
+.身左
+.空1
+.左
+.身体
+.身右
+.感觉
+.感下
+.中
+.空2
+.右
+.下
+.人生
+.时间
+.地图
+.经验
+.模式
+*/
+
+
+
+.大{display: flex;}
+.大{flex-direction: column;}
+
+
+.片{color: white;}
+
+
+.全{display: flex;}
+.全{flex-direction: column;}
+
+.上{display: flex;}
+.上{flex-direction: row;}
+
+.身左{display: flex;}
+.身左{flex-direction: column;}
+
+.身右{display: flex;}
+.身右{flex-direction: column;}
+
+.感下{display: flex;}
+.感下{flex-direction: row;}
+
+.下{display: flex;}
+.下{flex-direction: column;}
+
+
+.身左{flex-grow: 2;}
+.身体{flex-grow: 5;}
+.身右{flex-grow: 3;}
+
+.中{flex-grow: 3;}
+.空2{flex-grow: 1;}
+.右{flex-grow: 1;}
+
+
+
+
+.大{width: 100%;}
+.片{width: 9vw;}
+.全{width: 100%;}
+
+.大{margin: auto;}
+
+.大{border-radius: 5px 5px 5px 5px;}
+
+.大{background-color: #ddd;}
+.上{background-color: black;}
+.上{color: white;}
+
+
+
+
+
+

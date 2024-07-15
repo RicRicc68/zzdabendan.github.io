@@ -1,0 +1,6 @@
+.人格{display:flex;}
+.人格{flex-direction:row;}
+    /*width:100%;*/
+ 
+.人格 p {margin:auto;}
+.人格 p {padding:auto;}
