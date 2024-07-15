@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <!--
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>4</title>
+
+    <style>
+
+
+
+
+
+	/*
+.上 {}
+.1左 {}
+.身体4 {}
+.感觉5 {}
+.中2 {}
+.右3 {}
+.身右 {}
+.感下 {}
+	*/
+
+
+
+    *,html,body,div,ul,ol,li { margin: 0;}
+*,html,body,div,ul,ol,li { padding: 0;}
+.上{ margin: auto;}
+
+div{ margin: 0px;}
+
+div{ border: solid 0px red;}
+.上{ border: solid 1px red;}
+
+
+/*位置*/
+
+.上{ display: flex;}
+.上{ flex-direction: row;}
+
+.左1 {display: flex;}
+.左1 {flex-direction: column;}
+
+.身右 {display: flex;}
+.身右 {flex-direction: column;}
+
+.感下 {display: flex;}
+.感下 {flex-direction: row;}
+
+
+/*宽度*/
+.上{ width: 1080px;}
+
+	.左1 {width: 15%;}
+
+	.身体4 {width: 30%;}
+
+	.身右 {width: 55%;}
+		.感觉5 {width: 594px;}
+		.感下 {width: 100%;}
+			.无 {width: 53%;}
+			.中2 {width: 13%;}
+			.右3 {width: 33%;}
+
+/*高度*/
+.感觉5 {height: 594px;}
+.上{ min-height: 1000px;}
+
+/*背景*/
+
+
+.身体4 { background-image: url("./img/身体-骨架.jpg");}
+.身体4 { background-repeat: no-repeat; }
+
+
+.直播间 { border-radius: 100% 100% 100% 100%; }
+
+*{ background-color: black; }
+*{ color: #fff;}
+
+
+
+
+
+
+
+
+
+
+
+
+        /*结构布局*/
+
+        /*框架
+        .全 {}
+        .片 {}
+
+        .上 {}
+        .左 {}
+        .中 {}
+        .右 {}
+
+        .下 {}
+        .人生 {}
+        .时间 {}
+        .天地 {}
+        .经验 {}
+        .智慧 {}
+        */
+
+
+
+        /*盒模型设置*/
+
+
+
+        /*内外边距设置*/
+        *,html,body,div,ul,ol,li { margin: 0;}
+        *,html,body,div,ul,ol,li { padding: 0;}
+
+        .全面 { margin: 10px 10px 10px 10px; }
+        .目录 { padding: 0px 0px 0px 10px; }
+        .全 { margin: auto; }
+
+
+        .上 {margin-bottom: 0px; /*外边距分割*/}
+
+        .人生时间轴,.一天时间轴 {
+            margin-top: 6px;
+            border-top: solid 6px white;
+        }
+
+
+
+
+        /*边框设置*/
+        div,
+        p {
+            border-style: solid;
+            border-width: 0px;
+        }
+
+        /*
+        table {
+            border-top: 1px solid red;
+            border-bottom: 1px solid red;
+            border-left: 1px dashed blue;
+            border-right: 1px dashed blue;
+        }
+
+        */
+        .行李 {
+            border: 1px solid white;
+        }
+
+
+        table {
+            border-collapse: collapse; /* 合并边框 */
+            /*width: 100%;  设置表格宽度为100% */
+        }
+
+        /*
+        .片 {
+            border-right: solid 1px #fff;
+        }
+        */
+
+
+        .人生周期 td{
+            border: solid 1px white;
+        }
+
+        /*圆角设置*/
+        .全面{ border-radius: 1% 1% 1% 1%; }
+
+
+        /*宽度设置*/
+        .全 {
+            width: 1080px; 
+           /* width: 100%;
+            min-width: 100%;*/
+        }
+
+        /*
+        .片 {
+            width: 10vw;
+            min-width: 10vw;
+        }
+            */
+
+        .中 {
+            width: 356px;
+        }
+
+        .行李{
+            width: 100%;
+        }
+
+        
+        table {
+            table-layout: fixed;/*宽度自动调整 */
+        }
+
+        .人生 table {
+            width: 100vw;
+        }
+
+        .中,
+        .左,
+        .右 {
+            width: 33%;
+        }
+
+        /*
+        .中 {min-width: 865px;}
+        .左 {min-width: 400px;}
+        .右 {min-width: 400px;}
+        */
+
+        /*
+        .行李 td {
+            width: 100px;
+        }
+        */      
+        .一天时间轴{
+            width: 100%;
+            table-layout: fixed;/*宽度自动调整*/
+
+        }
+
+
+
+        /*高度设置*/
+        .中 {
+            height: 365px;
+        }
+
+        /*z轴设置*/
+        .全{
+            z-index: 998;
+        }
+        .片{
+            z-index: 999;
+        }
+
+	
+
+
+        /*位置设置*/
+
+/*
+        tr{
+            display: flex;
+            flex-direction: row;
+        }
+
+        td{
+            flex-grow: 1;
+        }
+
+        .上 {
+            display: flex;
+            flex-direction: column;
+
+        }
+*/
+
+
+
+        .片{
+            float: left;
+        }
+
+        .目录 {
+            
+            position: fixed;
+            top: 0;
+            left: 0;
+            
+
+            
+            width: 7vw;
+            /*
+            height: 100vh;
+            */
+
+            border: 1px solid #73AD21;
+            }
+
+        .上上 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .上二 {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+
+
+
+
+        .左 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .中 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .右 {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+
+
+
+        .下 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .人生 {
+            flex-grow: 1;
+        }
+
+        .时间 {
+            flex-grow: 1;
+        }
+
+        .天地 {
+            flex-grow: 1;
+        }
+
+        .经验 {
+            flex-grow: 1;
+        }
+
+        .智慧 {
+            flex-grow: 1;
+        }
+
+/*
+        .物品 {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100vw
+
+        }
+            */
+
+        /*
+        .个数 {
+            display: flex;
+            flex-direction: column;
+        }
+            */
+
+
+            
+
+
+
+
+
+        /*组件布局样式*/
+        .根 {
+            margin: auto;
+        }
+
+        .直播间 {
+            border-radius: 100% 100% 100% 100%;
+        }
+
+        /*
+        a::after {
+            color: red;
+        }
+            */
+
+        /*链接颜色*/
+        /* 未访问的链接 */
+        a:link {
+            color: wheat;
+        }
+
+        /* 已访问的链接 */
+        a:visited {
+            color: wheat;
+        }
+
+        /* 鼠标悬停在链接上时的样式 */
+        a:hover {
+            color: red;
+        }
+
+
+
+
+        /*文本设置*/
+        * {
+            text-align: center;
+        }
+
+        /*字体设置*/
+        * {
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        
+
+        h1 {font-size: 22px; }
+
+        h2 {font-size: 16px; }
+
+        .人生时间轴{
+            font-size: 6px;
+        }
+
+        .一天时间轴{
+            font-size: 6px;
+        }
+
+
+
+
+        /*临时样式*/
+        .全 {
+            background-color: wheat;
+            color: white;
+        }
+
+        .片 {
+            background-color: black;
+            color: white;
+
+        }
+
+        .上,
+        .下 {
+            background-color: black;
+        }
+
+
+
+        html {
+            background-color: white;
+            color: black;
+        }
+
+        * {
+            overflow: auto;
+        }
+
+
+        .时间{
+            overflow-x:auto;
+        }
+        
+        td {
+            vertical-align: top;
+            }
+
+        td {
+            white-space: nowrap;
+            /* 禁止文本换行 */
+            overflow: hidden;
+            /* 隐藏超出单元格的内容 */
+            text-overflow: ellipsis;
+            /* 超出部分显示省略号 */
+            /*border: 1px solid white; /* 设置单元格边框 */
+        }
+
+        .天地 {
+            background-image: url("./img/倾斜世界地图黑色裁切.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            min-height: 365px;
+        }
+
+        .人生 {
+            height: 464px;
+            background-image: url("./img/人生w.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            overflow: auto;
+        }
+
+        .人格 {
+            display: flex;
+            flex-direction: row;
+            /*width: 100%;*/
+        }
+
+        .人格 p {
+            margin: auto;
+            padding: auto;
+        }
+
+        .经验 {
+            text-align: center;
+        }
+
+        .中 {
+            background-image: url("./img/身体-骨架.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .根根 ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .全面 {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+
+        .智慧 {
+            background-color: #F40002;
+            color: #FAF408;
+        }
+
+        .经验 {
+            background-color: #002060;
+            color: #ffffff;
+        }
+
+
+        /*
+        .人生 table tr td{
+            background-color: #100;
+        }
+            */
+
+
+
+
+
+        /* 年代时间轴 隐藏内容
+
+
+                
+            			<!--表格时间轴一类--><table>
+				<!--第 1 行--><tr>
+					<td>表格时间轴</td><td>单位</td><td>  </td><td>  </td>
+				</tr>
+
+				<!--第 2 行--><tr>
+					<td>  </td><td>  </td><td>  </td><td>  </td>
+				</tr>
+
+				<!--第 3 行--><tr>
+					<td>绕恒星周期</td><td>年</td><td>1</td><td>2</td>
+				</tr>
+
+				<!--第 4 行--><tr>
+					<td>12分</td><td>月</td><td>12</td><td>24</td>
+				</tr>
+
+				<!--第 5 行--><tr>
+					<td>7日分</td><td>周</td><td>50</td><td>100</td>
+				</tr>
+
+				<!--第 6 行--><tr>
+					<td>行星自转周期</td><td>日</td><td>365</td><td>730</td>
+				</tr>
+
+				<!--第 7 行--><tr>
+					<td>24分</td><td>时</td><td>8760</td><td>17520</td>
+				</tr>
+
+				<!--第 8 行--><tr>
+					<td>60分</td><td>分</td><td>525600</td><td>1051200</td>
+				</tr>
+
+				<!--第 9 行--><tr>
+					<td>60分</td><td>秒</td><td>31536000</td><td>63072000</td>
+				</tr>
+
+			</table>
+            
+            */
+
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <!---->
+
+    <div class="全面">
+
+
+        <div class="片">
+            <div class="目录">
+                <h1><a href="./个人简历.html">个人简历</a></h1>
+                <a href="./上改.html">上改</a>
+                <h1>目录</h1>
+                    <ul>
+                        <li>上第一</li>
+                        <li>1过去左</li>
+                        <li>2现在中</li>
+                        <li>3未来右</li>
+                        <li>4中中</li>
+
+                        <li>下第二</li>
+                        <li>5人生</li>
+                        <li>6时间</li>
+                        <li>7地图</li>
+                        <li>8经验</li>
+                        <li>9智慧</li>
+                    </ul>
+            </div>
+            
+        </div>
+
+
+        <div class="全">
+
+
+
+
+            <!--
+            <div class="上">
+
+                <div class="上上">
+                    <div class="个人简历">
+                        <a href="./个人简历.html">个人简历</a>
+                    </div>
+                    <div class="根">
+                        <iframe
+                            src="https://live.bilibili.com/h5/21648980" 
+                            title="直播间" 
+                            class="直播间" 
+                            height="765px" 
+                            width="765px" 
+                            frameborder="0" 
+                            style="border:none;">
+                        </iframe>
+                    </div>
+                </div>
+
+
+                <div class="上二">
+
+
+                    <div class="左">
+
+                        <div class="过去">
+
+                            <div class="总结">
+                                过去总结<br>
+                                8000天
+                            </div>
+                            <ul>
+                                <li>________：看过</li>
+                                <li>________：闻过</li>
+                                <li>________：尝过</li>
+                                <li>________：说过</li>
+                                <li>________：听过</li>
+                                <li>________：抓过</li>
+                                <li>________：走过</li>
+                                <li>________：想过</li>
+                                <li>________：答过</li>
+                                <li>________：学过</li>
+                                <li>________：玩过</li>
+                                <li>________：记过</li>
+                                <li>________：忘过</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="中">
+
+                        <div class="根根">
+                            <ul class="根根ul">
+                                <li>眼：在看</li>
+                                <li>鼻：在闻</li>
+                                <li>口：在吃</li>
+                                <li>耳：在听</li>
+                                <li>手：在抓</li>
+                                <li>脚：在走</li>
+                                <li>身：在做</li>
+                                <li>心：在想</li>
+                            </ul>
+                        </div>
+
+
+
+                        <table>
+                            <tr>
+                                <td>生命值:<br>8284/18250</td>
+                                <td>体力值:<br>$%^&/$^&</td>
+                                <td>财力值:<br>xxxx/10000</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">体检表</td>
+                            </tr>
+                            <tr>
+                                <td>外科</td>
+                                <td>内科</td>
+                                <td>血液</td>
+                            </tr>
+                                <td>身高</td>
+                                <td>体重</td>
+                                <td>视力</td>
+                            </tr>xue
+                                <td>血压</td>
+                                <td>血型</td>
+                                <td>心率</td>
+                            </tr>
+                            <tr>
+                                <td>肌肉量</td>
+                                <td>脂肪量</td>
+                                <td>代谢率</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="右">
+
+                        <div class="未来">
+
+                            <div class="规划">未来规划</div>
+                            <br>
+                            <ul>
+                                <li>想看：￥1,000,000/买房</li>
+                                <li>想闻：________</li>
+                                <li>想吃：土豆鸡蛋蔬菜饼</li>
+                                <li>想说：________</li>
+                                <li>想听：________</li>
+                                <li>想抓：_大笨蛋_</li>
+                                <li>想走：________</li>
+                                <li>想做：________</li>
+                                <li>想问：________</li>
+                                <li>想学：________</li>
+                                <li>想玩：________</li>
+                                <li>死记：________</li>
+                                <li>硬背：__负债28年饭饭的人</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            -->
+
+
+            <div class="上">
+
+                <div class="左1">
+                  
+                  <div class="空" style="height: 594px;">
+              
+                  </div>
+                  <div class="总结">
+                      过去总结<br>
+                      8000天
+                  </div>
+                  <ul>
+                      <li>_____：看过</li>
+                      <li>_____：闻过</li>
+                      <li>_____：尝过</li>
+                      <li>_____：说过</li>
+                      <li>_____：听过</li>
+                      <li>_____：抓过</li>
+                      <li>_____：走过</li>
+                      <li>_____：想过</li>
+                      <li>_____：答过</li>
+                      <li>_____：学过</li>
+                      <li>_____：玩过</li>
+                      <li>_____：记过</li>
+                      <li>_____：忘过</li>
+                  </ul>
+              
+              
+                </div>
+              
+                <div class="身体4">身体4</div>
+              
+                <div class="身右">
+              
+                      <div class="感觉5">
+                          
+                          <iframe
+                              src="https://live.bilibili.com/h5/21648980" 
+                              title="直播间" 
+                              class="直播间" 
+                              height="594px" 
+                              width="594px" 
+                              frameborder="0" 
+                              style="border:none;">
+                          </iframe>
+              
+                      </div>
+              
+                      <div class="感下">
+              
+                          <div class="无">
+                              
+                              <ul class="根根ul">
+                                  <li>眼：在看</li>
+                                  <li>鼻：在闻</li>
+                                  <li>口：在吃</li>
+                                  <li>耳：在听</li>
+                                  <li>手：在抓</li>
+                                  <li>脚：在走</li>
+                                  <li>身：在做</li>
+                                  <li>心：在想</li>
+                              </ul>
+              
+                              <table>
+                                  <tr>
+                                      <td>生命值:<br>8284/18250</td>
+                                      <td>体力值:<br>$%^&/$^&</td>
+                                      <td>财力值:<br>xxxx/10000</td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="3">体检表</td>
+                                  </tr>
+                                  <tr>
+                                      <td>外科</td>
+                                      <td>内科</td>
+                                      <td>血液</td>
+                                  </tr>
+                                      <td>身高</td>
+                                      <td>体重</td>
+                                      <td>视力</td>
+                                  </tr>xue
+                                      <td>血压</td>
+                                      <td>血型</td>
+                                      <td>心率</td>
+                                  </tr>
+                                  <tr>
+                                      <td>肌肉量</td>
+                                      <td>脂肪量</td>
+                                      <td>代谢率</td>
+                                  </tr>
+                              </table>
+              
+                          </div>
+              
+                          <div class="中2">
+                              
+              
+                          </div>
+              
+                          <div class="右3">
+                              
+                              <ul>
+                                  <li>想看：￥1,000,000/买房</li>
+                                  <li>想闻：________</li>
+                                  <li>想吃：土豆鸡蛋蔬菜饼</li>
+                                  <li>想说：________</li>
+                                  <li>想听：________</li>
+                                  <li>想抓：_大笨蛋_</li>
+                                  <li>想走：________</li>
+                                  <li>想做：________</li>
+                                  <li>想问：________</li>
+                                  <li>想学：________</li>
+                                  <li>想玩：________</li>
+                                  <li>死记：________</li>
+                                  <li>硬背：__负债28年饭饭的人</li>
+                              </ul>
+              
+                          </div>
+              
+                      </div>
+                </div>
+              
+              </div>
+
+
+
+
+
+            <div class="下">
+                <div class="人生">
+                    <table>
+
+                        <tr>
+                            <td>狩猎人</td>
+                            <td>耕种人</td>
+                            <td>铁器人</td>
+                            <td>火器人</td>
+                            <td>电器人</td>
+                            <td>信息人</td>
+                            <td>智能机器人</td>
+                            <td>虚拟人</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="时间">
+
+
+                    <div class="人生时间轴">
+
+
+                        <!--表格时间轴三类-->
+
+                        <table style="font-size: 3px;">
+
+                            <!--第 1 行-->
+                            <tr>
+                                <td>人生时间轴</td>
+                                <td>单位</td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+
+                            <!--第 2 行-->
+                            <tr class="人生周期">
+                                <td>人生周期</td>
+                                <td colspan="7">
+                                    <ul>
+                                        <li>7</li>
+                                        <li>小孩</li>
+                                    </ul>
+                                </td>
+                                <td colspan="7">
+                                    <ul>
+                                    <li>14</li>
+                                    <li>少年</li>
+                                </ul>
+                                </td>
+                                <td colspan="7">
+                                    <ul>
+                                    <li>21</li>
+                                    <li>青年</li>
+                                </ul>
+                                </td>
+                                <td colspan="7">
+                                    <ul>
+                                    <li>28</li>
+                                    <li>壮年</li>
+                                </ul>
+                                </td>
+                                <td colspan="7">
+                                    <ul>
+                                    <li>35</li>
+                                    <li>壮年</li>
+                                </ul>
+                                </td>
+                                <td colspan="7">
+                                    <ul>
+                                    <li>42</li>
+                                    <li>中年</li>
+                                </ul>
+                                </td>
+                                <td colspan="7">
+                                    <ul>
+                                    <li>49</li>
+                                    <li>中年</li>
+                                </ul>
+                                </td>
+                            </tr>
+
+                            <!--第 3 行-->
+                            <tr>
+                                <td>绕恒星周期</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>30</td>
+                                <td>31</td>
+                                <td>32</td>
+                                <td>33</td>
+                                <td>34</td>
+                                <td>35</td>
+                                <td>36</td>
+                                <td>37</td>
+                                <td>38</td>
+                                <td>39</td>
+                                <td>40</td>
+                                <td>41</td>
+                                <td>42</td>
+                                <td>43</td>
+                                <td>44</td>
+                                <td>45</td>
+                                <td>46</td>
+                                <td>47</td>
+                                <td>48</td>
+                                <td>49</td>
+                                <td>50</td>
+                                <td>51</td>
+                            </tr>
+
+                            <!--第 4 行-->
+                            <tr>
+                                <td>月</td>
+                                <td>12</td>
+                                <td>24</td>
+                                <td>36</td>
+                                <td>48</td>
+                                <td>60</td>
+                                <td>72</td>
+                                <td>84</td>
+                                <td>96</td>
+                                <td>108</td>
+                                <td>120</td>
+                                <td>132</td>
+                                <td>144</td>
+                                <td>156</td>
+                                <td>168</td>
+                                <td>180</td>
+                                <td>192</td>
+                                <td>204</td>
+                                <td>216</td>
+                                <td>228</td>
+                                <td>240</td>
+                                <td>252</td>
+                                <td>264</td>
+                                <td>276</td>
+                                <td>288</td>
+                                <td>300</td>
+                                <td>312</td>
+                                <td>324</td>
+                                <td>336</td>
+                                <td>348</td>
+                                <td>360</td>
+                                <td>372</td>
+                                <td>384</td>
+                                <td>396</td>
+                                <td>408</td>
+                                <td>420</td>
+                                <td>432</td>
+                                <td>444</td>
+                                <td>456</td>
+                                <td>468</td>
+                                <td>480</td>
+                                <td>492</td>
+                                <td>504</td>
+                                <td>516</td>
+                                <td>528</td>
+                                <td>540</td>
+                                <td>552</td>
+                                <td>564</td>
+                                <td>576</td>
+                                <td>588</td>
+                                <td>600</td>
+                                <td>612</td>
+
+                            </tr>
+
+                            <!--第 5 行-->
+                            <tr>
+                                <td>周</td>
+                                <td>52</td>
+                                <td>104</td>
+                                <td>156</td>
+                            </tr>
+
+                            <!--第 6 行-->
+                            <tr>
+                                <td>日</td>
+                                <td>365</td>
+                                <td>730</td>
+                                <td>1095</td>
+                                <td>1460</td>
+                                <td>1825</td>
+                                <td>2190</td>
+                                <td>2555</td>
+                                <td>2920</td>
+                                <td>3285</td>
+                                <td>3650</td>
+                                <td>4015</td>
+                                <td>4380</td>
+                                <td>4745</td>
+                                <td>5110</td>
+                                <td>5475</td>
+                                <td>5840</td>
+                                <td>6205</td>
+                                <td>6570</td>
+                                <td>6935</td>
+                                <td>7300</td>
+                                <td>7665</td>
+                                <td>8030</td>
+                                <td>8395</td>
+                                <td>8760</td>
+                                <td>9125</td>
+                                <td>9490</td>
+                                <td>9855</td>
+                                <td>10200</td>
+                                <td>10585</td>
+                                <td>10950</td>
+                                <td>11315</td>
+                                <td>11680</td>
+                                <td>12045</td>
+                                <td>12410</td>
+                                <td>12775</td>
+                                <td>13140</td>
+                                <td>13505</td>
+                                <td>13870</td>
+                                <td>14235</td>
+                                <td>14600</td>
+                                <td>14965</td>
+                                <td>15330</td>
+                                <td>15695</td>
+                                <td>16060</td>
+                                <td>16425</td>
+                                <td>16790</td>
+                                <td>17155</td>
+                                <td>17520</td>
+                                <td>17885</td>
+                                <td>18250</td>
+
+
+                            </tr>
+
+                            <!--第 7 行-->
+                            <tr>
+                                <td>时</td>
+                                <td>8760</td>
+                                <td>17520</td>
+                                <td>26280</td>
+                            </tr>
+
+                            <!--第 8 行-->
+                            <tr>
+                                <td>分</td>
+                                <td>525,600</td>
+                                <td>1051200</td>
+                                <td>1051200</td>
+                            </tr>
+
+                            <!--第 9 行-->
+                            <tr>
+                                <td>秒</td>
+                                <td>31,536,000</td>
+                                <td>31536000</td>
+                                <td>63072000</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                    <div class="一天时间轴">
+
+                        <!--表格时间轴二类-->
+                        <table>
+                            <!--第 1 行-->
+                            <tr>
+                                <td>一天时间轴</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+
+                            <!--第 2 行-->
+                            <tr>
+                                <td>行星自转周期</td>
+                                <td>单位</td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+
+                            <!--第 3 行-->
+                            <tr>
+                                <td>时</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                            </tr>
+
+                            <!--第 4 行-->
+                            <tr>
+                                <td>分</td>
+                                <td>60</td>
+                                <td>120</td>
+                                <td>180</td>
+                                <td>240</td>
+                                <td>300</td>
+                                <td>360</td>
+                                <td>420</td>
+                                <td>480</td>
+                                <td>540</td>
+                                <td>600</td>
+                                <td>660</td>
+                                <td>720</td>
+                                <td>780</td>
+                                <td>840</td>
+                                <td>900</td>
+                                <td>960</td>
+                                <td>1020</td>
+                                <td>1080</td>
+                                <td>1140</td>
+                                <td>1200</td>
+                                <td>1260</td>
+                                <td>1320</td>
+                                <td>1380</td>
+                                <td>1440</td>
+                            </tr>
+
+                            <!--第 5 行-->
+                            <tr>
+                                <td>秒</td>
+                                <td>3600</td>
+                                <td>7200</td>
+                                <td>10800</td>
+
+                                <td>14400</td>
+                                <td>18000</td>
+                                <td>21600</td>
+                                <td>25200</td>
+                                <td>28800</td>
+                                <td>32400</td>
+                                <td>36000</td>
+                                <td>39600</td>
+                                <td>43200</td>
+                                <td>46800</td>
+                                <td>50400</td>
+                                <td>54000</td>
+                                <td>57600</td>
+                                <td>61200</td>
+                                <td>64800</td>
+                                <td>68400</td>
+                                <td>72000</td>
+                                <td>75600</td>
+                                <td>79200</td>
+                                <td>82800</td>
+                                <td>86400</td>
+
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="天地">
+
+                    <h1>地图</h1>
+
+                    <table class="行李" border="1" >
+
+                        <!-- 第1行 -->
+                        <tr class="物品">
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">夏衣</dt>
+                                    <dd>衣服</dd>
+                                    <dd>裤子</dd>
+                                    <dd>鞋子</dd>
+                                    <dd>袜子</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">冬衣</dt>
+                                    <dd>衣服</dd>
+                                    <dd>裤子</dd>
+                                    <dd>鞋子</dd>
+                                    <dd>袜子</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">床铺</dt>
+                                    <dd>枕头</dd>
+                                    <dd>枕套</dd>
+                                    <dd>夏被</dd>
+                                    <dd>冬被</dd>
+                                    <dd>被套</dd>
+                                    <dd>床罩</dd>
+                                    <dd>&nbsp;</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">行李背包</dt>
+                                    <dd>背包</dd>
+                                    <dd>被子袋</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">食物</dt>
+                                    <dd>凉白开水</dd>
+                                    <dd>水果</dd>
+                                    <dd>米面</dd>
+                                    <dd>油烟</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">厨具</dt>
+                                    <dd>烧水壶</dd>
+                                    <dd>电磁炉</dd>
+                                    <dd>电饭煲</dd>
+                                    <dd>平底锅</dd>
+                                    <dd>平汤锅</dd>
+                                    <dd>不锈钢碗</dd>
+                                    <dd>筷子勺子</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">计算机</dt>
+                                    <dd>学习计划</dd>
+                                    <dd>锻炼计划</dd>
+                                    <dd><a href="./书签.html">网站链接</a></dd>
+                                    <dd><a href="./文件分类.html">文件分类</a></dd>
+                                    <dd><a href="./软件分类.html">软件分类</a></dd>
+                                    <dd>1</dd>
+                                    <dd><a href="./dabendan.html">旧网页</a></dd>
+                                    
+ 
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">设备包装</dt>
+                                    <dd>显卡</dd>
+                                    <dd>笔记本</dd>
+                                    <dd>电源</dd>
+                                    <dd>台灯</dd>
+                                    <dd>显示器支架</dd>
+                                    <dd>手机支架</dd>
+                                    <dd>&nbsp;</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数">
+                                <dl>
+                                    <dt style="color: red;">旧鞋</dt>
+                                    <dd>361</dd>
+                                    <dd>鸿星尔克</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                    <dd>&nbsp;</dd>
+                                </dl>
+                            </td>
+
+                            <td class="个数" rowspan="2">
+                                <dl>
+                                    <dt style="color: red;">空</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>&nbsp;</li>
+                                            <li>黑箱10</li>
+                                            <li>黑箱11</li>
+                                            <li>黑箱12</li>
+                                            <li>黑箱13</li>
+                                            <li>黑箱14</li>
+                                            <li>黑箱15</li>
+                                            <li>黑箱16</li>                                
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </td>
+
+
+
+                        <!-- 第2行 -->
+                        <tr>
+                            <td>白箱1</td>
+                            <td>白箱2</td>
+                            <td>白箱3</td>
+                            <td>白箱4</td>
+                            <td>白箱5</td>
+                            <td>白箱6</td>
+                            <td>白箱7</td>
+                            <td>白箱8</td>
+                            <td>黑箱9</td>
+
+                            <!--
+                            <td rowspan="2">
+                                <ul>
+                                    <li>黑箱10</li>
+                                    <li>黑箱11</li>
+                                    <li>黑箱12</li>
+                                    <li>黑箱13</li>
+                                    <li>黑箱14</li>
+                                    <li>黑箱15</li>
+                                    <li>黑箱16</li>                                
+                                </ul>
+                            </td>
+                            -->
+   
+                        </tr>
+
+
+
+                        <!-- 第3行 -->
+                        <tr>
+                            <td>房屋</td>
+                            <td>卧室</td>
+                            </td>
+                            <td>床铺</td>
+                            <td>行李</td>
+                            <td>电脑资料</td>
+                        </tr>
+
+
+
+
+                        <!-- 第4行 -->
+                        <tr>
+                            <td>老家1</td>
+                            <td>老家2</td>
+                            <td>家3</td>
+                            <td>家4</td>
+                            <td>家5</td>
+                            <td>家6</td>
+                            <td>家7</td>
+                            <td>家8</td>
+                            <td>隐蔽处9</td>
+                            <td>隐蔽处10</td>
+
+                        </tr>
+
+                        
+
+                        <!-- 第5行 -->
+                        <tr>
+                            <td>国家</td>
+                            <td>城市</td>
+                            <td>郊区</td>
+                            <td>乡镇</td>
+                        </tr>
+
+                        <!-- 第6行 -->
+                        <tr>
+                            <td>宇宙</td>
+                            <td>银河</td>
+                            <td>太阳</td>
+                            <td>地球</td>
+                            <td>月亮</td>
+                            <td>太空</td>
+                            <td>大陆</td>
+                            <td>海洋</td>
+                            <td>山脉</td>
+                            <td>河川</td>
+                            <td>平原</td>
+                            <td>森林</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+                <div class="经验">
+
+                    <h1>经验</h1>
+
+                    <div class="天地阴阳" >
+                        <h2>
+                            天清阴开刚动冷存死高胜空虚上大方多好福荣难正前左东南劳同亲男雄丑聪天天天天天天天天天天
+                        </h2>
+                        <h2>
+                            地浊阳闭柔静热亡生低败满实下小圆少坏祸辱易斜后右西北逸异疏女雌美笨地地地地地地地地地地
+                        </h2>
+                        
+                    </div>
+ 
+                    <div class="人格">
+                        <p>困而不学<br>
+                            困而学者<br>
+                            学而知之<br>
+                            生而知之<br>
+                        </p>
+
+                        <p>
+                            知之者<br>
+                            好之者<br>
+                            乐之者<br>
+                        </p>
+
+                        <p>
+                            有读了后直有不知手之舞之足之蹈之者<br>
+                            有读了后知好之者<br>
+                            有读了后其中得一两句喜者<br>
+                            有读了全然无事者<br>
+                        </p>
+
+                        <p>你的能力是银牌<br>
+                            人际关系是金牌<br>
+                            思维是王牌<br>
+                        </p>
+                        <p>没有眼睛看不见好看的色彩，<br>
+                            没有耳朵听不见好听的音乐，<br>
+                            大多人是智慧上的残缺，不能理解大智慧<br>
+
+
+                        </p>
+
+                        <p>智慧，日知，知日，<br>
+                            没有好心的的彗是害人害己扫帚星</p>
+                    </div>
+
+                </div>
+                <div class="智慧">
+
+                    <h1>模式</h1>
+
+                    <span>
+                        <a href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13309557106657149463">周易</a>
+                        <a href="https://www.modevol.com/">【渐构】</a>
+                        <a href="https://xinghuo.xfyun.cn/spark">讯飞星火AI</a><br>
+                    </span>
+                    <table>
+                        <tr>
+                            <td>新华字典</td>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/video/index.html?art_id=1722488951212945037&part_id=11373351405991540829&study_style_id=video_default&study_comment_disable=0&source=share&share_to=wx_single"><span>数学</span></a>
+                            </td>
+                            <td>历史</td>
+                            <td><a href="#"><span>高中历史</span>（暂无）</a></td>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/pdf/index.html?art_id=3946106751411072835"><span>史记</span></a>
+                            </td>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13862435948621566870"><span>资治通鉴</span></a>
+                            </td>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/pdf/index.html?art_id=13893768322542028263"><span>左传</span></a>
+                            </td>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/pdf/index.html?art_id=4013797740511894090"><span>汉书</span></a>
+                            </td>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/pdf/index.html?art_id=15112075378884835644"><span>后汉书</span></a>
+                            </td>
+                            <td><a href="ml.html">目录</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>英文</td>
+                            <td>数学</td>
+                            <td>物理</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>词典</td>
+                            <td>数学</td>
+                            <td>化学</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>诗歌</td>
+                            <td>数学</td>
+                            <td>生物</td>
+                            <td>人体系统解剖</td>
+                            <td>体育运动训练</td>
+                            <td>减脂塑性锻炼</td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="https://www.stats.gov.cn/sj/pcsj/rkpc/7rp/zk/indexch.htm">人口普查</a></td>
+                            <td>数学</td>
+                            <td>地理</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>职业分类</td>
+                            <td>数学</td>
+                            <td>地理</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>学科分类</td>
+                            <td>数学</td>
+                            <td>地理</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>法律</td>
+                            <td><a
+                                    href="https://www.gov.cn/guoqing/2018-03/22/content_5276318.htm"><span>中国宪法</span></a>
+                            </td>
+                            <td><a
+                                    href="https://flk.npc.gov.cn/detail2.html?ZmY4MDgwODE3MjlkMWVmZTAxNzI5ZDUwYjVjNTAwYmY%3D"><span>民法典</span></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/pdf/index.html?art_id=12995548286028235933"><span>中国思想史</span></a>
+                            </td>
+                            <td><a
+                                    href="https://wap.cnki.net/touch/web/XinKeBook/Article/DZ2107120243.html"><span>鬼谷子(大佬解说版)</span></a>
+                            </td>
+                            <td><a
+                                    href="https://article.xuexi.cn/articles/pdf/index.html?art_id=16172963354818853871"><span>孙子兵法(节4篇)</span></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="https://e.huawei.com/cn/talent/cert/#/careerCert"><span>赚钱考证</span></a></td>
+                            <td><a href="https://www.ruankao.org.cn/"><span>认证证书</span></a></td>
+                            <td>考编</td>
+                            <td>学习</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>沟通</td>
+                            <td>合作</td>
+                            <td>世界</td>
+                            <td>人生</td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
