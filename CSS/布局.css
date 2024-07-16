@@ -72,10 +72,13 @@
 .下{width: 1080px;}
 
 .大{margin: auto;}
-
-
-
 .全{border-radius: 5px 5px 5px 5px;}
+
+.上{margin: 15px;}
+.上{border-radius: 5px 5px 5px 5px;}
+
+.下{margin: 15px;}
+.下{border-radius: 5px 5px 5px 5px;}
 
 .大{background-color: #ddd;}
 .上{background-color: black;}
