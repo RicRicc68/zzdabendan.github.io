@@ -21,49 +21,48 @@
 .模式
 */
 
-
-
 .大{display: flex;}
 .大{flex-direction: column;}
 
 
-.片{color: white;}
+    .片{color: white;}
 
 
-.全{display: flex;}
-.全{flex-direction: column;}
+    .全{display: flex;}
+    .全{flex-direction: column;}
 
-.上{display: flex;}
-.上{flex-direction: row;}
+        .上{display: flex;}
+        .上{flex-direction: row;}
 
-.身左{display: flex;}
-.身左{flex-direction: column;}
+        .身左{display: flex;}
+        .身左{flex-direction: column;}
 
-.身右{display: flex;}
-.身右{flex-direction: column;}
+        .身右{display: flex;}
+        .身右{flex-direction: column;}
 
-.感下{display: flex;}
-.感下{flex-direction: row;}
+            .感下{display: flex;}
+            .感下{flex-direction: row;}
 
-.下{display: flex;}
-.下{flex-direction: column;}
-
-
-.身左{flex-grow: 2;}
-.身体{flex-grow: 5;}
-.身体{width: 30%;}
-.身右{flex-grow: 3;}
-
-.中{flex-grow: 3;}
-.空2{flex-grow: 1;}
-.右{flex-grow: 1;}
+        .下{display: flex;}
+        .下{flex-direction: column;}
 
 
+        .身左{flex-grow: 2;}
+        .身体{flex-grow: 5;}
+        .身体{width: 30%;}
+        .身右{flex-grow: 3;}
+
+            .中{flex-grow: 3;}
+            .空2{flex-grow: 1;}
+            .右{flex-grow: 1;}
 
 
-.大{width: 100%;}
+
+
+
 .片{width: 9vw;}
 /*
+.大{width: 100vw;}
 .全{width: 100%;}*/
 
 .全{width: 1080px;}
@@ -74,9 +73,17 @@
 
 
 
-.大{border-radius: 5px 5px 5px 5px;}
+.全{border-radius: 5px 5px 5px 5px;}
 
 .大{background-color: #ddd;}
 .上{background-color: black;}
 .上{color: white;}
 
+
+body{display: flex;}
+body{justify-content: center;}
+body{align-items: center;}
+body{height: 100vh;}
+body{margin: 0;}
+
+.全{margin: 50px;}
