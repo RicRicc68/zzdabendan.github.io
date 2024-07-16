@@ -63,21 +63,20 @@
 
 .大{width: 100%;}
 .片{width: 9vw;}
-.全{width: 100%;}
+/*
+.全{width: 100%;}*/
+
 .全{width: 1080px;}
 .上{width: 1080px;}
 .下{width: 1080px;}
 
 .大{margin: auto;}
 
+
+
 .大{border-radius: 5px 5px 5px 5px;}
 
 .大{background-color: #ddd;}
 .上{background-color: black;}
 .上{color: white;}
-
-
-
-
-
 
