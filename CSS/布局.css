@@ -63,7 +63,9 @@
 .片{width: 9vw;}
 /*
 .大{width: 100vw;}
-.全{width: 100%;}*/
+.全{width: 100%;}
+.全{margin: 50px;}
+*/
 
 .全{width: 1080px;}
 .上{width: 1080px;}
@@ -86,4 +88,3 @@ body{align-items: center;}
 body{height: 100vh;}
 body{margin: 0;}
 
-.全{margin: 50px;}
