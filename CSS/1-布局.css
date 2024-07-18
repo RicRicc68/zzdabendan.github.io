@@ -56,8 +56,15 @@
             .空2{flex-grow: 1;}
             .右{flex-grow: 1;}
 
+            .时间 {
+                position: fixed;
+                z-index: 50;
+                left: 0;
+                top: 0.05rem;
+                width: 100%;
+              }
 
-
+.全{margin-top: 300.5px;}
 
 
 .片{width: 9vw;}
