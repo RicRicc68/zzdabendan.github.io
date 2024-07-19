@@ -55,14 +55,14 @@ h4{padding: 0;}
 h5{padding: 0;}
 h6{padding: 0;}
 
-*{font-size: 100em;}
+html {font-size: 100px;}
 
-h1{font-size: 0.026rem;}
-h2{font-size: 0.018rem;}
-h3{font-size: 0.016rem;}
-h4{font-size: 0.014rem;}
-h5{font-size: 0.012rem;}
-h6{font-size: 0.010rem;}
+h1{font-size: 0.26rem;}
+h2{font-size: 0.18rem;}
+h3{font-size: 0.16rem;}
+h4{font-size: 0.14rem;}
+h5{font-size: 0.12rem;}
+h6{font-size: 0.10rem;}
 
 table{table-layout: fixed; /*宽度自动调整*/}
 td{vertical-align:top;}
