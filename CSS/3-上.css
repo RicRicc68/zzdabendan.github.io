@@ -23,7 +23,7 @@
 
 .身体{background-image:url("../IMG/身体-骨架.jpg");}
 
-
+.身体{background-size:contain;}
 .身体{background-repeat:no-repeat;}
 .身体{background-position:center;}
 
