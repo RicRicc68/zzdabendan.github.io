@@ -74,9 +74,12 @@
 .全{margin: 50px;}
 */
 
-.全{width: 1080px;}
-.上{width: 1080px;}
-.下{width: 1080px;}
+.全{width: 100%;}
+
+/*
+.上{width: 100%;}
+.下{width: 100%;}
+*/
 
 .大{margin: auto;}
 .全{border-radius: 5px 5px 5px 5px;}
