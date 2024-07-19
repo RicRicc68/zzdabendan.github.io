@@ -21,12 +21,16 @@
 .模式
 */
 
+body{display: flex;}
+body{justify-content: center;}
+body{align-items: center;}
+body{height: 100vh;}
+body{margin: 0;}
+
 .大{display: flex;}
 .大{flex-direction: column;}
 
-
     .片{color: white;}
-
 
     .全{display: flex;}
     .全{flex-direction: column;}
@@ -34,32 +38,31 @@
         .上{display: flex;}
         .上{flex-direction: row;}
 
-        .身左{display: flex;}
-        .身左{flex-direction: column;}
+            .身左{display: flex;}
+            .身左{flex-direction: column;}
+            .身左{flex-grow: 3;}
 
-        .身右{display: flex;}
-        .身右{flex-direction: column;}
+            .身体{flex-grow: 5;}
 
-            .感下{display: flex;}
-            .感下{flex-direction: row;}
+            .身右{display: flex;}
+            .身右{flex-direction: column;}
+            .身右{flex-grow: 1;}
+
+                .感下{display: flex;}
+                .感下{flex-direction: row;}
+                .感觉{flex-grow: 1;}
+                .感下{flex-grow: 1;}
+
+                    .中{flex-grow: 1;}
+                    .空2{flex-grow: 0;}
+                    .右{flex-grow: 1;}
 
         .下{display: flex;}
         .下{flex-direction: column;}
 
 
-        .身左{flex-grow: 3;}
-        .身体{flex-grow: 5;}
-        /*
-        .身体{width: 30%;}
-        */
-        .身右{flex-grow: 1;}
 
-            .感觉{flex-grow: 1;}
-            .感下{flex-grow: 1;}
 
-                .中{flex-grow: 1;}
-                .空2{flex-grow: 0;}
-                .右{flex-grow: 1;}
 
     .时间 {
         position: fixed;
@@ -71,50 +74,39 @@
 
 
 
-.空1{height: 50%;}
-
 
 .片{width: 9vw;}
 /*
+.身体{width: 100%;}
 .大{width: 100vw;}
 .全{width: 100%;}
 .全{margin: 50px;}
-*/
 
-.全{width: 100%;}
-
-/*
 .上{width: 100%;}
 .下{width: 100%;}
 */
 
-.大{margin: auto;}
-.全{border-radius: 5px 5px 5px 5px;}
+.空1{height: 50%;}
 
+
+.全{margin-top: 217.5px;}
+.大{margin: auto;}
+.感觉{margin: auto;}
+.大{margin: auto;}
+
+.全{border-radius: 5px 5px 5px 5px;}
 .上{margin: 5px 5px 0px 5px;}
 .上{border-radius: 5px 5px 5px 5px;}
-
 .下{margin: 5px 5px 5px 5px;}
 .下{border-radius: 5px 5px 5px 5px;}
-
 .经验{border-radius: 5px 5px 5px 5px;}
-
 .模式{border-radius: 5px 5px 5px 5px;}
+
 
 .大{background-color: #ddd;}
 .上{background-color: #f3f3f3;}
 .上{color: white;}
 
-
-body{display: flex;}
-body{justify-content: center;}
-body{align-items: center;}
-body{height: 100vh;}
-body{margin: 0;}
-
-
-
-.全{margin-top: 217.5px;}
 .大{background-color: #111;}
 .时间{color: #fff;}
 .上{color: #000;}
