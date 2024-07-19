@@ -40,7 +40,10 @@ table{margin: 0;}
 table{padding: 0;}
 table{font-size: 0.16rem;}
 
+/*
 img{background-size:contain;}
+img{background-size:cover;}
+*/
 
 h1{margin: 0;}
 h2{margin: 0;}
@@ -56,6 +59,8 @@ h4{padding: 0;}
 h5{padding: 0;}
 h6{padding: 0;}
 
+
+
 html {font-size: 50px;}
 
 h1{font-size: 0.26rem;}
@@ -64,6 +69,7 @@ h3{font-size: 0.16rem;}
 h4{font-size: 0.14rem;}
 h5{font-size: 0.12rem;}
 h6{font-size: 0.10rem;}
+p {font-size: 0.12rem;}
 
 table{table-layout: fixed; /*宽度自动调整*/}
 td{vertical-align:top;}
