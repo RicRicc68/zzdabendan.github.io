@@ -24,21 +24,21 @@
 
 body{margin: 0;}
 body{padding: 0;}
-body{font-size: 16px;}
+body{font-size: 0.16rem;}
 /*body{font-family: sans-serif;}*/
 body{font-family: Arial,sans-serif;}
 
 div{margin: 0;}
 div{padding: 0;}
-div{font-size: 16px;}
+div{font-size: 0.16rem;}
 
 ul{margin: 0;}
 ul{padding: 0;}
-ul{font-size: 16px;}
+ul{font-size: 0.16rem;}
 
 table{margin: 0;}
 table{padding: 0;}
-table{font-size: 16px;}
+table{font-size: 0.16rem;}
 
 img{background-size:contain;}
 
@@ -56,7 +56,7 @@ h4{padding: 0;}
 h5{padding: 0;}
 h6{padding: 0;}
 
-html {font-size: 200px;}
+html {font-size: 50px;}
 
 h1{font-size: 0.26rem;}
 h2{font-size: 0.18rem;}
