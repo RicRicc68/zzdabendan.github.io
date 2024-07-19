@@ -49,7 +49,9 @@
 
         .身左{flex-grow: 2;}
         .身体{flex-grow: 5;}
+        /*
         .身体{width: 30%;}
+        */
         .身右{flex-grow: 3;}
 
             .中{flex-grow: 3;}
