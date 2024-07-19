@@ -54,17 +54,20 @@
         */
         .身右{flex-grow: 1;}
 
-            .中{flex-grow: 1;}
-            .空2{flex-grow: 0;}
-            .右{flex-grow: 1;}
+            .感觉{flex-grow: 1;}
+            .感下{flex-grow: 1;}
 
-            .时间 {
-                position: fixed;
-                z-index: 50;
-                left: 0;
-                top: 0.05rem;
-                width: 100%;
-              }
+                .中{flex-grow: 1;}
+                .空2{flex-grow: 0;}
+                .右{flex-grow: 1;}
+
+    .时间 {
+        position: fixed;
+        z-index: 50;
+        left: 0;
+        top: 0.05rem;
+        width: 100%;
+      }
 
 
 
