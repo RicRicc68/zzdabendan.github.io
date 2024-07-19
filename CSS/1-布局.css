@@ -47,15 +47,15 @@
         .下{flex-direction: column;}
 
 
-        .身左{flex-grow: 2;}
+        .身左{flex-grow: 3;}
         .身体{flex-grow: 5;}
         /*
         .身体{width: 30%;}
         */
-        .身右{flex-grow: 3;}
+        .身右{flex-grow: 1;}
 
-            .中{flex-grow: 3;}
-            .空2{flex-grow: 1;}
+            .中{flex-grow: 1;}
+            .空2{flex-grow: 0;}
             .右{flex-grow: 1;}
 
             .时间 {
