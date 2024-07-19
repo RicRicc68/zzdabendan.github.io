@@ -64,7 +64,7 @@
                 width: 100%;
               }
 
-.全{margin-top: 300.5px;}
+
 
 
 .片{width: 9vw;}
@@ -98,3 +98,8 @@ body{align-items: center;}
 body{height: 100vh;}
 body{margin: 0;}
 
+
+
+.全{margin-top: 300.5px;}
+.大{background-color: #111;}
+.时间{color: #fff;}
