@@ -3,12 +3,13 @@
 .地图{background-repeat:no-repeat;}
 .地图{background-position:center;}
 .地图{background-size:contain;}
+
+
+
+.地图 table {width: 100%;}
 /*
 .地图{min-height:365px;}
 */
-.地图{color: #fff;}
-
-
 
 dl{margin: 0;}
 dl{padding: 0;}
@@ -19,10 +20,13 @@ dt{padding: 0;}
 dd{margin: 0;}
 dd{padding: 0;}
 
+
 dl{text-align: center;}
 dt{text-align: center;}
 dd{text-align: center;}
 
-.地图 table {width: 100%;}
+
 
 .行李{border-collapse:collapse;}
+
+.地图{color: #fff;}
