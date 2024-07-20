@@ -81,8 +81,18 @@ body{margin: 0;}
         width: 100%;
       }
 
-.上{float: left;}
+      .人生 {
+        position: absolute;
+        z-index: 50;
+        left: 0;
+        top: 165.5px;
+        width: 100%;
+      }
+  
 
+        
+        .上{float: left;}
+        
 
 
 /*宽度计算  
@@ -124,7 +134,7 @@ body{margin: 0;}
 
 
 .大{margin: auto;}
-    .全{margin-top: 165.5px;}
+    .全{margin-top: 265.5px;}
         .上{margin: 5px 5px 0px 5px;}
             .感觉{margin: auto;}
         .下{margin: 5px 5px 185px 5px;}
