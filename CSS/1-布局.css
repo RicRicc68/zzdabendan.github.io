@@ -95,10 +95,11 @@ body{margin: 0;}
                                     div细 
 */
 
-
-.片{width: 9vw;}
-.经验{width: 70vw;}
-.模式{width: 30vw;}
+.大{width: 100vw;}
+    .片{width: 9vw;}
+    .全{width: 100vw;}
+        .经验{width: 70vw;}
+        .模式{width: 30vw;}
 
 /*width:100%;*/
 
