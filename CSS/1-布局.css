@@ -72,7 +72,15 @@ body{margin: 0;}
         width: 100%;
       }
 
-.人生{float: left;}
+    .地图 {
+        position: fixed;
+        z-index: 50;
+        left: 0;
+        bottom: 0.05rem;
+        width: 100%;
+      }
+
+.上{float: left;}
 
 
 
