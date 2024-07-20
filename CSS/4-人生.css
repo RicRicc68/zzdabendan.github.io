@@ -1,6 +1,5 @@
 .人生周期 td { border: solid 1px white;}
 
-
 .人生{background-repeat:no-repeat;}
-.人生{background-position:center;}
+.人生{background-position: center bottom; /* 水平居中，垂直底部对齐 */}
 .人生{background-size:cover;}
