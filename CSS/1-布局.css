@@ -93,7 +93,7 @@ body{margin: 0;}
       .模式 {
         position: absolute;
         z-index: 50;
-        right: 0;
+        left: 0;
         top: 235.5px;
 
       }
@@ -101,7 +101,7 @@ body{margin: 0;}
       .经验 {
         position: absolute;
         z-index: 51;
-        left: 0;
+        right: 0;
         top: 335.5px;
 
       }
