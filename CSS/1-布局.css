@@ -60,12 +60,16 @@ body{align-items: center;}
         .下{display: flex;}
         .下{flex-direction: column;}
 
+
             .经验{display:flex;}
             .经验{flex-direction:column;}
-            .经验{justify-content: space-between;}
 
-                .人格{display:flex;}
-                .人格{flex-direction:row;}
+                .天地阴阳{display:flex;}
+                .天地阴阳{flex-direction:column;}
+                .天地阴阳{justify-content: space-between;}
+
+                    .人格{display:flex;}
+                    .人格{flex-direction:row;}
 
 
 
