@@ -110,6 +110,7 @@ body{margin: 0;}
     .全{width: 100vw;}
         .经验{width: 70vw;}
         .模式{width: 30vw;}
+        .地图 table {width: 100%;}
 
 /*width:100%;*/
 
@@ -123,8 +124,8 @@ body{margin: 0;}
 .下{width: 100%;}
 */
 
-
 .空1{height: 50%;}
+/*.地图{min-height:365px;}*/
 /*.时间{height: 200px;}
 /*body{height: 100vh;}*/
 /*.人生{height: 365px;}*/
