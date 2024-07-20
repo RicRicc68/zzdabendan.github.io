@@ -72,7 +72,7 @@ body{margin: 0;}
         width: 100%;
       }
 
-
+.人生{float: left;}
 
 
 .片{width: 9vw;}
@@ -97,25 +97,28 @@ body{margin: 0;}
 
 
 .大{margin: auto;}
-.全{margin-top: 165.5px;}
-.上{margin: 5px 5px 0px 5px;}
-.感觉{margin: auto;}
-.下{margin: 5px 5px 5px 5px;}
-.经验{margin: 5px 0px 5px 0px;}
+    .全{margin-top: 165.5px;}
+        .上{margin: 5px 5px 0px 5px;}
+            .感觉{margin: auto;}
+        .下{margin: 5px 5px 5px 5px;}
+            .经验{margin: 5px 0px 5px 0px;}
 
 
 .全{border-radius: 5px 5px 5px 5px;}
-.上{border-radius: 5px 5px 5px 5px;}
-.下{border-radius: 5px 5px 5px 5px;}
-.经验{border-radius: 5px 5px 5px 5px;}
-.模式{border-radius: 5px 5px 5px 5px;}
+    .上{border-radius: 5px 5px 5px 5px;}
+    .下{border-radius: 5px 5px 5px 5px;}
+        .经验{border-radius: 5px 5px 5px 5px;}
+        .模式{border-radius: 5px 5px 5px 5px;}
 
 
 .大{background-color: #ddd;}
 .大{background-color: #111;}
+.人生{background-color: black;}
+
 
 
 .上{color: white;}
+.人生{color: white;}
 .时间{color: #fff;}
 
 /*
