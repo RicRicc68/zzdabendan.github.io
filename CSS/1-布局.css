@@ -111,8 +111,13 @@ body{margin: 0;}
 
 
 .大{background-color: #ddd;}
-.上{background-color: #f3f3f3;}
+
+
+
 .大{background-color: #111;}
 .上{color: white;}
 .时间{color: #fff;}
+
+/*
 .上{color: #000;}
+.上{background-color: #f3f3f3;}*/
