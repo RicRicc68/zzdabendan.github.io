@@ -2,4 +2,4 @@
 
 .人生{background-repeat:no-repeat;}
 .人生{background-position: center bottom; /* 水平居中，垂直底部对齐 */}
-.人生{background-size:cover;}
+.人生{background-size:contain;}
