@@ -60,7 +60,8 @@ body{margin: 0;}
         .下{display: flex;}
         .下{flex-direction: column;}
 
-
+            .人格{display:flex;}
+            .人格{flex-direction:row;}
 
 
 
@@ -98,6 +99,9 @@ body{margin: 0;}
 .片{width: 9vw;}
 .经验{width: 70vw;}
 .模式{width: 30vw;}
+
+/*width:100%;*/
+
 /*
 .身体{width: 100%;}
 .大{width: 100vw;}
@@ -133,6 +137,8 @@ table{padding: 0;}
 tr{padding: 0;}
 td{padding: 0;}
 
+.人格 p {margin:auto;}
+.人格 p {padding:auto;}
 
 
 .全{border-radius: 5px 5px 5px 5px;}
@@ -145,14 +151,18 @@ td{padding: 0;}
 .大{background-color: #ddd;}
 .大{background-color: #111;}
 .人生{background-color: black;}
+.经验{background-color:#002060;}
 
 
 
 .上{color: white;}
 .人生{color: white;}
 .时间{color: #fff;}
+.经验{color:#ffffff;}
+
 
 /*
 .上{color: #000;}
 .上{background-color: #f3f3f3;}
 */
+
