@@ -24,7 +24,7 @@
 body{display: flex;}
 body{justify-content: center;}
 body{align-items: center;}
-body{height: 100vh;}
+
 body{margin: 0;}
 
 .大{display: flex;}
@@ -86,8 +86,10 @@ body{margin: 0;}
 .下{width: 100%;}
 */
 
+
 .空1{height: 50%;}
 
+/*body{height: 100vh;}*/
 /*.人生{height: 365px;}*/
 /*.人生时间轴的 td{height: 6px;}*/
 
