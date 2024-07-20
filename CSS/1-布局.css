@@ -90,8 +90,24 @@ body{margin: 0;}
       }
   
 
-        
-        .上{float: left;}
+      .模式 {
+        position: absolute;
+        z-index: 50;
+        right: 0;
+        top: 235.5px;
+
+      }
+      
+      .经验 {
+        position: absolute;
+        z-index: 51;
+        left: 0;
+        top: 335.5px;
+
+      }
+
+      .上{z-index: 52;}
+      /*.上{float: left;}*/
         
 
 
@@ -109,7 +125,7 @@ body{margin: 0;}
     .片{width: 9vw;}
     .全{width: 100vw;}
         .经验{width: 70vw;}
-        .模式{width: 30vw;}
+        .模式{width: 100vw;}
         .地图 table {width: 100%;}
 
 /*width:100%;*/
