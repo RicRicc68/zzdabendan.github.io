@@ -1,5 +1,10 @@
-.人生周期 td { border: solid 1px white;}
-
 .人生{background-repeat:no-repeat;}
 .人生{background-position: center bottom; /* 水平居中，垂直底部对齐 */}
 .人生{background-size:contain;}
+
+
+
+
+.人生周期 td { border: solid 1px #003300;}
+.一天时间轴 table { border: solid 1px #003300;}
+
