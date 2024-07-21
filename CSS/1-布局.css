@@ -27,40 +27,37 @@ body{display: flex;}
 body{justify-content: center;}
 body{align-items: center;}
 
+    .大{display: flex;}
+    .大{flex-direction: column;}
+
+        .全{display: flex;}
+        .全{flex-direction: column;}
+
+            .上{display: flex;}
+            .上{flex-direction: row;}
+
+                .身左{display: flex;}
+                .身左{flex-direction: column;}
+
+                .身右{display: flex;}
+                .身右{flex-direction: column;}
+
+                    .感下{display: flex;}
+                    .感下{flex-direction: row;}
+
+            .下{display: flex;}
+            .下{flex-direction: column;}
 
 
-.大{display: flex;}
-.大{flex-direction: column;}
+                .经验{display:flex;}
+                .经验{flex-direction:column;}
 
-    .全{display: flex;}
-    .全{flex-direction: column;}
+                    .天地阴阳{display:flex;}
+                    .天地阴阳{flex-direction:column;}
+                    .天地阴阳{justify-content: space-between;}
 
-        .上{display: flex;}
-        .上{flex-direction: row;}
-
-            .身左{display: flex;}
-            .身左{flex-direction: column;}
-
-            .身右{display: flex;}
-            .身右{flex-direction: column;}
-
-                .感下{display: flex;}
-                .感下{flex-direction: row;}
-
-        .下{display: flex;}
-        .下{flex-direction: column;}
-
-
-            .经验{display:flex;}
-            .经验{flex-direction:column;}
-
-                .天地阴阳{display:flex;}
-                .天地阴阳{flex-direction:column;}
-                .天地阴阳{justify-content: space-between;}
-
-                    .人格{display:flex;}
-                    .人格{flex-direction:row;}
-
+                        .人格{display:flex;}
+                        .人格{flex-direction:row;}
 
 
 
@@ -68,53 +65,49 @@ body{align-items: center;}
 
 
 
-    .时间 {
-        position: fixed;
-        z-index: 50;
-        left: 0;
-        top: 0.05rem;
-        width: 100%;
-      }
 
-    .地图 {
-        position: fixed;
-        z-index: 50;
-        left: 0;
-        bottom: 0.05rem;
-        width: 100%;
-      }
 
-      .人生 {
-        position: absolute;
-        z-index: 51;
-        left: 0;
-        top: 135.5px;
-        width: 100%;
-      }
-  
+.时间 {position: fixed;}
+.时间 {left: 0;}
+.时间 {top: 0.05rem;}
+.时间 {width: 100%;}
 
-      .模式 {
-        position: absolute;
-        z-index: 50;
-        left: 0;
-        top: 135.5px;
+.地图 {position: fixed;}
+.地图 {left: 0;}
+.地图 {bottom: 0.05rem;}
+.地图 {width: 100%;}
 
-      }
-      
-      .经验 {
-        position: absolute;
-        z-index: 51;
-        right: 0;
-        top: 236.5px;
+.人生 {position: absolute;}
+.人生 {left: 0;}
+.人生 {top: 135.5px;}
+.人生 {width: 100%;}
 
-      }
+.模式 {position: absolute;}
+.模式 {left: 0;}
+.模式 {top: 135.5px;}
 
-      .上{z-index: 52;}
-      /*.上{float: left;}*/
+.经验 {position: absolute;}
+
+.经验 {right: 0;}
+.经验 {top: 236.5px;}
+
+
+
+.时间 {z-index: 50;}
+
+.人生 {z-index: 51;}
+.模式 {z-index: 50;}
+.经验 {z-index: 51;}
+.上   {z-index: 52;}
+
+.地图 {z-index: 50;}
+
+/*.上{float: left;}*/
         
 
 
-/*宽度计算  
+/*
+宽度计算  ========================================
         屏幕像素 = 1080px/？？？DPI
                 视窗 = 393px
                     html = 
@@ -122,7 +115,10 @@ body{align-items: center;}
                             div大 = 
                                 div小 = 
                                     div细 
+==================================================
 */
+
+
 /*
 .身体{width: 100%;}
 .大{width: 100vw;}
