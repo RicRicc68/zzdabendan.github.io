@@ -141,7 +141,10 @@ body{align-items: center;}
 
 */
 
-
+/*
+    .人生时间轴 table {width: 100%;}
+    .一天时间轴 table {width: 100%;}
+*/
 
 .大{width: 100vw;}
     .片{width: 9vw;}
@@ -156,9 +159,12 @@ body{align-items: center;}
 
         .经验{width: 45vw;}
         .模式{width: 100vw;}
+        .时间{width: 100%;}
+
         .地图 table {width: 100%;}
-        .人生时间轴 table {width: 100%;}
-        .一天时间轴 table {width: 100%;}
+
+
+
         
 
 
