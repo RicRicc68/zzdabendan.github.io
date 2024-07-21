@@ -96,7 +96,7 @@ body{align-items: center;}
 
       .人生 {
         position: absolute;
-        z-index: 52;
+        z-index: 51;
         left: 0;
         top: 135.5px;
         width: 100%;
@@ -194,6 +194,7 @@ body{margin: 0;}
 .大{background-color: #111;}
 /**/.人生{background-color: #ddd;}
 .经验{background-color:#002060;}
+.上{background-color:#610522;}
 
 
 
