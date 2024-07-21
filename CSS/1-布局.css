@@ -178,6 +178,7 @@ body{align-items: center;}
             .地图 table {width: 100%;}
         .经验{width: 45vw;}
         .模式{width: 100vw;}
+            .模式 table {width: 100%;}
 
 
 
@@ -240,6 +241,7 @@ body{margin: 0;}
     .上{border-radius: 5px 5px 5px 5px;}
     .下{border-radius: 5px 5px 5px 5px;}
         .时间{border-radius: 5px 5px 5px 5px;}
+        .人生{border-radius: 5px 5px 5px 5px;}
         .经验{border-radius: 5px 5px 5px 5px;}
         .模式{border-radius: 5px 5px 5px 5px;}
 
