@@ -87,8 +87,14 @@ body{align-items: center;}
 .模式 {left: 0.5rem;}
 
     .时间 {top: 0.1rem;}
-    .人生 {top: 165.5px;}
-    .模式 {top: 175.5px;}
+    .人生 {top: 3rem;}
+    .模式 {top: 3.5rem;}
+
+    /*
+    .人生 {top: 165.5rem;}
+    .模式 {top: 175.5rem;}
+    */
+
     .经验 {top: 236.5px;}
 
         .经验 {right: 0;}
