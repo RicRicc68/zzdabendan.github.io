@@ -32,8 +32,6 @@ body{align-items: center;}
 .大{display: flex;}
 .大{flex-direction: column;}
 
-    .片{color: white;}
-
     .全{display: flex;}
     .全{flex-direction: column;}
 
@@ -42,22 +40,12 @@ body{align-items: center;}
 
             .身左{display: flex;}
             .身左{flex-direction: column;}
-            .身左{flex-grow: 3;}
-
-            .身体{flex-grow: 5;}
 
             .身右{display: flex;}
             .身右{flex-direction: column;}
-            .身右{flex-grow: 1;}
 
                 .感下{display: flex;}
                 .感下{flex-direction: row;}
-                .感觉{flex-grow: 1;}
-                .感下{flex-grow: 1;}
-
-                    .中{flex-grow: 1;}
-                    .空2{flex-grow: 0;}
-                    .右{flex-grow: 1;}
 
         .下{display: flex;}
         .下{flex-direction: column;}
@@ -135,21 +123,6 @@ body{align-items: center;}
                                 div小 = 
                                     div细 
 */
-
-.大{width: 100vw;}
-    .片{width: 9vw;}
-    .全{width: 100vw;}
-
-    .身左{width: 16.666%;}
-    .身体{width: 33.332%;}
-    .身右{width: 49.998%;}
-
-        .经验{width: 45vw;}
-        .模式{width: 100vw;}
-        .地图 table {width: 100%;}
-        .时间 table {width: 100%;}
-
-
 /*
 .身体{width: 100%;}
 .大{width: 100vw;}
@@ -158,16 +131,38 @@ body{align-items: center;}
 
 .上{width: 100%;}
 .下{width: 100%;}
+
+.身左{flex-grow: 3;}
+.身体{flex-grow: 5;}
+.身右{flex-grow: 1;}
+
+.感觉{flex-grow: 1;}
+.感下{flex-grow: 1;}
+
+    .中{flex-grow: 1;}
+    .空2{flex-grow: 0;}
+    .右{flex-grow: 1;}
+
 */
 
 
-      .上{height: 400px;}
-      .感觉{height: 50%;}
-      /*.感下{flex-grow: 1;}*/
-        .空1{height: 50%;}
-        .人生{height: 63%;}
-        .经验{height: 25em;}
-        .模式{height: 63%;}
+
+.大{width: 100vw;}
+    .片{width: 9vw;}
+    .全{width: 100vw;}
+
+        .身左{width: 16.666%;}
+        .身体{width: 33.332%;}
+        .身右{width: 49.998%;}
+            .中{width: 45%;}
+            .空2{width: 10%;}
+            .右{width: 45%;}
+
+        .经验{width: 45vw;}
+        .模式{width: 100vw;}
+        .地图 table {width: 100%;}
+        .时间 table {width: 100%;}
+
 
 
 /*
@@ -178,6 +173,18 @@ body{height: 100vh;}
 */
 
  
+
+      .上{height: 400px;}
+      .感觉{height: 50%;}
+      .感下{height: 50%;}
+        .空1{height: 50%;}
+        .人生{height: 63%;}
+        .经验{height: 25em;}
+        .模式{height: 63%;}
+
+
+
+
 
 body{margin: 0;}
     .大{margin: auto;}
@@ -211,7 +218,7 @@ body{margin: 0;}
 .右{background-color:#610522;}
 
 
-
+.片{color: white;}
 .上{color: white;}
 .人生{color: white;}
 .时间{color: #fff;}
