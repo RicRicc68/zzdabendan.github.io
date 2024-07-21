@@ -139,6 +139,11 @@ body{align-items: center;}
 .大{width: 100vw;}
     .片{width: 9vw;}
     .全{width: 100vw;}
+
+    .身左{width: 16.666%;}
+    .身体{width: 33.332%;}
+    .身右{width: 49.998%;}
+
         .经验{width: 45vw;}
         .模式{width: 100vw;}
         .地图 table {width: 100%;}
