@@ -87,7 +87,7 @@ body{align-items: center;}
 .模式 {left: 0.5rem;}
 
     .时间 {top: 0.1rem;}
-    .人生 {top: 3rem;}
+    .人生 {top: 2.9rem;}
     .模式 {top: 3.5rem;}
 
     /*
@@ -239,24 +239,30 @@ body{margin: 0;}
         .时间{border-radius: 5px 5px 5px 5px;}
         .经验{border-radius: 5px 5px 5px 5px;}
         .模式{border-radius: 5px 5px 5px 5px;}
+
+
+
+
+
+
+
 /*=============================================================
 
+.大{background-color: #ddd;}
+    .上{background-color:#610522;}
+        .模式{background-color:#F40002;}
 ===============================================================
 */
 
-
-
-.大{background-color: #ddd;}
 .大{background-color: #111;}
-.人生{background-color: #ddd;}
-.时间{background-color: #FFFF99;}
-.经验{background-color:#002060;}
-.模式{background-color:#F40002;}
-/*
-.上{background-color:#610522;}*/
-.过去总结{background-color:#610522;}
-.现在念头{background-color:#610522;}
-.未来规划{background-color:#610522;}
+    .过去总结{background-color:#610522;}
+    .现在念头{background-color:#610522;}
+    .未来规划{background-color:#610522;}
+        .人生{background-color:#ddd;}
+        .时间{background-color:#FFFF99;}
+        .经验{background-color:#002060;}
+
+
 /*=============================================================
 
 ===============================================================
