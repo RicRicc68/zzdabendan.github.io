@@ -177,7 +177,7 @@ body{align-items: center;}
         .地图{width: 100%;}
             .地图 table {width: 100%;}
         .经验{width: 45vw;}
-        .模式{width: 100vw;}
+        .模式{width: 96vw;}
             .模式 table {width: 100%;}
 
 
@@ -259,7 +259,7 @@ body{margin: 0;}
 ===============================================================
 */
 
-.大{background-color: #111;}
+.大{background-color: #010101;}
     .过去总结{background-color:#610522;}
     .现在念头{background-color:#610522;}
     .未来规划{background-color:#610522;}
