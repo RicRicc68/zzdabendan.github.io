@@ -23,64 +23,57 @@
 
 
 body{margin: 0;}
+    div{margin: 0;}
+    table{margin: 0;}
+    tr{margin: 0;}
+    td{margin: 0;}
+    dl{margin: 0;}
+    dt{margin: 0;}
+    dd{margin: 0;}
+    ul{margin: 0;}
+        h1{margin: 0;}
+        h2{margin: 0;}
+        h3{margin: 0;}
+        h4{margin: 0;}
+        h5{margin: 0;}
+        h6{margin: 0;}
+
+/*===================================*/
 body{padding: 0;}
-body{font-size: 0.16rem;}
+    div{padding: 0;}
+    table{padding: 0;}
+    tr{padding: 0;}
+    td{padding: 0;}
+    dl{padding: 0;}
+    dt{padding: 0;}
+    dd{padding: 0;}
+    ul{padding: 0;}
+        h1{padding: 0;}
+        h2{padding: 0;}
+        h3{padding: 0;}
+        h4{padding: 0;}
+        h5{padding: 0;}
+        h6{padding: 0;}
+
+
 /*body{font-family: sans-serif;}*/
-body{font-family: Arial,sans-serif;}
-
-div{margin: 0;}
-div{padding: 0;}
-div{font-size: 0.16rem;}
-
-ul{margin: 0;}
-ul{padding: 0;}
-ul{font-size: 0.16rem;}
-
-table{margin: 0;}
-table{padding: 0;}
-table{font-size: 0.16rem;}
-
-h1{margin: 0;}
-h2{margin: 0;}
-h3{margin: 0;}
-h4{margin: 0;}
-h5{margin: 0;}
-h6{margin: 0;}
-table{margin: 0;}
-tr{margin: 0;}
-td{margin: 0;}
-
-h1{padding: 0;}
-h2{padding: 0;}
-h3{padding: 0;}
-h4{padding: 0;}
-h5{padding: 0;}
-h6{padding: 0;}
-table{padding: 0;}
-tr{padding: 0;}
-td{padding: 0;}
-
-dl{margin: 0;}
-dl{padding: 0;}
-
-dt{margin: 0;}
-dt{padding: 0;}
-
-dd{margin: 0;}
-dd{padding: 0;}
-
-
-
 html {font-size: 50px;}
+body{font-family: Arial,sans-serif;}
+body{font-size: 0.16rem;}
+    div{font-size:0.16rem;}
+    table{font-size: 0.16rem;}
+    ul{font-size: 0.12rem;}
+        h1{font-size: 0.26rem;}
+        h2{font-size: 0.18rem;}
+        h3{font-size: 0.16rem;}
+        h4{font-size: 0.14rem;}
+        h5{font-size: 0.12rem;}
+        h6{font-size: 0.10rem;}
+        p {font-size: 0.12rem;}
 
-h1{font-size: 0.26rem;}
-h2{font-size: 0.18rem;}
-h3{font-size: 0.16rem;}
-h4{font-size: 0.14rem;}
-h5{font-size: 0.12rem;}
-h6{font-size: 0.10rem;}
-p {font-size: 0.12rem;}
-ul{font-size: 0.12rem;}
+
+
+
 
 table{table-layout: fixed; /*宽度自动调整*/}
 td{vertical-align:top;}
@@ -89,11 +82,9 @@ td{vertical-align:top;}
 *{overflow:auto;}
 *{white-space:nowrap;}
 
-
 a:link      { color: wheat;} /* unvisited link 未被访问的链接 */
 a:visited   { color: wheat;} /* visited link 已被访问的链接 */
 a:hover     { color: yellow} /* mouse over link 将鼠标悬停在链接上 */
 a:active    { color: blue;}  /* selected link 被选择的链接 */
     
 ul{list-style-type: none;}
-
