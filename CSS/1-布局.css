@@ -162,6 +162,8 @@ body{align-items: center;}
 
 
       .上{height: 400px;}
+      .感觉{height: 50%;}
+      /*.感下{flex-grow: 1;}*/
         .空1{height: 50%;}
         .人生{height: 63%;}
         .经验{height: 25em;}
