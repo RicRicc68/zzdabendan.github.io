@@ -40,13 +40,6 @@ table{margin: 0;}
 table{padding: 0;}
 table{font-size: 0.16rem;}
 
-/*
-img{background-size:contain;}
-img{background-size:cover;}
-*/
-
-
-
 h1{margin: 0;}
 h2{margin: 0;}
 h3{margin: 0;}
@@ -66,6 +59,15 @@ h6{padding: 0;}
 table{padding: 0;}
 tr{padding: 0;}
 td{padding: 0;}
+
+dl{margin: 0;}
+dl{padding: 0;}
+
+dt{margin: 0;}
+dt{padding: 0;}
+
+dd{margin: 0;}
+dd{padding: 0;}
 
 
 
