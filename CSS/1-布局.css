@@ -161,9 +161,9 @@ body{align-items: center;}
     .一天时间轴 table {width: 100%;}
 */
 
-.大{width: 100vw;}
+.大{width: 100%;}
     .片{width: 9vw;}
-    .全{width: 100vw;}
+    .全{width: 100%;}
 
         .身左{width: 16.666%;}
         .身体{width: 33.332%;}
