@@ -161,6 +161,7 @@ body{align-items: center;}
 /*
     .人生时间轴 table {width: 100%;}
     .一天时间轴 table {width: 100%;}
+            .模式{width: 93vw;}
 */
 
 .大{width: 105%;}
@@ -179,7 +180,7 @@ body{align-items: center;}
         .地图{width: 100%;}
             .地图 table {width: 100%;}
         .经验{width: 45vw;}
-        .模式{width: 93vw;}
+
             .模式 table {width: 100%;}
 
 
@@ -190,26 +191,19 @@ body{align-items: center;}
 
         
 /*=============================================================
-
+body{height: 100vh;}
+    .人生{height: 63%;}
+        .人生时间轴的 td{height: 6px;}
+    .时间{height: 200px;}
+    .地图{min-height:365px;}
 ===============================================================
 */
-
-
-/*
-.地图{min-height:365px;}
-.时间{height: 200px;}
-body{height: 100vh;}
-.人生时间轴的 td{height: 6px;}
-*/
-
- 
-
       .上{height: 400px;}
       .感觉{height: 50%;}
       .感下{height: 50%;}
         .空1{height: 50%;}
         .中{height: 50%;}
-        .人生{height: 63%;}
+
         .经验{height: 25em;}
         .模式{height: 63%;}
 
@@ -226,7 +220,7 @@ body{margin: 0;}
         .全{margin-top: 265.5px;}
             .上{margin: 5px 5px 0px 5px;}
                 .感觉{margin: auto;}
-            .下{margin: 5px 5px 185px 5px;}
+            .下{margin: 5px 5px 5 5px;}
                 .经验{margin: 5px 0px 5px 0px;}
                 .人生{margin: 5px 5px 5px 5px;}
 
