@@ -192,14 +192,16 @@ body{align-items: center;}
         
 /*=============================================================
 body{height: 100vh;}
-    .人生{height: 63%;}
-        .人生时间轴的 td{height: 6px;}
-    .时间{height: 200px;}
-    .地图{min-height:365px;}
-    .模式{height: 63%;}
+
+    .上{height: 400px;}
+        .人生{height: 63%;}
+            .人生时间轴的 td{height: 6px;}
+        .时间{height: 200px;}
+        .地图{min-height:365px;}
+        .模式{height: 63%;}
 ===============================================================
 */
-      .上{height: 400px;}
+
       .感觉{height: 50%;}
       .感下{height: 50%;}
         .空1{height: 50%;}
