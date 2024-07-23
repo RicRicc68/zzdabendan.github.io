@@ -74,8 +74,9 @@ body{font-size: 0.16rem;}
 
 
 
+/*
+table{table-layout: fixed; }/*宽度自动调整*/
 
-table{table-layout: fixed; /*宽度自动调整*/}
 td{vertical-align:top;}
 
 *{text-align:center;}
