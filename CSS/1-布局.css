@@ -61,7 +61,18 @@ body{align-items: center;}
 
                         .人格{display:flex;}
                         .人格{flex-direction:row;}
-
+                
+                    .模式{display: flex;}
+                    .模式{flex-direction:column;}
+                        .基础{display: flex;}
+                        .基础{flex-direction:row;}
+                        .基础{width: 80vw;}
+                            .基础1{flex-grow: 1;}
+                            .基础2{flex-grow: 1;}
+                            .基础3{flex-grow: 1;}
+                            .基础1{width: 20%;}
+                            .基础2{width: 20%;}
+                            .基础3{width: 60%;}
 
 
 
