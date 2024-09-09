@@ -108,19 +108,20 @@ body{background-color: #CCFF99;}
                                 .div0-现在{margin: 0px 10px 10px 10px;}
                                 .div0-现在{display: flex;}
                                 .div0-现在{flex-direction: row;}
-                                        .div0-直播1{flex-grow: 1;}
-                                        .div0-直播1{flex-grow: 1;}
+                                        
                                         .div0-直播1{background-color: #CCFFFF}
+                                        .div0-直播1{flex-grow: 1;}
+                                        /*.div0-直播1{flex-grow: 1;}*/
                                         .div0-直播1{margin: 10px 10px 10px 10px;}
 
-                                        .div0-直播2{flex-grow: 1;}
-                                        .div0-直播2{flex-grow: 1;}
                                         .div0-直播2{background-color: #CCFFFF}
+                                        .div0-直播2{flex-grow: 1;}
+                                        /*.div0-直播2{flex-grow: 1;}*/
                                         .div0-直播2{margin: 10px 10px 10px 0px;}
 
-                                        .div0-直播3{flex-grow: 1;}
-                                        .div0-直播3{flex-grow: 1;}
                                         .div0-直播3{background-color: #CCFFFF}
+                                        .div0-直播3{flex-grow: 1;}
+                                        /*.div0-直播3{flex-grow: 1;}*/
                                         .div0-直播3{margin: 10px 10px 10px 0px;}
 
                 
