@@ -123,6 +123,8 @@ body{background-color: #CCFF99;}
                                         .div0-直播1{margin: 10px 10px 10px 10px;}
 
                                         .直播间{margin: 0 0 0 0;}
+                                        .直播间{border-radius: 100%;}
+
 
                                         .div0-直播2{background-color: #CCFFFF}
                                         .div0-直播2{flex-grow: 1;}
