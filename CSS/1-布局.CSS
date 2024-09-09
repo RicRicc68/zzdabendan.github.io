@@ -29,6 +29,7 @@ ul{display: flex;}
 ul{flex-direction: column;}
 ul{height: 100%;}
 li{flex-grow: 1;}
+li{margin: auto;}
 
 html{background-color: #CCFF99;}
 body{background-color: #CCFF99;}
