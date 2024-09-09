@@ -84,8 +84,10 @@ body{background-color: #CCFF99;}
                                 .div0-信息{background-color: #CCCCFF;}
                                 /*.div0-信息{width: 70%;}*/
                                 .div0-信息{flex-grow: 1;}
-                                .div0-信息{height: 10%;}
+                                .div0-信息{height: 30%;}
                                 .div0-信息{margin: 0px 10px 10px 10px;}
+                                .div0-信息{display: flex;}
+                                .div0-信息{flex-direction: row;}
 
                                 .div0-成绩{background-color: #CCCCFF;}
                                 /*.div0-成绩{width: 70%;}*/
@@ -110,7 +112,7 @@ body{background-color: #CCFF99;}
                                 .div0-现在{background-color: #CCCCFF}
                                 /*.div0-现在{width: 90%;}*/
                                 .div0-现在{flex-grow: 1;}
-                                .div0-现在{height: 10%;}
+                                .div0-现在{height: 30%;}
                                 .div0-现在{margin: 0px 10px 10px 10px;}
                                 .div0-现在{display: flex;}
                                 .div0-现在{flex-direction: row;}
@@ -119,6 +121,8 @@ body{background-color: #CCFF99;}
                                         .div0-直播1{flex-grow: 1;}
                                         /*.div0-直播1{flex-grow: 1;}*/
                                         .div0-直播1{margin: 10px 10px 10px 10px;}
+
+                                        .直播间{margin: 0 0 0 0;}
 
                                         .div0-直播2{background-color: #CCFFFF}
                                         .div0-直播2{flex-grow: 1;}
