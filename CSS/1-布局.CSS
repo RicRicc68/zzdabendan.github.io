@@ -1,0 +1,122 @@
+/*
+.div0-main{}
+    .div0-时间{}
+    .div0-经验{}
+    .div0-天地{}
+*/
+
+div{border: solid 1px #f00;}
+
+.div0-main{width: 100%;}
+.div0-main{background-color: #cccccc;}
+.div0-main{height: 100%;}
+.div0-main{display: flex;}
+.div0-main{flex-direction: row;}
+.div0-main{margin: 0px 0px 300px 0px;}
+
+.div0-时间{width: 30%;}
+.div0-时间{height: 2000px;}
+.div0-时间{background-color: #cc9999;}
+
+.div0-竖轴{width: 95%;}
+.div0-竖轴{height: 95%;}
+.div0-竖轴{background-color: #ffffff;}
+.div0-竖轴{margin: 20px 20px 20px 20px;}
+
+
+
+
+.div0-经验{width: 70%;}
+.div0-经验{height: 2000px;}
+.div0-经验{background-color: #ffff99;}
+.div0-经验{display: flex;}
+.div0-经验{flex-direction: row;}
+
+
+        .div0-阶段{width: 20%;}
+        .div0-阶段{height: 95%;}
+        .div0-阶段{background-color: #ffffff;}
+        .div0-阶段{margin: 20px 20px 20px 20px;}
+
+        .div0-样貌{width: 10%;}
+        .div0-样貌{height: 95%;}
+        .div0-样貌{background-color: #ffffff}
+        .div0-样貌{margin: 20px 20px 20px 20px;}
+        .div0-样貌{display: flex;}
+        .div0-样貌{flex-direction: column;}
+
+                .div0-模型{width: 80%;}
+                .div0-模型{height: 50%;}
+                .div0-模型{background-color: #000000;}
+                .div0-模型{margin: 20px 20px 20px 20px;}
+
+                .div0-信息{width: 80%;}
+                .div0-信息{height: 10%;}
+                .div0-信息{background-color: #000000;}
+                .div0-信息{margin: 20px 20px 20px 20px;}
+
+                .div0-成绩{width: 80%;}
+                .div0-成绩{height: 40%;}
+                .div0-成绩{background-color: #000000;}
+                .div0-成绩{margin: 20px 20px 20px 20px;}
+
+
+        .div0-内心{width: 70%;}
+        .div0-内心{height: 95%;}
+        .div0-内心{background-color: #ffffff}
+        .div0-内心{margin: 20px 20px 20px 20px;}
+        .div0-内心{display: flex;}
+        .div0-内心{flex-direction: column;}
+
+                .div0-过去{width: 90%;}
+                .div0-过去{height: 50%;}
+                .div0-过去{background-color: #ffffff}
+                .div0-过去{margin: 20px 20px 20px 20px;}
+
+                .div0-现在{width: 90%;}
+                .div0-现在{height: 10%;}
+                .div0-现在{background-color: #ffffff}
+                .div0-现在{margin: 20px 20px 20px 20px;}
+
+                        div0-直播{}
+                        div0-{}
+                        div0-{}
+
+                .div0-未来{width: 90%;}
+                .div0-未来{height: 40%;}
+                .div0-未来{background-color: #ffffff}
+                .div0-未来{margin: 20px 20px 20px 20px;}
+
+
+
+
+.div0-天地{width: 70%;}
+.div0-天地{height: 20%;}
+.div0-天地{background-color: #666699;}
+
+.div0-天地{position: fixed;}
+.div0-天地{right: 0;}
+.div0-天地{bottom: 0;}
+
+
+        .div0-房间-物品{width: 95%;}
+        .div0-房间-物品{height: 10%;}
+        .div0-房间-物品{background-color: #ffffff;}
+        .div0-房间-物品{margin: 20px 20px 20px 20px;}
+
+        .div0-小区-楼房{width: 95%;}
+        .div0-小区-楼房{height: 10%;}
+        .div0-小区-楼房{background-color: #ffffff;}
+        .div0-小区-楼房{margin: 20px 20px 20px 20px;}
+
+        .div0-行政-区划{width: 95%;}
+        .div0-行政-区划{height: 10%;}
+        .div0-行政-区划{background-color: #ffffff;}
+        .div0-行政-区划{margin: 20px 20px 20px 20px;}
+
+        .div0-地理-世界{width: 95%;}
+        .div0-地理-世界{height: 10%;}
+        .div0-地理-世界{background-color: #ffffff;}
+        .div0-地理-世界{margin: 20px 20px 20px 20px;}
+
+
