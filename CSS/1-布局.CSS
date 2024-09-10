@@ -22,7 +22,7 @@ div0-main
                 div0-地理-世界
 */
 
-div{border: solid 1px #CCFF99;}
+div{border: solid 0px #CCFF99;}
 div{border-radius: 5px;}
 
 ul{display: flex;}
@@ -45,13 +45,13 @@ body{background-color: #CCFF99;}
                 /*.div0-时间{width: 30%;}*/
                 .div0-时间{flex-grow: 256;}
                 .div0-时间{height: 2000px;}
-                .div0-时间{margin: 2px 2px 2px 2px;}
+                .div0-时间{margin: 2px 0px 2px 2px;}
 
                         .div0-竖轴{background-color: #ffffff;}
                         /*.div0-竖轴{width: 90%;}*/
                         .div0-竖轴{flex-grow: 1;}
                         .div0-竖轴{height: 90%;}
-                        .div0-竖轴{margin: 2px 2px 2px 2px;}
+                        .div0-竖轴{margin: 2px 0px 2px 2px;}
 
                 .div0-经验{background-color: #99CCFF;}
                 /*.div0-经验{width: 70%;}*/
@@ -149,7 +149,7 @@ body{background-color: #CCFF99;}
 
                 .div0-天地{background-color: #99CCFF;}
                 .div0-天地{width: 80%;}
-                .div0-天地{height: 20%;}
+                .div0-天地{height: 16%;}
                 .div0-天地{position: fixed;}
                 .div0-天地{right: 2px;}
                 .div0-天地{bottom: 0px;}
