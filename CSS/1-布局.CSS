@@ -37,7 +37,7 @@ body{background-color: #CCFF99;}
         .div0-main{background-color: #CCFF99;}
         .div0-main{width: 100%;}
         .div0-main{height: 100%;}
-        .div0-main{margin: 0px 0px 55px 0px;}
+        .div0-main{margin: 0px 0px 50px 0px;}
         .div0-main{display: flex;}
         .div0-main{flex-direction: row;}
 
@@ -45,19 +45,19 @@ body{background-color: #CCFF99;}
                 /*.div0-时间{width: 30%;}*/
                 .div0-时间{flex-grow: 256;}
                 .div0-时间{height: 2000px;}
-                .div0-时间{margin: 5px 5px 5px 5px;}
+                .div0-时间{margin: 2px 2px 2px 2px;}
 
                         .div0-竖轴{background-color: #ffffff;}
                         /*.div0-竖轴{width: 90%;}*/
                         .div0-竖轴{flex-grow: 1;}
                         .div0-竖轴{height: 90%;}
-                        .div0-竖轴{margin: 5px 5px 5px 5px;}
+                        .div0-竖轴{margin: 2px 2px 2px 2px;}
 
                 .div0-经验{background-color: #99CCFF;}
                 /*.div0-经验{width: 70%;}*/
                 .div0-经验{flex-grow: 1664;}
                 .div0-经验{height: 2000px;}
-                .div0-经验{margin: 5px 5px 5px 0px;}
+                .div0-经验{margin: 2px 2px 2px 0px;}
                 .div0-经验{display: flex;}
                 .div0-经验{flex-direction: row;}
 
@@ -65,7 +65,7 @@ body{background-color: #CCFF99;}
                         /*.div0-阶段{width: 20%;}*/
                         .div0-阶段{flex-grow: 256;}
                         .div0-阶段{height: 90%;}
-                        .div0-阶段{margin: 5px 5px 5px 5px;}
+                        .div0-阶段{margin: 2px 2px 2px 2px;}
                         .div0-阶段{display: flex;}
                         .div0-阶段{flex-direction: row;}
                             .div0-阶段 ul{flex-grow: 1;}
@@ -75,7 +75,7 @@ body{background-color: #CCFF99;}
                         /*.div0-样貌{width: 10%;}*/
                         .div0-样貌{flex-grow: 256;}
                         .div0-样貌{height: 90%;}
-                        .div0-样貌{margin: 5px 5px 5px 0px;}
+                        .div0-样貌{margin: 2px 2px 2px 0px;}
                         .div0-样貌{display: flex;}
                         .div0-样貌{flex-direction: column;}
 
@@ -83,13 +83,13 @@ body{background-color: #CCFF99;}
                                 /*.div0-模型{width: 70%;}*/
                                 .div0-模型{flex-grow: 1;}
                                 .div0-模型{height: 50%;}
-                                .div0-模型{margin: 5px 5px 5px 5px;}
+                                .div0-模型{margin: 2px 2px 2px 2px;}
 
                                 .div0-信息{background-color: #CCCCFF;}
                                 /*.div0-信息{width: 70%;}*/
                                 .div0-信息{flex-grow: 1;}
                                 .div0-信息{height: 30%;}
-                                .div0-信息{margin: 0px 5px 5px 5px;}
+                                .div0-信息{margin: 0px 2px 2px 2px;}
                                 .div0-信息{display: flex;}
                                 .div0-信息{flex-direction: row;}
 
@@ -97,13 +97,13 @@ body{background-color: #CCFF99;}
                                 /*.div0-成绩{width: 70%;}*/
                                 .div0-成绩{flex-grow: 1;}
                                 .div0-成绩{height: 40%;}
-                                .div0-成绩{margin: 0px 5px 5px 5px;}
+                                .div0-成绩{margin: 0px 2px 2px 2px;}
 
                         .div0-内心{background-color: #ffffff}
                         /*.div0-内心{width: 70%;}*/
                         .div0-内心{flex-grow: 1152;}
                         .div0-内心{height: 90%;}
-                        .div0-内心{margin: 5px 5px 5px 0px;}
+                        .div0-内心{margin: 2px 2px 2px 0px;}
                         .div0-内心{display: flex;}
                         .div0-内心{flex-direction: column;}
 
@@ -111,20 +111,20 @@ body{background-color: #CCFF99;}
                                 /*.div0-过去{width: 90%;}*/
                                 .div0-过去{flex-grow: 1;}
                                 .div0-过去{height: 50%;}
-                                .div0-过去{margin: 5px 5px 5px 5px;}
+                                .div0-过去{margin: 2px 2px 2px 2px;}
 
                                 .div0-现在{background-color: #CCCCFF}
                                 /*.div0-现在{width: 90%;}*/
                                 .div0-现在{flex-grow: 1;}
                                 .div0-现在{height: 30%;}
-                                .div0-现在{margin: 0px 5px 5px 5px;}
+                                .div0-现在{margin: 0px 2px 2px 2px;}
                                 .div0-现在{display: flex;}
                                 .div0-现在{flex-direction: row;}
                                         
                                         .div0-直播1{background-color: #CCFFFF}
                                         .div0-直播1{flex-grow: 1;}
                                         /*.div0-直播1{flex-grow: 1;}*/
-                                        .div0-直播1{margin: 5px 5px 5px 5px;}
+                                        .div0-直播1{margin: 2px 2px 2px 2px;}
 
                                         .直播间{margin: 0 0 0 0;}
                                         .直播间{border-radius: 100%;}
@@ -133,49 +133,49 @@ body{background-color: #CCFF99;}
                                         .div0-直播2{background-color: #CCFFFF}
                                         .div0-直播2{flex-grow: 1;}
                                         /*.div0-直播2{flex-grow: 1;}*/
-                                        .div0-直播2{margin: 5px 5px 5px 0px;}
+                                        .div0-直播2{margin: 2px 2px 2px 0px;}
 
                                         .div0-直播3{background-color: #CCFFFF}
                                         .div0-直播3{flex-grow: 1;}
                                         /*.div0-直播3{flex-grow: 1;}*/
-                                        .div0-直播3{margin: 5px 5px 5px 0px;}
+                                        .div0-直播3{margin: 2px 2px 2px 0px;}
 
                 
                                 .div0-未来{background-color: #CCCCFF}
                                 /*.div0-未来{width: 90%;}*/
                                 .div0-未来{flex-grow: 1;}
                                 .div0-未来{height: 40%;}
-                                .div0-未来{margin: 0px 5px 5px 5px;}
+                                .div0-未来{margin: 0px 2px 2px 2px;}
 
                 .div0-天地{background-color: #99CCFF;}
                 .div0-天地{width: 80%;}
                 .div0-天地{height: 40%;}
                 .div0-天地{position: fixed;}
-                .div0-天地{right: 5px;}
+                .div0-天地{right: 2px;}
                 .div0-天地{bottom: 0px;}
 
                         .div0-房间-物品{background-color: #ffffff;}
                         /*.div0-房间-物品{width: 95%;}*/
                         .div0-房间-物品{flex-grow: 1;}
                         .div0-房间-物品{height: 25%;}
-                        .div0-房间-物品{margin: 5px 5px 5px 5px;}
+                        .div0-房间-物品{margin: 2px 2px 2px 2px;}
 
                         .div0-小区-楼房{background-color: #ffffff;}
                         /*.div0-小区-楼房{width: 95%;}*/
                         .div0-小区-楼房{flex-grow: 1;}
                         .div0-小区-楼房{height: 25%;}
-                        .div0-小区-楼房{margin: 5px 5px 5px 5px;}
+                        .div0-小区-楼房{margin: 2px 2px 2px 2px;}
 
                         .div0-行政-区划{background-color: #ffffff;}
                         /*.div0-行政-区划{width: 95%;}*/
                         .div0-行政-区划{flex-grow: 1;}
                         .div0-行政-区划{height: 25%;}
-                        .div0-行政-区划{margin: 5px 5px 5px 5px;}
+                        .div0-行政-区划{margin: 2px 2px 2px 2px;}
 
                         .div0-地理-世界{background-color: #ffffff;}
                         /*.div0-地理-世界{width: 95%;}*/
                         .div0-地理-世界{flex-grow: 1;}
                         .div0-地理-世界{height: 25%;}
-                        .div0-地理-世界{margin: 5px 5px 5px 5px;}
+                        .div0-地理-世界{margin: 2px 2px 2px 2px;}
 
 
