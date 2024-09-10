@@ -48,6 +48,7 @@ tr{flex-direction: row;}
 td{flex-grow: 1;}
 */
 td{border-right: solid 1px #fff;}
+td{vertical-align: top;}
 
 img{height: 100%;}
 img{object-fit: cover;}
