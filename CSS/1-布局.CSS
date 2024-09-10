@@ -44,7 +44,7 @@ body{background-color: #CCFF99;}
                 .div0-时间{background-color: #99CCFF;}
                 /*.div0-时间{width: 30%;}*/
                 .div0-时间{flex-grow: 256;}
-                .div0-时间{height: 2500px;}
+                .div0-时间{height: 2000px;}
                 .div0-时间{margin: 2px 0px 2px 2px;}
 
                         .div0-竖轴{background-color: #ffffff;}
@@ -56,7 +56,7 @@ body{background-color: #CCFF99;}
                 .div0-经验{background-color: #99CCFF;}
                 /*.div0-经验{width: 70%;}*/
                 .div0-经验{flex-grow: 1664;}
-                .div0-经验{height: 2500px;}
+                .div0-经验{height: 2000px;}
                 .div0-经验{margin: 2px 2px 2px 0px;}
                 .div0-经验{display: flex;}
                 .div0-经验{flex-direction: row;}
