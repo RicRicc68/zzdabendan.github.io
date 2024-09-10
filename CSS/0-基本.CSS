@@ -40,3 +40,6 @@ table{width: 100%;}
 tr{flex-grow: 1;}
 
 *{font-size: 8px;}
+
+img{height: 100%;}
+img{object-fit: cover;}
