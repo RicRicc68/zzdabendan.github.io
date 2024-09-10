@@ -149,7 +149,7 @@ body{background-color: #CCFF99;}
 
                 .div0-天地{background-color: #99CCFF;}
                 .div0-天地{width: 80%;}
-                .div0-天地{height: 20%;}
+                .div0-天地{height: 40%;}
                 .div0-天地{position: fixed;}
                 .div0-天地{right: 5px;}
                 .div0-天地{bottom: 0px;}
@@ -157,25 +157,25 @@ body{background-color: #CCFF99;}
                         .div0-房间-物品{background-color: #ffffff;}
                         /*.div0-房间-物品{width: 95%;}*/
                         .div0-房间-物品{flex-grow: 1;}
-                        .div0-房间-物品{height: 55%;}
+                        .div0-房间-物品{height: 25%;}
                         .div0-房间-物品{margin: 5px 5px 5px 5px;}
 
                         .div0-小区-楼房{background-color: #ffffff;}
                         /*.div0-小区-楼房{width: 95%;}*/
                         .div0-小区-楼房{flex-grow: 1;}
-                        .div0-小区-楼房{height: 5%;}
+                        .div0-小区-楼房{height: 25%;}
                         .div0-小区-楼房{margin: 5px 5px 5px 5px;}
 
                         .div0-行政-区划{background-color: #ffffff;}
                         /*.div0-行政-区划{width: 95%;}*/
                         .div0-行政-区划{flex-grow: 1;}
-                        .div0-行政-区划{height: 5%;}
+                        .div0-行政-区划{height: 25%;}
                         .div0-行政-区划{margin: 5px 5px 5px 5px;}
 
                         .div0-地理-世界{background-color: #ffffff;}
                         /*.div0-地理-世界{width: 95%;}*/
                         .div0-地理-世界{flex-grow: 1;}
-                        .div0-地理-世界{height: 5%;}
+                        .div0-地理-世界{height: 25%;}
                         .div0-地理-世界{margin: 5px 5px 5px 5px;}
 
 
