@@ -12,7 +12,7 @@ ol{padding: 0;}
 ul{padding: 0;}
 li{padding: 0;}
 table{padding: 0;}
-td{padding: 0 0 0 0;}
+td{padding: 0}
 dd{padding: 0;}
 a{padding: 0;}
 
@@ -36,19 +36,28 @@ a{margin: 0;}
 
 
 ul{list-style-type: none; }/* 移除列表项前的默认小圆点 */
+ul{display: flex;}
+ul{flex-direction: column;}
+ul{height: 100%;}
+li{flex-grow: 1;}
+li{margin: auto;}
+
+table{width: 100%;}
+td{width: 100%;}
+tr{width: 100%;}
 
 table{border: solid 0 #000;}
 table{border-collapse: collapse; /* 合并边框 */}
-table{width: 100%;}
 
+td{border-right: solid 1px #fff;}
+td{vertical-align: top;}
+td{white-space: nowrap;}
 /*
 table{overflow: scroll;}
 table{white-space: nowrap;}
-
 table{display: flex;}
 table{flex-direction: column;}
-tr{flex-grow: 1;}
-
+table{table-layout: fixed;}
 tr{flex-grow: 1;}
 tr{display: flex;}
 tr{flex-direction: row;}
@@ -56,24 +65,16 @@ tr{flex-direction: row;}
 td{flex-grow: 1;}
 */
 
-td{border-right: solid 1px #fff;}
-td{vertical-align: top;}
-
-
-
 /*tr:nth-child(odd) td:nth-child(odd) {background-color: #f2f2f2;} 设置奇数单元格的背景颜色 */
 /*tr:nth-child(even) td:nth-child(even) {background-color: #e6e6e6;} 设置偶数单元格的背景颜色 */
 
-table{table-layout: fixed;}
-
-
-img{height: 100%;}
-img{object-fit: cover;}
-
 *{font-size: 16px;}
-h1{font-size: 26px;}
 *{text-align: center;}
-.div0-竖轴 table tr td{font-size: 6px;}
 
+.div0-竖轴 table tr td{font-size: 6px;}
 .div0-竖轴 table {table-layout:auto;}
 .div0-竖轴 table {white-space: nowrap;}
+
+h1{font-size: 26px;}
+img{height: 100%;}
+img{object-fit: cover;}
