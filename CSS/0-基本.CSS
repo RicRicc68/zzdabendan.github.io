@@ -12,7 +12,7 @@ ol{padding: 0;}
 ul{padding: 0;}
 li{padding: 0;}
 table{padding: 0;}
-td{padding: 0;}
+td{padding: 0 0 0 0;}
 dd{padding: 0;}
 a{padding: 0;}
 
@@ -34,11 +34,13 @@ td{margin: 0;}
 dd{margin: 0;}
 a{margin: 0;}
 
+
 ul{list-style-type: none; }/* 移除列表项前的默认小圆点 */
 
 table{border: solid 0 #000;}
 table{border-collapse: collapse; /* 合并边框 */}
 table{width: 100%;}
+
 /*
 table{overflow: scroll;}
 table{white-space: nowrap;}
@@ -68,6 +70,6 @@ table{table-layout: fixed;}
 img{height: 100%;}
 img{object-fit: cover;}
 
-*{font-size: 6px;}
+*{font-size: 16px;}
 h1{font-size: 26px;}
 *{text-align: center;}
