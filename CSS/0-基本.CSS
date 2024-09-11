@@ -39,16 +39,29 @@ ul{list-style-type: none; }/* 移除列表项前的默认小圆点 */
 table{border: solid 0 #000;}
 table{border-collapse: collapse; /* 合并边框 */}
 table{width: 100%;}
+/*
+table{overflow: scroll;}
+table{white-space: nowrap;}
+
+table{display: flex;}
+table{flex-direction: column;}
+tr{flex-grow: 1;}
 
 tr{flex-grow: 1;}
-/*
 tr{display: flex;}
 tr{flex-direction: row;}
 
 td{flex-grow: 1;}
 */
+
 td{border-right: solid 1px #fff;}
 td{vertical-align: top;}
+
+
+
+/*tr:nth-child(odd) td:nth-child(odd) {background-color: #f2f2f2;} 设置奇数单元格的背景颜色 */
+/*tr:nth-child(even) td:nth-child(even) {background-color: #e6e6e6;} 设置偶数单元格的背景颜色 */
+
 
 img{height: 100%;}
 img{object-fit: cover;}
