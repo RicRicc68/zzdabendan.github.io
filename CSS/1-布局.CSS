@@ -42,7 +42,7 @@ html{background-color: #CCFF99;}
 body{background-color: #CCFF99;}
 
         .div0-main{background-color: #CCFF99;}
-        /*.div0-main{width: 100%;}*/
+        .div0-main{width: 1500px;}
         .div0-main{height: 100%;}
         .div0-main{margin: 0px 0px 0px 0px;}
         .div0-main{display: flex;}
