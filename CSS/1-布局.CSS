@@ -54,7 +54,7 @@ body{background-color: #CCFF99;}
                 .div0-时间{background-color: #99CCFF;}
                 /*.div0-时间{width: 30%;}*/
                 .div0-时间{flex-grow: 256;}
-                .div0-时间{height: 2000px;}
+                /*.div0-时间{height: 2000px;}*/
                 .div0-时间{margin: 2px 2px 2px 2px;}
 
                         .div0-竖轴{background-color: #ffffff;}
@@ -66,7 +66,7 @@ body{background-color: #CCFF99;}
                 .div0-经验{background-color: #99CCFF;}
                 /*.div0-经验{width: 70%;}*/
                 .div0-经验{flex-grow: 1664;}
-                .div0-经验{height: 2000px;}
+                /*.div0-经验{height: 2000px;}*/
                 .div0-经验{margin: 2px 2px 2px 0px;}
                 .div0-经验{display: flex;}
                 .div0-经验{flex-direction: row;}
@@ -92,13 +92,13 @@ body{background-color: #CCFF99;}
                                 .div0-模型{background-color: #CCCCFF;}
                                 /*.div0-模型{width: 70%;}*/
                                 .div0-模型{flex-grow: 1;}
-                                .div0-模型{height: 70%;}
+                                /*.div0-模型{height: 70%;}*/
                                 .div0-模型{margin: 2px 2px 2px 2px;}
 
                                 .div0-信息{background-color: #CCCCFF;}
                                 /*.div0-信息{width: 70%;}*/
                                 .div0-信息{flex-grow: 1;}
-                                .div0-信息{height: 15%;}
+                                /*.div0-信息{height: 15%;}*/
                                 .div0-信息{margin: 0px 2px 2px 2px;}
                                 .div0-信息{display: flex;}
                                 .div0-信息{flex-direction: row;}
@@ -106,7 +106,7 @@ body{background-color: #CCFF99;}
                                 .div0-成绩{background-color: #CCCCFF;}
                                 /*.div0-成绩{width: 70%;}*/
                                 .div0-成绩{flex-grow: 1;}
-                                .div0-成绩{height: 15%;}
+                                /*.div0-成绩{height: 15%;}*/
                                 .div0-成绩{margin: 0px 2px 2px 2px;}
 
                         .div0-内心{background-color: #ffffff}
@@ -120,13 +120,13 @@ body{background-color: #CCFF99;}
                                 .div0-过去{background-color: #CCCCFF}
                                 /*.div0-过去{width: 90%;}*/
                                 .div0-过去{flex-grow: 1;}
-                                .div0-过去{height: 70%;}
+                                /*.div0-过去{height: 70%;}*/
                                 .div0-过去{margin: 2px 2px 2px 2px;}
 
                                 .div0-现在{background-color: #CCCCFF}
                                 /*.div0-现在{width: 90%;}*/
                                 .div0-现在{flex-grow: 1;}
-                                .div0-现在{height: 15%;}
+                                /*.div0-现在{height: 15%;}*/
                                 .div0-现在{margin: 0px 2px 2px 2px;}
                                 .div0-现在{display: flex;}
                                 .div0-现在{flex-direction: row;}
@@ -154,7 +154,7 @@ body{background-color: #CCFF99;}
                                 .div0-未来{background-color: #CCCCFF}
                                 /*.div0-未来{width: 90%;}*/
                                 .div0-未来{flex-grow: 1;}
-                                .div0-未来{height: 15%;}
+                                /*.div0-未来{height: 15%;}*/
                                 .div0-未来{margin: 0px 2px 2px 2px;}
 
                 .div0-天地{background-color: #99CCFF;}
