@@ -1,198 +1,80 @@
-/*
-div0-main
+html{padding: 0;}
+body{padding: 0;}
+div{padding: 0;}
+h1{padding: 0;}
+h2{padding: 0;}
+h3{padding: 0;}
+h4{padding: 0;}
+h5{padding: 0;}
+h6{padding: 0;}
+p{padding: 0;}
+ol{padding: 0;}
+ul{padding: 0;}
+li{padding: 0;}
+table{padding: 0;}
+td{padding: 0}
+dd{padding: 0;}
+a{padding: 0;}
 
-        div0-上
-                
-                div0-时间
-                        div0-竖轴
-                        div0-经验
-                                div0-阶段
-                                div0-样貌
-                                div0-模型
-                                div0-信息
-                                div0-成绩
-                div0-内心
-                        div0-过去
-                        div0-现在
-                                .div0-直播1
-                                .div0-直播2
-                                .div0-直播3
-                        div0-未来
+html{margin: 0;}
+body{margin: 0;}
+div{margin: 0;}
+h1{margin: 0;}
+h2{margin: 0;}
+h3{margin: 0;}
+h4{margin: 0;}
+h5{margin: 0;}
+h6{margin: 0;}
+p{margin: 0;}
+ol{margin: 0;}
+ul{margin: 0;}
+li{margin: 0;}
+table{margin: 0;}
+td{margin: 0;}
+dd{margin: 0;}
+a{margin: 0;}
 
 
-        div0-天地
-                div0-房间-物品
-                div0-小区-楼房
-                div0-行政-区划
-                div0-地理-世界
-
-
-*/
-
-div{border: solid 0px #CCFF99;}
-div{border-radius: 5px;}
-
+ul{list-style-type: none; }/* 移除列表项前的默认小圆点 */
 ul{display: flex;}
 ul{flex-direction: column;}
 ul{height: 100%;}
 li{flex-grow: 1;}
 li{margin: auto;}
 
-html{background-color: #CCFF99;}
-body{background-color: #CCFF99;}
+table{width: 100%;}
+td{width: 100%;}
+tr{width: 100%;}
 
-        .div0-main{background-color: #CCFF99;}
-        .div0-main{width: 100%;}
-        .div0-main{height: 100%;}
-        .div0-main{margin: 0px 0px 0px 0px;}
-        .div0-main{display: flex;}
-        .div0-main{flex-direction: column;}
+table{border: solid 0 #000;}
+table{border-collapse: collapse; /* 合并边框 */}
 
-        .div0-上{display: flex;}
-        .div0-上{flex-direction: row;}
+td{border-right: solid 1px #fff;}
+td{vertical-align: top;}
+td{white-space: nowrap;}
+/*
+table{overflow: scroll;}
+table{white-space: nowrap;}
+table{display: flex;}
+table{flex-direction: column;}
+table{table-layout: fixed;}
+tr{flex-grow: 1;}
+tr{display: flex;}
+tr{flex-direction: row;}
 
-                .div0-时间{background-color: #99CCFF;}
-                /*.div0-时间{width: 30%;}*/
-                .div0-时间{flex-grow: 256;}
-                /*.div0-时间{height: 2000px;}*/
-                .div0-时间{margin: 2px 2px 2px 2px;}
-                .div0-时间{display: flex;}
-                .div0-时间{flex-direction: row;}
+td{flex-grow: 1;}
+*/
 
-                        .div0-竖轴{background-color: #ffffff;}
-                        /*.div0-竖轴{width: 90%;}*/
-                        .div0-竖轴{flex-grow: 1;}
-                        .div0-竖轴{height: 100%;}
-                        .div0-竖轴{margin: 2px 2px 2px 2px;}
-                        
+/*tr:nth-child(odd) td:nth-child(odd) {background-color: #f2f2f2;} 设置奇数单元格的背景颜色 */
+/*tr:nth-child(even) td:nth-child(even) {background-color: #e6e6e6;} 设置偶数单元格的背景颜色 */
 
+*{font-size: 16px;}
+*{text-align: center;}
 
-                .div0-经验{background-color: #99CCFF;}
-                /*.div0-经验{width: 70%;}*/
-                .div0-经验{flex-grow: 1664;}
-                /*.div0-经验{height: 2000px;}*/
-                .div0-经验{margin: 2px 2px 2px 0px;}
-                .div0-经验{display: flex;}
-                .div0-经验{flex-direction: row;}
+.div0-竖轴 table tr td{font-size: 6px;}
+.div0-竖轴 table {table-layout:auto;}
+.div0-竖轴 table {white-space: nowrap;}
 
-                        .div0-阶段{background-color: #ffffff;}
-                        /*.div0-阶段{width: 20%;}*/
-                        .div0-阶段{flex-grow: 256;}
-                        .div0-阶段{height: 100%;}
-                        .div0-阶段{margin: 2px 2px 2px 2px;}
-                        .div0-阶段{display: flex;}
-                        .div0-阶段{flex-direction: row;}
-                            .div0-阶段 ul{flex-grow: 1;}
-
-
-                        .div0-样貌{background-color: #ffffff}
-                        /*.div0-样貌{width: 10%;}*/
-                        .div0-样貌{flex-grow: 256;}
-                        .div0-样貌{height: 100%;}
-                        .div0-样貌{margin: 2px 2px 2px 0px;}
-                        .div0-样貌{display: flex;}
-                        .div0-样貌{flex-direction: column;}
-
-                                .div0-模型{background-color: #CCCCFF;}
-                                /*.div0-模型{width: 70%;}*/
-                                .div0-模型{flex-grow: 1;}
-                                /*.div0-模型{height: 70%;}*/
-                                .div0-模型{margin: 2px 2px 2px 2px;}
-
-                                .div0-信息{background-color: #CCCCFF;}
-                                /*.div0-信息{width: 70%;}*/
-                                .div0-信息{flex-grow: 1;}
-                                /*.div0-信息{height: 15%;}*/
-                                .div0-信息{margin: 0px 2px 2px 2px;}
-                                .div0-信息{display: flex;}
-                                .div0-信息{flex-direction: row;}
-
-                                .div0-成绩{background-color: #CCCCFF;}
-                                /*.div0-成绩{width: 70%;}*/
-                                .div0-成绩{flex-grow: 1;}
-                                /*.div0-成绩{height: 15%;}*/
-                                .div0-成绩{margin: 0px 2px 2px 2px;}
-
-                        .div0-内心{background-color: #ffffff}
-                        /*.div0-内心{width: 70%;}*/
-                        .div0-内心{flex-grow: 1152;}
-                        .div0-内心{height: 95%;}
-                        .div0-内心{margin: 2px 2px 2px 0px;}
-                        .div0-内心{display: flex;}
-                        .div0-内心{flex-direction: column;}
-
-                                .div0-过去{background-color: #CCCCFF}
-                                /*.div0-过去{width: 90%;}*/
-                                .div0-过去{flex-grow: 1;}
-                                /*.div0-过去{height: 70%;}*/
-                                .div0-过去{margin: 2px 2px 2px 2px;}
-
-                                .div0-现在{background-color: #CCCCFF}
-                                /*.div0-现在{width: 90%;}*/
-                                .div0-现在{flex-grow: 1;}
-                                /*.div0-现在{height: 15%;}*/
-                                .div0-现在{margin: 0px 2px 2px 2px;}
-                                .div0-现在{display: flex;}
-                                .div0-现在{flex-direction: row;}
-                                        
-                                        .div0-直播1{background-color: #CCFFFF}
-                                        .div0-直播1{flex-grow: 1;}
-                                        /*.div0-直播1{flex-grow: 1;}*/
-                                        .div0-直播1{margin: 2px 2px 2px 2px;}
-
-                                        .直播间{margin: 0 0 0 0;}
-                                        .直播间{border-radius: 100%;}
-
-
-                                        .div0-直播2{background-color: #CCFFFF}
-                                        .div0-直播2{flex-grow: 1;}
-                                        /*.div0-直播2{flex-grow: 1;}*/
-                                        .div0-直播2{margin: 2px 2px 2px 0px;}
-
-                                        .div0-直播3{background-color: #CCFFFF}
-                                        .div0-直播3{flex-grow: 1;}
-                                        /*.div0-直播3{flex-grow: 1;}*/
-                                        .div0-直播3{margin: 2px 2px 2px 0px;}
-
-                
-                                .div0-未来{background-color: #CCCCFF}
-                                /*.div0-未来{width: 90%;}*/
-                                .div0-未来{flex-grow: 1;}
-                                /*.div0-未来{height: 15%;}*/
-                                .div0-未来{margin: 0px 2px 2px 2px;}
-
-                .div0-天地{background-color: #99CCFF;}
-                .div0-天地{width: 100%;}
-                .div0-天地{height: 16%;}
-
-                /*
-                .div0-天地{position: fixed;}
-                .div0-天地{right: 2px;}
-                .div0-天地{bottom: 0px;}
-                */
-
-                        .div0-房间-物品{background-color: #ffffff;}
-                        /*.div0-房间-物品{width: 95%;}*/
-                        .div0-房间-物品{flex-grow: 1;}
-                        .div0-房间-物品{height: 25%;}
-                        .div0-房间-物品{margin: 2px 2px 2px 2px;}
-
-                        .div0-小区-楼房{background-color: #ffffff;}
-                        /*.div0-小区-楼房{width: 95%;}*/
-                        .div0-小区-楼房{flex-grow: 1;}
-                        .div0-小区-楼房{height: 25%;}
-                        .div0-小区-楼房{margin: 2px 2px 2px 2px;}
-
-                        .div0-行政-区划{background-color: #ffffff;}
-                        /*.div0-行政-区划{width: 95%;}*/
-                        .div0-行政-区划{flex-grow: 1;}
-                        .div0-行政-区划{height: 25%;}
-                        .div0-行政-区划{margin: 2px 2px 2px 2px;}
-
-                        .div0-地理-世界{background-color: #ffffff;}
-                        /*.div0-地理-世界{width: 95%;}*/
-                        .div0-地理-世界{flex-grow: 1;}
-                        .div0-地理-世界{height: 25%;}
-                        .div0-地理-世界{margin: 2px 2px 2px 2px;}
-
-
+h1{font-size: 26px;}
+img{height: 100%;}
+img{object-fit: cover;}
