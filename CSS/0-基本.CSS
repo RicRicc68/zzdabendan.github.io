@@ -62,7 +62,7 @@ td{vertical-align: top;}
 /*tr:nth-child(odd) td:nth-child(odd) {background-color: #f2f2f2;} 设置奇数单元格的背景颜色 */
 /*tr:nth-child(even) td:nth-child(even) {background-color: #e6e6e6;} 设置偶数单元格的背景颜色 */
 
-/*table{table-layout: fixed;}*/
+table{table-layout: fixed;}
 
 
 img{height: 100%;}
