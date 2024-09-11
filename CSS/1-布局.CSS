@@ -56,12 +56,16 @@ body{background-color: #CCFF99;}
                 .div0-时间{flex-grow: 256;}
                 /*.div0-时间{height: 2000px;}*/
                 .div0-时间{margin: 2px 2px 2px 2px;}
+                .div0-时间{display: flex;}
+                .div0-时间{flex-direction: row;}
 
                         .div0-竖轴{background-color: #ffffff;}
                         /*.div0-竖轴{width: 90%;}*/
                         .div0-竖轴{flex-grow: 1;}
-                        .div0-竖轴{height: 98%;}
+                        .div0-竖轴{height: 100%;}
                         .div0-竖轴{margin: 2px 2px 2px 2px;}
+                        
+
 
                 .div0-经验{background-color: #99CCFF;}
                 /*.div0-经验{width: 70%;}*/
@@ -74,7 +78,7 @@ body{background-color: #CCFF99;}
                         .div0-阶段{background-color: #ffffff;}
                         /*.div0-阶段{width: 20%;}*/
                         .div0-阶段{flex-grow: 256;}
-                        .div0-阶段{height: 98%;}
+                        .div0-阶段{height: 100%;}
                         .div0-阶段{margin: 2px 2px 2px 2px;}
                         .div0-阶段{display: flex;}
                         .div0-阶段{flex-direction: row;}
@@ -84,7 +88,7 @@ body{background-color: #CCFF99;}
                         .div0-样貌{background-color: #ffffff}
                         /*.div0-样貌{width: 10%;}*/
                         .div0-样貌{flex-grow: 256;}
-                        .div0-样貌{height: 98%;}
+                        .div0-样貌{height: 100%;}
                         .div0-样貌{margin: 2px 2px 2px 0px;}
                         .div0-样貌{display: flex;}
                         .div0-样貌{flex-direction: column;}
