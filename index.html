@@ -1,779 +1,328 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width， initial-scale=1.0">
-    <title>WEB7-1-布局</title>
+    <meta name="viewport" content="width=device-width， initial-scale=1.0, user-scalable=no">
+    <title>WEB8-1-布局</title>
     <link rel="stylesheet" href="./CSS/0-基本.CSS">
     <link rel="stylesheet" href="./CSS/1-布局.CSS">
     <link rel="stylesheet" href="./CSS/2-内容.CSS">
 
     <style>
-/*
-.布局{}
-.个人{}
-.个人简历{}
-.总结{}
-.总结标题{}
-.总结正文{}
-.总结分类{}
+
+        /*
+        .1-经历主轴
+        .2-当前状态
+        .3-直播空间
+        .4-操作状态
+        .5-物资地区
 */
+        *{ margin: 0; padding: 0;}
+        ul{list-style: none;}
+        h1,h2,h3,h4,div {font: 10px sans-serif;}
+        .黑色{background-color: #000000;}
+        .黑色2{background-color: #333333;}
+        .深蓝{background-color: #333366;}
+        .白色{background-color: #FFFFFF;}
+        .灰色{background-color: #CCCCCC;}
+        .红色{background-color: #FF0000;}
+        .小边距{margin: 5px 5px 5px 5px;}
+        .小内边距{padding: 3px;}
+        .小圆角{border-radius: 8px;}
+        .小边框{ border: solid 1px #FFFFFF;}
+        .弹性布局横向{ display: flex; flex-direction: row;}
+        .弹性宽度{flex-grow: 1;}
+        
+        div { border: solid 0px #FFCC00;}
+        /*h2  { border-bottom: solid 1px #FFFFFF;}*/
 
-*{margin: 0;}
-*{padding: 0;}
-/**/
-ul{list-style: none;}
+        body,html,.布局 {
+            background-color: #000000;
+        }
 
-
-*{flex-wrap: nowrap;}
-*{white-space: nowrap;}
-
-article{height: 1400px;}
-article{margin: 0px 0px 50px 0px;}
-
-.总结分类{border: solid 1px #cccccc;}
-.总结分类{box-shadow: #cccccc 2px 2px;}
-
-div{border-radius: 5px;}
-h1,h2,h3,h4,h5,h6{border-radius: 5px;}
-p{border-radius: 5px;}
-td{border-radius: 5px;}
-
-body {font-family: "SimSun", "宋体", sans-serif;}
-body {font-weight: bold;}
-
-h1{font-size: 25px;}
-h2{font-size: 24px;}
-h3{font-size: 23px;}
-h4{font-size: 18px;}
-h5{font-size: 20px;}
-h6{font-size: 20px;}
-p {font-size: 16px;}
-table{font-size: 10px;}
-table h1,h2,h3,h4,h5,h6{font-size: 12px;}
-
-td{vertical-align: top;}
-
-
-
-b{color: #f00;}
-h4{color: #FF6666;}
-
-body{background-color: #cccccc;}
-h3{background-color: #99ccff;}
-p{background-color: #ffffff;}
-p{background-color: #CCFF99;}
-
-.布局{background-color: #cccccc;}
-.个人{background-color: #ffffff;}
-.个人简历{background-color: #ccccff;}
-.总结{background-color: #ffffff;}
-td{background-color: #CCFF99;}
-
-.总结标题{background-color: #FFCC00;}
-
-
-.布局{display: flex;}
-.布局{flex-direction: row;}
-
-.总结{display: flex;}
-.总结{flex-direction: column;}
-
-.总结正文{display: flex;}
-.总结正文{flex-direction: row;}
-
-p{margin: 2px 2px 2px 30px;}
-
-.个人{margin: 5px 000px 5px 5px;}
-.个人简历{margin: 5px 5px 5px 5px;}
-.总结{margin: 5px 5px 5px 5px;}
-.总结分类{margin: 5px 000px 5px 5px;}
-td{margin: 0px 5px 5px 0px;}
+        /*.感觉{height: 800px;}
+        /* styles.css */
+        h3 {
+            white-space: nowrap; /* Prevents text from wrapping to the next line */
+            overflow: hidden;    /* Hides any overflowing content */
+            text-overflow: ellipsis; /* Adds an ellipsis (...) to indicate cutoff */
+        }
+        iframe {
+            pointer-events: none; /* 禁止点击 */
+        }
 
     </style>
 
 </head>
+
 <body>
 
-    <h1>未来</h1>
 
-    <div class="布局">
 
-        <div class="个人">
-            
-            <div class="个人简历">
-                <h1>个人简历</h1>
-                <h2>基本信息</h2>
-                <ul>
-                    <li>姓名：Z</li>
-                    <li>年龄：23</li>
-                    <li>性别：男</li>
-                    <li>民族出生：汉族</li>
-                    <li>个人信仰：无</li>
-                    <li>生活经历：1</li>
-                    <li>教育经历：2</li>
-                    <li>职业经历：3</li>
-                    <li>收入：4</li>
-                    <li>社会经济地位：5</li>
-                </ul>
+    <div class="布局2 黑色"  style="color: #FFFFFF;">
 
-                <h2>身体信息</h2>
-                <ul>
-                    <li>样貌：</li>
-                    <li>体质：</li>
-                    <li>力量：</li>
-                    <li>速度：</li>
-                    <li>耐力：</li>
-                    <li>灵敏：</li>
-                    <li>柔韧：</li>
-                    <li>爆发：</li>
-                    <li>视力：</li>
-                    <li>血压：</li>
-                    <li>肺活量：</li>
-                    <li>身高：163</li>
-                    <li>体重：66</li>
-                    <li>温度：38</li>
-                    <li>上肢：</li>
-                    <li>下肢：</li>
-                    <li>腰腹：</li>
-                    <li>肌肉：</li>
-                </ul>
-                <h2>精神信息</h2>
-                <ul>
-                    <li>气质：ABCDE</li>
-                    <li>性格：xyz</li>
-                    <li>情绪：12345</li>
-                    <li>心情：opqrs</li>
-                    <li>爱好：钱钱胸胸</li>
-                </ul>
+        <!-- 第0章大标题 -->
+         <h1 style="font-size: 26px; text-align: center;">大标题ZZ看未来</h1>
+
+        <!-- 第1章 -->
+        <div class="1-经历主轴 黑色2 小边距 小圆角">
+            <h2>1-经历主轴</h2>
+            <P>经历1</P>
+            <P>经历2</P>
+
+        </div>
+
+        <!-- 第2章 -->
+         <div class="2-当前状态 黑色 小边距">
+            <h2>2-当前状态</h2>
+
+            <div class="状态数值 弹性布局横向">
+                <div class="弹性宽度" style="text-align: left; max-width: 42%;">
+                    <h3 class="小边距 小圆角 小边框">财力值：#=========（100%）</h3>
+                    <h3 class="小边距 小圆角 小边框">生命值：###=======（100%）</h3>
+                    <h3 class="小边距 小圆角 小边框">体力值：#####=====（100%）</h3>
+                    
+
+                </div>
+                <div class="弹性宽度" style="text-align: center; max-width: 16%;"></div>
+                <div class="弹性宽度" style="text-align: right; max-width: 42%;"></div>
+            </div>
+
+            <div class="事件数值 弹性布局横向" style="color: #FFFFFF; ">
+                
+                <div class="过去经历 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 1px #FF0033;">
+                    <h3>过去经历</h3>
+                    <ul>
+                        <li>眼</li>
+                        <li>鼻</li>
+                        <li>口</li>
+                        <li>耳</li>
+                        <li>手</li>
+                        <li>脚</li>
+                        <li>身</li>
+                        <li>心</li>
+                    </ul>
+                    
+                </div>
+
+                <div class="现在决定 黑色 弹性宽度 小边距 小圆角" style="flex-grow: 6;  border: solid 1px #FF0033;">
+                    <h3>现在决定</h3>
+                    <div class="每日计划">
+                        <h4>每日计划</h4>
+                        7:00
+                    </div>
+                </div>
+
+                <div class="未来目标 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 1px #FF0033;">
+                    <h3>未来目标</h3>
+                    <ul>
+                        <li>（1%）作息-健康体检</li>
+                        <li>（1%）运动</li>
+                        <li>（1%）饮食</li>
+                        <li>（1%）学习</li>
+                        <li>（1%）工作</li>
+                        <li>（1%）社交</li>
+                        <li>（1%）整理清洁</li>
+                        <li>（1%）收支财务</li>
+                        <li>（1%）娱乐</li>
+                    </ul>
+                </div>
 
             </div>
 
         </div>
 
-        <div class="总结">
+        <!-- 第3章 -->
+         <div class="3-直播空间 黑色 小边距">
+            <h2>3-直播空间</h2>
+            <div class="直播间" style="width: 325px; margin: 0 auto;" >
 
-            <div class="总结大标题">
-
-                <h1 style="float: left;">总结</h1>
-                <ul style="list-style: none;" >
-                    <li style="display: inline-block;margin: 2px 5px 2px 5px;border: solid 1px #ccc;border-radius: 5px;"><a href="#社交">1社交</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#饮食">2饮食</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#运动">3运动</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#作息">4作息</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#工作">5工作</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#娱乐">6娱乐</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#学习">7学习</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#整理">8整理</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#清洁">9清洁</a></li>
-                    <li style="display: inline-block;margin: 2px 5px 2px 0px;border: solid 1px #ccc;border-radius: 5px;"><a href="#财务收支预算">10财务收支预算</a></li>
-                </ul>
-
-                <div style="clear: left;"></div>
-            </div>
-        
-            <div class="总结正文">
-
-                <div class="总结分类">
-                    <H2 id="社交" class="总结标题">社交总结</H2>
-                        <article>
-                            <h3>20241009社交总结</h3>
-
-                                <h4>1，今日见到的人：</h4>
-                                    <p>
-                                        邻居的人(00)，聚居地的人（00）<br>
-                                        ............../同地的人：（xxx0000）<br>
-                                        ............../世界远方全部的人：（80亿）<br>
-                                    </p>
-
-                                <h4>4，离开的人：</h4>
-                                    <P>
-                                        副本（将）的人(3)，聚居地的人<br>
-                                    </P>
-                                
-
-                                <h4>2，说话的人：</h4>
-                                    <p>1</p>
-
-
-                                <h4>3，听话的人的话</h4>
-                                    <p>1</p>
-
-                                <h4>5，认识的人：</h4>
-                                    <P>亲戚的人，聚居地的人，学院的人，副本的人<br></P>
-
-                                        <table style="margin: 0 0 0 30px;" >
-                                            <tr>
-                                                <td>
-                                                    <h5>奶奶</h5>
-                                                    <h6>基本信息</h6>
-                                                        <ul>
-                                                            <li>姓名：F</li>
-                                                            <li>年龄：？</li>
-                                                            <li>性别：女</li>
-                                                            <li>民族出生：汉族</li>
-                                                            <li>个人信仰：F</li>
-                                                            <li>生活经历：1</li>
-                                                            <li>教育经历：2</li>
-                                                            <li>职业经历：3</li>
-                                                            <li>收入：4</li>
-                                                            <li>社会经济地位：5</li>
-                                                        </ul>
-
-                                                        <h6>身体信息</h6>
-                                                        <ul>
-                                                            <li>样貌：</li>
-                                                            <li>体质：</li>
-                                                            <li>力量：</li>
-                                                            <li>速度：</li>
-                                                            <li>耐力：</li>
-                                                            <li>灵敏：</li>
-                                                            <li>柔韧：</li>
-                                                            <li>爆发：</li>
-                                                            <li>视力：</li>
-                                                            <li>血压：</li>
-                                                            <li>肺活量：</li>
-                                                            <li>身高：163</li>
-                                                            <li>体重：66</li>
-                                                            <li>温度：38</li>
-                                                            <li>上肢：</li>
-                                                            <li>下肢：</li>
-                                                            <li>腰腹：</li>
-                                                            <li>肌肉：</li>
-                                                        </ul>
-                                                        <h6>精神信息</h6>
-                                                        <ul>
-                                                            <li>气质：ABCDE</li>
-                                                            <li>性格：xyz</li>
-                                                            <li>情绪：12345</li>
-                                                            <li>心情：opqrs</li>
-                                                            <li>爱好：789</li>
-                                                        </ul>
-
-
-                                                </td>
-                                                <td>
-                                                    <h6>爷爷</h6>
-                                                    <h6>基本信息</h6>
-                                                    <ul>
-                                                        <li>姓名：Z</li>
-                                                        <li>年龄：23</li>
-                                                        <li>性别：男</li>
-                                                        <li>民族出生：汉族</li>
-                                                        <li>个人信仰：无</li>
-                                                        <li>生活经历：1</li>
-                                                        <li>教育经历：2</li>
-                                                        <li>职业经历：3</li>
-                                                        <li>收入：4</li>
-                                                        <li>社会经济地位：5</li>
-                                                    </ul>
-
-                                                    <h6>身体信息</h6>
-                                                    <ul>
-                                                        <li>样貌：</li>
-                                                        <li>体质：</li>
-                                                        <li>力量：</li>
-                                                        <li>速度：</li>
-                                                        <li>耐力：</li>
-                                                        <li>灵敏：</li>
-                                                        <li>柔韧：</li>
-                                                        <li>爆发：</li>
-                                                        <li>视力：</li>
-                                                        <li>血压：</li>
-                                                        <li>肺活量：</li>
-                                                        <li>身高：163</li>
-                                                        <li>体重：66</li>
-                                                        <li>温度：38</li>
-                                                        <li>上肢：</li>
-                                                        <li>下肢：</li>
-                                                        <li>腰腹：</li>
-                                                        <li>肌肉：</li>
-                                                    </ul>
-                                                    <h6>精神信息</h6>
-                                                    <ul>
-                                                        <li>气质：ABCDE</li>
-                                                        <li>性格：xyz</li>
-                                                        <li>情绪：12345</li>
-                                                        <li>心情：opqrs</li>
-                                                        <li>爱好：</li>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <h6>姥姥</h6>
-                                                    <h6>基本信息</h6>
-                                                    <ul>
-                                                        <li>姓名：Z</li>
-                                                        <li>年龄：23</li>
-                                                        <li>性别：男</li>
-                                                        <li>民族出生：汉族</li>
-                                                        <li>个人信仰：无</li>
-                                                        <li>生活经历：1</li>
-                                                        <li>教育经历：2</li>
-                                                        <li>职业经历：3</li>
-                                                        <li>收入：4</li>
-                                                        <li>社会经济地位：5</li>
-                                                    </ul>
-
-                                                    <h6>身体信息</h6>
-                                                    <ul>
-                                                        <li>样貌：</li>
-                                                        <li>体质：</li>
-                                                        <li>力量：</li>
-                                                        <li>速度：</li>
-                                                        <li>耐力：</li>
-                                                        <li>灵敏：</li>
-                                                        <li>柔韧：</li>
-                                                        <li>爆发：</li>
-                                                        <li>视力：</li>
-                                                        <li>血压：</li>
-                                                        <li>肺活量：</li>
-                                                        <li>身高：163</li>
-                                                        <li>体重：66</li>
-                                                        <li>温度：38</li>
-                                                        <li>上肢：</li>
-                                                        <li>下肢：</li>
-                                                        <li>腰腹：</li>
-                                                        <li>肌肉：</li>
-                                                    </ul>
-                                                    <h6>精神信息</h6>
-                                                    <ul>
-                                                        <li>气质：ABCDE</li>
-                                                        <li>性格：xyz</li>
-                                                        <li>情绪：12345</li>
-                                                        <li>心情：opqrs</li>
-                                                        <li>爱好：</li>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <h6>姥爷</h6>
-                                                    <h6>基本信息</h6>
-                                                        <ul>
-                                                            <li>姓名：Z</li>
-                                                            <li>年龄：23</li>
-                                                            <li>性别：男</li>
-                                                            <li>民族出生：汉族</li>
-                                                            <li>个人信仰：无</li>
-                                                            <li>生活经历：1</li>
-                                                            <li>教育经历：2</li>
-                                                            <li>职业经历：3</li>
-                                                            <li>收入：4</li>
-                                                            <li>社会经济地位：5</li>
-                                                        </ul>
-
-                                                        <h6>身体信息</h6>
-                                                        <ul>
-                                                            <li>样貌：</li>
-                                                            <li>体质：</li>
-                                                            <li>力量：</li>
-                                                            <li>速度：</li>
-                                                            <li>耐力：</li>
-                                                            <li>灵敏：</li>
-                                                            <li>柔韧：</li>
-                                                            <li>爆发：</li>
-                                                            <li>视力：</li>
-                                                            <li>血压：</li>
-                                                            <li>肺活量：</li>
-                                                            <li>身高：163</li>
-                                                            <li>体重：66</li>
-                                                            <li>温度：38</li>
-                                                            <li>上肢：</li>
-                                                            <li>下肢：</li>
-                                                            <li>腰腹：</li>
-                                                            <li>肌肉：</li>
-                                                        </ul>
-                                                        <h6>精神信息</h6>
-                                                        <ul>
-                                                            <li>气质：ABCDE</li>
-                                                            <li>性格：xyz</li>
-                                                            <li>情绪：12345</li>
-                                                            <li>心情：opqrs</li>
-                                                            <li>爱好：</li>
-                                                        </ul>
-                                                </td>
-                                                <td>大伯伯母</td>
-                                                <td>二伯伯母</td>
-                                                <td>三姑姑丈</td>
-                                                <td>四伯伯母</td>
-                                                <td>爸爸妈妈</td>
-                                                <td>舅舅舅妈</td>
-                                                <td>小姨姨夫</td>
-                                                <td>舅表哥舅表嫂</td>
-                                                <td>舅表姐舅表姐夫</td>
-                                                <td>堂姐堂姐夫</td>
-                                                <td>堂哥堂嫂</td>
-                                                <td>舅表弟舅表弟媳</td>
-                                                <td>舅表妹舅表妹夫</td>
-                                                <td>堂妹堂妹夫</td>
-                                                <td>堂弟堂弟媳</td>
-                                                <td>表外甥</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-                                        </table>
-
-                                <h4>6，狩猎的人:</h4>
-                                    <p>
-                                        目标1<br>
-                                        目标2<br>
-                                    </p>
-                                
-                                <h4>7，目标弱点时机陷阱</h4>
-                                    <p>人类好复杂呀，但也挺好的吧。快进化为自信的完美猎人</p>
-                                
-
-                                <h4>8，好吃的人</b></h4>
-                                    <p>
-                                我猜，对于我再说，我父母这个年纪只希望我能
-                                好好读书，
-                                好好工作，
-                                多交好朋友，
-                                多运动，
-                                多学习，
-                                不要坏习惯晚睡乱吃，
-                                就差不多可以了。
-                                    </p>
-                            
-                        </article>
-
-                        <article>
-                            <h3>20241008社交总结</h3>
-                            <p>
-                                
-                                
-                                
-                                1，<b>今日见到的人：</b>邻居的人(1)，聚居地的人（12）<br>
-                                ............../同地的人：（xxx0000）<br>
-                                ............../世界远方全部的人：（80亿）<br>
-                                    <br>
-                                4，<b>离开的人：</b>副本（将）的人(3)，聚居地的人<br>
-                                <br>
-                                2，<b>说话的人：</b>聚居地的人<br>
-                                <br>
-                                3，<b>听话的人的话</b><br>
-                                <br>
-                                5，<b>认识的人：</b>亲戚的人，聚居地的人，学院的人，副本的人<br>
-                                <br>
-                                6，<b>狩猎的人:</b><br>
-                                目标1<br>
-                                目标2<br>
-                                <br>
-        
-                                7，<b>目标弱点时机陷阱</b><br>
-
-                                人类好复杂呀，但也挺好的吧。
-                                快进化为自信的完美猎人<br>
-                                <br>
-                                8，好吃的人<br><br>
-                                我猜，对于我再说，我父母这个年纪只希望我能<br>
-                                好好读书，<br>
-                                好好工作，<br>
-                                多交好朋友，<br>
-                                多运动，<br>
-                                多学习，<br>
-                                不要坏习惯晚睡乱吃，<br>
-                                就差不多可以了。<br>
-                            </p>
-                        </article>
-                
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="饮食" class="总结标题">饮食总结</H2>
-                        <article>
-                            <h3>20241009饮食总结</h3>
-                            <h4>1，今日摄入食物：</h4>
-                                <p>
-                                    早，？<br />
-                                    中，辣椒炒肉，白米饭，干脆面<br />
-                                    晚，自制韭菜煎鸡蛋<br />
-                                    
-                                </p>
-                            <h4>2，距离推荐量差</h4>
-                                <p>1</p>
-                            <h4>3，库存食物</h4>
-                                <p>
-                                    主食：面条，土豆，粽子，棒棒糖<br />
-                                    肉：淀粉肠，奶粉<br />
-                                    调味料：盐，老干妈<br />
-                                    维生素？矿物质？膳食纤维？：紫菜<br />
-                                    橘子，雪梨<br />
-                                </p>
-
-                            <h4>4，明日建议</h4>
-                                <p>1</p>
-                            
-                        </article>
-
-                        <article>
-                            <h3>20241008饮食总结</h3>
-                            <p>
-                                1，<b>今日摄入食物：</b><br />
-                                早，空饱，昨晚的食物<br />
-                                中，韭菜，淀粉肠，香菇，娃娃菜，豆泡，油条，莴笋，里脊肉，<br />
-                                晚，炸鸡腿，炸鸡腿，可乐，汉堡，鸡块<br />
-                                <br />
-                                2，<b>距离推荐量差</b><br />
-                                <br />
-                                3，<b>库存食物</b><br />
-                                主食：粽子，棒棒糖<br />
-                                肉：淀粉肠，奶粉<br />
-                                调味料：盐，老干妈<br />
-                                维生素？矿物质？膳食纤维？：紫菜<br />
-                                
-        
-                                <br />
-                                4，<b>明日建议</b><br />
-                                <br />
-        
-                            </p>
-                        </article>
-                    
-                
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="运动" class="总结标题">运动总结</H2>
-                        <article>
-                            <h3>20241008运动总结</h3>
-                            <h4>1,今日运动</h4>
-                                <p>
-                                    1
-                                    <ul>
-                                        <li>0-12，躺床</li>
-                                        <li>12-15，坐</li>
-                                        <li>15-16，躺床</li>
-                                        <li>16-20，坐</li>
-                                        <li></li>
-                                    </ul>
-                                </p>
-
-                            <h4>2,距离推荐运动量，身体负荷，动作质量差：</h4>
-                                <p>1</p>
-                            <h4>3,剩余精力体力时间营养恢复力</h4>
-                                <p>1</p>
-                            <h4>4,明日推荐运动</h4>
-                                <p>1</p>
-
-                            
-                        </article>
-                    
-                
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="作息" class="总结标题">作息总结</H2>
-                        <article>
-                            <h3>20241008作息总结</h3>
-                            <p>
-                                1,<b>今日事件：</b><br />
-                                    <ul>
-                                        <li>睡觉</li>
-                                        <li>饭饭</li>
-                                        <li>玩手机</li>
-                                        <li>看游戏主播嘎嘎乱杀</li>
-                                        <li>倒垃圾</li>
-                                        <li>玩游戏</li>
-                                        <li>看朋友圈</li>
-                                        <li>洗澡</li>
-                                        <li>扫地</li>
-                                        <li>吃饭</li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                    <br />
-                                2,<br />
-                                3,<br />
-                                4,<br />
-                                5,<br />
-                                6,<br />
-                                7,<br />
-                                8,<br />
-                                
-                                
-                            </p>
-                        </article>
-                    
-                
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="工作" class="总结标题">工作总结</H2>
-
-                        <article>
-                            <h3>20241008工作总结</h3>
-                            <p>
-                                1,<b>休息</b><br />
-                                2,<b>窥微信工作群</b><br />
-                                <br />
-                            </p>
-                        </article>
-                    
-                
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="娱乐" class="总结标题">娱乐总结</H2>
-                        <article>
-                            <h3>20241008娱乐总结</h3>
-
-                            <h4>1,今日娱乐内容</h4>
-                                <p>1</p>
-                                <p>
-                                    <ul>
-                                        <li>催更短断更作者</li>
-                                        <li>假期打折后，战地系列玩家收割新鲜薯薯</li>
-                                        <li>战地佬的沙雕网友又有什么新的整活，</li>
-                                        <li>国产跑刀新作，八宝粥行动，78主播鼠鼠风格行动</li>
-                                        <li>..</li>
-                                        <li>..</li>
-                                        <li></li>
-                                    </ul>
-                                </p>
-
-                            <h4>2,距离娱乐量的方式</h4>
-                                <p>1</p>
-
-                            <h4>3,1</h4>
-                                <p>1</p>
-                            <h4>4,明日娱乐建议</h4>
-                                <p>1</p>
-                            
-                                5,<br />
-                                6,<br />
-                                7,<br />
-                                8,<br />
-                            
-                        </article>
-                    
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="学习" class="总结标题">学习总结</H2>
-                        <article>
-                            <h3>20241008学习总结</h3>
-                            <h4>1,气息训练特训</h4>
-                                <p>拥有播音主持一样的声音</p>
-                            <h4>2,学习内容：</h4>
-                                <p>长时间的习惯均匀且适量将身体里的气息呼出训练</p>
-                            <h4>3,当前情况：</h4>
-                                <p>随意的呼吸</p>
-                            <h4>4,下一步建议</h4>
-                                <p>按照教材内容操控身体肌肉和呼吸，将气息保持要求达成训练。</p>
-                            <h4>5,沟通说话学习</h4>
-                            <h4>6,学习内容</h4>
-                            <h4>7,当前情况</h4>
-                            <h4>8,下一步</h4>
-                            <h4>5,工作计算机设备知识和技能学习</h4>
-                            <h4>6,学习内容</h4>
-                            <h4>7,当前情况</h4>
-                            <h4>8,下一步</h4>
-                            <h4></h4>
-                            <p>说话好难呀，快学会技术嘎嘎乱杀吧</p>
-                        </article>
-                    
-                
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="整理" class="总结标题">整理总结</H2>
-                        <article>
-                            <h3>20241008整理总结</h3>
-                            <h4>1,今日整理</h4>
-                            <p>
-                                房屋面积，5*8格子，长宽=589cm/306cm<br />
-                                床铺面占，桌面，衣柜，8个收纳箱区<br />
-                                行李存放:<br />
-                                收纳箱1，冬天衣物<br />
-                                收纳箱1，夏天衣物<br />
-                                收纳箱1，床铺背包<br />
-                                收纳箱1，鞋子<br />
-                                收纳箱1，食品<br />
-                                收纳箱1，厨具<br />
-                                收纳箱1，工具杂物<br />
-                                收纳箱1，工具包装<br />
-                                收纳箱1，快递箱子<br />
-                                收纳箱1，快递箱子<br />
-                                行李箱<br />
-                                背包<br />
-                            </p>
-
-                            <h4>2,物品清单</h4>
-                                <p>加载30%</p>
-                            <h4>3,</h4>
-                                <p>1</p>
-                            <h4>4,</h4>
-                            <p>1</p>
-                            <h4>5,距离推荐整理模样差</h4>
-                            <p>1</p>
-                            <h4>6,明日建议</h4>
-                            <p>1</p>
-
-                        </article>
-                    
-                
-                </div>
-                
-                <div class="总结分类">
-                    <H2 id="清洁" class="总结标题">清洁总结</H2>
-                        <article>
-                            <h3>20241008s清洁总结</h3>
-                            <h4>1，今日清洁</h4>
-                            <p>
-                                1,倒垃圾<br />
-                                2,洗澡<br />
-                                3,<br />
-                                4,<br />
-                                5,<br />
-                                6,<br />
-                                7,<br />
-                                8,<br />
-                            </p>
-                        </article>
-                    
-                
-                </div>
-
-                <div class="总结分类">
-                    <H2 id="财务收支预算" class="总结标题">财务收支预算总结</H2>
-                        <article>
-                            <h3>20241008财务收支预算总结</h3>
-                            <p>
-                                1,<b>今日收入支出</b><br />
-                                <br />
-                                2,<b>明日预算</b><br />
-                                <br />
-                                3,<b>今日收入支出</b><br />
-                                <br />
-                                4,<b>明日预算</b><br />
-                                5,<br />
-                                6,<br />
-                                7,<br />
-                                8,<br />
-                            </p>
-                        
-                        </article>
-                    
-                </div>
-                
+                <iframe 
+                src="https://live.bilibili.com/h5/21648980" 
+                title="直播间" 
+                class="直播间" 
+                height="325px" 
+                width="325px" 
+                frameborder="0" 
+                style="border:none;
+                border-radius: 50%;">
+                </iframe>
 
             </div>
+        </div>
+
+        <!-- 第4章 -->
+         <div class="4-操作状态 黑色 小边距">
+            <h2>4-操作状态</h2>
+            <div class="操作图标 弹性布局横向">
+
+                <div class="小边框 小圆角">
+
+                    <div class="姿态栏 弹性布局横向">
+                        <div class="姿态 小边距 小内边距 小边框 小圆角">站</div>
+                        <div class="姿态 小边距 小内边距 小边框 小圆角">坐</div>
+                        <div class="姿态 小边距 小内边距 小边框 小圆角">蹲</div>
+                        <div class="姿态 小边距 小内边距 小边框 小圆角">卧</div> 
+                    </div>
+                </div>
+                <div class="">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 第5章 -->
+         <div class="5-物资地区 黑色2 小边距 小圆角">
+            <h2>5-物资地区</h2>
+
+            <div class="个人物品 小边距 小圆角 深蓝">
+                <h3>个人物品</h3>
+                <div class="个人资源 弹性布局横向">
+
+                    <div class="个人 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
+                        <h4>装备随身</h4>
+
+                    </div>
+
+                    <div class="背包 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
+                        <h4>背包</h4>
+
+                    </div>
+
+                    <div class="仓库 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 5;border: solid 1px #cccccc;">
+                        <h4>仓库</h4>
+                        <table class="小圆角" border="solid 1px #FFFFFF;" >
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>常用文件列表<br>
+                                    <ul>
+                                        <li>个人简历</li>
+                                        <li>每日计划</li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>常用软件列表
+                                    <ul>
+                                        <li>系统</li>
+                                        <li>驱动</li>
+                                        <li>哔哩哔哩</li>
+                                        <li>浏览器</li>
+                                        <li>记事本</li>
+                                        <li>画图</li>
+                                        <li>时钟</li>
+                                        <li>地图</li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>箱包证件</td>
+                                <td>食物厨具</td>
+                                <td>衣物床铺</td>
+                                <td>电脑文件</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="房屋环境">房屋环境</div>
+                <h3>练级区3</h3>
+                <br>
+
+            <div class="社会国家">社会国家</div>
+                <br>
+
+            <div class="">自然地理</div>
+
+            <br>
+
             
 
         </div>
-    
-    
 
     </div>
 
-    <ul>
-        <li><a href="../HTML/Z.html">Z.html</a></li>
-        <li><a href="../HTML/booklist.html">booklist.html</a></li>
-        <li><a href="../HTML/ml.html">ml.html</a></li>
-    </ul>
+    
+    <div class="外部书签" style="color: #FFFFFF;">
+        <h1>外部书签</h1>
+                
+        <ul>
+            <li><a style="color: #FFFFFF; margin: 5px;" href="../HTML/Z.html">Z.html</a></li>
+            <li><a style="color: #FFFFFF; margin: 5px;" href="../HTML/booklist.html">booklist.html</a></li>
+            <li><a style="color: #FFFFFF; margin: 5px;" href="../HTML/ml.html">ml.html</a></li>
+        </ul>
+    </div>
+ 
+<!--
+        <div class="布局 灰色">
+        
+        <div class="感知 白色">
+            感知
 
+        </div>
+
+        <div class="感觉 白色">
+            感觉
+
+            <div class="状态">
+
+            </div>
+
+            <div class="信息">
+
+            </div>
+
+            <div class="直播间" style="width: 325px; margin: 0 auto;" >
+
+                <iframe 
+                src="https://live.bilibili.com/h5/21648980" 
+                title="直播间" 
+                class="直播间" 
+                height="325px" 
+                width="325px" 
+                frameborder="0" 
+                style="border:none;
+                border-radius: 50%;">
+                </iframe>
+
+            </div>
+
+            <div class="信息2"></div>
+
+
+
+        </div>
+
+        <div class="地面 白色">
+            地面
+
+        </div>
+
+
+    </div>
+
+-->
 
 </body>
+
 </html>
