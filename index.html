@@ -18,22 +18,16 @@
         .4-操作状态
         .5-物资地区
 */
-        *{ margin: 0; padding: 0;}
+        *{
+            margin: 0; 
+            padding: 0;
+        }
+
+
+
         ul{list-style: none;}
         h1,h2,h3,h4,div {font: 10px sans-serif;}
-        .黑色{background-color: #000000;}
-        .黑色2{background-color: #333333;}
-        .深蓝{background-color: #333366;}
-        .白色{background-color: #FFFFFF;}
-        .灰色{background-color: #CCCCCC;}
-        .红色{background-color: #FF0000;}
-        .小边距{margin: 5px 5px 5px 5px;}
-        .小内边距{padding: 3px;}
-        .小圆角{border-radius: 8px;}
-        .小边框{ border: solid 1px #FFFFFF;}
-        .弹性布局横向{ display: flex; flex-direction: row;}
-        .弹性宽度{flex-grow: 1;}
-        
+
         div { border: solid 0px #FFCC00;}
         /*h2  { border-bottom: solid 1px #FFFFFF;}*/
 
@@ -41,16 +35,34 @@
             background-color: #000000;
         }
 
-        /*.感觉{height: 800px;}
-        /* styles.css */
-        h3 {
-            white-space: nowrap; /* Prevents text from wrapping to the next line */
-            overflow: hidden;    /* Hides any overflowing content */
-            text-overflow: ellipsis; /* Adds an ellipsis (...) to indicate cutoff */
-        }
+
+        h3,ul,li,div{  overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
         iframe {
             pointer-events: none; /* 禁止点击 */
         }
+
+
+        .黑色{background-color: #000000;}
+        .黑色2{background-color: #333333;}
+        .深蓝{background-color: #333366;}
+        .白色{background-color: #FFFFFF;}
+        .灰色{background-color: #CCCCCC;}
+        .红色{background-color: #FF0000;}
+        .黑字{color: #000000;}
+        .灰字{color: #CCCCCC;}
+        .灰字2{color: #333333;}
+        .小边距{margin: 5px 5px 5px 5px;}
+        .小内边距{padding: 3px;}
+        .小圆角{border-radius: 8px;}
+        .小边框{ border: solid 1px #FFFFFF;}
+        .弹性布局横向{ display: flex; flex-direction: row;}
+        .弹性宽度{flex-grow: 1;}
+        .文本居中{text-align: center;}
+        
 
     </style>
 
@@ -68,16 +80,85 @@
         <!-- 第1章 -->
         <div class="1-经历主轴 黑色2 小边距 小圆角">
             <h2>1-经历主轴</h2>
-            <P>经历1</P>
-            <P>经历2</P>
+
+            <div class="经历 弹性布局横向 小圆角" >
+                <div class="经历1 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                    <h2 class="文本居中">4年</h2>
+                    <div class="缩略图"></div>
+                    <div class="隐蔽屋"></div>
+                    <div class="学院地"></div>
+                    <div class="副本地"></div>
+                    <div class="练级区">新手村</div>
+
+                </div>
+
+                <div class="经历2 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                    <h2 class="文本居中">11年</h2>
+                    <div class="缩略图"></div>
+                    <div class="隐蔽屋"></div>
+                    <div class="学院地"></div>
+                    <div class="副本地"></div>
+                    <div class="练级区">练级区1</div>
+
+                </div>
+
+                <div class="经历3 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                    <h2 class="文本居中">3年</h2>
+                    <div class="缩略图"></div>
+                    <div class="隐蔽屋"></div>
+                    <div class="学院地"></div>
+                    <div class="副本地"></div>
+                    <div class="练级区">练级区2</div>
+
+                </div>
+
+                <div class="经历4 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                    <!-- <img src="../IMG/2024白天.jpg" alt="2024白天" width="200px"> -->
+                    <h2 class="文本居中">5年</h2>
+                    <div class="缩略图">
+                        <img src="../IMG/2024白天.jpg" alt="" width="100%">
+                    </div>
+                    <div class="隐蔽屋">
+                        隐蔽屋6<br>
+                        隐蔽屋7<br>
+                        隐蔽屋8<br>
+                    </div>
+                    <div class="学院地">
+                        高级学院
+                    </div>
+                    <div class="副本地">
+                        副本1<br>
+                        副本2<br>
+                        副本3<br>
+                        副本4<br>
+                        副本5<br>
+                    </div>
+                    <div class="练级区">练级区3</div>
+
+                </div>
+
+                <div class="经历5 灰色 灰字2 文本居中 弹性宽度" style="flex-grow: 5; min-width: 50%; border-right: solid 0px #cccccc;>
+                    <h2 class="文本居中">从23到51</h2>
+                    <div class="缩略图"></div>
+                    <div class="隐蔽屋"></div>
+                    <div class="学院地"></div>
+                    <div class="副本地"></div>
+                    <div class="练级区" style="font-size: 16px;" >未解锁</div>
+
+
+                </div>
+
+            </div>
+
+
 
         </div>
 
         <!-- 第2章 -->
-         <div class="2-当前状态 黑色 小边距">
+         <div class="2-当前状态 黑色 小边距" style="width: 98%;">
             <h2>2-当前状态</h2>
 
-            <div class="状态数值 弹性布局横向">
+            <div class="状态数值 弹性布局横向"  style="width: 100%;">
                 <div class="弹性宽度" style="text-align: left; max-width: 42%;">
                     <h3 class="小边距 小圆角 小边框">财力值：#=========（100%）</h3>
                     <h3 class="小边距 小圆角 小边框">生命值：###=======（100%）</h3>
@@ -89,36 +170,55 @@
                 <div class="弹性宽度" style="text-align: right; max-width: 42%;"></div>
             </div>
 
-            <div class="事件数值 弹性布局横向" style="color: #FFFFFF; ">
+            <div class="事件数值 弹性布局横向"  style="width: 100%;">
                 
                 <div class="过去经历 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 1px #FF0033;">
                     <h3>过去经历</h3>
                     <ul>
-                        <li>眼</li>
-                        <li>鼻</li>
-                        <li>口</li>
-                        <li>耳</li>
-                        <li>手</li>
-                        <li>脚</li>
-                        <li>身</li>
-                        <li>心</li>
+                        <li>眼看过的色彩</li>
+                        <li>鼻闻过的气味</li>
+                        <li>口吃过的食物</li>
+                        <li>耳听过的音乐</li>
+                        <li>手抓过的东西</li>
+                        <li>脚走过的地方</li>
+                        <li>身做过的事件</li>
+                        <li>心想过的未来</li>
                     </ul>
                     
                 </div>
 
-                <div class="现在决定 黑色 弹性宽度 小边距 小圆角" style="flex-grow: 6;  border: solid 1px #FF0033;">
+                <div class="现在决定 黑色 弹性宽度 小边距 小圆角" style="flex-grow: 6; max-width: 50%; border: solid 1px #FF0033;">
                     <h3>现在决定</h3>
-                    <div class="每日计划">
-                        <h4>每日计划</h4>
-                        7:00
+                    
+                    <div class="弹性布局横向">
+
+                        <div class="每日计划 弹性宽度" style="width: 50%;">
+                            <h4>每日计划</h4>
+                            7:00
+                        </div>
+
+                        <div class="阶段目标 弹性宽度" style="width: 50%;">
+                            <h4>阶段目标计划</h4>
+                            <ul>
+                                <li>66KG-65KG-64KG-63KG-62KG-61KG-60KG-59KG-58KG</li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+
                     </div>
+                    
                 </div>
 
                 <div class="未来目标 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 1px #FF0033;">
                     <h3>未来目标</h3>
                     <ul>
                         <li>（1%）作息-健康体检</li>
-                        <li>（1%）运动</li>
+                        <li>（1%）运动-增肌减脂58KG</li>
                         <li>（1%）饮食</li>
                         <li>（1%）学习</li>
                         <li>（1%）工作</li>
@@ -136,14 +236,14 @@
         <!-- 第3章 -->
          <div class="3-直播空间 黑色 小边距">
             <h2>3-直播空间</h2>
-            <div class="直播间" style="width: 325px; margin: 0 auto;" >
+            <div class="直播间" style="width: 250px; margin: 0 auto;border-radius: 50%;" >
 
                 <iframe 
                 src="https://live.bilibili.com/h5/21648980" 
                 title="直播间" 
                 class="直播间" 
-                height="325px" 
-                width="325px" 
+                height="250px" 
+                width="250px" 
                 frameborder="0" 
                 style="border:none;
                 border-radius: 50%;">
@@ -254,7 +354,7 @@
 
             <div class="">自然地理</div>
 
-            <br>
+
 
             
 
@@ -263,7 +363,7 @@
     </div>
 
     
-    <div class="外部书签" style="color: #FFFFFF;">
+    <div class="外部书签">
         <h1>外部书签</h1>
                 
         <ul>
@@ -272,6 +372,7 @@
             <li><a style="color: #FFFFFF; margin: 5px;" href="../HTML/ml.html">ml.html</a></li>
         </ul>
     </div>
+    <br>
  
 <!--
         <div class="布局 灰色">
