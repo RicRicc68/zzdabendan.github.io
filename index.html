@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="弹性布局横向">
-                    <button class="弹性宽度 黑色 白字" type="button" onclick="document.getElementById('demo2').style.display='none'">点击我！展开物资</button>
+                    <button  style="display: none;" class="弹性宽度 黑色 白字" type="button">点击我！展开物资</button>
                     <button class="弹性宽度 黑色 白字" type="button" onclick="document.getElementById('demo2').style.display='block'">点击我！关闭个人</button>
                 </div>
 
@@ -108,8 +108,8 @@
 
 
             <!-- 第1章 -->
-            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角">
-                <h2   onclick="document.getElementById('demo').style.display='none'" style="height: 30px; line-height: 30px;">1-经历主轴</h2>
+            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角"  onclick="document.getElementById('demo').style.display='none'">
+                <h2   style="height: 30px; line-height: 30px;">1-经历主轴</h2>
 
                 <div class="经历 弹性布局横向 小圆角" >
                     <div class="经历1 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
@@ -350,7 +350,7 @@
 
                 <div  id="demo2"  class="个人物品 小边距 小圆角 深蓝">
                     <h3>个人物品</h3>
-                    <div class="个人资源 弹性布局横向">
+                    <div  class="个人资源 弹性布局横向"  onclick="document.getElementById('demo2').style.display='none'">
 
                         <div class="个人 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
                             <h4 class="文本居中">装备随身</h4>
