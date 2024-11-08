@@ -64,8 +64,9 @@
         .小内边距{padding: 3px;}
         .小圆角{border-radius: 8px;}
         .小边框{ border: solid 1px #FFFFFF;}
-        .小红边框{ border-top: solid 1px #FF0000; 
-            border-bottom: solid 1px #FF0000;  }
+        .小红边框{ 
+                border-top: solid 1px #FF0000; 
+                border-bottom: solid 1px #FF0000;  }
         .弹性布局横向{ display: flex; flex-direction: row;}
         .弹性宽度{flex-grow: 1;}
         .文本居中{text-align: center;}
@@ -82,392 +83,394 @@
 
     <div class="布局2 黑色"  style="color: #FFFFFF;">
 
-    <!-- 第0章大标题 -->
-        
-        <div class="大标题" style="margin: 0 0 60px 0 ;">
-            <h1 style="font-size: 26px; text-align: center; height: 100px; line-height: 90px;">大标题ZZ看未来</h1>
-            <div class="弹性布局横向">
-                <button class="弹性宽度 黑色 白字" type="button" onclick="document.getElementById('demo').style.display='none'">点击我！展开主轴</button>
-                <button class="弹性宽度 黑色 白字" type="button" onclick="document.getElementById('demo').style.display='block'">点击我！关闭经历</button>
-            </div>
-            <div class="弹性布局横向">
-                <button class="弹性宽度 灰色 " type="button" onclick="document.getElementById('demo2').style.display='none'">点击我！展开物资</button>
-                <button class="弹性宽度 灰色 " type="button" onclick="document.getElementById('demo2').style.display='block'">点击我！关闭个人</button>
-            </div>
-
-        </div>
-
-
-
-        <!-- 第1章 -->
-        <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角">
-            <h2>1-经历主轴</h2>
-
-            <div class="经历 弹性布局横向 小圆角" >
-                <div class="经历1 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                    <h2 class="文本居中">4年</h2>
-                    <div class="缩略图"></div>
-                    <div class="隐蔽屋"></div>
-                    <div class="学院地"></div>
-                    <div class="副本地"></div>
-                    <div class="练级区">新手村</div>
-
-                </div>
-
-                <div class="经历2 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                    <h2 class="文本居中">11年</h2>
-                    <div class="缩略图"></div>
-                    <div class="隐蔽屋"></div>
-                    <div class="学院地"></div>
-                    <div class="副本地"></div>
-                    <div class="练级区">练级区1</div>
-
-                </div>
-
-                <div class="经历3 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                    <h2 class="文本居中">3年</h2>
-                    <div class="缩略图"></div>
-                    <div class="隐蔽屋"></div>
-                    <div class="学院地"></div>
-                    <div class="副本地"></div>
-                    <div class="练级区">练级区2</div>
-
-                </div>
-
-                <div class="经历4 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                    <!-- <img src="../IMG/2024白天.jpg" alt="2024白天" width="200px"> -->
-                    <h2 class="文本居中">5年</h2>
-                    <div class="缩略图">
-                        <img src="../IMG/2024白天.jpg" alt="" width="100%">
-                    </div>
-                    <div class="隐蔽屋">
-                        隐蔽屋6<br>
-                        隐蔽屋7<br>
-                        隐蔽屋8<br>
-                    </div>
-                    <div class="学院地">
-                        高级学院
-                    </div>
-                    <div class="副本地">
-                        副本1<br>
-                        副本2<br>
-                        副本3<br>
-                        副本4<br>
-                        副本5<br>
-                    </div>
-                    <div class="练级区">练级区3</div>
-
-                </div>
-
-                <div class="经历5 灰色 灰字2 文本居中 弹性宽度" style="flex-grow: 5; min-width: 50%; border-right: solid 0px #cccccc;>
-                    <h2 class="文本居中">从23到51</h2>
-                    <div class="缩略图"></div>
-                    <div class="隐蔽屋"></div>
-                    <div class="学院地"></div>
-                    <div class="副本地">
-                        <br>
-                        副本6(2025-2029)<br>
-                        副本7(2029-2033)<br>
-                        副本8(2033-2037)<br>
-                    </div>
-                    <div class="练级区" style="font-size: 16px;" >未解锁</div>
-
-
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-        <!-- 第2章 -->
-         <div class="2-当前状态 黑色 小边距" style="width: 98%;">
-            <h2>2-当前状态</h2>
-
-            <div class="状态数值 弹性布局横向"  style="width: 100%;">
-                <div class="弹性宽度" style="text-align: left; max-width: 42%;">
-                    <h3 class="小边距 小圆角 小边框 蓝色">财力值：#=========（100%）</h3>
-                    <h3 class="小边距 小圆角 小边框 绿色 黑字">生命值：###=======（100%）</h3>
-                    <h3 class="小边距 小圆角 小边框 黄色 黑字">体力值：#####=====（100%）</h3>
-                    
-
-                </div>
-                <div class="弹性宽度" style="text-align: center; max-width: 16%;"></div>
-                <div class="弹性宽度" style="text-align: right; max-width: 42%;"></div>
-            </div>
-
-            <div class="事件数值 弹性布局横向"  style="width: 100%;">
-                
-                <div class="过去经历 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 0px #FF0033;">
-                    <h3 class="文本居中">过去经历</h3>
-                    <ul>
-                        <li>眼看过的色彩</li>
-                        <li class="灰色 黑字 小红边框">鼻闻过的气味</li>
-                        <li>口吃过的食物</li>
-                        <li>耳听过的音乐</li>
-                        <li>手抓过的东西</li>
-                        <li>脚走过的地方</li>
-                        <li>身做过的事件</li>
-                        <li>心想过的未来</li>
-                    </ul>
-                    
-                </div>
-
-                <div class="现在决定 黑色 弹性宽度 小边距 小圆角" style="flex-grow: 6; max-width: 50%; border: solid 0px #FF0033;">
-                    <h3 class="文本居中">现在决定</h3>
-                    
-                    <div class="弹性布局横向">
-
-                        <div class="每日计划 弹性宽度" style="width: 30%;">
-                            <h4>每日计划</h4>
-                            <ul>
-                                <li class="灰色 黑字 小红边框">7:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="阶段目标 弹性宽度" style="width: 70%;">
-                            <h4>阶段目标计划</h4>
-                            <ul>
-                                <li class="灰色 黑字 小红边框">66KG-65KG-64KG-63KG-62KG-61KG-60KG-59KG-58KG</li>
-                                <li>早餐-午餐-晚餐</li>
-                                <li>电脑技术-生活本领-人际沟通</li>
-                                <li>打卡-摸鱼-干饭-下班</li>
-                                <li></li>
-                                <li>叠被子-倒垃圾-收纳物品分类</li>
-                                <li>玩手机玩电脑</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    
-                </div>
-
-                <div class="未来目标 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 0px #FF0033;">
-                    <h3 class="文本居中">未来目标</h3>
-                    <ul>
-                        <li>（1%）作息-健康体检</li>
-                        <li class="灰色 黑字 小红边框">（1%）运动-增肌减脂58KG</li>
-                        <li>（1%）饮食</li>
-                        <li>（1%）学习-技能证书</li>
-                        <li>（1%）工作</li>
-                        <li>（1%）社交</li>
-                        <li>（1%）整理清洁</li>
-                        <li>（1%）财务-收支预算表</li>
-                        <li>（1%）娱乐</li>
-                    </ul>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- 第3章 -->
-         <div class="3-直播空间 黑色 小边距">
-            <h2>3-直播空间</h2>
-            <div class="直播间" style="width: 250px; margin: 0 auto;border-radius: 50%;" >
-
-                <iframe 
-                src="https://live.bilibili.com/h5/21648980" 
-                title="直播间" 
-                class="直播间" 
-                height="250px" 
-                width="250px" 
-                frameborder="0" 
-                style="border:none;
-                border-radius: 50%;">
-                </iframe>
-
-            </div>
-        </div>
-
-        <!-- 第4章 -->
-         <div class="4-操作状态 黑色 小边距">
-            <h2>4-操作状态</h2>
-            <div class="操作图标 弹性布局横向" style="justify-content: space-between;">
-
-                <div class="小边框 小圆角">
-
-                    <div class="姿态栏 弹性布局横向">
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">站</div>
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">坐</div>
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">蹲</div>
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">卧</div> 
-                    </div>
-
-                    
-                </div>
-
-                <div class="小边框 小圆角" >
-
-                    <div class="姿态栏 弹性布局横向">
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">
-                            <ul>
-                                <li>高级学习步骤</li>
-                                <li>学习能力</li>
-                                <li>学习</li>
-                            </ul>
-                        </div>
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">
-                            <ul>
-                                <li>桩，俯卧撑，跑步</li>
-                                <li>运动能力</li>
-                                <li>运动</li>
-                            </ul>
-                            
-                        </div>
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">厨艺</div>
-                        <div class="姿态 小边距 小内边距 小边框 小圆角">沟通</div> 
-                    </div>
-                    
-                </div>
-
-
-            </div>
-        </div>
-
-        <!-- 第5章 -->
-         <div id="demo2"  class="5-物资地区 黑色2 小边距 小圆角">
-            <h2>5-物资地区</h2>
-
-            <div class="个人物品 小边距 小圆角 深蓝">
-                <h3>个人物品</h3>
-                <div class="个人资源 弹性布局横向">
-
-                    <div class="个人 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
-                        <h4 class="文本居中">装备随身</h4>
-
-                    </div>
-
-                    <div class="背包 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
-                        <h4 class="文本居中">背包</h4>
-
-                    </div>
-
-                    <div class="仓库 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 5;border: solid 1px #cccccc;">
-                        <h4 class="文本居中">仓库</h4>
-                        <table class="小圆角" border="solid 1px #FFFFFF;" >
-
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>常用文件列表<br>
-                                    <ul>
-                                        <li>个人简历</li>
-                                        <li>每日计划</li>
-                                        <li>目录: E:\1-我的全部文件</li>
-                                        <li>0-快捷方式</li>
-                                        <li>0-模板</li>
-                                        <li>0-空白文件夹</li>
-                                        <li>1-我的全部文件-0-未整理文件</li>
-                                        <li class="粗体">1-我的全部文件-1-用途分类</li>
-                                        <li class="粗体">1-我的全部文件-1-用途分类0-生活</li>
-                                        <li>1-我的全部文件-1-用途分类0-生活-3-来源分类-地图-0-家-电脑-3-数据-0-壁纸</li>
-                                        <li>1-我的全部文件-1-用途分类0-生活-3-来源分类-地图-0-家-电脑-3-数据-0-思路格式化</li>
-                                        <li class="粗体">1-我的全部文件-1-用途分类1-工作</li>
-                                        <li class="粗体">1-我的全部文件-1-用途分类2-学习</li>
-                                        <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-0-VMGHOST</li>
-                                        <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-1-直播</li>
-                                        <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-9-慕课笔记资料</li>
-                                        <li class="粗体">1-我的全部文件-1-用途分类3-娱乐-1-电影</li>
-                                        <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-2-游戏</li>
-                                        <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-3-小说</li>
-                                        <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-4-漫画</li>
-                                        <li>1-我的全部文件-1-用途分类3-娱乐游戏</li>
-                                        <li class="粗体">1-我的全部文件-2-文件类型分类</li>
-                                        <li class="粗体">1-我的全部文件-3-来源分类</li>
-                                        <li>1-我的全部文件-3-来源分类-地图</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-地理地图-南昌</li>
-                                        <li class="粗体">1-我的全部文件-3-来源分类-地图-0-家</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-Z我</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-手机</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-爸妈</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-0-驱动</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-0-PE</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-1-镜像</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-2-激活工具</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-9-自动化安装步骤</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-0-日常软件</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-0-游戏软件</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-1-硬件虚拟化</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-2-处理</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-9-绿色软件</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1001-思维导图</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1002-网页</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1003-音乐</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1004-演示</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1005-文档</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1009-图片</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1099-我的笔记本</li>
-                                        <li class="粗体">1-我的全部文件-3-来源分类-地图-1-学校</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-1-学校-1-九年义务教育</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-1-学校-3-江信</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-1-学校-4-职业生涯</li>
-                                        <li class="粗体">1-我的全部文件-3-来源分类-地图-2-公司</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-1剪辑酷哦</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-2物流分拣</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-3装配流线</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-4人才驾校</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃-文件备份</li>
-                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃-文件备份-20241001技术文档（竖直目录）</li>
-
-                                        <li></li>
-
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>常用软件列表
-                                    <ul>
-                                        <li>系统</li>
-                                        <li>驱动</li>
-                                        <li>哔哩哔哩</li>
-                                        <li>浏览器</li>
-                                        <li>记事本</li>
-                                        <li>画图</li>
-                                        <li>时钟</li>
-                                        <li>地图</li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>箱包证件</td>
-                                <td>食物厨具</td>
-                                <td>衣物床铺</td>
-                                <td>电脑文件</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="房屋环境">房屋环境</div>
-                <h3>练级区3</h3>
-                <br>
-
-            <div class="社会国家">社会国家</div>
-                <br>
-
-            <div class="">自然地理</div>
-
-
-
+        <!-- 第0章大标题 -->
             
+            <div class="大标题" style="margin: 0 0 60px 0 ;">
+                <h1 style="font-size: 26px; text-align: center; height: 100px; line-height: 90px;">大标题ZZ看未来</h1>
+                
+                <div class="弹性布局横向" style="display: none;">
+                    <button class="弹性宽度 黑色 白字" type="button" >点击我！展开主轴</button>
+                    <button class="弹性宽度 黑色 白字" type="button" >点击我！关闭经历</button>
+                </div>
 
-        </div>
+                <div class="弹性布局横向">
+                    <button class="弹性宽度 灰色 " type="button" onclick="document.getElementById('demo2').style.display='none'">点击我！展开物资</button>
+                    <button class="弹性宽度 灰色 " type="button" onclick="document.getElementById('demo2').style.display='block'">点击我！关闭个人</button>
+                </div>
+
+            </div>
+
+
+
+            <!-- 第1章 -->
+            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角"  onclick="document.getElementById('demo').style.display='none'">
+                <h2>1-经历主轴</h2>
+
+                <div class="经历 弹性布局横向 小圆角" >
+                    <div class="经历1 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                        <h2 class="文本居中">4年</h2>
+                        <div class="缩略图"></div>
+                        <div class="隐蔽屋"></div>
+                        <div class="学院地"></div>
+                        <div class="副本地"></div>
+                        <div class="练级区">新手村</div>
+
+                    </div>
+
+                    <div class="经历2 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                        <h2 class="文本居中">11年</h2>
+                        <div class="缩略图"></div>
+                        <div class="隐蔽屋"></div>
+                        <div class="学院地"></div>
+                        <div class="副本地"></div>
+                        <div class="练级区">练级区1</div>
+
+                    </div>
+
+                    <div class="经历3 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                        <h2 class="文本居中">3年</h2>
+                        <div class="缩略图"></div>
+                        <div class="隐蔽屋"></div>
+                        <div class="学院地"></div>
+                        <div class="副本地"></div>
+                        <div class="练级区">练级区2</div>
+
+                    </div>
+
+                    <div class="经历4 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
+                        <!-- <img src="../IMG/2024白天.jpg" alt="2024白天" width="200px"> -->
+                        <h2 class="文本居中">5年</h2>
+                        <div class="缩略图">
+                            <img src="../IMG/2024白天.jpg" alt="" width="100%">
+                        </div>
+                        <div class="隐蔽屋">
+                            隐蔽屋6<br>
+                            隐蔽屋7<br>
+                            隐蔽屋8<br>
+                        </div>
+                        <div class="学院地">
+                            高级学院
+                        </div>
+                        <div class="副本地">
+                            副本1<br>
+                            副本2<br>
+                            副本3<br>
+                            副本4<br>
+                            副本5<br>
+                        </div>
+                        <div class="练级区">练级区3</div>
+
+                    </div>
+
+                    <div class="经历5 灰色 灰字2 文本居中 弹性宽度" style="flex-grow: 5; min-width: 50%; border-right: solid 0px #cccccc;>
+                        <h2 class="文本居中">从23到51</h2>
+                        <div class="缩略图"></div>
+                        <div class="隐蔽屋"></div>
+                        <div class="学院地"></div>
+                        <div class="副本地">
+                            <br>
+                            副本6(2025-2029)<br>
+                            副本7(2029-2033)<br>
+                            副本8(2033-2037)<br>
+                        </div>
+                        <div class="练级区" style="font-size: 16px;" >未解锁</div>
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <!-- 第2章 -->
+            <div class="2-当前状态 黑色 小边距">
+                <h2>2-当前状态</h2>
+
+                <div class="状态数值 弹性布局横向"  style="width: 100%;">
+                    <div class="弹性宽度" style="text-align: left; max-width: 42%;">
+                        <h3 class="小边距 小圆角 小边框 蓝色">财力值：#=========（100%）</h3>
+                        <h3  class="小边距 小圆角 小边框 绿色 黑字" onclick="document.getElementById('demo').style.display='block'">生命值：###=======（100%）</h3>
+                        <h3 class="小边距 小圆角 小边框 黄色 黑字">体力值：#####=====（100%）</h3>
+                        
+
+                    </div>
+                    <div class="弹性宽度" style="text-align: center; max-width: 16%;"></div>
+                    <div class="弹性宽度" style="text-align: right; max-width: 42%;"></div>
+                </div>
+
+                <div class="事件数值 弹性布局横向"  style="width: 100%;">
+                    
+                    <div class="过去经历 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 0px #FF0033;">
+                        <h3 class="文本居中">过去经历</h3>
+                        <ul>
+                            <li>眼看过的色彩</li>
+                            <li class="红色 白字 小红边框">鼻闻过的气味</li>
+                            <li>口吃过的食物</li>
+                            <li>耳听过的音乐</li>
+                            <li>手抓过的东西</li>
+                            <li>脚走过的地方</li>
+                            <li>身做过的事件</li>
+                            <li>心想过的未来</li>
+                        </ul>
+                        
+                    </div>
+
+                    <div class="现在决定 黑色 弹性宽度 小边距 小圆角" style="flex-grow: 6; max-width: 50%; border: solid 0px #FF0033;">
+                        <h3 class="文本居中">现在决定</h3>
+                        
+                        <div class="弹性布局横向">
+
+                            <div class="每日计划 弹性宽度" style="width: 30%;">
+                                <h4>每日计划</h4>
+                                <ul>
+                                    <li class="红色 白字 小红边框">7:00</li>
+                                </ul>
+                            </div>
+
+                            <div class="阶段目标 弹性宽度" style="width: 70%;">
+                                <h4>阶段目标计划</h4>
+                                <ul>
+                                    <li class="红色 白字 小红边框">66KG-65KG-64KG-63KG-62KG-61KG-60KG-59KG-58KG</li>
+                                    <li>早餐-午餐-晚餐</li>
+                                    <li>电脑技术-生活本领-人际沟通</li>
+                                    <li>打卡-摸鱼-干饭-下班</li>
+                                    <li></li>
+                                    <li>叠被子-倒垃圾-收纳物品分类</li>
+                                    <li>玩手机玩电脑</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="未来目标 黑色 弹性宽度 小边距 小圆角" style="max-width: 25%;  border: solid 0px #FF0033;">
+                        <h3 class="文本居中">未来目标</h3>
+                        <ul>
+                            <li>（1%）作息-健康体检</li>
+                            <li class="红色 白字 小红边框">（1%）运动-增肌减脂58KG</li>
+                            <li>（1%）饮食</li>
+                            <li>（1%）学习-技能证书</li>
+                            <li>（1%）工作</li>
+                            <li>（1%）社交</li>
+                            <li>（1%）整理清洁</li>
+                            <li>（1%）财务-收支预算表</li>
+                            <li>（1%）娱乐</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 第3章 -->
+            <div class="3-直播空间 黑色 小边距">
+                <h2>3-直播空间</h2>
+                <div class="直播间" style="width: 250px; margin: 0 auto;border-radius: 50%;" >
+
+                    <iframe 
+                    src="https://live.bilibili.com/h5/21648980" 
+                    title="直播间" 
+                    class="直播间" 
+                    height="250px" 
+                    width="250px" 
+                    frameborder="0" 
+                    style="border:none;
+                    border-radius: 50%;">
+                    </iframe>
+
+                </div>
+            </div>
+
+            <!-- 第4章 -->
+            <div class="4-操作状态 黑色 小边距">
+                <h2>4-操作状态</h2>
+                <div class="操作图标 弹性布局横向" style="justify-content: space-between;">
+
+                    <div class="小边框 小圆角">
+
+                        <div class="姿态栏 弹性布局横向">
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">站</div>
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">坐</div>
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">蹲</div>
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">卧</div> 
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="小边框 小圆角" >
+
+                        <div class="姿态栏 弹性布局横向">
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">
+                                <ul>
+                                    <li>高级学习步骤</li>
+                                    <li>学习能力</li>
+                                    <li>学习</li>
+                                </ul>
+                            </div>
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">
+                                <ul>
+                                    <li>桩，俯卧撑，跑步</li>
+                                    <li>运动能力</li>
+                                    <li>运动</li>
+                                </ul>
+                                
+                            </div>
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">厨艺</div>
+                            <div class="姿态 小边距 小内边距 小边框 小圆角">沟通</div> 
+                        </div>
+                        
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- 第5章 -->
+            <div id="demo2"  class="5-物资地区 黑色2 小边距 小圆角">
+                <h2>5-物资地区</h2>
+
+                <div class="个人物品 小边距 小圆角 深蓝">
+                    <h3>个人物品</h3>
+                    <div class="个人资源 弹性布局横向">
+
+                        <div class="个人 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
+                            <h4 class="文本居中">装备随身</h4>
+
+                        </div>
+
+                        <div class="背包 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
+                            <h4 class="文本居中">背包</h4>
+
+                        </div>
+
+                        <div class="仓库 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 5;border: solid 1px #cccccc;">
+                            <h4 class="文本居中">仓库</h4>
+                            <table class="小圆角" border="solid 1px #FFFFFF;" >
+
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>常用文件列表<br>
+                                        <ul>
+                                            <li>个人简历</li>
+                                            <li>每日计划</li>
+                                            <li>目录: E:\1-我的全部文件</li>
+                                            <li>0-快捷方式</li>
+                                            <li>0-模板</li>
+                                            <li>0-空白文件夹</li>
+                                            <li>1-我的全部文件-0-未整理文件</li>
+                                            <li class="粗体">1-我的全部文件-1-用途分类</li>
+                                            <li class="粗体">1-我的全部文件-1-用途分类0-生活</li>
+                                            <li>1-我的全部文件-1-用途分类0-生活-3-来源分类-地图-0-家-电脑-3-数据-0-壁纸</li>
+                                            <li>1-我的全部文件-1-用途分类0-生活-3-来源分类-地图-0-家-电脑-3-数据-0-思路格式化</li>
+                                            <li class="粗体">1-我的全部文件-1-用途分类1-工作</li>
+                                            <li class="粗体">1-我的全部文件-1-用途分类2-学习</li>
+                                            <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-0-VMGHOST</li>
+                                            <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-1-直播</li>
+                                            <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-9-慕课笔记资料</li>
+                                            <li class="粗体">1-我的全部文件-1-用途分类3-娱乐-1-电影</li>
+                                            <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-2-游戏</li>
+                                            <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-3-小说</li>
+                                            <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-4-漫画</li>
+                                            <li>1-我的全部文件-1-用途分类3-娱乐游戏</li>
+                                            <li class="粗体">1-我的全部文件-2-文件类型分类</li>
+                                            <li class="粗体">1-我的全部文件-3-来源分类</li>
+                                            <li>1-我的全部文件-3-来源分类-地图</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-地理地图-南昌</li>
+                                            <li class="粗体">1-我的全部文件-3-来源分类-地图-0-家</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-Z我</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-手机</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-爸妈</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-0-驱动</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-0-PE</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-1-镜像</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-2-激活工具</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-9-自动化安装步骤</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-0-日常软件</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-0-游戏软件</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-1-硬件虚拟化</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-2-处理</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-9-绿色软件</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1001-思维导图</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1002-网页</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1003-音乐</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1004-演示</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1005-文档</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1009-图片</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1099-我的笔记本</li>
+                                            <li class="粗体">1-我的全部文件-3-来源分类-地图-1-学校</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-1-学校-1-九年义务教育</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-1-学校-3-江信</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-1-学校-4-职业生涯</li>
+                                            <li class="粗体">1-我的全部文件-3-来源分类-地图-2-公司</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-2-公司-1剪辑酷哦</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-2-公司-2物流分拣</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-2-公司-3装配流线</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-2-公司-4人才驾校</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃-文件备份</li>
+                                            <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃-文件备份-20241001技术文档（竖直目录）</li>
+
+                                            <li></li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>常用软件列表
+                                        <ul>
+                                            <li>系统</li>
+                                            <li>驱动</li>
+                                            <li>哔哩哔哩</li>
+                                            <li>浏览器</li>
+                                            <li>记事本</li>
+                                            <li>画图</li>
+                                            <li>时钟</li>
+                                            <li>地图</li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>箱包证件</td>
+                                    <td>食物厨具</td>
+                                    <td>衣物床铺</td>
+                                    <td>电脑文件</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="房屋环境">房屋环境</div>
+                    <h3>练级区3</h3>
+                    <br>
+
+                <div class="社会国家">社会国家</div>
+                    <br>
+
+                <div class="">自然地理</div>
+
+
+
+                
+
+            </div>
 
     </div>
 
