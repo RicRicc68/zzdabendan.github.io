@@ -26,7 +26,11 @@
 
 
         ul{list-style: none;}
-        h1,h2,h3,h4,div {font: 7px sans-serif;}
+        h1{font: 16px sans-serif;}
+        h2{font: 14px sans-serif;}
+        h3{font: 12px sans-serif;}
+        h4{font: 10px sans-serif;}
+        div{font: 7px sans-serif;}
 
         div { border: solid 0px #FFCC00;}
         /*h2  { border-bottom: solid 1px #FFFFFF;}*/
@@ -61,6 +65,7 @@
         .灰字{color: #CCCCCC;}
         .灰字2{color: #333333;}
         .小边距{margin: 5px 5px 5px 5px;}
+        .小边距右{margin: 5px 5px 5px 0px;}
         .小内边距{padding: 3px;}
         .小圆角{border-radius: 8px;}
         .小边框{ border: solid 1px #FFFFFF;}
@@ -94,8 +99,8 @@
                 </div>
 
                 <div class="弹性布局横向">
-                    <button class="弹性宽度 灰色 " type="button" onclick="document.getElementById('demo2').style.display='none'">点击我！展开物资</button>
-                    <button class="弹性宽度 灰色 " type="button" onclick="document.getElementById('demo2').style.display='block'">点击我！关闭个人</button>
+                    <button class="弹性宽度 黑色 白字" type="button" onclick="document.getElementById('demo2').style.display='none'">点击我！展开物资</button>
+                    <button class="弹性宽度 黑色 白字" type="button" onclick="document.getElementById('demo2').style.display='block'">点击我！关闭个人</button>
                 </div>
 
             </div>
@@ -103,8 +108,8 @@
 
 
             <!-- 第1章 -->
-            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角"  onclick="document.getElementById('demo').style.display='none'">
-                <h2>1-经历主轴</h2>
+            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角">
+                <h2   onclick="document.getElementById('demo').style.display='none'" style="height: 30px; line-height: 30px;">1-经历主轴</h2>
 
                 <div class="经历 弹性布局横向 小圆角" >
                     <div class="经历1 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
@@ -190,9 +195,9 @@
 
                 <div class="状态数值 弹性布局横向"  style="width: 100%;">
                     <div class="弹性宽度" style="text-align: left; max-width: 42%;">
-                        <h3 class="小边距 小圆角 小边框 蓝色">财力值：#=========（100%）</h3>
-                        <h3  class="小边距 小圆角 小边框 绿色 黑字" onclick="document.getElementById('demo').style.display='block'">生命值：###=======（100%）</h3>
-                        <h3 class="小边距 小圆角 小边框 黄色 黑字">体力值：#####=====（100%）</h3>
+                        <h3 class="小边距 小圆角 小边框 蓝色" style="max-width: 400px;">财力值：#=========（100%）</h3>
+                        <h3 class="小边距 小圆角 小边框 绿色 黑字" onclick="document.getElementById('demo').style.display='block'"  style="max-width: 400px;">生命值：###=======（100%）</h3>
+                        <h3 class="小边距 小圆角 小边框 黄色 黑字"  style="max-width: 400px;">体力值：#####=====（100%）</h3>
                         
 
                     </div>
@@ -289,38 +294,48 @@
                 <h2>4-操作状态</h2>
                 <div class="操作图标 弹性布局横向" style="justify-content: space-between;">
 
-                    <div class="小边框 小圆角">
 
-                        <div class="姿态栏 弹性布局横向">
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">站</div>
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">坐</div>
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">蹲</div>
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">卧</div> 
-                        </div>
 
-                        
-                    </div>
+                    <div class="小边框 小圆角 " style="width: 100%;" >
 
-                    <div class="小边框 小圆角" >
 
-                        <div class="姿态栏 弹性布局横向">
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">
+                        <div class="姿态栏 弹性布局横向 "  style="width: 100%;" >
+
+                            <div class="姿态 小边距 小内边距 小边框 小圆角 弹性宽度">
                                 <ul>
                                     <li>高级学习步骤</li>
                                     <li>学习能力</li>
                                     <li>学习</li>
                                 </ul>
                             </div>
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">
+                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
                                 <ul>
-                                    <li>桩，俯卧撑，跑步</li>
+                                    <li>站坐蹲卧</li>
+                                    <li>桩劲，俯卧撑，跑步</li>
                                     <li>运动能力</li>
                                     <li>运动</li>
                                 </ul>
                                 
                             </div>
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">厨艺</div>
-                            <div class="姿态 小边距 小内边距 小边框 小圆角">沟通</div> 
+                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
+                                <ul>
+                                    <li>蛋炒饭，煎炸薯条，土豆鸡蛋蔬菜饼</li>
+                                    <li>煎鸡蛋，煮米饭，煮面条，炒青菜</li>
+                                    <li>刀工，火力，调味，摆盘</li>
+                                    <li>厨艺</li>
+                                </ul>
+                                
+                            </div>
+                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
+                                
+                                <ul>
+                                    <li>请示提问倾听会议夸赞批评</li>
+                                    <li>口头，书面，非语言，符号</li>
+                                    <li>了解</li>
+                                    <li>沟通</li>
+                                </ul>
+                            </div> 
+
                         </div>
                         
                     </div>
@@ -330,10 +345,10 @@
             </div>
 
             <!-- 第5章 -->
-            <div id="demo2"  class="5-物资地区 黑色2 小边距 小圆角">
+            <div class="5-物资地区 黑色2 小边距 小圆角">
                 <h2>5-物资地区</h2>
 
-                <div class="个人物品 小边距 小圆角 深蓝">
+                <div  id="demo2"  class="个人物品 小边距 小圆角 深蓝">
                     <h3>个人物品</h3>
                     <div class="个人资源 弹性布局横向">
 
@@ -356,7 +371,7 @@
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>常用文件列表<br>
-                                        <ul>
+                                        <ul class="我的全部文件目录">
                                             <li>个人简历</li>
                                             <li>每日计划</li>
                                             <li>目录: E:\1-我的全部文件</li>
@@ -459,6 +474,7 @@
 
                 <div class="房屋环境">房屋环境</div>
                     <h3>练级区3</h3>
+                    <img width="100%" src="../IMG/2024世界练级区.png" alt="2024世界练级区.png">
                     <br>
 
                 <div class="社会国家">社会国家</div>
@@ -486,6 +502,17 @@
     </div>
     <br>
  
+
+
+    <div>
+        <p class="白字">
+            物资饥饿，水源，土地<br>
+            冷风寒冻，门窗，<br>
+            灰尘脏污，净水，<br>
+            敌人伤病，情报，武器，友军<br>
+            
+        </p>
+    </div>
 <!--
         <div class="布局 灰色">
         
