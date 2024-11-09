@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width， initial-scale=1.0, user-scalable=no">
     <title>WEB8-1-布局</title>
+
+    <!-- 外部样式 -->
     <link rel="stylesheet" href="./CSS/0-基本.CSS">
     <link rel="stylesheet" href="./CSS/1-布局.CSS">
     <link rel="stylesheet" href="./CSS/2-内容.CSS">
+
+    <!-- 内部样式 -->
     <style>
 
         /*
@@ -29,46 +33,38 @@
         h3{font: 12px sans-serif;}
         h4{font: 10px sans-serif;}
         div{font: 7px sans-serif;}
-
-        div { border: solid 0px #FFCC00;}
-
+        div{border: solid 0px #FFCC00;}
         /*h2  { border-bottom: solid 1px #FFFFFF;}*/
-
-        body,html,.布局 { background-color: #000000;}
-
-        h3,ul,li,div{  overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;}
-
         /* iframe { pointer-events: none; } 禁止点击  */
+        body,html,.布局 { background-color: #000000;}
+        h3,ul,li,div{  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+        
+            .黑色{background-color: #000000;}
+            .黑色2{background-color: #333333;}
+            .深蓝{background-color: #333366;}
+            .白色{background-color: #FFFFFF;}
+            .灰色{background-color: #CCCCCC;}
+            .红色{background-color: #FF0000;}
+            .绿色{background-color: #00FF00;}
+            .黄色{background-color: #FFFF00;}
+            .蓝色{background-color: #0000FF;}
 
-
-        .黑色{background-color: #000000;}
-        .黑色2{background-color: #333333;}
-        .深蓝{background-color: #333366;}
-        .白色{background-color: #FFFFFF;}
-        .灰色{background-color: #CCCCCC;}
-        .红色{background-color: #FF0000;}
-        .绿色{background-color: #00FF00;}
-        .黄色{background-color: #FFFF00;}
-        .蓝色{background-color: #0000FF;}
-
-        .白字{color: #FFFFFF;}
-        .黑字{color: #000000;}
-        .灰字{color: #CCCCCC;}
-        .灰字2{color: #333333;}
-        .小边距{margin: 5px 5px 5px 5px;}
-        .小边距右{margin: 5px 5px 5px 0px;}
-        .小内边距{padding: 3px;}
-        .小圆角{border-radius: 8px;}
-        .小边框{ border: solid 1px #FFFFFF;}
-        .小红边框{ 
-                border-top: solid 1px #FF0000; 
-                border-bottom: solid 1px #FF0000;  }
-        .弹性布局横向{ display: flex; flex-direction: row;}
-        .弹性宽度{flex-grow: 1;}
-        .文本居中{text-align: center;}
-        .粗体{font-weight: bold;}
+            .白字{color: #FFFFFF;}
+            .黑字{color: #000000;}
+            .灰字{color: #CCCCCC;}
+            .灰字2{color: #333333;}
+            .小边距{margin: 5px 5px 5px 5px;}
+            .小边距右{margin: 5px 5px 5px 0px;}
+            .小内边距{padding: 3px;}
+            .小圆角{border-radius: 8px;}
+            .小边框{ border: solid 1px #FFFFFF;}
+            .小红边框{ 
+                    border-top: solid 1px #FF0000; 
+                    border-bottom: solid 1px #FF0000;  }
+            .弹性布局横向{ display: flex; flex-direction: row;}
+            .弹性宽度{flex-grow: 1;}
+            .文本居中{text-align: center;}
+            .粗体{font-weight: bold;}
         
 
     </style>
@@ -77,7 +73,7 @@
 
 <body>
 
-    <!-- 网页 -->
+    <!-- 网页开头 -->
     <div class="布局2 黑色"  style="color: #FFFFFF;">
 
         <!-- 第0章大标题 -->
@@ -104,7 +100,7 @@
 
 
             <!-- 第1章 -->
-            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角"  onclick="document.getElementById('demo').style.display='none'">
+            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角"  onclick="document.getElementById('demo').style.display='none'" style="display: none;">
                 <h2   style="height: 30px; line-height: 30px;">1-经历主轴</h2>
 
                 <div class="经历 弹性布局横向 小圆角" >
@@ -401,7 +397,7 @@
                 <div  class="个人物品 小边距 小圆角 深蓝" >
                     <h3>5.1个人物品</h3>
 
-                    <div  id="demo2" class="个人资源 弹性布局横向"  onclick="document.getElementById('demo2').style.display='none'">
+                    <div  id="demo2" class="个人资源 弹性布局横向"  onclick="document.getElementById('demo2').style.display='none'" style="display: none;">
 
                         <div class="个人 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
                             <h4 class="文本居中">装备随身</h4>
@@ -548,31 +544,13 @@
 
                 <div class="社会国家">
                     <h3>5.3社会国家</h3>
-                    <p>城市：
-                        城市1，
-                        城市2，
-                        城市3，
-                        城市4，
-                        城市5，
-                        城市6，
-                        城市7，
-                        城市8，
-                        城市9，
-                        城市10，
-                        城市11，
-                        城市12，
-                        城市13，
-                        城市14，
-                        城市15，
-                        城市16，
-                        城市17，
-                        城市18，
-                        城市19，
-                    </p>
-                    <p>
-                        <br>
-                    </p>
+
+                    <p>行业：游戏，金融，制造，教育，建筑，农牧渔畜林，旅游，服务，信息</p>
+                    <p>城市：城市1，城市2，城市3，城市4，城市5，城市6，城市7，城市8，城市9，城市10，城市11，城市12，城市13，城市14，城市15，城市16，城市17，城市18，城市19，</p>
+                    <p><br></p>
+
                     <p>80亿人</p>
+                    
                     
                 </div>
 
