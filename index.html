@@ -1,1326 +1,906 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width， initial-scale=1.0, user-scalable=no">
-    <title>WEB8-1-布局</title>
-
-    <!-- 外部样式 -->
-    <link rel="stylesheet" href="./CSS/0-基本.CSS">
-    <link rel="stylesheet" href="./CSS/1-布局.CSS">
-    <link rel="stylesheet" href="./CSS/2-内容.CSS">
-
-    <!-- 内部样式 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web9</title>
     <style>
 
-        /*
-        .1-经历主轴
-        .2-当前状态
-        .3-直播空间
-        .4-操作状态
-        .5-物资地区
-        */
+        /*自带定义*/
+        /*h1,h2,h3,h4{text-align: center;}*/
+        
+        *{margin: 0; padding: 0;}
+        *{font-size: 6px; }
+        
+        h1{font-size: 10px;}
+        h2{font-size: 9px;}
+        h3{font-size: 8px;}
+        h4{font-size: 7px;}
+        ul,li{list-style: none;}
 
-        *{
-            margin: 0; 
-            padding: 0;
+
+        /*自定义颜色*/
+        .黑色{background-color: #000000;}
+        .白色{background-color: rgba(255, 255, 255, 1)}
+        .灰色{background-color: #CCCCCC;}
+        .红色{background-color: #FF0000;}
+        .绿色{background-color: #00FF00;}
+        .蓝色{background-color: #0000FF;}
+        .黄色{background-color: #FFFF00;}
+        .青色{background-color: #00FFFF;}
+        .粉红色{background-color: #FFCBCC;}
+        .淡黄色{background-color: #FFFFBD;}
+        .透明黑色{background: rgba(0, 0, 0, 0.7);}
+
+        .白字{color: #FFFFFF;}
+        .黑字{color: #000000;}
+        .黄字{color: #FFFF00;}
+
+
+        /*弹性布局*/
+
+        .弹性横向排列{display: flex; flex-direction: row;}
+        .弹性竖向排列{display: flex; flex-direction: column;}
+        .弹性宽度{flex-grow: 1;}
+        .弹性宽度2{flex-grow: 2;}
+        .弹性宽度3{flex-grow: 3;}
+        .弹性宽度6{flex-grow: 6;}
+        .弹性底部对齐{align-items: flex-end;}
+
+
+        /*盒子模型*/
+        .小边框{border: solid 0px rgba(00,00,00);}
+        .红边框{border: solid 0px rgba(255,00,00);}
+        .右白边框{border-right: solid 1px rgba(255,255,255);}
+        .上红边框{border-top: solid 1px rgba(255,00,00);}
+        .上黑边框{border-top: solid 1px rgba(0,0,0);}
+        .小红边框{border: solid 1px rgba(255,00,00);}
+
+        .行高4字{line-height: 4em;}
+
+        .宽度一层{min-width: 8%;}
+        .至多三层{max-width: 30%;}
+        .至多五层{max-width: 50%;}
+        .至少五层{min-width: 50%;}
+        .至多25分{max-width: 12.5%;}
+        .小边距{margin: 2px;}
+        .小圆角{border-radius: 5px;}
+        .大圆角{border-radius: 50%;}
+
+
+        /*文本样式*/
+        .文本居左{text-align: left;}
+        .文本居中{text-align: center;}
+        .文本居右{text-align: right;}
+        .小字{font-size: 6px;}
+        .小小字{font-size: 4px;}
+        .超出隐藏{overflow: hidden;}
+        .超出滚动条{overflow: scroll;}
+        .禁止文本换行{white-space: nowrap;} /**/
+
+        
+        /*定位布局*/
+        .页面顶部定位{position: fixed; top: 0; left: 0; width: 100%; z-index: 2;}
+        .页面顶部右边定位{position: fixed; top: 0; right: 0; width: 60px; height: 60px; z-index: 2;}
+        .页面底部定位{position: fixed; bottom: 0; left: 0; width: 100%; z-index: 2;}
+        
+
+
+        /*附加内容样式*/
+        #dimensions {
+            padding: 10px;
+            border-radius: 5px;
+
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
         }
-
-        ul{list-style: none;}
-        h1{font: 14px sans-serif;}
-        h2{font: 12px sans-serif;}
-        h3{font: 11px sans-serif;}
-        h4{font: 10px sans-serif;}
-        div{font: 5px sans-serif;}
-        div{border: solid 0px #FFCC00;}
-        /*h2  { border-bottom: solid 1px #FFFFFF;}*/
-        /* iframe { pointer-events: none; } 禁止点击  */
-        body,html,.布局 { background-color: #000000;}
-        h3,ul,li,div{  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
-        
-            .黑色{background-color: #000000;}
-            .黑色2{background-color: #333333;}
-            .深蓝{background-color: #333366;}
-            .白色{background-color: #FFFFFF;}
-            .灰色{background-color: #CCCCCC;}
-            .红色{background-color: #FF0000;}
-            .绿色{background-color: #00EE00;}
-            .黄色{background-color: #FFCC00;}
-            .蓝色{background-color: #2222CC;}
-
-            .白字{color: #FFFFFF;}
-            .黑字{color: #000000;}
-            .灰字{color: #CCCCCC;}
-            .灰字2{color: #333333;}
-            .红字{color: #FF0000;}
-            .黄字{color: #FFCC00;}
-            .淡黄字{color: #FFFFBD;}
-
-            /*
-             class="黄字" style="background-color: #FF0000;"
-             class="黑字" style="background-color: #FFCC00;"
-             class="黑字" style="background-color: #FFFFBD;"
-             class="黑字" style="background-color: #FFFFFF;"
-            
-
-            */
-            
-            .小边距{margin: 5px 5px 5px 5px;}
-            .小边距右{margin: 5px 5px 5px 0px;}
-            .小内边距{padding: 3px;}
-            .小圆角{border-radius: 8px;}
-            .小小圆角{border-radius: 3px;}
-            .小边框{ border: solid 1px #FFFFFF;}
-            .小红边框{ 
-                    border-top: solid 1px #FF0000; 
-                    border-bottom: solid 1px #FF0000;  }
-            .弹性布局横向{ display: flex; flex-direction: row;}
-            .弹性宽度{flex-grow: 1;}
-            .文本居中{text-align: center;}
-            .粗体{font-weight: bold;}
-        
-/*自带样式
-
-div{margin: 10px;}
-div{border: solid 1px #000;}
-
-div{border-radius: 10px;}
-*/
-*{margin: 0; padding: 0;}
-ul{list-style: none;}
-*{font-size: 10px;}
-
-
-
-
-
-/*自定义样式*/
-		.宽度400{max-width: 400px;}
-		.字宽度{width: 1em;}
-		.字2宽度{width: 2em;}
-		.字6宽度{width: 6em;}
-		.无边距{margin: 0;}
-		.小边距{margin: 2.5px;}
-		.小边框{border: solid 1px #FFFFFF;}
-		.小上边框{border-top: solid 2px #FF0000;}
-		.小下边框{border-bottom: solid 2px #FF0000;}
-		.小圆角{border-radius: 5px;}
-		.左侧距离1{margin: 0 0 0 0px ;}
-		.左侧距离2{margin: 0 0 0 0px ;}
-		.左侧距离3{margin: 0 0 0 0px ;}
-		.左侧距离4{margin: 0 0 0 0px ;}
-		.左侧距离5{margin: 0 0 0 0px ;}
-		.左侧距离6{margin: 0 0 0 0px ;}
-
-		.右侧距离1{margin: 0 0px 0 0 ;}
-		.右侧距离2{margin: 0 0px 0 0 ;}
-		.右侧距离3{margin: 0 0px 0 0 ;}
-		.右侧距离4{margin: 0 0px 0 0 ;}
-		.右侧距离5{margin: 0 0px 0 0 ;}
-		.右侧距离6{margin: 0 0px 0 0 ;}
-
-		.行{display: inline-block;}
-		.弹性布局纵反向{ display: flex; flex-direction: column-reverse;}
-		.弹性布局横反向{ display: flex; flex-direction: row-reverse;}
-		.弹性布局纵向{ display: flex; flex-direction: column;}
-		.弹性布局横向{ display: flex; flex-direction: row;}
-		.弹性分布中心{  
-					display: flex;
-					align-items: center; /* 垂直居中 */
-					justify-content: center; /* 水平居中 */
-				}
-		.弹性分布中右{  
-			display: flex;
-			align-items: center; /* 垂直居中 */
-			justify-content: right; /* 水平居右 */
-		}
-
-
-		.弹性分布中左{  
-			display: flex;
-			align-items: center; /* 垂直居中 */
-			justify-content: left; /* 水平居左 */
-		}
-
-
-				
-		.弹性宽度{flex-grow: 1;}
-		.弹性宽度6{flex-grow: 6;}
-		.文本居中{text-align: center;}
-		.文本居右{text-align: right;}
-		.文本居左{text-align: left;}
-		.右竖直文本{writing-mode: vertical-rl; text-orientation: upright;} /* 或者使用 vertical-lr */
-		.左竖直文本{writing-mode: vertical-lr; text-orientation: upright;} /* 或者使用 vertical-lr */
-		.小字{font-size: 8px;}
-
-		.至多三层{max-width: 30%;}
-		.至多四层{max-width: 40%;}
-		.至多五层{max-width: 50%;}
-		.至少五层{min-width: 50%;}
-		.至少四层{min-width: 40%;}
-
-		/*可爱色
-		.可爱青色{background-color: #66CCCC;}
-		.可爱紫色{background-color: #CCCCFF;}
-		.可爱绿色{background-color: #66CC99;}
-		.可爱粉色{background-color: #FF99CC;}
-		.可爱红色{background-color: #FF6666;}
-		.可爱青色{background-color: #66CCCC;}
-*/
-
-
-		
-
-		/*常见色*/
-		.黑色{background-color: #000000;}
-		.黑色2{background-color: #333333;}
-		.深蓝{background-color: #333366;}
-		.白色{background-color: #FFFFFF;}
-		.灰色{background-color: #CCCCCC;}
-		.红色{background-color: #FF0000;}
-		.淡红色{background-color: #FFCBCC;}
-		.绿色{background-color: #00EE00;}
-		.黄色{background-color: #FFCC00;}
-		.淡黄色{background-color: #FFFFBD;}
-		.蓝色{background-color: #2222CC;}
-
-		.白字{color: #FFFFFF;}
-		.黑字{color: #000000;}
-		.灰字{color: #CCCCCC;}
-		.灰字2{color: #333333;}
-		.红字{color: #FF0000;}
-		.淡红字{color: #FFCBCC;}
-		
-		.黄字{color: #FFCC00;}
-		.淡黄字{color: #FFFFBD;}
-
-
-
 
 
     </style>
-
 </head>
-
 <body>
 
-    <!-- 网页开头 -->
-    <div class="布局2 黑色"  style="color: #FFFFFF;">
+
+<!-- 网页开端 -->
+    <div class="布局 小边框 ">
 
 
-        <!-- 第0章大标题 
+    <!-- 第1章 -->
+        <div class="感觉  " style="width: 250px; margin: 0 auto;" >
+            <!-- <h1>感觉</h1> -->
+            <iframe title="感觉" class="感觉" height="250" width="250"  
+                    src="https://live.bilibili.com/h5/21648980" 
+                    style="border:none; border-radius: 50%; margin: 0 auto;">
+            </iframe>
+        </div>
+        
+
+        <!-- 第2章 -->
 
 
-            <div class="大标题" style="margin: 0 0 0px 0 ;">
-                <h1 style="font-size: 26px; text-align: center; height: 100px; line-height: 90px;">
-                大标题ZZ看未来
-                </h1>
-                
-                <div class="弹性布局横向">
-                    <button class="弹性宽度 黑色 白字" type="button" >点击我！展开主轴</button>
-                    <button class="弹性宽度 黑色 白字" type="button" >点击我！关闭经历</button>
-                </div>
-
-                <div class="弹性布局横向">
-                    <button   class="弹性宽度 黑色 白字" type="button">点击我！展开物资</button>
-                    <button class="弹性宽度 黑色 白字" type="button">点击我！关闭个人</button>
-                </div>
-
-            </div>
-        -->
-
-
-            <!-- 第1章 -->
-            <div id="demo" class="1-经历主轴 黑色2 小边距 小圆角"  onclick="document.getElementById('demo').style.display='none'" style="display: none;">
-                <h2   style="height: 30px; line-height: 30px;">1-经历主轴</h2>
-
-                <div class="经历 弹性布局横向 小圆角" >
-                    <div class="经历1 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                        <h2 class="文本居中">4年</h2>
-                        <div class="缩略图"></div>
-                        <div class="隐蔽屋">
+    <!-- 第3章 -->
+        <div class="经历 小边框 透明黑色 ">
+        <!-- 第3.1章 -->
+            <div id="demo"  class="主轴 弹性横向排列 弹性宽度 禁止文本换行 超出滚动条 上黑边框">
+                <!-- <h1>主轴</h1> -->
+            
+                <div class="弹性横向排列 弹性宽度 ">
+                    <div class=" 4年 小边框 弹性宽度 黑色 白字 右白边框 至多25分">
+                        <ul class="弹性横向排列 白色 黑字 ">
+                            <li class="小边距 上红边框">2001</li>
+                            <li class="小边距 上红边框">2002</li>
+                            <li class="小边距 上红边框">2003</li>
+                            <li class="小边距 上红边框">2004</li>
+                        </ul>
+                        
+                        <h2 class="文本居左"> 4年</h2>
+                        <p>
                             隐蔽屋0（）<br>
-                            隐蔽屋0（20110000-20240200）<br>
-                        </div>
-                        <div class="学院地"></div>
-                        <div class="副本地"></div>
-                        <div class="练级区">新手村</div>
-
+                            隐蔽屋0（20110000->20240200）<br>
+                            新手村<br>
+                        </p>
+                        
                     </div>
 
-                    <div class="经历2 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                        <h2 class="文本居中">11年</h2>
-                        <div class="缩略图"></div>
-                        <div class="隐蔽屋">
-                            隐蔽屋1（20050000-20070000）<br>
-                            隐蔽屋2（20070000-20150000）<br>
-                            隐蔽屋4（20150000-20160800）<br>
-                        </div>
-                        <div class="学院地">
+                    <div class="11年 小边框 弹性宽度 黑色 白字 右白边框 至多25分">
+                        <ul class="弹性横向排列 白色 黑字">
+                            <li class="小边距 上红边框">2005</li>
+                            <li class="小边距 上红边框">2006</li>
+                            <li class="小边距 上红边框">2007</li>
+                            <li class="小边距 上红边框">2009</li>
+                            <li class="小边距 上红边框">2010</li>
+                            <li class="小边距 上红边框">2011</li>
+                            <li class="小边距 上红边框">2012</li>
+                            <li class="小边距 上红边框">2013</li>
+                            <li class="小边距 上红边框">2014</li>
+                            <li class="小边距 上红边框">2015</li>
+                            <li class="小边距 上红边框">2016</li>
+                        </ul>
+                        
+                        <h2 class="文本居左">11年</h2>
+                        <p>
+                            隐蔽屋1（20050000->20070000）<br>
+                            隐蔽屋2（20070000->20150000）<br>
+                            隐蔽屋4（20150000->20160800）<br>
                             简单学院<br>
                             普通学院6<br>
                             入门学院3<br>
-                        </div>
-                        <div class="副本地"></div>
-                        <div class="练级区">练级区1</div>
-
+                            练级区1<br>
+                        </p>
+                        
                     </div>
 
-                    <div class="经历3 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                        <h2 class="文本居中">3年</h2>
-                        <div class="缩略图"></div>
-                        <div class="隐蔽屋">
-                            隐蔽屋5（20160829-20190500）<br>
-                        </div>
-                        <div class="学院地">
+                    <div class=" 3年 小边框 弹性宽度 黑色 白字 右白边框 至多25分">
+                        <ul class="弹性横向排列 白色 黑字">
+                            <li class="小边距 上红边框">2017</li>
+                            <li class="小边距 上红边框">2018</li>
+                            <li class="小边距 上红边框">2019</li>
+                        </ul>
+                        
+                        <h2 class="文本居左"> 3年</h2>
+                        <p>
+                            隐蔽屋5（20160829->20190500）<br>
                             升阶学院3<br>
-                        </div>
-                        <div class="副本地"></div>
-                        <div class="练级区">练级区2</div>
-
+                            练级区2<br>
+                        </p>
+                        
                     </div>
 
-                    <div class="经历4 弹性宽度" style="min-width: 12%; border-right: solid 1px #cccccc; background-color: #000000;">
-                        <!-- <img src="../IMG/2024白天.jpg" alt="2024白天" width="200px"> -->
-                        <h2 class="文本居中">5年</h2>
-                        <div class="缩略图">
-                            <img src="../IMG/2024白天.jpg" alt="" width="100%">
-                        </div>
-                        <div class="隐蔽屋">
+                    <div class=" 5年 小边框 弹性宽度 黑色 白字 右白边框 至多25分">
+                        <ul class="弹性横向排列 白色 黑字">
+                            <li class="小边距 上红边框">2020</li>
+                            <li class="小边距 上红边框">2021</li>
+                            <li class="小边距 上红边框">2022</li>
+                            <li class="小边距 上红边框">2023</li>
+                            <li class="小边距 上红边框">2024</li>
+                        </ul>
+                        
+                        <h2 class="文本居左"> 5年</h2>
+                        <p>
                             隐蔽屋6<br>
                             隐蔽屋7<br>
                             隐蔽屋8<br>
-                        </div>
-                        <div class="学院地">
-                            高级学院
-                        </div>
-                        <div class="副本地">
+                            高级学院<br>
                             副本1<br>
                             副本2<br>
                             副本3<br>
                             副本4<br>
                             副本5<br>
-                        </div>
-                        <div class="练级区">练级区3</div>
-
+                            练级区3<br>
+                        </p>
+                        
                     </div>
 
-                    <div class="经历5 灰色 灰字2 文本居中 弹性宽度" style="flex-grow: 5; min-width: 50%; border-right: solid 0px #cccccc;">
-                        <h2 class="文本居中">从23到51</h2>
+                    <div class="从23到51 小边框 弹性宽度 灰色 黑字 至多五层">
+                        <ul class="弹性横向排列 白色 黑字">
+                            <li class="小边距 上红边框">2025</li>
+                            <li class="小边距 上红边框">2026</li>
+                            <li class="小边距 上红边框">2027</li>
+                            <li class="小边距 上红边框">2028</li>
+                            <li class="小边距 上红边框">2029</li>
+                            <li class="小边距 上红边框">2030</li>
+                            <li class="小边距 上红边框">2031</li>
+                            <li class="小边距 上红边框">2032</li>
+                            <li class="小边距 上红边框">2033</li>
+                            <li class="小边距 上红边框">2034</li>
+                            <li class="小边距 上红边框">2035</li>
+                            <li class="小边距 上红边框">2036</li>
+                            <li class="小边距 上红边框">2037</li>
+                        </ul>
                         
-                        <div class="缩略图">
-                            <img src="../IMG/生命周期.jpg" alt="" width="100%">
-                        </div>
-                        <div class="隐蔽屋"></div>
-                        <div class="学院地"></div>
-                        <div class="副本地">
-                            <br>
+                        <h2 class="文本居左">从23到51</h2>
+                        <p>
                             副本6(2025-2029)<br>
                             副本7(2029-2033)<br>
                             副本8(2033-2037)<br>
-                        </div>
-                        <div class="练级区" style="font-size: 16px;" >
-                            未解锁
-                        </div>
-                        
-                        <!-- 第5章 -->
-                        <div class="5-物资地区 黑色2 小边距 小圆角 白字">
-                            <!-- <h2>5-物资地区</h2> -->
-
-                            <div class="个人物品 小边距 小圆角 深蓝" >
-                                <h3>5.1个人物品（证件行李床铺衣服食物厨具电脑配件学习资料）</h3>
-
-                                <div  id="demo2" class="个人资源 弹性布局横向"  onclick="document.getElementById('demo2').style.display='none'" style="display: none;">
-
-                                    <div class="个人 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
-                                        <h4 class="文本居中">装备随身</h4>
-                                        <table border="solid 1px #cccccc" style="width: 100%;">
-                                            <tr>
-                                                <td>衣服</td>
-                                            </tr>
-                                            <tr>
-                                                <td>裤子</td>
-                                            </tr>
-                                            <tr>
-                                                <td>鞋子</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                    <div class="背包 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 1;border: solid 1px #cccccc;">
-                                        <h4 class="文本居中">背包</h4>
-                                    </div>
-
-                                    <div class="仓库 弹性宽度 小边距 小边框 小圆角" style="flex-grow: 5;border: solid 1px #cccccc;">
-                                        <h4 class="文本居中">仓库</h4>
-
-                                        <table class="小圆角" border="solid 1px #FFFFFF;" >
-
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                                <td>&nbsp;</td>
-                                                <td>&nbsp;</td>
-                                                <td>常用文件列表<br>
-                                                    <ul class="我的全部文件目录">
-                                                        <li>个人简历</li>
-                                                        <li>每日计划</li>
-                                                        <li>目录: E:\1-我的全部文件</li>
-                                                        <li>0-快捷方式</li>
-                                                        <li>0-模板</li>
-                                                        <li>0-空白文件夹</li>
-                                                        <li>1-我的全部文件-0-未整理文件</li>
-                                                        <li class="粗体">1-我的全部文件-1-用途分类</li>
-                                                        <li class="粗体">1-我的全部文件-1-用途分类0-生活</li>
-                                                        <li>1-我的全部文件-1-用途分类0-生活-3-来源分类-地图-0-家-电脑-3-数据-0-壁纸</li>
-                                                        <li>1-我的全部文件-1-用途分类0-生活-3-来源分类-地图-0-家-电脑-3-数据-0-思路格式化</li>
-                                                        <li class="粗体">1-我的全部文件-1-用途分类1-工作</li>
-                                                        <li class="粗体">1-我的全部文件-1-用途分类2-学习</li>
-                                                        <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-0-VMGHOST</li>
-                                                        <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-1-直播</li>
-                                                        <li>1-我的全部文件-1-用途分类2-学习-3-来源分类-地图-0-家-电脑-3-数据-9-慕课笔记资料</li>
-                                                        <li class="粗体">1-我的全部文件-1-用途分类3-娱乐-1-电影</li>
-                                                        <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-2-游戏</li>
-                                                        <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-3-小说</li>
-                                                        <li>1-我的全部文件-1-用途分类3-娱乐-3-来源分类-地图-0-家-电脑-3-数据-4-漫画</li>
-                                                        <li>1-我的全部文件-1-用途分类3-娱乐游戏</li>
-                                                        <li class="粗体">1-我的全部文件-2-文件类型分类</li>
-                                                        <li class="粗体">1-我的全部文件-3-来源分类</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-地理地图-南昌</li>
-                                                        <li class="粗体">1-我的全部文件-3-来源分类-地图-0-家</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-Z我</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-手机</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-爸妈</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-0-驱动</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-0-PE</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-1-镜像</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-2-激活工具</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-1-系统-9-自动化安装步骤</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-0-日常软件</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-0-游戏软件</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-1-硬件虚拟化</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-2-处理</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-2-软件-9-绿色软件</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1001-思维导图</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1002-网页</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1003-音乐</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1004-演示</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1005-文档</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1009-图片</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-0-家-电脑-3-数据-1099-我的笔记本</li>
-                                                        <li class="粗体">1-我的全部文件-3-来源分类-地图-1-学校</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-1-学校-1-九年义务教育</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-1-学校-3-江信</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-1-学校-4-职业生涯</li>
-                                                        <li class="粗体">1-我的全部文件-3-来源分类-地图-2-公司</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-1剪辑酷哦</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-2物流分拣</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-3装配流线</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-4人才驾校</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃-文件备份</li>
-                                                        <li>1-我的全部文件-3-来源分类-地图-2-公司-5南昌德沃-文件备份-20241001技术文档（竖直目录）</li>
-
-                                                        <li></li>
-
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>&nbsp;</td>
-                                                <td>&nbsp;</td>
-                                                <td>&nbsp;</td>
-                                                <td>常用软件列表
-                                                    <ul>
-                                                        <li>系统</li>
-                                                        <li>驱动</li>
-                                                        <li>哔哩哔哩</li>
-                                                        <li>浏览器</li>
-                                                        <li>记事本</li>
-                                                        <li>画图</li>
-                                                        <li>时钟</li>
-                                                        <li>地图</li>
-                                                        <li></li>
-                                                        <li></li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>箱包证件</td>
-                                                <td>食物厨具</td>
-                                                <td>衣物床铺</td>
-                                                <td>电脑文件</td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                            <div class="房屋环境">
-
-                                <h3 onclick="document.getElementById('demo2').style.display='flex'">
-                                    5.2房屋环境（点击展开仓库）
-                                </h3>
-                                
-                            </div>
-
-                            <div class="社会国家 小边距 ">
-                                <!-- <h3>5.3社会国家</h3> -->
-                                <p>80亿人</p>
-                                <p>行业：游戏，金融，能源，制造，教育，建筑，农牧渔畜林，旅游，服务，信息，交通，物流运输，销售，客服，传媒新媒体，</p>
-                                <p>城市：城市1，城市2，城市3，城市4，城市5，城市6，城市7，城市8，城市9，城市10，城市11，城市12，城市13，城市14，城市15，城市16，城市17，城市18，城市19，</p>
-                                <div class="小边距 " style="text-align: center; max-width: 400px;">
-                                    <img class="" width="100%" style="max-width: 400px;" src="../IMG/2024世界练级区-倾斜.png" alt="2024世界练级区-倾斜.png">
-                                </div>
-
-                            </div>
-
-                            <div class="自然地理">
-                                
-                                <h3>5.4自然地理</h3>
-
-                                <div>
-                                    <p class="白字">
-                                        物资饥饿，水源，土地<br>
-                                        冷风寒冻，门窗，<br>
-                                        灰尘脏污，净水，<br>
-                                        敌人伤病，情报，武器，友军<br>
-                                        
-                                    </p>
-                                </div>
-
-
-                            </div>
-
-                        </div><!-- 第5章结尾 -->
-            
-                    </div>
-
-                </div>
-
-
-
-            </div><!-- 第1章结尾 -->
-
-
-
-
-
-
-            <!-- 第2章 -->
-            <div class="2-当前状态 黑色 小边距">
-                <!-- <h2>2-当前状态（点击展开经历）</h2> -->
-
-                <div class="三条数值 状态数值 弹性布局横向"  style="width: 100%;">
-                    <div class="弹性宽度" style="text-align: left; max-width: 30%;">
-                        <h3 class="小边距 小圆角 小边框 红色 淡黄字 粗体" style="max-width: 400px; font-size: 6px;">财力值：-1.29.00（0%）</h3>
-                        <h3 class="小边距 小圆角 小边框 绿色 黑字" onclick="document.getElementById('demo').style.display='block'"  style="max-width: 400px; font-size: 6px;">生命值：###=======（100%）</h3>
-                        <h3 class="小边距 小圆角 小边框 黄色 黑字"  style="max-width: 400px; font-size: 6px;">体力值：#####=====（100%）（脑力眼力耳力鼻力舌力脚力手力）</h3>
-                        
-
-                    </div>
-                    <div class="弹性宽度" style="text-align: center; max-width: 16%;">
-                        <h3  class="小边距 小圆角 " style="font-size: 6px;"></h3>
-                        <h3  class="小边距 小圆角 " style="font-size: 6px; line-height: 30px;">（点击展开经历）</h3>
-                        <h3></h3>
-                    </div>
-                    <div class="弹性宽度" style="text-align: right; max-width: 54%;"></div>
-                </div>
-
-
-<!--
-                <div class="三种信息 事件数值 弹性布局横向"  style="width: 100%;">
-                    
-                    <div class="经历的过去 黑色 弹性宽度 小边距" style="max-width: 30%;  border: solid 0px #FF0033;">
-                        <h3 class="文本居中">经历的过去</h3>
-
-                        <div class="弹性布局横向">
-
-                            <div class="弹性宽度"  style="max-width: 40%;">
-
-                                <h4  style="font-size: 8px; line-height: 14px;">人生总结</h4>
-                                <ul>
-                                    <li>眼看过的色彩</li>
-                                    <li class="红色 白字 小红边框">鼻闻过的气味</li>
-                                    <li>口吃过的食物</li>
-                                    <li>耳听过的音乐</li>
-                                    <li>手抓过的东西</li>
-                                    <li>脚走过的地方</li>
-                                    <li>身做过的事件</li>
-                                    <li>心想过的未来</li>
-                                </ul>
-
-                            </div>
-
-                            <div class="弹性宽度"  style="max-width: 60%;">
-                                <h4>每日总结</h4>
-                                <ul>
-                                    <li>作息总结和建议</li>
-                                    <li class="红色 白字 小红边框">运动总结和建议</li>
-                                    <li>饮食总结和建议</li>
-                                    <li>学习总结和建议</li>
-                                    <li>工作总结和建议</li>
-                                    <li class="黄字"><b class="白字">社交总结和建议</b><br>
-                                        0.20241111<br>
-                                        1.今日见到的人/世界的人聚居地人<br>
-                                        2.（将）离开的人<br>
-                                        3.认识的人<br>
-                                        4.说话的人<br>
-                                        5.倾听的人<br>
-                                        6.好吃的人<br>
-                                        7.明日建议<br>
-                                    </li>
-                                    <li>整理清洁总结和建议</li>
-                                    <li>财务总结和建议</li>
-                                    <li>娱乐总结和建议</li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-                        
-                        
-                    </div>
-
-                    <div class="知行的现在 黑色 弹性宽度 小边距" style="flex-grow: 6; max-width: 40%; border: solid 0px #FF0033;">
-                        <h3 class="文本居中">知行的现在</h3>
-                        
-                        <div class="弹性布局横向">
-
-                            <div class="每日计划 弹性宽度" style="width: 100%;">
-                                <h4>每日计划</h4>
-                                <div class="每日计划分开 弹性布局横向">
-                                    <div class="计划时间" style="max-width: 20%;">
-                                        <ul class="计划时间 弹性宽度">
-                                            <li style="background-color: #FF0000;">00:00，</li>
-                                            <li style="background-color: #010000;">1:00， </li>
-                                            <li style="background-color: #0C0000;">2:00， </li>
-                                            <li style="background-color: #170000;">3:00， </li>
-                                            <li style="background-color: #220000;">4:00， </li>
-                                            <li style="background-color: #2D0000;">5:00， </li>
-                                            <li style="background-color: #380000;">6:00</li>
-                                            <li style="background-color: #430000;">7:00</li>
-                                            <li style="background-color: #4E0000;">8:00， </li>
-                                            <li style="background-color: #590000;">9:00， </li>
-                                            <li style="background-color: #640000;">10:00，</li>
-                                            <li style="background-color: #6F0000;">11:00，</li>
-                                            <li style="background-color: #7A0000;">12:00，</li>
-                                            <li style="background-color: #850000;">13:00，</li>
-                                            <li style="background-color: #900000;">14:00，</li>
-                                            <li style="background-color: #9B0000;">15:00，</li>
-                                            <li style="background-color: #A60000;">16:00，</li>
-                                            <li style="background-color: #B10000;">17:00，</li>
-                                            <li style="background-color: #BC0000;">18:00，</li>
-                                            <li style="background-color: #C70000;">19:00，</li>
-                                            <li style="background-color: #D20000;">20:00，</li>
-                                            <li style="background-color: #DD0000;">21:00，</li>
-                                            <li style="background-color: #E80000;">22:00，</li>
-                                            <li style="background-color: #F30000;">23:00，</li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <div class="计划开始 弹性宽度 文本居中" style="flex-grow: 6;">
-                                        <ul>
-                                            <li>睡觉</li>
-                                            <li>睡觉</li>
-                                            <li>睡觉</li>
-                                            <li>睡觉</li>
-                                            <li>睡觉</li>
-                                            <li>睡觉</li>
-                                            <li>睡觉</li>
-                                            <li>起床，热身</li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                    <div class="计划结束 弹性宽度"  style="max-width: 20%;">
-                                        <ul>
-                                            <li>笑</li>
-                                            <li>呜</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                               
-                            </div>
-
-                        </div>
-                        
-                    </div>
-
-                    <div class="预测的未来 黑色 弹性宽度 小边距" style="max-width: 30%;  border: solid 0px #FF0033;">
-                        <h3 class="文本居中">预测的未来</h3>
-
-                        <div class="弹性布局横向">
-
-                            <div class="弹性宽度" style="max-width: 60%;">
-                                <h4>阶段小目标</h4>
-                                <ul>
-                                    
-                                    <li>起床，清洁，</li>
-                                    <li class="红色 白字 小红边框">66KG-65KG-64KG-63KG-62KG-61KG-60KG-59KG-58KG</li>
-                                    <li>早餐-午餐-晚餐</li>
-                                    <li>电脑技术-生活本领-人际沟通</li>
-                                    <li>打卡-摸鱼-干饭-下班</li>
-                                    <li></li>
-                                    <li>叠被子-倒垃圾-收纳物品分类</li>
-                                    <li>玩手机玩电脑</li>
-                                    <li>￥1,000,000</li>
-                                </ul>
-
-                            </div>
-
-                            <div class="弹性宽度"  style="max-width: 40%;">
-
-                                <h4 style="font-size: 8px; line-height: 14px;">总目标</h4>
-                                <ul >
-                                    <li>（1%）作息-健康体检</li>
-                                    <li class="红色 白字 小红边框">（1%）运动-增肌减脂58KG</li>
-                                    <li>（1%）饮食</li>
-                                    <li>（1%）学习-技能证书</li>
-                                    <li>（1%）工作</li>
-                                    <li>（1%）社交</li>
-                                    <li>（1%）整理清洁</li>
-                                    <li>（1%）财务-收支预算表</li>
-                                    <li>（1%）娱乐</li>
-                                </ul>
-                            </div>
-
+                            未解锁<br>
                             
-
-
-                        </div>
-                        
-                    </div>
-
-                </div>
- -->
-
-<!-- 布局 -->
-<div class="上上 文本居中 可爱青色">
-
-	<!-- 大1层 -->
-	<div class="上 可爱紫色 标题 弹性布局横向 小边距">
-
-		<div class="经历的过去 弹性宽度 文本居左 小边距 蓝色 可爱绿色"><h1 class="">经历的过去</h1></div>
-		<div class="知行的现在 弹性宽度 文本居中 小边距 蓝色 可爱绿色"><h1 class="">知行的现在</h1></div>
-		<div class="预测的未来 弹性宽度 文本居右 小边距 蓝色 可爱绿色"><h1 class="">预测的未来</h1></div>
-
-	</div>
-
-	
-	<!-- 大1层 -->
-	<div class="下 可爱紫色 弹性布局横向 小边距">
-
-		<!-- 中2层 -->
-		<div class="左端 可爱绿色 文本居左 ">
-			<div class="可爱粉色">
-				<h1>个人大总结</h1>
-			</div>
-			
-			<div class="可爱粉色 文本居中">
-				<div class="眼 小边距 小圆角 黄色 黑字"><h1>眼看过的色彩</h1></div>
-				<div class="耳 小边距 小圆角 黄色 黑字"><h1>耳听过的声音</h1></div>
-				<div class="鼻 小边距 小圆角 黄色 黑字"><h1>鼻闻过的气味</h1></div>
-				<div class="舌 小边距 小圆角 黄色 黑字"><h1>舌吃过的食物</h1></div>
-				<div class="身 小边距 小圆角 黄色 黑字"><h1>身走过的地方</h1></div>
-				<div class="意 小边距 小圆角 黄色 黑字"><h1>意想要的未来</h1></div>
-			</div>
-			
-		</div>
-
-		<!-- 中2层 -->
-		<div class="中端 可爱绿色 弹性宽度 弹性布局横向  ">
-
-
-			<div class="时间 可爱粉色 弹性宽度 弹性布局横向 至多四层 ">
-				<div class="年1 小边距 可爱红色 弹性宽度 小上边框"><h1>年</h1></div>
-				<div class="季1 小边距 可爱红色 弹性宽度 小上边框"><h1>季</h1></div>
-				<div class="月1 小边距 可爱红色 弹性宽度 小上边框"><h1>月</h1></div>
-				<div class="周1 小边距 可爱红色 弹性宽度 小上边框"><h1>周</h1></div>
-				<div class="日1 小边距 可爱红色 弹性宽度 小上边框">
-					<h1>日</h1>
-
-					<!-- 1 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">作息总结</h2>
-						</div>
-						<div class="">
-							<p class="黑色 白字 行">今日摄入</p>
-							<p class="黑色 白字 行">推荐</p>
-							<p class="黑色 白字 行">仓库</p>
-							<p class="黑色 白字 行">建议</p>
-						</div>
-					</div>
-
-					<!-- 2饮食 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">饮食总结</h2>
-						</div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">今日摄入</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">推荐</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">仓库</p></div>
-							<div class=""><p class="红色 白字 小边距 小圆角">建议</p></div>
-						
-	
-					</div>
-
-					<!-- 3运动 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">运动总结</h2>
-						</div>
-						<div class="">
-							<p class="黑色 白字 行">今日运动</p>
-							<p class="黑色 白字 行">推荐</p>
-							<p class="黑色 白字 行">体力</p>
-							<p class="黑色 白字 行">建议</p>
-						</div>
-					</div>
-
-					<!-- 4整理 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">整理总结</h2>
-						</div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">今日整理/全部</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">目标</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">未整理物品</p></div>
-							<div class=""><p class="红色 白字 小边距 小圆角">建议</p></div>
-						
-					</div>
-
-					<!-- 5清洁 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">清洁总结</h2>
-						</div>
-						<div class="">
-							<p class="黑色 白字 行">今日摄入</p>
-							<p class="黑色 白字 行">推荐</p>
-							<p class="黑色 白字 行">仓库</p>
-							<p class="黑色 白字 行">建议</p>
-						</div>
-					</div>
-
-					<!-- 6洗漱 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">洗漱总结</h2>
-						</div>
-						<div class="">
-							<p class="黑色 白字 行">今日摄入</p>
-							<p class="黑色 白字 行">推荐</p>
-							<p class="黑色 白字 行">仓库</p>
-							<p class="黑色 白字 行">建议</p>
-						</div>
-					</div>
-
-					<!-- 7财务 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">财务总结</h2>
-						</div>
-						<div class="">
-							<p class="黑色 白字 行">今日摄入</p>
-							<p class="黑色 白字 行">推荐</p>
-							<p class="黑色 白字 行">仓库</p>
-							<p class="黑色 白字 行">建议</p>
-						</div>
-					</div>
-
-					<!-- 8社交 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">社交总结</h2>
-						</div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">今日见到/世界</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">离开</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">认识</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">交谈</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">倾听</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">开心</p></div>
-							<div class=""><p class="红色 白字 小边距 小圆角">建议</p></div>
-					</div>
-
-					<!-- 9学习 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">学习总结</h2>
-						</div >
-							<div class=""><p class="灰色 黑字 小边距 小圆角">今日学会/提升</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">待学习/复习</p></div>
-							<div class=""><p class="灰色 黑字 小边距 小圆角">掌握知识</p></div>
-							<div class=""><p class="红色 白字 小边距 小圆角">建议</p></div>
-						
-					</div>
-
-					<!-- 10工作 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">工作总结</h2>
-						</div>
-						<div class="">
-							<p class="黑色 白字 行">今日摄入</p>
-							<p class="黑色 白字 行">推荐</p>
-							<p class="黑色 白字 行">仓库</p>
-							<p class="黑色 白字 行">建议</p>
-						</div>
-					</div>
-
-					<!-- 11游戏 -->
-					<div class="总结 小边距 弹性布局横向">
-						<div class="弹性分布中心">
-							<h2 class="淡黄色 黑字 小圆角 ">游戏总结</h2>
-						</div>
-						<div class="">
-							<p class="黑色 白字 行">今日摄入</p>
-							<p class="黑色 白字 行">推荐</p>
-							<p class="黑色 白字 行">仓库</p>
-							<p class="黑色 白字 行">建议</p>
-						</div>
-					</div>
-
-
-
-
-
-				</div>
-			</div>
-
-			<div class="问题 可爱粉色 弹性宽度 弹性布局横向 至多层 ">
-
-				<div class="起因 可爱红色 弹性宽度">
-					<h1 class=" 红色">起因</h1>
-					<ul>
-						<li>0:00</li>
-						<li>7:00</li>
-						<li>7:10</li>
-						<li>7:20</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-					</ul>
-
-				</div>
-
-				<div class="问题 可爱红色 弹性宽度">
-					<h1 class=" 红色">问题</h1>
-					<ul>
-						<li class="淡红色 黑字 文本居左">8小时，睡觉足吗？</li>
-						<li class="淡红色 黑字 文本居左">10分钟，起床吗？</li>
-						<li class="淡红色 黑字 文本居左">10分钟，整理床吗？</li>
-						<li class="淡红色 黑字 文本居左">10分钟，洗漱完吗？</li>
-						<li class="淡红色 黑字 文本居左">60分钟，5km跑完吗？</li>
-						<li class="淡红色 黑字 文本居左">60分钟，30个做完吗？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>						
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>						
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-						<li class="黑色 淡红字 ">？</li>
-					</ul>
-
-				</div>
-
-				<div class="结果 可爱红色 弹性宽度">
-					<h1 class=" 红色">结果</h1>
-					<ul>
-						<li>7:00</li>
-						<li>7:10</li>
-						<li>7:20</li>
-						<li>7:30</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-						<li>？</li>
-					</ul>
-				</div>
-
-			</div>
-
-			<div class="时间 可爱粉色 弹性宽度 弹性布局横向 至多三层 ">
-				<div class="日2 小边距 可爱红色 弹性宽度 小上边框">
-					<h1>日</h1>
-					<ul>
-						<li class="灰色 小边距 小圆角 黑字">00:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">01:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">02:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">03:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">04:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">05:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">06:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">07:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">08:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">09:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">10:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">11:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">12:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">13:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-						<li class="灰色 小边距 小圆角 黑字">14:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">15:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">16:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">17:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">18:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">19:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">20:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">21:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">22:00:休息/<span class="黄色 黑字 小圆角">工作</span></li>
-						<li class="灰色 小边距 小圆角 黑字">23:00:<span class="红色 白字 小圆角">休息</span>/工作</li>
-					</ul>
-				</div>
-				<div class="周2 小边距 可爱红色 弹性宽度 小上边框">
-					<h1>周</h1>
-					<ul>
-						<li class="红色 白字 小边距 小圆角">66kg</li>
-					</ul>
-				</div>
-				<div class="月2 小边距 可爱红色 弹性宽度 小上边框">
-					<h1>月</h1>
-					<ul>
-
-						<li class="红色 白字 小边距 小圆角">65kg</li>
-						<li class="红色 白字 小边距 小圆角">￥1000</li>
-					</ul>
-				</div>
-				<div class="季2 小边距 可爱红色 弹性宽度 小上边框">
-					<h1>季</h1>
-					<ul>
-						
-						<li class="红色 白字 小边距 小圆角">64kg</li>
-						<li class="红色 白字 小边距 小圆角">63kg</li>
-						<li class="红色 白字 小边距 小圆角">63kg</li>
-						<li class="红色 白字 小边距 小圆角">￥2000</li>
-						<li class="红色 白字 小边距 小圆角">￥3000</li>
-					</ul>
-				</div>
-				<div class="年2 小边距 可爱红色 弹性宽度 小上边框">
-					<h1>年</h1>
-					<ul>
-						
-						<li class="红色 白字 小边距 小圆角">身体<br>62kg</li>
-						<li class="红色 白字 小边距 小圆角">身体<br>61kg</li>
-						<li class="红色 白字 小边距 小圆角">身体<br>60kg</li>
-						<li class="红色 白字 小边距 小圆角">身体<br>59kg</li>
-						<li class="红色 白字 小边距 小圆角">身体<br>58kg</li>
-						<li class="红色 白字 小边距 小圆角">内务<br>￥4000</li>
-						<li class="红色 白字 小边距 小圆角">内务<br>￥5000</li>
-						<li class="红色 白字 小边距 小圆角">内务<br>￥6000</li>
-						<li class="红色 白字 小边距 小圆角">内务<br>￥7000</li>
-						<li class="红色 白字 小边距 小圆角">知识<br>1书1页</li>
-						<li class="红色 白字 小边距 小圆角">知识<br>2书</li>
-						<li class="红色 白字 小边距 小圆角">知识<br>3书</li>
-						<li></li>
-					</ul>
-				</div>
-			</div>
-
-
-		</div>
-
-		<!-- 中2层 -->
-		<div class="右端 可爱绿色 文本居右 宽度400  ">
-
-			<div class="个人大目标 可爱粉色"><h1>个人大目标</h1></div>
-			
-
-			<div class="6类 可爱粉色">
-					
-				<div class="作息 可爱红色 弹性布局横向 弹性分布中右 小边距 小圆角 小边框">
-					<div class="弹性布局横向 弹性分布中心">
-						<h2 class="6小类 淡黄色 黑字 弹性分布中心 小圆角">作息</h2>
-						<ul>
-							<li>工作</li>
-							<li>休息</li>
-						</ul>
-					</div>  
-					<div class="6类 黄色 黑字 小圆角">
-						<h1>作息</h1>
-					</div>
-				</div>
-
-
-				<div class="身体 可爱红色 弹性布局横向 弹性分布中右 小边距 小圆角 小边框">
-					<div class="6小类 无边距">
-						<div class="弹性布局横向">
-							<div class="6小类 淡黄色 黑字 弹性分布中心 小圆角"><h2>饮食</h2></div>
-							<ul>
-								<li>早饭，午饭，晚饭</li>
-							</ul>
-						</div>
-						<div class="弹性布局横向">
-							<div class="6小类 淡黄色 黑字 弹性分布中心 小圆角"><h2>运动</h2></div>
-							<ul>
-								<li>热身准备</li>
-								<li>力量增肌</li>
-								<li>有氧燃脂</li>
-								<li>拉伸放松</li>
-							</ul>
-						</div>
-						
-					</div>  
-					<div class="6类 黄色 黑字 小圆角"><h1>身体</h1></div>
-				</div>
-
-
-				<div class="内务 可爱红色 弹性布局横向 弹性分布中右 小边距 小圆角 小边框">
-					<div class="6小类 无边距">
-						<div class="弹性布局横向">
-							<div class="6小类 淡黄色 黑字 弹性分布中心 小圆角"><h2>整理</h2></div>
-							<ul>
-								<li>清单>分类>收纳>存放</li>
-							</ul>
-						</div>
-						<div class="弹性布局横向">
-							<div class="6小类 淡黄色 黑字 弹性分布中心 小圆角"><h2>清洁</h2></div>
-							<ul>
-								<li>除尘>除油>包装</li>
-							</ul>
-						</div>
-						<div class="弹性布局横向">
-							<div class="6小类 淡黄色 黑字 弹性分布中心 小圆角"><h2>洗漱</h2></div>
-							<ul>
-								<li>脸部>头部>四肢>腹背</li>
-							</ul>
-						</div>
-						<div class="弹性布局横向">
-							<div class="6小类 淡黄色 黑字 弹性分布中心 小圆角"><h2>财务</h2></div>
-							<ul>
-								<li>收支>预算</li>
-							</ul>
-						</div>
-						<div class="弹性布局横向">
-							<div class="6小类 淡黄色 黑字 弹性分布中心 小圆角"><h2>社交</h2></div>
-							<ul>
-								<li>亲人</li>
-								<li>朋友</li>
-								<li>同学</li>
-								<li>同事</li>
-								<li>伴侣</li>
-							</ul>
-						</div>
-					</div>  
-					<div class="6类 黄色 黑字 小圆角"><h1>内务</h1></div>
-				</div>
-
-				
-				<div class="知识 可爱红色 弹性布局横向 弹性分布中右 小边距 小圆角 小边框">
-					<div class="弹性布局横向">
-						<h2 class="6小类 淡黄色 黑字 弹性分布中心 小圆角">学习</h2>
-						<ul>
-							<li>生活技能</li>
-							<li>学习技能</li>
-							<li>职业技能</li>
-						</ul>
-					</div>  
-					<div class="6类 黄色 黑字 小圆角"><h1>知识</h1></div>
-				</div>
-
-
-				<div class="职业 可爱红色 弹性布局横向 弹性分布中右 小边距 小圆角 小边框">
-					<div class="弹性布局横向">
-						<h2 class="6小类 淡黄色 黑字 弹性分布中心 小圆角">工作</h2>
-						<ul>
-							<li>个人简历</li>
-							<li>岗位职责</li>
-						</ul>
-					</div>  
-					<div class="6类 黄色 黑字 小圆角"><h1>职业</h1></div>
-				</div>
-
-
-				<div class="娱乐 可爱红色 弹性布局横向 弹性分布中右 小边距 小圆角 小边框">
-					<div class="弹性布局横向">
-						<h2 class="6小类 淡黄色 黑字 弹性分布中心 小圆角">游戏</h2>
-						<ul>
-							<li>黑神话悟空</li>
-							<li>人间地狱</li>
-						</ul>
-					</div>  
-					<div class="6类 黄色 黑字 小圆角"><h1>娱乐</h1></div>
-				</div>
-
-			</div>
-
-
-		</div>
-
-	</div>
-
-</div>
-	
-
-
-
-
-            </div><!-- 第2章结尾 -->
-
-
-            <!-- 第3章 -->
-            <div class="3-直播空间 黑色 小边距">
-                <!-- <h2>3-直播空间</h2> -->
-                <div class="直播间" style="width: 250px; margin: 0 auto;border-radius: 50%;" >
-
-                    <iframe 
-                    src="https://live.bilibili.com/h5/21648980" 
-                    title="直播间" 
-                    class="直播间" 
-                    height="250px" 
-                    width="250px" 
-                    frameborder="0" 
-                    style="border:none;
-                    border-radius: 50%;">
-                    </iframe>
-
-                </div>
-            </div><!-- 第3章结尾 -->
-
-            <!-- 第4章 -->
-            <div class="4-操作状态 黑色">
-                <!-- <h2>4-操作状态</h2> -->
-                 <!-- 
-                 class="红字"
-                 class="淡黄字"
-                 class="白字"
-                 -->
-                <div class="操作图标 弹性布局横向" style="justify-content: space-between;">
-
-                    <div class="小圆角 " style="width: 100%;" >
-
-
-                        <div class="姿态栏 弹性布局横向 "  style="width: 100%;" >
-
-                            <div class="姿态 小边距 小内边距 小边框 小圆角 弹性宽度">
-                                <h1>作息</h1>
-                                <ul>
-                                    <li class="黄字 小小圆角" style="background-color: #FF0000;">情况目标选择运用验证</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFCC00;">高级学习步骤，主动被动</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFBD;">学习能力</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFFF;">学习</li>
-                                </ul>
-                            </div>
-                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
-                                <h1>身体</h1>
-                                <ul>
-                                    <li class="黄字 小小圆角" style="background-color: #FF0000;">站坐蹲卧</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFCC00;">桩劲，俯卧撑，跑步</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFBD;">运动能力</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFFF;">运动</li>
-                                </ul>
+                        </p>
+
+                            <!-- 第2章 -->
+                            <div class="地图 小边框 透明黑色 小边距 小圆角">
+                                <div class="自然时代行业-社会国家-城市小区房屋 小边框">
+                                    <!--<h1>自然时代-社会国家-城市小区房屋-行业</h1>-->
+                                    <div class="自然环境 弹性横向排列">
+                                        <h2>自然环境</h2>
+                                        <p>蓝天白云，土地草原湖河</p>
+                                    </div>
+                                    <div class="时代行业 弹性横向排列">
+                                        <h2>时代行业</h2>
+                                        <p>行业1农牧渔林，行业3制造能源信息矿物，行业4金融教育法律体育，行业5，行业6，行业7，行业8，行业9，行业10，行业11，</p>
+                                    </div>
+
+                                    <div class="社会国家 弹性横向排列">
+                                        <h2>社会国家</h2>
+                                        <p>国家1，国家2，国家3，国家4，国家5，国家6，国家7，国家8，国家9，国家10，国家11，国家12，国家13，国家14，</p>
+                                    </div>
+                                    <div class="城市小区户房 弹性横向排列">
+                                        <h2>城区户房</h2>
+                                        <div class="弹性竖向排列">
+                                            <p>城市1，城市2，城市3，城市4，城市5，城市6，城市7，城市8，城市9，城市10，城市11，城市12，城市13，城市14，</p>
+                                            <p>小区1，小区2，小区3，小区4，小区5，小区6，小区7，小区8，小区9，小区10，小区11，小区12，小区13，小区14，</p>
+                                        </div>
+                                    </div>
                                 
+                                    <div class="个人 弹性横向排列">
+                                        <div class="随身装备 小边框 弹性宽度"><h1>个人装备</h1></div>
+                                        <div class="背包物品 小边框 弹性宽度"><h1>背包物品</h1></div>
+                                        <div class="仓库物品 小边框 弹性宽度"><h1>仓库物品</h1></div>
+                                </div>
                             </div>
-                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
-                                <h1>内务</h1>
-                                <ul>
-                                    <li class="黄字 小小圆角" style="background-color: #FF0000;"">蛋炒饭，煎炸薯条，土豆鸡蛋蔬菜饼</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFCC00;"">煎鸡蛋，煮米饭，煮面条，炒青菜</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFBD;"">刀工，火力，调味，摆盘</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFFF;"">厨艺</li>
-                                </ul>
-                                
-                            </div>
-                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
-                                <h1>知识</h1>
-                                <ul>
-                                    <li class="黄字 小小圆角" style="background-color: #FF0000;">请示提问倾听会议夸赞批评</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFCC00;">口头，书面，非语言，符号</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFBD;">了解</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFFF;">沟通</li>
-                                </ul>
-                            </div> 
-                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
-                                <h1>职业</h1>
-                                <ul>
-                                    <li class="黄字 小小圆角" style="background-color: #FF0000;">请示提问倾听会议夸赞批评</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFCC00;">口头，书面，非语言，符号</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFBD;">了解</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFFF;">沟通</li>
-                                </ul>
-                            </div> 
-                            <div class="姿态 小边距右 小内边距 小边框 小圆角 弹性宽度">
-                                <h1>娱乐</h1>
-                                <ul>
-                                    <li class="黄字 小小圆角" style="background-color: #FF0000;">请示提问倾听会议夸赞批评</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFCC00;">口头，书面，非语言，符号</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFBD;">了解</li>
-                                    <li class="黑字 小小圆角" style="background-color: #FFFFFF;">沟通</li>
-                                </ul>
-                            </div> 
 
-                        </div>
-                        
+
                     </div>
+                    
+                    <!-- 小按钮 -->
+                    <div  onclick="document.getElementById('demo').style.display='none'"   class="小按钮 大圆角 页面顶部右边定位 黑色 白字 文本居中" style="line-height: 60px;">关闭</div>
 
+                    <!-- 
+                    <div  onclick="document.getElementById('demo').style.display='block'"  class="小按钮 大圆角 页面顶部右边定位 黑色 白字 文本居中" style="line-height: 60px;">关闭</div>
+                     -->
 
                 </div>
-            </div><!-- 第4章结尾 -->
+
+            </div>
+        </div>
+        <!-- 第3.2章 -->
+            <div class="信息 禁止文本换行">
+                <!-- <h1>信息</h1> -->
+                    <div class="弹性横向排列">
+                        <div class="左端 弹性宽度 宽度一层 白字">
+                            <h2>经历的过去</h2>
+                            <h3 class="红色">个人大总结</h3>
+                            <ul>
+                                <li><h1 class="小字">看过的色彩</h1></li>
+                                <li><h1 class="小字">听过的声音</h1></li>
+                                <li><h1 class="小字">闻过的气味</h1></li>
+                                <li><h1 class="小字">吃过的食物</h1></li>
+                                <li><h1 class="小字">走过的地方</h1></li>
+                                <li><h1 class="小字">想要的未来</h1></li>
+                            </ul>
+                        </div>
+
+                        <div class="中间 弹性宽度6 白字" >
+                            <h2 class="文本居中">知行的现在</h2>
+
+                            <div class="弹性横向排列">
+
+                                <ul class="年月日周季 弹性宽度2 弹性横向排列 至多三层">
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">2023年</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                            </ul>
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">123季</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                            </ul>
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">10月</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                            </ul>
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">46周</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小字">？</li>
+                                            </ul>
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">日</h3>
+                                            <ul>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">工作总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">休息总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">体检总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">吃饭总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">运动总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">洗漱总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">整理总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">清洁总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">财务总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">社交总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">生活知识总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">学习知识总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">工作知识总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">社交知识总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">个人简历总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">岗位职责总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">游戏总结</h3></li>
+                                                <li><h3 class="小边距 小圆角 文本居中 灰色 黑字 小字">视频总结</h3></li>
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                                <ul class="起因 弹性宽度 文本居中">
+                                        <li class="红色 白字"><h3>起因</h3></li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                </ul>
+                                <ul class="问题 弹性宽度 文本居中">
+                                        <li class="红色 白字"><h3>问题</h3></li>
+                                        <li class="粉红色 黑字">往前往后</li>
+                                        <li class="粉红色 黑字">在左在右</li>
+                                        <li class="粉红色 黑字">不上不下</li>
+                                        <li class="粉红色 黑字">有好有坏</li>
+                                        <li class="粉红色 黑字">是对是错</li>
+                                        <li class="粉红色 黑字">有有无无</li>
+                                        <li class="粉红色 黑字">来来去去</li>
+                                        <li class="粉红色 黑字">多多少少</li>
+                                        <li class="粉红色 黑字">顺顺逆逆</li>
+                                        <li class="粉红色 黑字">？</li>
+                                        <li class="粉红色 黑字">？</li>
+                                        <li class="粉红色 黑字">？</li>
+                                        <li class="粉红色 黑字">？</li>
+                                        <li class="粉红色 黑字">？</li>
+                                </ul>
+                                <ul class="结果 弹性宽度 文本居中">
+                                        <li class="红色 白字"><h3>结果</h3></li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                        <li>？</li>
+                                </ul>
+
+                                <ul class="年月日周季 弹性宽度2  弹性横向排列 至多三层">
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">日</h3>
+                                            <ul class="禁止文本换行">
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">00<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">01<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">02<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">03<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">04<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">05<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">06<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">07<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">08<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">09<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">10<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">11<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">12<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">13<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">14<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">15<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">16<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">17<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">18<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">19<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">20<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">21<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">22<span class=" 小小字 小圆角 红色0">休息</span>/<span class="小小字 小圆角 黄色 黑字">工作</span></li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字 小小字">23<span class=" 小小字 小圆角 红色">休息</span>/<span class="小小字 小圆角 黄色0 黑字0">工作</span></li>
+                                                
+                                            </ul>
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">48周</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">66kg</li>
+                                            </ul>
+                                            
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">12月</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">65kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">￥1000</li>
+                                            </ul>
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">4567季</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">64kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">63kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">62kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">￥2000</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">￥3000</li>
+                                            </ul>
+                                        </li>
+                                        <li class=" 弹性宽度 上红边框 白字">
+                                            <h3 class="文本居中">2025年</h3>
+                                            <ul>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">61kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">60kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">59kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">58kg</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">￥4000</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">￥5000</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">￥6000</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">￥7000</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">1书</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">2书</li>
+                                                <li class="小边距 小圆角 文本居中 灰色 黑字">3书</li>
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="右端 弹性宽度 宽度一层 小字 白字">
+                            <h2>预测的未来</h2>
+                            <h3 class="红色 白字">个人大目标</h3>
+                            <ul class="白字">
+                                <li class="弹性横向排列">
+                                    <div class=""><h1 class="小字">作息</h1></div>
+                                    <div class="">
+                                        <h2 class="小字">27年工作</h2>
+                                        <h2 class="小字">27年休息</h2>
+                                    </div>
+                                </li>
+
+                                <li class="弹性横向排列">
+                                    <div class=""><h1 class="小字">身体</h1></div>
+                                    <div class="">
+                                        <h2 class="小字">27年体检</h2>
+                                        <h2 class="小字">27年吃饭</h2>
+                                        <h2 class="小字">27年运动</h2>
+                                        <h2 class="小字">27年洗漱</h2>
+                                     </div>
+                                </li>
+
+                                <li class="弹性横向排列">
+                                    <div class=""><h1 class="小字">内务</h1></div>
+                                    <div class="">
+                                        <h2 class="小字">27年整理</h2>
+                                        <h2 class="小字">27年清洁</h2>
+                                        <h2 class="小字">27年财务</h2>
+                                        <h2 class="小字">27年社交</h2>
+                                     </div>
+                                </li>
+
+                                <li class="弹性横向排列">
+                                    <div class=""><h1 class="小字">知识</h1></div>
+                                    <div class="">
+                                        <h2 class="小字">27年生活知识</h2>
+                                        <h2 class="小字">27年学习知识</h2>
+                                        <h2 class="小字">27年工作知识</h2>
+                                        <h2 class="小字">27年社交知识</h2>
+                                     </div>
+                                </li>
+
+                                <li class="弹性横向排列">
+                                    <div class=""><h1 class="小字">职业</h1></div>
+                                    <div class="">
+                                        <h2 class="小字">27年个人简历</h2>
+                                        <h2 class="小字">27年岗位职责</h2>
+                                     </div>
+                                </li>
+
+                                <li class="弹性横向排列">
+                                    <div class=""><h1 class="小字">娱乐</h1></div>
+                                    <div class="">
+                                        <h2 class="小字">27年游戏</h2>
+                                        <h2 class="小字">27年视频</h2>
+                                     </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+        <!-- 第3.3章 -->
+            <div class="操作  禁止文本换行">
+                <!-- <h1>操作</h1> -->
+                <ul class="技能栏 弹性横向排列 超出滚动条 弹性底部对齐">
+                    <!-- 技能1 -->
+                    <li class="技能1 弹性宽度 文本居中 弹性底部对齐">
+                        <ul class="弹性横向排列 弹性底部对齐">
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">睡晚觉<br>睡午觉<br>运动放松<br>打坐冥想</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>休息</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>工作</h3>
+                            </li>
+                        </ul>
+                        <h2 class="白色 小边距 小圆角 禁止文本换行 小红边框">作息</h2>
+                    </li>
+                    <!-- 技能2 -->
+                    <li class="技能2 弹性宽度 文本居中 弹性底部对齐">
+                        <ul class="弹性横向排列 弹性底部对齐">
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">外观<br>内科<br>外科<br>血液</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>体检</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 红色 黄字 小边距 小圆角">蛋炒饭</li>
+                                    <li class="弹性宽度 红色 黄字 小边距 小圆角">蛋炒面</li>
+                                    <li class="弹性宽度 黄色 小边距 小圆角">煮青柴</li>
+                                    <li class="弹性宽度 黄色 小边距 小圆角">煎蛋</li>
+                                    <li class="弹性宽度 黄色 小边距 小圆角">泡面</li>
+                                    <li class="弹性宽度 黄色 小边距 小圆角">煮饭</li>
+                                    <li class="弹性宽度 黄色 小边距 小圆角">煮面</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">营养<br>厨艺<br>菜谱</li>
+                                </ul>
+                                <h3>饮食</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">热身启动<br>力量增肌<br>有氧燃脂<br>拉伸放松</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>运动</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">脸部<br>头部<br>四肢<br>身体</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>洗漱</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 红色 黄字 小边距 小圆角">一口气数枣</li>
+                                    <li class="弹性宽度 黄色 小边距 小圆角">维持吹气</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">用劲<br>呼气<br>吸气</li>
+                                </ul>
+                                <h3>气息</h3>
+                            </li>
+                        </ul>
+                        <h2 class="白色 小边距 小圆角 禁止文本换行 小红边框">身体</h2>
+                    </li>
+                    <!-- 技能3 -->
+                    <li class="技能3 弹性宽度 文本居中 弹性底部对齐">
+                        <ul class="弹性横向排列 弹性底部对齐">
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">收支<br>预算</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>财务</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角" onclick="document.getElementById('demo').style.display='block'">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">清单<br>分类<br>存放</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>整理</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">除尘<br>除油<br>包装</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>清洁</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性横向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">亲人</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">朋友</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">同学</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">同事</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">伴侣</li>
+                                </ul>
+                                <h3>社交</h3>
+                            </li>
+                        </ul>
+                        <h2 class="白色 小边距 小圆角 禁止文本换行 小红边框">内务</h2>
+                    </li>
+                    <!-- 技能4 -->
+                    <li class="技能4 弹性宽度 文本居中 弹性底部对齐">
+                        <ul class="弹性横向排列 弹性底部对齐">
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">做人</li>
+                                </ul>
+                                <h3>生活</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">渐构</li>
+                                </ul>
+                                <h3>学习</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">计算机</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">网络</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">监控门禁</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">用电</li>
+                                </ul>
+                                <h3>工作</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">了解</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">沟通</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">心理</li>
+                                </ul>
+                                <h3>社交</h3>
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">小学<br>中学<br>大学</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>教育</h3>
+                            </li>
+
+                        </ul>
+                        <h2 class="白色 小边距 小圆角 禁止文本换行 小红边框">知识</h2>
+                    </li>
+                    <!-- 技能5 -->
+                    <li class="技能5 弹性宽度 文本居中 弹性底部对齐">
+                        <ul class="弹性横向排列 弹性底部对齐">
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">基本信息<br>生活经历<br>教育经历<br>工作经历</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>简历</h3>
+
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">职责<br>要求<br>总结报告</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>岗位</h3>
+                            </li>
+                        </ul>
+                        <h2 class="白色 小边距 小圆角 禁止文本换行 小红边框">职业</h2>
+                    </li>
+                    <!-- 技能6 -->
+                    <li class="技能6 弹性宽度 文本居中 弹性底部对齐">
+                        <ul class="弹性横向排列 弹性底部对齐">
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">黑神话悟空<br>人间地狱</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>游戏</h3>
+
+                            </li>
+                            <li class="弹性宽度 白色 小边距 小圆角">
+                                <ul class="弹性竖向排列 行高4字">
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角">整活搞笑<br>知识分享</li>
+                                    <li class="弹性宽度 淡黄色 小边距 小圆角"></li>
+                                </ul>
+                                <h3>视频</h3>
+                            </li>
+                        </ul>
+                        <h2 class="白色 小边距 小圆角 禁止文本换行 小红边框">娱乐</h2>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
 
 
-    </div>
+    </div><!-- 网页底部 -->
+    
+
+
+
+
+
+    <!-- 附加信息 -->
 
     <!-- 友情链接 -->
-    <div class="外部书签">
-
-        <h1>外部书签</h1>
-
-        <ul>
-            <li><a style="color: #FFFFFF; margin: 5px;" href="../HTML/Z.html">Z.html</a></li>
-            <li><a style="color: #FFFFFF; margin: 5px;" href="../HTML/booklist.html">booklist.html</a></li>
-            <li><a style="color: #FFFFFF; margin: 5px;" href="../HTML/ml.html">ml.html</a></li>
-        </ul>
-
+    <div class="外部书签 弹性横向排列">
+            <h1>外部书签</h1>
+            <ul>
+                <li><a style="margin: 5px;" href="../HTML/Z.html">Z.html</a></li>
+                <li><a style="margin: 5px;" href="../HTML/booklist.html">booklist.html</a></li>
+                <li><a style="margin: 5px;" href="../HTML/ml.html">ml.html</a></li>
+            </ul>
     </div>
+    
+    <!-- 显示网页宽度高度 -->
+    <div class="大字" id="dimensions">Width: 0px, Height: 0px</div>
+    <script>
+                function updateDimensions() {
+                    const width = window.innerWidth;
+                    const height = window.innerHeight;
+                    const dimensionsDiv = document.getElementById('dimensions');
+                    dimensionsDiv.textContent = `Width: ${width}px, Height: ${height}px`;
+                }
+
+                // Update dimensions on page load
+                updateDimensions();
+
+                // Update dimensions on window resize
+                window.addEventListener('resize', updateDimensions);
+    </script>
+<!-- 附加信息结束 -->
 
 
-    <!-- 网页结尾 --><div class="世界好大 白字"><h2 class="文本居中">世界好大</h2></div>
+<!-- 
+
+ style="background-color: rgba(001,0,0);"
+ style="background-color: rgba(012,0,0);"
+ style="background-color: rgba(023,0,0);"
+ style="background-color: rgba(034,0,0);"
+ style="background-color: rgba(045,0,0);"
+ style="background-color: rgba(056,0,0);"
+ style="background-color: rgba(067,0,0);"
+ style="background-color: rgba(078,0,0);"
+ style="background-color: rgba(089,0,0);"
+ style="background-color: rgba(100,0,0);"
+ style="background-color: rgba(111,0,0);"
+ style="background-color: rgba(122,0,0);"
+ style="background-color: rgba(133,0,0);"
+ style="background-color: rgba(144,0,0);"
+ style="background-color: rgba(155,0,0);"
+ style="background-color: rgba(166,0,0);"
+ style="background-color: rgba(177,0,0);"
+ style="background-color: rgba(188,0,0);"
+ style="background-color: rgba(199,0,0);"
+ style="background-color: rgba(210,0,0);"
+ style="background-color: rgba(221,0,0);"
+ style="background-color: rgba(232,0,0);"
+ style="background-color: rgba(243,0,0);"
+ style="background-color: rgba(255,0,0);"
+
+
+
+-->
 
 </body>
-
 </html>
