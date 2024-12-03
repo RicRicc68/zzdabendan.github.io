@@ -961,8 +961,8 @@
                 <div class="城区户房 弹性横向排列">
                     <!-- <h2>城区户房</h2> -->
                     <div class="弹性竖向排列 弹性宽度">
-                        <p>城市1，城市2，城市3，城市4，城市5，城市6，城市7，城市8，城市9，城市10，城市11，城市12，城市13，城市14，</p>
-                        <p>小区1，小区2，小区3，小区4，小区5，小区6，小区7，小区8，小区9，小区10，小区11，小区12，小区13，小区14，</p>
+                        <p>小区1，小区2，小区3，小区4，<span class="红色 黄字">小区5</span>，小区6，小区7，小区8，小区9，小区10，小区11，小区12，小区13，小区14，</p>
+                        <p>城市1，城市2，城市3，城市4，<span class="红色 黄字">城市5</span>，城市6，城市7，城市8，城市9，城市10，城市11，城市12，城市13，城市14，</p>
                     </div>
                 </div>
 
@@ -971,7 +971,7 @@
                 <div class="社会国家 弹性横向排列">
                     <!-- <h2>社会国家</h2> -->
                     <div class="弹性竖向排列 弹性宽度">
-                        <p>国家1，国家2，国家3，国家4，国家5，国家6，国家7，国家8，国家9，国家10，国家11，国家12，国家13，国家14，</p>
+                        <p>国家1，国家2，国家3，国家4，<span class="红色 黄字">国家5</span>国家6，国家7，国家8，国家9，国家10，国家11，国家12，国家13，国家14，</p>
                     </div>
                 </div>
 
@@ -1005,6 +1005,7 @@
         </div><!-- 网页底部 -->
 
     
+<div class="附加信息">
 
 <!-- 总结 
     <div class="总结">
@@ -1017,44 +1018,46 @@
 
     <!-- 友情链接 -->
     <div class="外部书签 弹性横向排列">
-            <h1>外部书签</h1>
-            <ul>
-                <li><a style="margin: 5px;" href="../HTML/Z.html">Z.html</a></li>
-                <li><a style="margin: 5px;" href="../HTML/booklist.html">booklist.html</a></li>
-                <li><a style="margin: 5px;" href="../HTML/ml.html">ml.html</a></li>
-            </ul>
-    </div>
-    
-    <!-- 显示网页宽度高度 -->
-    <div class="大字" id="dimensions">Width: 0px, Height: 0px</div>
-    <script>
-                function updateDimensions() {
-                    const width = window.innerWidth;
-                    const height = window.innerHeight;
-                    const dimensionsDiv = document.getElementById('dimensions');
-                    dimensionsDiv.textContent = `Width: ${width}px, Height: ${height}px`;
-                }
+        <h1>外部书签</h1>
+        <ul>
+            <li><a style="margin: 5px;" href="../HTML/Z.html">Z.html</a></li>
+            <li><a style="margin: 5px;" href="../HTML/booklist.html">booklist.html</a></li>
+            <li><a style="margin: 5px;" href="../HTML/ml.html">ml.html</a></li>
+        </ul>
+</div>
 
-                // Update dimensions on page load
-                updateDimensions();
+<!-- 显示网页宽度高度 -->
+<div class="大字" id="dimensions">Width: 0px, Height: 0px</div>
+<script>
+            function updateDimensions() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                const dimensionsDiv = document.getElementById('dimensions');
+                dimensionsDiv.textContent = `Width: ${width}px, Height: ${height}px`;
+            }
 
-                // Update dimensions on window resize
-                window.addEventListener('resize', updateDimensions);
-    </script>
-    <!-- 附加信息结束 -->
+            // Update dimensions on page load
+            updateDimensions();
 
-
-    <!-- 小按钮 -->
-    <div class="小按钮">
-        <!-- 小按钮 <div  onclick="document.getElementById('demo').style.display='block'"  class="小按钮 大圆角 页面顶部右边定位 黑色 白字 文本居中" style="line-height: 60px;">关闭</div>-->
-        <div  onclick="document.getElementById('demo').style.display='none'"   class="小按钮 大圆角 页面顶部右边定位 黑色 白字 文本居中" style="line-height: 60px;">关闭</div>
-    </div>
-    <!-- 小按钮 -->
-    
+            // Update dimensions on window resize
+            window.addEventListener('resize', updateDimensions);
+</script>
+<!-- 附加信息结束 -->
 
 
-<h1 class="文本居中 红字">世界好大</h1>
-<!-- 真结尾 -->
+<!-- 小按钮 -->
+<div class="小按钮">
+    <!-- 小按钮 <div  onclick="document.getElementById('demo').style.display='block'"  class="小按钮 大圆角 页面顶部右边定位 黑色 白字 文本居中" style="line-height: 60px;">关闭</div>-->
+    <div  onclick="document.getElementById('demo').style.display='none'"   class="小按钮 大圆角 页面顶部右边定位 黑色 白字 文本居中" style="line-height: 60px;">关闭</div>
+</div>
+<!-- 小按钮 -->
+
+
+
+</div>
+
+<!-- 真结尾 --><h1 class="文本居中 红字">世界好大</h1>
+
 
 
 
