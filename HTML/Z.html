@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人简历</title>
+    <style>
+        .弹性竖向布局{display: flex; flex-direction: column;}
+        .弹性横向布局{display: flex; flex-direction: row;}
+        .弹性宽度{flex-grow: 1;}
+    </style>
 </head>
 
 <body>
@@ -13,29 +18,40 @@
 
     <div class="个人简历">
         
-        <div class="基本信息，求职意向">
-            <hr>
-            <h2>基本信息</h2>
-            <img src="../IMG/头像.jpg" alt="个人头像" width="200">
-            <p>年龄</p>
-            <p>姓名</p>
-            <p>性别</p>
-            <p>年龄</p>
+        <div class="基本信息，求职意向 弹性竖向布局">
+            
+            <div class="弹性横向布局">
 
-            <hr>
-            <h2>求职意向</h2>
-            <p>求职城市：省市</p>
-            <p>意向岗位：xxx</p>
-            <p>期望薪资：9999</p>
+                <div class="姓名年龄 弹性宽度">
+                    <h2>基本信息</h2>
+                    <p>年龄</p>
+                    <p>姓名</p>
+                    <p>性别</p>
+                    <p>年龄</p>
+                </div>
+                
+                <div class="个人头像 弹性宽度">
+                    <img src="../IMG/头像.jpg" alt="个人头像" width="200">
+                </div>
 
+            </div>
+            
+            <div class="">
+                <h2>求职意向</h2>
+                <p>求职城市：省市</p>
+                <p>意向岗位：xxx</p>
+                <p>期望薪资：9999</p>
+            </div>
         </div>
+
+
         <div class="教育背景，专业课程">
-            <hr>
+            
             <h2>教育经历</h2>
             <p>201909-202207：江信</p>
         </div>
         <div class="工作经历，社会实践">
-            <hr>
+            
             <h2>工作经历</h2>
             <p>2021年：实习</p>
             <p>2021年：2</p>
@@ -56,7 +72,7 @@
 
     <div style="margin-bottom: 100px"></div>
 
-    <hr>
+    
     <ul>
         <li>ps：bilibili张雪峰老师说，个人简历应有：</li>
         <li><h3>求职信</h3></li>
