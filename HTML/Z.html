@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人简历</title>
     <style>
+        .宽度980{max-width: 980px;}
         .弹性竖向布局{display: flex; flex-direction: column;}
         .弹性横向布局{display: flex; flex-direction: row;}
         .弹性宽度{flex-grow: 1;}
+        .宽度50{max-width: 50%;}
+        .宽度100{width: 100%;}
         *{border: solid 0px black;}
         *{margin: 0; padding: 0;}
         div{margin: 0px;}
-        p{font-size: 12px;}
+        *{font-size: 12px;}
         h2{font-size: 14px;}
+        .右对齐{text-align: right;}
     </style>
 </head>
 
@@ -21,7 +25,7 @@
 
    <!--  <h1>个人简历（后期删除）</h1> -->
 
-    <div class="个人简历">
+    <div class="个人简历 宽度980">
         
         <div class="基本信息，求职意向 弹性竖向布局">
             
@@ -43,12 +47,27 @@
 
             </div>
             
-            <div class="">
+            <div class="宽度100">
                 <h2>求职意向</h2>
-                <table style="width: 100%; border: 0; margin: 0;">
-                    <tr><td>意向岗位: 求职岗位xxx</td><td>意向城市: 求职城市省市</td></tr>
-                    <tr><td>期望薪资: 期望薪水9999</td><td>求职类型: 求职类型</td></tr>
-                </table>
+                
+                <div class="弹性横向布局 宽度100">
+                    <div class="宽度50">
+                        意向岗位: xxx
+                    </div>
+                    <div class="宽度50 右对齐">
+                        意向城市: 南昌
+                    </div>
+                </div>
+
+                <div class="弹性横向布局 宽度100">
+                    <div class="宽度50">
+                        期望薪资: ￥9999
+                    </div>
+                    <div class="宽度50 右对齐">
+                        求职类型: 全职
+                    </div>
+                </div>
+                
             </div>
         </div>
 
@@ -65,12 +84,29 @@
         <div class="工作经历，社会实践">
             
             <h2>工作经历</h2>
-
-            <div class=""><p>2021年：实习</p></div>
-            <div class=""><p>2021年：2</p></div>
-            <div class=""><p>2021年：3</p></div>
-            <div class=""><p>2021年：4</p></div>
-            <div class=""><p>2022年：5</p></div>
+            <div class="">
+                <p>2021年07月——2021年09月：南昌酷哦文化传播有限公司</p>
+                <p>媒体行业|视频剪辑：1800</p>
+                <p>11</p>
+            </div>
+            <div class="">
+                <p>2021年10月——2021年10月：某京东厂库</p>
+                <p>物流|分拣：1800</p>
+                <p>22</p>
+            </div>
+            <div class="">
+                <p>2021年12月——2021年12月：南昌龙旗</p>
+                <p>制造|装配员：1800</p>
+                <p>33</p>
+            </div><div class="">
+                <p>2022年3月——2022年5月：南昌人才驾校</p>
+                <p>驾校|技术：3500</p>
+                <p>22</p>
+            </div><div class="">
+                <p>2022年6月——2025年2月：德沃</p>
+                <p>客服|技术：4500</p>
+                <p>22</p>
+            </div>
 
         </div>
         <div class="所获奖项，质资证书">
