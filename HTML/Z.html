@@ -23,12 +23,35 @@
         .宽度100{width: 100%;}
 
         .外边距5{margin: 30px 20px 0px 20px;}
-        .内边距5{padding: 40px;}
+        .内边距5{padding: 30px 40px 30px 40px;}
 
         .弹性竖向布局{display: flex; flex-direction: column;}
         .弹性横向布局{display: flex; flex-direction: row;}
         .弹性宽度{flex-grow: 1;}
         .弹性居右对齐{display: flex; justify-content: right;}
+
+
+        /* 未访问的链接 */
+        a:link {
+        color: blue;           /* 文字颜色 */
+        text-decoration: none; /* 移除下划线 */
+        }
+
+        /* 已访问的链接 */
+        a:visited {
+        color: purple;         /* 访问后颜色 */
+        }
+
+        /* 鼠标悬停 */
+        a:hover {
+        color: red;            /* 悬停颜色 */
+        text-decoration: underline; /* 显示下划线 */
+        }
+
+        /* 点击瞬间 */
+        a:active {
+        color: green;          /* 激活时颜色 */
+        }
 
 
     </style>
