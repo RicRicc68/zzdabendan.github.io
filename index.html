@@ -5,7 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <style>
-        *{margin: 0; padding: 0;}
+        /* ===== 全局样式重置 ===== */
+        /* 重置所有元素的内外边距，使用border-box模型 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
+            list-style: none;
+        }
+        h1{font-size: 18px;}
+
+
+        /* ===== 页面基础样式 ===== */
+        /* 设置页面背景为渐变蓝色，字体颜色和行高 */
+        body {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f9ff 100%); /* 淡蓝色渐变背景 */
+            color: #333; /* 主文本颜色 */
+            line-height: 1.5; /* 行高为字体大小的1.5倍 */
+            padding: 10px; /* 页面内边距 */
+            font-size: 14px; /* 基础字体大小 */
+        }
+
+        
+
         
         /* 未访问的链接 */
         a:link {
