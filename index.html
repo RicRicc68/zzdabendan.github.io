@@ -16,20 +16,7 @@
         }
         h1{font-size: 18px;}
 
-
-        /* ===== 页面基础样式 ===== */
-        /* 设置页面背景为渐变蓝色，字体颜色和行高 */
-        body {
-            background: linear-gradient(135deg, #CCCCCC 0%, #CCCCCC 100%); /* 淡蓝色渐变背景 */
-            color: #333; /* 主文本颜色 */
-            line-height: 1.5; /* 行高为字体大小的1.5倍 */
-            padding: 10px; /* 页面内边距 */
-            font-size: 14px; /* 基础字体大小 */
-        }
-
         
-
-
         /* 未访问的链接 */
         a:link {
         color: black;           /* 文字颜色 */
@@ -54,20 +41,45 @@
         }
 
 
-        .nav {
+
+
+        /* ===== 页面基础样式 ===== */
+        /* 设置页面背景为渐变蓝色，字体颜色和行高 */
+        body {
+            background: linear-gradient(135deg, #CCCCCC 0%, #CCCCCC 100%); /* 淡蓝色渐变背景 */
+            color: #333; /* 主文本颜色 */
+            line-height: 1.5; /* 行高为字体大小的1.5倍 */
+            padding: 10px; /* 页面内边距 */
             font-size: 14px; /* 基础字体大小 */
-            display: flex;               /* 弹性布局 */
-            justify-content: left;     /* 水平居中 */
-            gap: 1.5rem;                /*  子项间距 */
-            /* padding: 1.5rem;             内边距 */
-            flex-wrap: wrap;             /* 允许换行（移动端适配） */
-            /* background: rgba(15, 52, 96, 0.2);  半透明导航背景 */
-            backdrop-filter: blur(10px); /*  毛玻璃效果 */
         }
+        h1{
+            font-size: 14px; /* 基础字体大小 */
+        }
+
+
 
         .header{
             display: flex;               /* 弹性布局 */
             justify-content: center;     /* 水平居中 */
+            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
+        }
+
+        
+        .nav {
+            padding: 10px; /* 页面内边距 */
+            display: flex;               /* 弹性布局 */
+            justify-content: left;     /* 水平居中 */
+            gap: 1.5rem;                /*  子项间距 */
+            flex-wrap: wrap;             /* 允许换行（移动端适配） */
+            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
+            backdrop-filter: blur(10px); /*  毛玻璃效果 */
+        }
+
+
+        .main{
+            display: flex;               /* 弹性布局 */
+            justify-content: center;     /* 水平居中 */
+            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
         }
         
     </style>
@@ -90,8 +102,8 @@
     <div class="main">
 
 
+        
         <div class="">
-            
             <h1>我是谁</h1>
             <p>
                 人，有名的人，秋天出生的人
@@ -101,7 +113,6 @@
 
         <div class="">
             <h1>我在哪</h1>
-            
         </div>
 
         <div class="">
