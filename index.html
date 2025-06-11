@@ -17,27 +17,33 @@
         h1{font-size: 14px;}
 
         
+        /* 精准定位导航链接 */
+        .nav a {
+            text-decoration: none;
+            color: #333; /* 设置默认颜色 */
+            background: rgba(204, 255, 102, 0.8); /* 半透明导航背景 */
+        }
+
         /* 未访问的链接 */
         a:link {
-        color: black;           /* 文字颜色 */
-        text-decoration: none; /* 移除下划线 */
+            color: black;           /* 文字颜色 */
+            text-decoration: none; /* 移除下划线 */
         }
 
         /* 已访问的链接 */
         a:visited {
-        color: black;         /* 访问后颜色 */
+            color: black;         /* 访问后颜色 */
         }
 
         /* 鼠标悬停 */
         a:hover {
-        color: #0099FF;            /* 悬停颜色 */
-        text-decoration: none; /* 移除下划线 */
-
+            color: #0099FF;            /* 悬停颜色 */
+            text-decoration: none; /* 移除下划线 */
         }
 
         /* 点击瞬间 */
-        a:active {
-        color: #0099FF;          /* 激活时颜色 */
+            a:active {
+            color: #0099FF;          /* 激活时颜色 */
         }
 
 
@@ -68,7 +74,7 @@
         .nav {
             padding: 10px; /* 页面内边距 */
             display: flex;               /* 弹性布局 */
-            justify-content: left;     /* 水平居中 */
+            justify-content: center;     /* 水平居中 */
             gap: 1.5rem;                /*  子项间距 */
             flex-wrap: wrap;             /* 允许换行（移动端适配） */
             background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
@@ -97,7 +103,6 @@
         <a href="./HTML/zongjie.html">总结</a>
         <a href="./HTML/sikaoneixin.html">思考</a>
         <a href="./HTML/Z.html">简历</a>
-
     </div>
 
     <div class="main">
