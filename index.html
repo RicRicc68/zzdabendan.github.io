@@ -73,6 +73,11 @@
             justify-content: center;     /* 水平居中 */
             background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
         }
+        .title{
+            font-size: 16px;
+            line-height: 2;
+        }
+
 
 
 
@@ -106,6 +111,21 @@
             background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
         }
 
+        .问题{
+            margin: 10px;
+        }
+
+        .我的问题{
+            display: flex;
+            flex-direction: row;
+
+        }
+        .我的问题 div{
+            flex-grow: 1;
+        }
+        .问{
+            max-width: 100px;
+        }
 
 
 
@@ -116,7 +136,7 @@
 
 
     <div class="header">
-        <h1>24岁zz写给未来27年的内心十万字</h1>
+        <h1 class="title">24岁zz写给未来27年的内心十万字</h1>
     </div>
 
     
@@ -132,54 +152,65 @@
 
     <div class="main">
 
-        <div class="">
+        <div class="问题">
+                
+            <div class="我的问题">
 
-            <div class="">
-                <h1>我是谁</h1>
+                <div class="问">
+                    <h1>我是谁</h1>
 
-            </div>
+                </div>
 
-            <div class="">
-                <p>
-                    <br>人，0,8,16,24,32,40,48,56
-                    <br>有名的人，秋天出生的人
-                    <br>优缺点
-                </p>
+                <div class="答">
+                    <p>
+                        我不是你，我不是他。
+                        <br>人，0,8,16,24,32,40,48,56
+                        <br>有名的人，秋天出生的人
+                        <br>优缺点
+                    </p>
+                    
+                    <p><br></p>
 
-            </div>
-
-        </div>
-
-        <div class="">
-
-            <div class="">
-                <h1>我在哪</h1>
+                </div>
 
             </div>
 
-            <div class="">
-                <p>大大世界</p>
+            <div class="我的问题">
 
+                <div class="问">
+                    <h1>我在哪</h1>
+
+                </div>
+
+                <div class="答">
+                    <p>大大世界</p>
+                    <p><br></p>
+
+                </div>
+                
             </div>
-            
-        </div>
 
-        <div class="">
-            
-            <div class="">
-                <h1>我要去做什么</h1>
+            <div class="我的问题">
+                
+                <div class="问">
+                    <h1>我要去做什么</h1>
 
+                </div>
+
+                <div class="答">
+                    <p>
+                        我不该做
+                        <br>智慧，日知知日，彗心慧心 
+                        <br>学生，学问
+                    </p>
+                    <p><br></p>
+
+
+                </div>
+                
+                
             </div>
 
-            <div class="">
-                <p>
-                    <br>智慧，日知知日，彗心慧心 
-                    <br>学生，学问
-                </p>
-
-            </div>
-            
-            
         </div>
 
     </div>
