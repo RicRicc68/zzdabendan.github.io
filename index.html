@@ -30,9 +30,6 @@
 
         h1{font-size: 14px;}/* 基础字体大小 */
         
-          
-
-
 
         /* 精准定位导航链接 */
         .nav a {
@@ -68,8 +65,10 @@
 
 
 
-        /* ===== header 页面基础样式 ===== */
+        /* ===== header 样式 ===== */
         .header{
+            margin: 10px auto 10px auto;
+
             display: flex;               /* 弹性布局 */
             justify-content: center;     /* 水平居中 */
             background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
@@ -78,13 +77,16 @@
 
 
 
-        /* ===== nav 页面基础样式 ===== */
+        /* ===== nav 样式 ===== */
         .nav {
+            margin: 10px auto 10px auto;
             padding: 10px; /* 页面内边距 */
+
             display: flex;               /* 弹性布局 */
             justify-content: center;     /* 水平居中 */
             gap: 1.5rem;                /*  子项间距 */
             flex-wrap: wrap;             /* 允许换行（移动端适配） */
+
             background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
             backdrop-filter: blur(10px); /*  毛玻璃效果 */
         }
@@ -92,11 +94,15 @@
 
 
 
-        /* ===== main 页面基础样式 ===== */
+        /* ===== main 样式 ===== */
         .main{
+            max-width: 1000px;
+            margin: 10px auto;
+
             display: flex;               /* 弹性布局 */
             flex-direction: column;
             justify-content: left;     /* 水平居中 */
+
             background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
         }
 
@@ -108,12 +114,13 @@
 </head>
 <body>
 
+
     <div class="header">
         <h1>24岁zz写给未来27年的内心十万字</h1>
     </div>
 
-
     
+
     <div class="nav">
         <a href="https://zzdabendan.github.io">zz的茅草屋</a>
         <a href="./HTML/booklist.html">导航</a>
@@ -123,17 +130,14 @@
     </div>
 
 
-
     <div class="main">
 
         <div class="">
-
 
             <div class="">
                 <h1>我是谁</h1>
 
             </div>
-
 
             <div class="">
                 <p>
@@ -145,8 +149,6 @@
             </div>
 
         </div>
-
-
 
         <div class="">
 
