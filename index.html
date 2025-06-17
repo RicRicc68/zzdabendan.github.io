@@ -72,12 +72,20 @@
 
         /* ===== header 样式 ===== */
         .header{
+            
+            position: fixed;
+            top: 0;
+            left: 0;
+            
+            width: 100%;
             margin: 0px auto 0px auto;
             padding: 10px;
 
             display: flex;               /* 弹性布局 */
             justify-content: center;     /* 水平居中 */
-            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
+            background: rgba(255, 0, 51, 0.3); /* 半透明导航背景 */
+
+
         }
         .title{
             font-size: 16px;
@@ -90,6 +98,13 @@
 
         /* ===== nav 样式 ===== */
         .nav {
+            
+            position: fixed;
+            top: 52px;
+            left: 0;
+            
+            width: 100%;
+
             margin: 0px auto 0px auto;
             padding: 0px; /* 页面内边距 */
 
@@ -100,6 +115,7 @@
             flex-wrap: wrap;             /* 允许换行（移动端适配） */
 
             background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
+            background: rgba(255, 0, 51, 0.3); /* 半透明导航背景 */
             backdrop-filter: blur(10px); /*  毛玻璃效果 */
         }
 
@@ -109,7 +125,7 @@
         /* ===== main 样式 ===== */
         .main{
             max-width: 1000px;
-            margin: 10px auto;
+            margin: 73px auto;
 
             display: flex;               /* 弹性布局 */
             flex-direction: column;
