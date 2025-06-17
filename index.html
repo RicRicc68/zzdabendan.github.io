@@ -21,13 +21,14 @@
         /* ===== 页面基础样式 ===== */
         /* 设置页面背景为渐变蓝色，字体颜色和行高 */
         body {
+            padding: 0px; /* 页面内边距 */
+
             background: linear-gradient(135deg, #CCCCCC 0%, #CCCCCC 100%); /* 淡蓝色渐变背景 */
             color: #333; /* 主文本颜色 */
 
             line-height: 1.5; /* 行高为字体大小的1.5倍 */
             font-size: 14px; /* 基础字体大小 */
 
-            padding: 0px; /* 页面内边距 */
 
         }
 
@@ -124,22 +125,34 @@
 
         /* ===== main 样式 ===== */
         .main{
+            border-radius: 10px;
+
             max-width: 1000px;
             margin: 73px auto 0 auto;
+            padding: 10px; /* 页面内边距 */
 
             display: flex;               /* 弹性布局 */
             flex-direction: column;
             justify-content: left;     /* 水平居中 */
 
-            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
+            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
         }
 
         
         .问题{
-            margin: 10px;
+            margin: 0px;
+            background: rgba(255, 255, 255, 0.3); /* 半透明导航背景 */
+            border-radius: 10px;
+
         }
 
         .我的问题{
+
+            border-radius: 10px;
+
+            margin: 10px;
+            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
+
             display: flex;
             flex-direction: row;
 
