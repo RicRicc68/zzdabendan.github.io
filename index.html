@@ -145,6 +145,32 @@
             border: solid 1px #ffffff;
         }
 
+        .人生时间轴{
+            margin: 10px auto;
+            padding: 3px;
+            min-width: 100px;
+            line-height: 0.3rem;
+            background-color: #ffffff;
+            display: flex;
+            border-radius: 5px;
+        }
+        .岁数{
+            flex-grow: 1;
+        }
+
+        /*
+        .当前岁数{
+            position: absolute;
+            margin-left: 28.62%;
+        }
+            */
+        .当前岁数{
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 50%;
+        }
+        
+
         
         
         .问题 {
@@ -271,26 +297,50 @@
             <div class="我的问题 我是谁">
                 <div class="问">
                     <h1>我是谁</h1>
+
+                    <p>
+                        我不是你，<br>
+                        我不是他。<br>
+                    </p>
+
                 </div>
                 <div class="答">
-                    <p>
-                        我不是你，我不是他。
-                    <hr>
 
-                        <br>人，
-                        <br>秋天出生的人，0,8,16,24,32,40,48,56。
+                    <!-- 
+                    <div class="背景">
+                        
+                        <video class="感觉" autoplay loop muted playsinline>
+                             <source src="./V/测试视频.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                     -->
+
+                    <div class="人生时间轴">
+                        <div class="岁数">0</div>
+                        <div class="岁数">8</div>
+                        <div class="岁数">16</div>
+                        <div class="岁数"><span class="当前岁数">24</span></div>
+                        <div class="岁数">32</div>
+                        <div class="岁数">40</div>
+                        <div class="岁数">48</div>
+                        <div class="岁数">56</div>
+                        <div class="岁数">64</div>
+                        <div class="岁数">72</div>
+                        <div class="">81</div>
+                        <!-- 
+                        <div class="当前岁数">24</div>
+                         -->
+                    </div>
+
+                    <p>
+                        人，
+                        <br>秋天出生的人，
                         <br>有名的人，
                         <br>有优缺点的人
                         <br>一份力的人
                         <br>一个念的人
-
-
                     </p>
-                    <p>
-                        <video class="感觉" autoplay loop muted playsinline>
-                             <source src="./V/测试视频.mp4" type="video/mp4">
-                        </video>
-                    </p>
+                    
                     <p><br></p>
                 </div>
             </div>
