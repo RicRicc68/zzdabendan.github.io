@@ -107,7 +107,7 @@
             gap: 1rem;                   /* 子项间距 */
             flex-wrap: wrap;             /* 允许换行（移动端适配） */
             background: rgba(255, 0, 51, 0.1); /* 半透明导航背景 */
-            background: rgba(000, 000, 000, 1); /* 半透明导航背景 */
+            background: rgba(000, 000, 000, 0.8); /* 半透明导航背景 */
 
             /* backdrop-filter: blur(10px); 毛玻璃效果 */
         }
@@ -123,6 +123,26 @@
             
         }
 
+
+        .背景/*视频*/{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+
+            width: 100%;
+            height: auto;
+
+            text-align: center;
+        }
+
+        
+        .感觉{
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
         /* ====================== */
         /* MAIN CONTENT 样式 */
         /* ====================== */
@@ -136,25 +156,7 @@
             background: rgba(000, 000, 000, 0); /* 半透明导航背景 */
         }
 
-        .背景/*视频*/{
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            margin: 10px;
-            max-width: 100%;
-            height: auto;
-            border: solid 1px #ffffff;
-            border-radius: 15px;
-        }
-
         
-        .感觉{
-            max-width: 100%;
-            height: auto;
-            border: solid 1px #ffffff;
-            border-radius: 15px;
-        }
 
         .人生时间轴{
             margin: 6px auto;
