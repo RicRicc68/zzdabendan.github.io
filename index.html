@@ -133,10 +133,10 @@
             display: flex;               /* 弹性布局 */
             flex-direction: column;
             justify-content: left;       /* 水平居中 */
-            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
+            background: rgba(000, 000, 000, 0); /* 半透明导航背景 */
         }
 
-        .背景{
+        .背景/*视频*/{
             position: fixed;
             top: 0;
             left: 0;
@@ -157,7 +157,7 @@
         }
 
         .人生时间轴{
-            margin: 10px auto;
+            margin: 6px auto;
             padding: 3px;
             min-width: 100px;
             line-height: 0.3rem;
@@ -167,6 +167,8 @@
         }
         .岁数{
             flex-grow: 1;
+            color: #000000;
+            font-weight: 600;
         }
 
         /*
@@ -184,19 +186,25 @@
 
         
         
-        .问题 {
+        .问题章节 {
             margin: 0px;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
+            /* background: rgba(000, 000, 000, 0); 半透明导航背景 */
+            color: #FFFFFF;
+
+
         }
 
         .我的问题 {
-            border-radius: 10px;
+            background: rgba(000, 000, 000, 0.6); /* 半透明导航背景 */
+
             margin: 10px;
-            background: rgba(255, 255, 255, 0.8); /* 半透明导航背景 */
+            border-radius: 10px;
+
             display: flex;
             flex-direction: row;
             flex-grow: 1;
+
         }
 
         .问 {
@@ -204,12 +212,13 @@
             min-width: 3rem;
         }
 
-        /*
-            */
-
         .答 {
             width: 100%;
         }
+
+
+
+
 
         /* ====================== */
         /* 两栏布局样式 */
@@ -299,13 +308,21 @@
     <div class="header">
         <h1 class="title">24岁zz写给未来27年的内心十万字</h1>
         <p class="title">以后的你实现现在的我的梦想了吗？没有的话快去做。</p>
+        <div class="背景">
+            <video class="感觉" autoplay loop muted playsinline>
+                 <source src="./V/测试视频.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- 
+         -->
+
     </div>
 
     <!-- ====================== -->
     <!-- 主内容区域 -->
     <!-- ====================== -->
     <div class="main">
-        <div class="问题">
+        <div class="问题章节">
             <!-- 问题1：我是谁 -->
             <div class="我的问题 我是谁">
                 <div class="问">
@@ -318,596 +335,7 @@
 
                 </div>
                 <div class="答">
-                    <!-- 
-
-                    <div class="背景">
-                        
-                        <video class="感觉" autoplay loop muted playsinline>
-                             <source src="./V/测试视频.mp4" type="video/mp4">
-                        </video>
-                    </div>
-
-                     -->
-
-                    <div class="人生时间轴">
-                        <div class="岁数">0</div>
-                        <div class="岁数">8</div>
-                        <div class="岁数">16</div>
-                        <div class="岁数"><span class="当前岁数">24</span></div>
-                        <div class="岁数">32</div>
-                        <div class="岁数">40</div>
-                        <div class="岁数">48</div>
-                        <div class="岁数">56</div>
-                        <div class="岁数">64</div>
-                        <div class="岁数">72</div>
-                        <div class="">81</div>
-                        <!-- 
-                        <div class="当前岁数">24</div>
-                         -->
-                    </div>
-
-                    <p>
-                        人，秋天出生的人，有名的人自然中成长的我，家庭中生活的我，学校中上学的我，公司中工作的我，网络中娱乐的我
-                        <br>一份身体肌肉力的人，一个头脑心念力的人
-                        <br>有优缺点的人
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-
-                    </p>
                     
-                </div>
-            </div>
-
-            <div class="两栏">
-
-                <!-- 问题2：我在哪 -->
-                <div class="我的问题 我在哪">
-                    <div class="问">
-                        <h1>我在哪</h1>
-                        <p>
-                            我不在那里
-                        </p>
-                        
-                    </div>
-                    <div class="答">
-                        
-                        <div class="两栏">
-                            <div class="隐蔽屋">
-                                装备/背包/
-                                <br>家具/仓库/
-                                <br>隐蔽屋12345678-20240717
-                            </div>
-                            <div class="隐蔽屋">
-                                <img src="../IMG/2024白天.jpg" alt="隐蔽屋" width="100%">
-                            </div>
-                        </div>
-                        
-                        <div class="两栏">
-                            <div class="大大世界">
-                                <br>人口数，资源数，行业数，技能数，军事，农业，医疗
-                                <br>户籍
-                                <br>区域
-                                <br>城市
-                                <br>中国
-                                <br>大大世界，
-                            </div>
-                            <div class="大大世界">
-                                <img src="../IMG/2025地图资源.png" alt="大大世界" width="100%">
-                            </div>
-                        </div>
-
-                        <p>
-                            <br>祖宗，家族，家庭，个体
-                            <br>无生命物，植物，动物，人类
-                            <br>宇宙，xxx，xxx，太阳系，地球，亚洲大陆
-                        </p>
-                        <p><br></p>
-                    </div>
-                </div>
-
-                <!-- 问题3：我要去做什么 -->
-                <div class="我的问题 我要去做什么">
-                    <div class="问">
-                        <h1>我要去做什么</h1>
-                        <P>
-                            我不该做
-                        </P>
-                    </div>
-                    <div class="答">
-                        <p>
-                            我要做一个有智慧的人，
-                            <br>日知知日，学生，学问。
-                            <br>彗心慧心，存好心，做好人，做好事。
-                            <br>
-                            <br>
-                        </p>
-
-                        <div class="两栏">
-                            <!-- 作息表 -->
-                            <div class="作息表">
-                                <div class="文字作息">
-                                    <br>个人作息六大核心事项<br>
-                                    1.  作息规划<br>
-                                    工作时间<br>
-                                    休息时间<br>
-                                    <hr>
-                                    2.  身体管理<br>
-                                    吃饭、补水、锻炼、洗漱 
-                                    <hr>
-                                    3.  家务管理<br>
-                                    整理、清洁、存放物品<br>
-                                    <hr>
-                                    4.  学习成长<br>
-                                    思想、技术、等（其他领域学习）<br>
-                                    <hr>
-                                    5.  职业发展<br>
-                                    行业、岗位<br>
-                                    简历、流程<br>
-                                    <hr>
-                                    6.  休闲娱乐<br>
-                                    视频、直播、游戏、音乐、小说、漫画、电影、综艺、电视剧<br>
-                                    <hr>
-                                </div>
-                            </div>
-
-
-                            <!-- 作息表 -->
-                            <div class="作息表">
-                                <table border="0" style="width: 100%; text-align: center; ">
-                                    <!-- 表格标题 -->
-                                    <caption><h1 style="font-size: 16px;">20250618作息表</h1></caption>
-
-                                    <!-- 表格页眉 -->
-                                    <thead>
-                                        <tr>
-                                            <th>旧的目标</th>
-                                            <th>正确方法</th>
-                                            <th>新的目标</th>
-                                            <th>目标指标</th>
-                                            <th>工作进度</th>
-                                            <th>开始时间</th>
-                                            <th>结束时间</th>
-                                        </tr>
-                                    </thead>
-
-                                    <!-- 表格主体 -->
-                                    <tbody>
-                                        <tr>
-                                            <td>睡眠</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                        </tr>
-                                        <!-- 其他表格行省略 -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <!-- 时间轴 -->
-                            <div class="时间轴">
-                                <div class="时间线">
-                                    <div class="时间轴标题"><h1></h1></div>
-                                    <div class="时间轴内容">
-                                        <ul class="时间列表">
-                                            <li class="日时">00</li>
-                                            <li class="日时">01</li>
-                                            <li class="日时">02</li>
-                                            <li class="日时">03</li>
-                                            <li class="日时">04</li>
-                                            <li class="日时">05</li>
-                                            <li class="日时">06</li>
-                                            <li class="日时">07</li>
-                                            <li class="日时">08</li>
-                                            <li class="日时">09</li>
-                                            <li class="日时">10</li>
-                                            <li class="日时">11</li>
-                                            <li class="日时">12</li>
-                                            <li class="日时">13</li>
-                                            <li class="日时">14</li>
-                                            <li class="日时">15</li>
-                                            <li class="日时">16</li>
-                                            <li class="日时">17</li>
-                                            <li class="日时">18</li>
-                                            <li class="日时">19</li>
-                                            <li class="日时">20</li>
-                                            <li class="日时">21</li>
-                                            <li class="日时">22</li>
-                                            <li class="日时">23</li>
-                                        </ul>
-                                        <ul class="时间列表">
-                                            <li class="日时">1</li>
-                                            <li class="日时">24</li>
-                                            <li class="日时">1440</li>
-                                            <li class="日时">86400</li>
-                                            <!-- 其他时间项省略 -->
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="任务 作息">
-                                    <div class="时间轴标题"><h1>作息</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 身体">
-                                    <div class="时间轴标题"><h1>身体</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-                                
-                                <div class="任务 家务">
-                                    <div class="时间轴标题"><h1>家务</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 学识">
-                                    <div class="时间轴标题"><h1>学识</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 工作">
-                                    <div class="时间轴标题"><h1>工作</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 娱乐">
-                                    <div class="时间轴标题"><h1>娱乐</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ====================== -->
-    <!-- 页脚区域 -->
-    <!-- ====================== -->
-    <div class="footer">
-        <div class="">
-            <hr>
-            <p>zz的茅草屋 &copy; 2023 | 更新于 20250617 0452</p>
-        </div>
-    </div>
-</body>
-</html><!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <!--      -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>index</title>
-    <style>
-        /* ====================== */
-        /* 全局样式重置 */
-        /* ====================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
-            list-style: none;
-        }
-
-        /* ====================== */
-        /* 页面基础样式 */
-        /* ====================== */
-        body {
-            padding: 0px; 
-            background: linear-gradient(135deg, #000000 0%, #000000 100%); /* 淡蓝色渐变背景 */
-            color: #333; /* 主文本颜色 */
-            line-height: 1.5; /* 行高为字体大小的1.5倍 */
-            font-size: 14px; /* 基础字体大小 */
-        }
-
-        h1 {
-            font-size: 14px; /* 基础字体大小 */
-        }
-
-        /* ====================== */
-        /* 链接样式 */
-        /* ====================== */
-        /* 精准定位导航链接 */
-        
-
-        /* 未访问的链接 */
-        a:link {
-            color: black;           /* 文字颜色 */
-            text-decoration: none; /* 移除下划线 */
-        }
-
-        /* 已访问的链接 */
-        a:visited {
-            color: black;         /* 访问后颜色 */
-        }
-
-        /* 鼠标悬停 */
-        a:hover {
-            color: #FF0051;            /* 悬停颜色 */
-            text-decoration: none; /* 移除下划线 */
-        }
-
-        /* 点击瞬间 */
-        a:active {
-            color: #0099FF;          /* 激活时颜色 */
-        }
-
-        /* ====================== */
-        /* 表格和图片样式 */
-        /* ====================== */
-        table {
-            border-collapse: collapse;
-            border-radius: 10px;
-        }
-
-        img {
-            border: solid 1px #333;
-            border-radius: 10px;
-        }
-
-        /* ====================== */
-        /* HEADER 样式 */
-        /* ====================== */
-        .header {
-            width: 100%;
-            margin: 40px auto 0 auto;
-            display: flex;               /* 弹性布局 */
-            flex-direction: column;
-            justify-content: center;     /* 水平居中 */
-            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
-        }
-        
-        .title {
-            font-size: 16px;
-            text-align: center;
-            line-height: 2;
-        }
-
-        /* ====================== */
-        /* NAVIGATION 样式 */
-        /* ====================== */
-        .nav {
-            position: fixed;
-            top: 0px;
-            left: 0;
-            width: 100%;
-            margin: 0px auto 0px auto;
-            padding: 0px; /* 页面内边距 */
-            display: flex;               /* 弹性布局 */
-            justify-content: center;     /* 水平居中 */
-            gap: 1rem;                   /* 子项间距 */
-            flex-wrap: wrap;             /* 允许换行（移动端适配） */
-            background: rgba(255, 0, 51, 0.1); /* 半透明导航背景 */
-            background: rgba(000, 000, 000, 1); /* 半透明导航背景 */
-
-            /* backdrop-filter: blur(10px); 毛玻璃效果 */
-        }
-
-        
-        .nav a {
-            margin: 10px;
-            border-radius: 2px;
-            text-decoration: none;
-            text-align: center;
-            color: #FFFFFF; /* 设置默认颜色 */
-            background: rgba(204, 255, 102, 0); /* 半透明导航背景 */
-            
-        }
-
-        /* ====================== */
-        /* MAIN CONTENT 样式 */
-        /* ====================== */
-        .main {
-            border-radius: 10px;
-            margin: 0px auto 0px auto;
-            padding: 0px; /* 页面内边距 */
-            display: flex;               /* 弹性布局 */
-            flex-direction: column;
-            justify-content: left;       /* 水平居中 */
-            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
-        }
-
-        .背景{
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            margin: 10px;
-            max-width: 100%;
-            height: auto;
-            border: solid 1px #ffffff;
-            border-radius: 15px;
-        }
-
-        
-        .感觉{
-            max-width: 100%;
-            height: auto;
-            border: solid 1px #ffffff;
-            border-radius: 15px;
-        }
-
-        .人生时间轴{
-            margin: 10px auto;
-            padding: 3px;
-            min-width: 100px;
-            line-height: 0.3rem;
-            background-color: #ffffff;
-            display: flex;
-            border-radius: 5px;
-        }
-        .岁数{
-            flex-grow: 1;
-        }
-
-        /*
-        .当前岁数{
-            position: absolute;
-            margin-left: 28.62%;
-        }
-            */
-        .当前岁数{
-            background-color: #000000;
-            color: #ffffff;
-            border-radius: 50%;
-        }
-        
-
-        
-        
-        .问题 {
-            margin: 0px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
-        }
-
-        .我的问题 {
-            border-radius: 10px;
-            margin: 10px;
-            background: rgba(255, 255, 255, 0.8); /* 半透明导航背景 */
-            display: flex;
-            flex-direction: row;
-            flex-grow: 1;
-        }
-
-        .问 {
-            max-width: 3rem;
-            min-width: 3rem;
-        }
-
-        /*
-            */
-
-        .答 {
-            width: 100%;
-        }
-
-        /* ====================== */
-        /* 两栏布局样式 */
-        /* ====================== */
-        .两栏 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .隐蔽屋, .大大世界 {
-            max-width: 50%;
-            margin: 10px auto;
-            border-radius: 10px;
-            display: flex;
-            flex-grow: 1;
-        }
-        .我要去做什么,.我在哪{
-            flex-grow: 1;
-        }
-
-        /* ====================== */
-        /* 时间轴和作息表样式 */
-        /* ====================== */
-        .时间轴, .作息表 {
-            border: solid 1px #333;
-            overflow: hidden;
-        }
-
-        .时间列表 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .日时 {
-            flex-grow: 1;
-        }
-
-        .时间列表 {
-            flex-grow: 1;
-        }
-
-        .任务 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .时间线 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .时间轴标题 {
-            flex-grow: 1;
-            max-width: 50px;
-        }
-        
-        .时间轴内容 {
-            flex-grow: 1;
-        }
-
-        /* ====================== */
-        /* FOOTER 样式 */
-        /* ====================== */
-        .footer {
-            margin: 20px auto 10px auto;
-            background: rgba(204, 204, 204, 1); /* 半透明导航背景 */
-            text-align: center;          /* 真-水平居中 */
-        }
-    </style>
-</head>
-<body>
-    <!-- ====================== -->
-    <!-- 导航区域 -->
-    <!-- ====================== -->
-    <div class="nav">
-        <a href="https://zzdabendan.github.io"> zz的互联网茅草屋  </a>
-        <a href="./HTML/zzYBW8-20240717.html">         zz的隐蔽屋8-20240717  </a>
-        <a href="./HTML/booklist.html">         我的书签       </a>
-        <a href="./HTML/zongjie.html">          我的总结       </a>
-        <a href="./HTML/sikaoneixin.html">      我的思路       </a>
-        <a href="./HTML/Z.html">                我的简历       </a>
-    </div>
-
-    <!-- ====================== -->
-    <!-- 标题区域 -->
-    <!-- ====================== -->
-    <div class="header">
-        <h1 class="title">24岁zz写给未来27年的内心十万字</h1>
-        <p class="title">以后的你实现现在的我的梦想了吗？没有的话快去做。</p>
-    </div>
-
-    <!-- ====================== -->
-    <!-- 主内容区域 -->
-    <!-- ====================== -->
-    <div class="main">
-        <div class="问题">
-            <!-- 问题1：我是谁 -->
-            <div class="我的问题 我是谁">
-                <div class="问">
-                    <h1>我是谁</h1>
-
-                    <p>
-                        我不是你，<br>
-                        我不是他。<br>
-                    </p>
-
-                </div>
-                <div class="答">
-                    <!-- 
-
-                    <div class="背景">
-                        
-                        <video class="感觉" autoplay loop muted playsinline>
-                             <source src="./V/测试视频.mp4" type="video/mp4">
-                        </video>
-                    </div>
-
-                     -->
-
                     <div class="人生时间轴">
                         <div class="岁数">0</div>
                         <div class="岁数">8</div>
