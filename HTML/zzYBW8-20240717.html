@@ -133,10 +133,10 @@
             display: flex;               /* 弹性布局 */
             flex-direction: column;
             justify-content: left;       /* 水平居中 */
-            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
+            background: rgba(000, 000, 000, 0); /* 半透明导航背景 */
         }
 
-        .背景{
+        .背景/*视频*/{
             position: fixed;
             top: 0;
             left: 0;
@@ -157,7 +157,7 @@
         }
 
         .人生时间轴{
-            margin: 10px auto;
+            margin: 6px auto;
             padding: 3px;
             min-width: 100px;
             line-height: 0.3rem;
@@ -167,6 +167,8 @@
         }
         .岁数{
             flex-grow: 1;
+            color: #000000;
+            font-weight: 600;
         }
 
         /*
@@ -184,19 +186,25 @@
 
         
         
-        .问题 {
+        .问题章节 {
             margin: 0px;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
+            /* background: rgba(000, 000, 000, 0); 半透明导航背景 */
+            color: #FFFFFF;
+
+
         }
 
         .我的问题 {
-            border-radius: 10px;
+            background: rgba(000, 000, 000, 0.6); /* 半透明导航背景 */
+
             margin: 10px;
-            background: rgba(255, 255, 255, 0.8); /* 半透明导航背景 */
+            border-radius: 10px;
+
             display: flex;
             flex-direction: row;
             flex-grow: 1;
+
         }
 
         .问 {
@@ -204,12 +212,13 @@
             min-width: 3rem;
         }
 
-        /*
-            */
-
         .答 {
             width: 100%;
         }
+
+
+
+
 
         /* ====================== */
         /* 两栏布局样式 */
@@ -305,7 +314,7 @@
     <!-- 主内容区域 -->
     <!-- ====================== -->
     <div class="main">
-        <div class="问题">
+        <div class="问题章节">
             <!-- 问题1：我是谁 -->
             <div class="我的问题 我是谁">
                 <div class="问">
@@ -318,15 +327,12 @@
 
                 </div>
                 <div class="答">
-                    <!-- 
-
                     <div class="背景">
-                        
                         <video class="感觉" autoplay loop muted playsinline>
                              <source src="./V/测试视频.mp4" type="video/mp4">
                         </video>
                     </div>
-
+                    <!-- 
                      -->
 
                     <div class="人生时间轴">
