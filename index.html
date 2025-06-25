@@ -2,601 +2,595 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!--      -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>index</title>
+    <title>隐蔽屋8号物品清单</title>
     <style>
-        /* ====================== */
-        /* 全局样式重置 */
-        /* ====================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
-            list-style: none;
-        }
-
-        /* ====================== */
-        /* 页面基础样式 */
-        /* ====================== */
         body {
-            padding: 0px; 
-            background: linear-gradient(135deg, #000000 0%, #000000 100%); /* 淡蓝色渐变背景 */
-            color: #333; /* 主文本颜色 */
-            line-height: 1.5; /* 行高为字体大小的1.5倍 */
-            font-size: 14px; /* 基础字体大小 */
+            font-family: 'Courier New', monospace;
+            background-color: white;
+            color: black;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.4;
         }
-
         h1 {
-            font-size: 14px; /* 基础字体大小 */
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 5px;
         }
-
-        /* ====================== */
-        /* 链接样式 */
-        /* ====================== */
-        /* 精准定位导航链接 */
-
-        /* 未访问的链接 */
-        a:link {
-            color: black;           /* 文字颜色 */
-            text-decoration: none; /* 移除下划线 */
-            border-bottom: solid 1px #000000;
+        .subtitle {
+            text-align: center;
+            margin-bottom: 15px;
         }
-
-        /* 已访问的链接 */
-        a:visited {
-            color: black;         /* 访问后颜色 */
-            border-bottom: solid 1px #000000;
-
-        }
-
-        /* 鼠标悬停 */
-        a:hover {
-            color: #FF0051;            /* 悬停颜色 */
-            text-decoration: none; /* 移除下划线 */
-            border-bottom: solid 1px #ffffff;
-        }
-
-        /* 点击瞬间 */
-        a:active {
-            color: #0099FF;          /* 激活时颜色 */
-            border-bottom: solid 1px #000000;
-
-        }
-
-        /* ====================== */
-        /* 表格和图片样式 */
-        /* ====================== */
         table {
+            width: 100%;
             border-collapse: collapse;
-            border-radius: 10px;
+            border: 1px solid black;
         }
-
-        img {
-            border: solid 1px #333;
-            border-radius: 10px;
+        th, td {
+            border: 1px solid black;
+            padding: 4px 8px;
+            text-align: left;
+            font-size: 14px;
         }
-
-        /* ====================== */
-        /* HEADER 样式 */
-        /* ====================== */
-        .header {
-            width: 100%;
-            margin: 40px auto 0 auto;
-            display: flex;               /* 弹性布局 */
-            flex-direction: column;
-            justify-content: center;     /* 水平居中 */
-            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
-        }
-        
-        .title {
-            font-size: 16px;
-            text-align: center;
-            line-height: 2;
-        }
-
-        /* ====================== */
-        /* NAVIGATION 样式 */
-        /* ====================== */
-        .nav {
-            position: fixed;
-            top: 0px;
-            left: 0;
-            width: 100%;
-            margin: 0px auto 0px auto;
-            padding: 0px; /* 页面内边距 */
-            display: flex;               /* 弹性布局 */
-            justify-content: center;     /* 水平居中 */
-            gap: 1rem;                   /* 子项间距 */
-            flex-wrap: wrap;             /* 允许换行（移动端适配） */
-            background: rgba(255, 0, 51, 0.1); /* 半透明导航背景 */
-            background: rgba(000, 000, 000, 0.8); /* 半透明导航背景 */
-
-            /* backdrop-filter: blur(10px); 毛玻璃效果 */
-        }
-
-        
-        .nav a {
-            margin: 10px;
-            text-decoration: none;
-            text-align: center;
-            color: #FFFFFF; /* 设置默认颜色 */
-            background: rgba(204, 255, 102, 0); /* 半透明导航背景 */
-            
-        }
-
-
-        .背景/*视频*/{
-            
-            /*
-            position: fixed;
-            top: 140px;
-            left: 0;
-            z-index: -1;
-            */
-
-            width: 100%;
-            height: auto;
-
-            text-align: center;
-            
-        }
-
-        
-        .感觉{
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-
-        }
-
-        /* ====================== */
-        /* MAIN CONTENT 样式 */
-        /* ====================== */
-        .main {
-            border-radius: 10px;
-            margin: 0px auto 0px auto;
-            padding: 0px; /* 页面内边距 */
-            display: flex;               /* 弹性布局 */
-            flex-direction: column;
-            justify-content: left;       /* 水平居中 */
-            background: rgba(000, 000, 000, 0); /* 半透明导航背景 */
-        }
-
-        
-
-        .人生时间轴{
-            margin: 6px auto;
-            padding: 3px;
-            min-width: 100px;
-            line-height: 0.3rem;
-            background-color: #ffffff;
-            display: flex;
-            border-radius: 5px;
-        }
-        .岁数{
-            flex-grow: 1;
-            color: #000000;
-            font-weight: 600;
-        }
-
-        /*
-        .当前岁数{
-            position: absolute;
-            margin-left: 28.62%;
-        }
-            */
-        .当前岁数{
-            background-color: #000000;
-            color: #ffffff;
-            border-radius: 50%;
-        }
-        
-
-        
-        
-        .问题章节 {
-            margin: 0px;
-            border-radius: 10px;
-            /* background: rgba(000, 000, 000, 0); 半透明导航背景 */
+        .category-header0 {
+            font-weight: bold;
+            background-color: #663300;
             color: #FFFFFF;
 
-
+        }
+        .category-header {
+            font-weight: bold;
+            background-color: #CCCC99;
         }
 
-        .我的问题 {
-            background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 */
-
-            margin: 10px;
-            border-radius: 10px;
-
-            display: flex;
-            flex-direction: row;
-            flex-grow: 1;
-
+        .category-header2 {
+            font-weight: bold;
+            background-color: #003366;
+            color: #FFFFFF;
         }
 
-        .问 {
-            max-width: 3rem;
-            min-width: 3rem;
-        }
-
-        .答 {
-            width: 100%;
-        }
-
-
-
-
-
-        /* ====================== */
-        /* 两栏布局样式 */
-        /* ====================== */
-        .两栏 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .隐蔽屋, .大大世界 {
-            max-width: 50%;
-            margin: 10px auto;
-            border-radius: 10px;
-            display: flex;
-            flex-grow: 1;
-        }
-        .我要去做什么,.我在哪{
-            flex-grow: 1;
-        }
-
-        /* ====================== */
-        /* 时间轴和作息表样式 */
-        /* ====================== */
-        .时间轴, .作息表 {
-            border: solid 1px #333;
-            overflow: hidden;
-        }
-
-        .时间列表 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .日时 {
-            flex-grow: 1;
-        }
-
-        .时间列表 {
-            flex-grow: 1;
-        }
-
-        .任务 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .时间线 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .时间轴标题 {
-            flex-grow: 1;
-            max-width: 50px;
-        }
-        
-        .时间轴内容 {
-            flex-grow: 1;
-        }
-
-        /* ====================== */
-        /* FOOTER 样式 */
-        /* ====================== */
         .footer {
-            margin: 20px auto 10px auto;
-            background: rgba(000, 000, 000, 0.8); /* 半透明导航背景 */
-            color: #ffffff;
-            text-align: center;          /* 真-水平居中 */
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <!-- ====================== -->
-    <!-- 导航区域 -->
-    <!-- ====================== -->
-    <div class="nav">
-        <a href="https://zzdabendan.github.io"> zz的互联网茅草屋  </a>
-        <a href="./HTML/zzYBW8-20240717.html">  zz的隐蔽屋8  </a>
-        <a href="./HTML/booklist.html">         我的书签       </a>
-        <a href="./HTML/zongjie.html">          我的总结       </a>
-        <a href="./HTML/sikaoneixin.html">      我的思路       </a>
-        <a href="./HTML/Z.html">                我的简历       </a>
-    </div>
+    <h1>隐蔽屋8号物品清单</h1>
+    
+    <div class="subtitle">入住日期：2024年7月14日</div>
 
-    <!-- ====================== -->
-    <!-- 标题区域 -->
-    <!-- ====================== -->
-    <div class="header">
-        <h1 class="title">24岁zz写给未来27年的内心十万字</h1>
-        <p class="title">
-            以后的你实现现在的我的梦想了吗？没有的话快去做。
-            起初只是一次简单的晚睡，熬夜<br>
+    <img src="../IMG/2024白天.jpg" alt="隐蔽屋" width="100%">
 
-        </p>
-
-
-    </div>
-
-    <!-- ====================== -->
-    <!-- 主内容区域 -->
-    <!-- ====================== -->
-    <div class="main">
-        <div class="问题章节">
-            <!-- 问题1：我是谁 -->
-            <div class="我的问题 我是谁">
-                <div class="问">
-                    <h1>我是谁</h1>
-
-                    <p>
-                        我不是你，<br>
-                        我不是他。<br>
-                    </p>
-
-                </div>
-                <div class="答">
-                    
-                    <div class="人生时间轴">
-                        <div class="岁数">0</div>
-                        <div class="岁数">8</div>
-                        <div class="岁数">16</div>
-                        <div class="岁数"><span class="当前岁数">24</span></div>
-                        <div class="岁数">32</div>
-                        <div class="岁数">40</div>
-                        <div class="岁数">48</div>
-                        <div class="岁数">56</div>
-                        <div class="岁数">64</div>
-                        <div class="岁数">72</div>
-                        <div class="">81</div>
-                        <!-- 
-                        <div class="当前岁数">24</div>
-                         -->
-                    </div>
-
-                    <p>
-                        人，秋天中成长的我，家庭中生活的我，学校中上学的我，公司中工作的我，网络中娱乐的我
-                        <br>一份身体肌肉力的人，一个头脑心念力的人，有优缺点的人，有名的人
-
-                    </p>
-                                
-                    <div class="背景">
-                        <video class="感觉" autoplay loop> 
-                            <source src="./VIDEO/简单背景.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    
-                    <!-- 
-                    -->
-                    <!--  controls  autoplay loop muted playsinline  -->
-                                
-                </div>
-            </div>
-
-            <div class="两栏">
-
-                <!-- 问题2：我在哪 -->
-                <div class="我的问题 我在哪">
-                    <div class="问">
-                        <h1>我在哪</h1>
-                        <p>
-                            我不在那里
-                        </p>
-                        
-                    </div>
-                    <div class="答">
-                        
-                        <div class="两栏">
-                            <div class="隐蔽屋">
-                                装备/背包/
-                                <br>家具/仓库/
-                                <br>隐蔽屋12345678-20240717
-                            </div>
-                            <div class="隐蔽屋">
-                                <img src="../IMG/2024白天.jpg" alt="隐蔽屋" width="100%">
-                            </div>
-                        </div>
-                        
-                        <div class="两栏">
-                            <div class="大大世界">
-                                <br>人口数，资源数，行业数，技能数，军事，农业，医疗
-                                <br>户籍
-                                <br>区域
-                                <br>城市
-                                <br>中国
-                                <br>大大世界，
-                            </div>
-                            <div class="大大世界">
-                                <img src="../IMG/2025地图资源.png" alt="大大世界" width="100%">
-                            </div>
-                        </div>
-
-                        <p>
-                            <br>祖宗，家族，家庭，个体
-                            <br>无生命物，植物，动物，人类
-                            <br>宇宙，xxx，xxx，太阳系，地球，亚洲大陆
-                        </p>
-                        <p><br></p>
-                    </div>
-                </div>
-
-                <!-- 问题3：我要去做什么 -->
-                <div class="我的问题 我要去做什么">
-                    <div class="问">
-                        <h1>我要去做什么</h1>
-                        <P>
-                            我不该做
-                        </P>
-                    </div>
-                    <div class="答">
-                        <p>
-                            我要做一个有智慧的人，
-                            <br>日知知日，学生，学问。
-                            <br>彗心慧心，存好心，做好人，做好事。
-                            <br>
-                            <br>
-                        </p>
-
-                        <div class="两栏">
-                            <!-- 作息表 -->
-                            <div class="作息表">
-                                <div class="文字作息">
-                                    <br>个人作息六大核心事项<br>
-                                    1.  作息规划<br>
-                                    工作时间<br>
-                                    休息时间<br>
-                                    <hr>
-                                    2.  身体管理<br>
-                                    吃饭、补水、锻炼、洗漱 
-                                    <hr>
-                                    3.  家务管理<br>
-                                    整理、清洁、存放物品<br>
-                                    <hr>
-                                    4.  学习成长<br>
-                                    思想、技术、等（其他领域学习）<br>
-                                    <hr>
-                                    5.  职业发展<br>
-                                    行业、岗位<br>
-                                    简历、流程<br>
-                                    <hr>
-                                    6.  休闲娱乐<br>
-                                    视频、直播、游戏、音乐、小说、漫画、电影、综艺、电视剧<br>
-                                    <hr>
-                                </div>
-                            </div>
-
-
-                            <!-- 作息表 -->
-                            <div class="作息表">
-                                <table border="0" style="width: 100%; text-align: center; ">
-                                    <!-- 表格标题 -->
-                                    <caption><h1 style="font-size: 16px;">20250618作息表</h1></caption>
-
-                                    <!-- 表格页眉 -->
-                                    <thead>
-                                        <tr>
-                                            <th>旧的目标</th>
-                                            <th>正确方法</th>
-                                            <th>新的目标</th>
-                                            <th>目标指标</th>
-                                            <th>工作进度</th>
-                                            <th>开始时间</th>
-                                            <th>结束时间</th>
-                                        </tr>
-                                    </thead>
-
-                                    <!-- 表格主体 -->
-                                    <tbody>
-                                        <tr>
-                                            <td>睡眠</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                            <td>11</td>
-                                        </tr>
-                                        <!-- 其他表格行省略 -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <!-- 时间轴 -->
-                            <div class="时间轴">
-                                <div class="时间线">
-                                    <div class="时间轴标题"><h1></h1></div>
-                                    <div class="时间轴内容">
-                                        <ul class="时间列表">
-                                            <li class="日时">00</li>
-                                            <li class="日时">01</li>
-                                            <li class="日时">02</li>
-                                            <li class="日时">03</li>
-                                            <li class="日时">04</li>
-                                            <li class="日时">05</li>
-                                            <li class="日时">06</li>
-                                            <li class="日时">07</li>
-                                            <li class="日时">08</li>
-                                            <li class="日时">09</li>
-                                            <li class="日时">10</li>
-                                            <li class="日时">11</li>
-                                            <li class="日时">12</li>
-                                            <li class="日时">13</li>
-                                            <li class="日时">14</li>
-                                            <li class="日时">15</li>
-                                            <li class="日时">16</li>
-                                            <li class="日时">17</li>
-                                            <li class="日时">18</li>
-                                            <li class="日时">19</li>
-                                            <li class="日时">20</li>
-                                            <li class="日时">21</li>
-                                            <li class="日时">22</li>
-                                            <li class="日时">23</li>
-                                        </ul>
-                                        <ul class="时间列表">
-                                            <li class="日时">1</li>
-                                            <li class="日时">24</li>
-                                            <li class="日时">1440</li>
-                                            <li class="日时">86400</li>
-                                            <!-- 其他时间项省略 -->
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="任务 作息">
-                                    <div class="时间轴标题"><h1>作息</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 身体">
-                                    <div class="时间轴标题"><h1>身体</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-                                
-                                <div class="任务 家务">
-                                    <div class="时间轴标题"><h1>家务</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 学识">
-                                    <div class="时间轴标题"><h1>学识</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 工作">
-                                    <div class="时间轴标题"><h1>工作</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-
-                                <div class="任务 娱乐">
-                                    <div class="时间轴标题"><h1>娱乐</h1></div>
-                                    <div class="时间轴内容">11</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ====================== -->
-    <!-- 页脚区域 -->
-    <!-- ====================== -->
-    <div class="footer">
-        <div class="">
-            <hr>
-            <p>zz的茅草屋 &copy; 2023 | 更新于 20250617 0452</p>
-        </div>
-    </div>
+    
+    <table>
+        <tr class="category-header0">
+            <th width="15%">序号</th>
+            <th width="35%">物品名称</th>
+            <th width="25%">规格/型号</th>
+            <th width="25%">备注</th>
+        </tr>
+        
+        <!-- 房屋结构 -->
+        <tr class="category-header">
+            <td colspan="4">房屋结构</td>
+        </tr>
+        <tr>
+            <td>20240714-001</td>
+            <td>大门</td>
+            <td>-</td>
+            <td>主入口</td>
+        </tr>
+        <tr>
+            <td>20240714-002</td>
+            <td>厨房</td>
+            <td>-</td>
+            <td>无窗</td>
+        </tr>
+        <tr>
+            <td>20240714-003</td>
+            <td>厕所</td>
+            <td>-</td>
+            <td>带1扇窗户</td>
+        </tr>
+        <tr>
+            <td>20240714-004</td>
+            <td>卧室</td>
+            <td>-</td>
+            <td>带1扇窗户</td>
+        </tr>
+        
+        <!-- 固定家具 -->
+        <tr class="category-header">
+            <td colspan="4">固定家具</td>
+        </tr>
+        <tr>
+            <td>20240714-005</td>
+            <td>床</td>
+            <td>-</td>
+            <td>房东提供</td>
+        </tr>
+        <tr>
+            <td>20240714-006</td>
+            <td>方形储物柜</td>
+            <td>-</td>
+            <td>房东提供</td>
+        </tr>
+        <tr>
+            <td>20240714-007</td>
+            <td>方形凳子</td>
+            <td>-</td>
+            <td>房东提供</td>
+        </tr>
+        <tr>
+            <td>20240714-008</td>
+            <td>方形桌子</td>
+            <td>-</td>
+            <td>房东提供</td>
+        </tr>
+        <tr>
+            <td>20240714-009</td>
+            <td>床头小柜子</td>
+            <td>-</td>
+            <td>房东提供</td>
+        </tr>
+        <tr>
+            <td>20240714-010</td>
+            <td>冰箱</td>
+            <td>-</td>
+            <td>房东提供</td>
+        </tr>
+        <tr>
+            <td>20240714-011</td>
+            <td>空调</td>
+            <td>-</td>
+            <td>房东提供</td>
+        </tr>
+        <tr>
+            <td>20240714-012</td>
+            <td>吊顶灯</td>
+            <td>-</td>
+            <td>带风扇功能</td>
+        </tr>
+        
+        <!-- 个人物品 - 交通工具 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 交通工具</td>
+        </tr>
+        <tr>
+            <td>20240714-013</td>
+            <td>电动车</td>
+            <td>-</td>
+            <td>停放在楼下车棚</td>
+        </tr>
+        <tr>
+            <td>20240714-014</td>
+            <td>电动车充电器</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-015</td>
+            <td>电动车头盔</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-016</td>
+            <td>电动车锁</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-017</td>
+            <td>车胎充气泵</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-018</td>
+            <td>电动车钥匙遥控器</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-019</td>
+            <td>电动车坐垫</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-020</td>
+            <td>冬季挡风被</td>
+            <td>-</td>
+            <td>后补充</td>
+        </tr>
+        
+        <!-- 个人物品 - 箱包容器 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 箱包容器</td>
+        </tr>
+        <tr>
+            <td>20240714-021</td>
+            <td>行李箱</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-022</td>
+            <td>双肩背包</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-023</td>
+            <td>塑料收纳箱</td>
+            <td>16个</td>
+            <td>含原隐蔽屋5-7号旧物</td>
+        </tr>
+        
+        <!-- 个人物品 - 衣物鞋帽 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 衣物鞋帽</td>
+        </tr>
+        <tr>
+            <td>20240714-040</td>
+            <td>夏季上衣</td>
+            <td>35件</td>
+            <td>T恤/衬衫等</td>
+        </tr>
+        <tr>
+            <td>20240714-041</td>
+            <td>夏季下装</td>
+            <td>12件</td>
+            <td>短裤/裙子</td>
+        </tr>
+        <tr>
+            <td>20240714-042</td>
+            <td>冬季外套</td>
+            <td>8件</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-043</td>
+            <td>裤子</td>
+            <td>15条</td>
+            <td>长裤/牛仔裤</td>
+        </tr>
+        <tr>
+            <td>20240714-044</td>
+            <td>鞋子</td>
+            <td>7双</td>
+            <td>含拖鞋2双</td>
+        </tr>
+        
+        <!-- 个人物品 - 厨房用品 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 厨房用品</td>
+        </tr>
+        <tr>
+            <td>20240714-056</td>
+            <td>电饭煲</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-057</td>
+            <td>热水器</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-058</td>
+            <td>电磁炉</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-059</td>
+            <td>平底锅</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-060</td>
+            <td>硅胶铲</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-061</td>
+            <td>木头铲</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-062</td>
+            <td>筷子</td>
+            <td>5双</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-063</td>
+            <td>勺子</td>
+            <td>3个</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-064</td>
+            <td>不锈钢碗</td>
+            <td>2个</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-065</td>
+            <td>玻璃陶瓷碗</td>
+            <td>4个</td>
+            <td>-</td>
+        </tr>
+        
+        <!-- 个人物品 - 寝具 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 寝具</td>
+        </tr>
+        <tr>
+            <td>20240714-066</td>
+            <td>乳胶枕</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-067</td>
+            <td>枕套</td>
+            <td>1个</td>
+            <td>配套</td>
+        </tr>
+        <tr>
+            <td>20240714-068</td>
+            <td>夏季薄被子</td>
+            <td>1张</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-069</td>
+            <td>冬季厚被子</td>
+            <td>1张</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-070</td>
+            <td>薄被套</td>
+            <td>1个</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-071</td>
+            <td>厚被套</td>
+            <td>1个</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-072</td>
+            <td>床垫</td>
+            <td>2张</td>
+            <td>-</td>
+        </tr>
+        
+        <!-- 个人物品 - 清洁护理 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 清洁护理</td>
+        </tr>
+        <tr>
+            <td>20240714-073</td>
+            <td>水桶</td>
+            <td>1个</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-074</td>
+            <td>牙刷</td>
+            <td>1支</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-075</td>
+            <td>刷牙杯</td>
+            <td>1个</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-076</td>
+            <td>毛巾</td>
+            <td>6条</td>
+            <td>不同用途</td>
+        </tr>
+        <tr>
+            <td>20240714-077</td>
+            <td>沐浴露</td>
+            <td>1瓶</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-078</td>
+            <td>洗面奶</td>
+            <td>1支</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-079</td>
+            <td>保湿水</td>
+            <td>1瓶</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-080</td>
+            <td>保湿霜</td>
+            <td>1罐</td>
+            <td>-</td>
+        </tr>
+        
+        <!-- 个人物品 - 电子设备 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 电子设备</td>
+        </tr>
+        <tr>
+            <td>20240714-083</td>
+            <td>智能手机</td>
+            <td>红米Note12 Turbo</td>
+            <td>小米出品</td>
+        </tr>
+        <tr>
+            <td>20240714-084</td>
+            <td>手机充电器</td>
+            <td>配套</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-085</td>
+            <td>数据线</td>
+            <td>Type-C</td>
+            <td>2条</td>
+        </tr>
+        <tr>
+            <td>20240714-086</td>
+            <td>旧手机</td>
+            <td>华为荣耀9X</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-087</td>
+            <td>旧手机充电器</td>
+            <td>配套</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-088</td>
+            <td>迷你DIY电脑</td>
+            <td>-</td>
+            <td>配置暂不列出</td>
+        </tr>
+        <tr>
+            <td>20240714-089</td>
+            <td>中型电脑</td>
+            <td>新配置</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-090</td>
+            <td>显示器</td>
+            <td>红米EA</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-091</td>
+            <td>显示器</td>
+            <td>联想</td>
+            <td>新电脑配置</td>
+        </tr>
+        <tr>
+            <td>20240714-092</td>
+            <td>键盘</td>
+            <td>配套</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-093</td>
+            <td>鼠标</td>
+            <td>配套</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-094</td>
+            <td>耳机</td>
+            <td>配套</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-095</td>
+            <td>掌上无人机</td>
+            <td>大疆</td>
+            <td>新购入</td>
+        </tr>
+        <tr>
+            <td>20240714-096</td>
+            <td>公牛单排排插</td>
+            <td>基础款</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-097</td>
+            <td>小米双排排插</td>
+            <td>带USB接口</td>
+            <td>普通速率</td>
+        </tr>
+        <tr>
+            <td>20240714-098</td>
+            <td>公牛多开关排插</td>
+            <td>单排</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>20240714-099</td>
+            <td>智能插座</td>
+            <td>-</td>
+            <td>网关控制断电通电</td>
+        </tr>
+        
+        <!-- 个人物品 - 包装材料 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 包装材料</td>
+        </tr>
+        <tr>
+            <td>20240714-100</td>
+            <td>机箱包装箱</td>
+            <td>-</td>
+            <td>中型电脑</td>
+        </tr>
+        <tr>
+            <td>20240714-101</td>
+            <td>主板包装盒</td>
+            <td>-</td>
+            <td>电脑组件</td>
+        </tr>
+        <tr>
+            <td>20240714-102</td>
+            <td>键盘鼠标包装</td>
+            <td>-</td>
+            <td>外设</td>
+        </tr>
+        <tr>
+            <td>20240714-103</td>
+            <td>显示器包装箱</td>
+            <td>-</td>
+            <td>联想显示器</td>
+        </tr>
+        <tr>
+            <td>20240714-104</td>
+            <td>无人机包装盒</td>
+            <td>-</td>
+            <td>大疆</td>
+        </tr>
+        
+        <!-- 个人物品 - 其他补充 -->
+        <tr class="category-header2">
+            <td colspan="4">个人物品 - 其他补充</td>
+        </tr>
+        <tr>
+            <td>20240714-106</td>
+            <td>桌子</td>
+            <td>120x60cm</td>
+            <td>自购</td>
+        </tr>
+        <tr>
+            <td>20240714-107</td>
+            <td>塑料收纳箱标签纸</td>
+            <td>-</td>
+            <td>用于分类标识</td>
+        </tr>
+    </table>
+    
+    <div class="footer">最后更新: 2024年7月14日 | 总物品数: 107项</div>
 </body>
 </html>
