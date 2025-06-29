@@ -96,7 +96,7 @@
             font-size: 16px;
             text-align: center;
             line-height: 2;
-            color: #FFF;
+            color: #fff;
         }
 
         /* ====================== */
@@ -132,10 +132,8 @@
         }
 
 
-        .背景/*视频*/{
-            
-            /*
-            */
+        .背景{
+            /*视频*/
             position: absolute;
             top: 62px;
             left: 0;
@@ -146,7 +144,6 @@
             margin: 0 auto;
 
             text-align: center;
-            
         }
 
         
@@ -227,8 +224,6 @@
             border-radius: 10px;
             /* background: rgba(000, 000, 000, 0); 半透明导航背景 */
             color: #FFFFFF;
-
-
         }
 
         .我的问题 {
@@ -240,7 +235,6 @@
             display: flex;
             flex-direction: row;
             flex-grow: 1;
-
         }
 
         .问 {
@@ -313,6 +307,29 @@
         
         .时间轴内容 {
             flex-grow: 1;
+        }
+
+
+
+        .我的物品 {
+            width: 90%;
+            max-width: 1200px; /* 最大宽度限制 */
+            margin: 0px auto;
+        }
+        .ZZ的隐蔽屋清单 {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9宽高比 (9/16=0.5625) */
+            height: 0;
+            overflow: hidden;
+        }
+        .ZZ的隐蔽屋清单 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ddd; /* 可选边框 */
+            border-radius: 8px; /* 可选圆角 */
         }
 
         /* ====================== */
@@ -424,6 +441,18 @@
                         
                         <div class="两栏">
                             <div class="隐蔽屋">
+
+                                 <div class="我的物品">
+                                    <div class="ZZ的隐蔽屋清单">
+                                        <!-- 替换src为目标网址 -->
+                                        <iframe 
+                                            src="https://zzdabendan.github.io/HTML/zzYBW8-20240717.html" 
+                                            title="ZZ的隐蔽屋清单"
+                                            allowfullscreen> <!-- 允许全屏 -->
+                                        </iframe>
+                                    </div>
+                                </div>
+
                                 装备/背包/
                                 <br>家具/仓库/
                                 <br>隐蔽屋12345678-20240717
