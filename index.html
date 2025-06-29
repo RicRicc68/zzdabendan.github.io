@@ -85,25 +85,29 @@
         .header {
             width: 100%;
             margin: 40px auto 0 auto;
+            margin: 0px auto 0 auto;
             display: flex;               /* 弹性布局 */
             flex-direction: column;
             justify-content: center;     /* 水平居中 */
-            background: rgba(255, 255, 255, 1); /* 半透明导航背景 */
+            background: rgba(255, 255, 255, 0); /* 半透明导航背景 */
         }
         
         .title {
             font-size: 16px;
             text-align: center;
             line-height: 2;
+            color: #FFF;
         }
 
         /* ====================== */
         /* NAVIGATION 样式 */
         /* ====================== */
         .nav {
+            /*
             position: fixed;
             top: 0px;
             left: 0;
+            */
             width: 100%;
             margin: 0px auto 0px auto;
             padding: 0px; /* 页面内边距 */
@@ -131,13 +135,13 @@
         .背景/*视频*/{
             
             /*
+            */
             position: absolute;
             top: 62px;
             left: 0;
             z-index: -1;
-            */
 
-            width: 60%;
+            width: 100%;
             height: auto;
             margin: 0 auto;
 
@@ -150,6 +154,7 @@
             max-width: 100%;
             height: auto;
             border-radius: 10px;
+            
         }
 
         /* ====================== */
@@ -166,6 +171,22 @@
         }
 
         
+        
+        .我在哪{
+            position: absolute;
+            top: 250px;
+            left: 0;
+            z-index: 1;
+            width: 45%;
+
+        }
+        .我要去做什么{
+            position: absolute;
+            top: 250px;
+            right: 0;
+            z-index: 1;
+            width: 45%;
+        }
 
         .人生时间轴{
             margin: 6px auto;
@@ -302,7 +323,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            margin: 20px auto 10px auto;
+            margin: 0px auto 0px auto;
             background: rgba(000, 000, 000, 0.8); /* 半透明导航背景 */
             color: #ffffff;
             text-align: center;          /* 真-水平居中 */
@@ -335,7 +356,6 @@
         <a href="./HTML/sikaoneixin.html">      我的思路       </a>
         <a href="./HTML/Z.html">                我的简历       </a>
     </div>
-
 
     <!-- ====================== -->
     <!-- 主内容区域 -->
@@ -378,19 +398,18 @@
                     </p>
 
                     <div class="背景">
-                        <video class="感觉" autoplay loop muted playsinline> 
+                    
+                        <video class="感觉" autoplay loop muted playsinline> <!--  controls-->
                            <!-- <source src="./VIDEO/个人视频 25.mp4" type="video/mp4"> -->
                             <source src="./VIDEO/简单背景.mp4" type="video/mp4">
                         </video>
                     </div>
                     <!--
                     -->
-                    <!--  controls  autoplay loop    -->
                                 
                 </div>
             </div>
 
-            <div class="两栏">
 
                 <!-- 问题2：我在哪 -->
                 <div class="我的问题 我在哪">
@@ -617,7 +636,11 @@
                         </div>
                     </div>
                 </div>
+
+
+            <div class="两栏">
             </div>
+
 
         </div>
     </div>
@@ -627,7 +650,6 @@
     <!-- ====================== -->
     <div class="footer">
         <div class="">
-            <hr>
             <p>zz的茅草屋 &copy; 2023 | 更新于 20250617 0452</p>
         </div>
     </div>
