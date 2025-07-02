@@ -153,6 +153,11 @@
             margin: 0 auto;
 
             text-align: center;
+
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
         }
 
         
@@ -160,6 +165,14 @@
             max-width: 100%;
             height: auto;
             border-radius: 10px;
+
+
+            position: absolute;
+            /* 水平居中 + 垂直满屏 */
+            width: auto;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         /* ====================== */
@@ -440,7 +453,6 @@
                     </p>
 
                     <div class="背景">
-                    
                         <video class="感觉" autoplay loop muted playsinline> <!--  controls-->
                            <!-- <source src="./VIDEO/个人视频 25.mp4" type="video/mp4"> -->
                             <source src="./VIDEO/简单背景.mp4" type="video/mp4">
@@ -453,8 +465,8 @@
             </div>
 
 
-                <!-- 问题2：我在哪 -->
-                <div class="我的问题 我在哪">
+            <!-- 问题2：我在哪 -->
+            <div class="我的问题 我在哪">
                     <div class="问">
                         <h1>我在哪</h1>
                         <p>
@@ -527,10 +539,10 @@
                         <p><br></p>
 
                     </div>
-                </div>
+            </div>
 
-                <!-- 问题3：我要去做什么 -->
-                <div class="我的问题 我要去做什么">
+            <!-- 问题3：我要去做什么 -->
+            <div class="我的问题 我要去做什么">
                     <div class="问">
                         <h1>我要去做什么</h1>
                         <P>
@@ -708,12 +720,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-            <div class="两栏">
             </div>
-
 
         </div>
     </div>
