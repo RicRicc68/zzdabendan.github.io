@@ -96,14 +96,13 @@
 
             display: flex;               /* 弹性布局 */
             flex-direction: row;
-            justify-content: center;     /* 水平居中 */
+            justify-content: left;     /* 水平居中 */
 
             background: rgba(204, 204, 204, 1); /* 半透明导航背景 */
             background: rgba(153, 204, 051, 1); /* 半透明导航背景 */
         }
         
         .title {
-
             
             font-size: 16px;
             text-align: center;
@@ -118,8 +117,10 @@
             
             display: flex;               /* 弹性布局 */
             justify-content: center;     /* 水平居中 */
-            gap: 1rem;                   /* 子项间距 */
-            flex-wrap: wrap;             /* 允许换行（移动端适配） */
+            justify-content: left;     /* 水平居中 */
+
+            /*  gap: 1rem;                  子项间距 */
+           /*  flex-wrap: wrap;             允许换行（移动端适配） */
 
 
             /*
@@ -420,8 +421,11 @@
 </head>
 <body>
     <!-- ====================== -->
-    <!-- 标题区域 -->
+    <!-- 头部区域 -->
+
     <div class="header">
+
+        <!-- 标题区域 -->
         <div class="title0">
             <h1 class="title">zz的互联网茅草屋</h1>
         </div>
