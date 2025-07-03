@@ -87,12 +87,12 @@
             position: fixed;
             top: 0px;
             left: 0;
-            */
             
             margin: 40px auto 0 auto;
             margin: 0px auto 0 auto;
 
             width: 100%;
+            */
 
             display: flex;               /* 弹性布局 */
             flex-direction: row;
@@ -103,6 +103,8 @@
         }
         
         .title {
+
+            
             font-size: 16px;
             text-align: center;
             color: #fff;
@@ -112,27 +114,33 @@
         /* ====================== */
         /* NAVIGATION 样式 */
         .nav {
+
+            
+            display: flex;               /* 弹性布局 */
+            justify-content: center;     /* 水平居中 */
+            gap: 1rem;                   /* 子项间距 */
+            flex-wrap: wrap;             /* 允许换行（移动端适配） */
+
+
             /*
             position: fixed;
             top: 0px;
             left: 100px;
-            */
 
             flex-grow: 1;
 
+
             margin: 0px auto 0px auto;
-            padding: 0px; /* 页面内边距 */
+            padding: 0px; 
 
             width: 100%;
 
 
             border-radius: 10px;
 
+            */
 
-            display: flex;               /* 弹性布局 */
-            justify-content: center;     /* 水平居中 */
-            gap: 1rem;                   /* 子项间距 */
-            flex-wrap: wrap;             /* 允许换行（移动端适配） */
+            
 
 
             background: rgba(255, 0, 51, 0.1); /* 半透明导航背景 */
