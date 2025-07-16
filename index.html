@@ -1,1046 +1,261 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>index</title>
-
-    <style>
-        /* ====================== */
-        /* 全局样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
-            list-style: none;
-        }
-
-        /* ====================== */
-        /* 页面基础样式 */
-        body {
-            /* border: solid 1px rgba(255, 255, 255, 1);*/
-            /* line-height: 1.5; 行高为字体大小的1.5倍 */
-            /* background: linear-gradient(135deg, #000000 0%, #000000 100%);  淡蓝色渐变背景 */
-            /* color: #333;  主文本颜色 */
-
-            background-color: #FFFFFF;
-            font-size: 14px; /* 基础字体大小 */
-        }
-
-        h1 {
-            font-size: 14px; /* 基础字体大小 */
-        }
-
-        /* ====================== */
-        /* 链接样式 */
-
-        
-        a:link {/* 未访问的链接 */
-            color: #FFFFFF;         /* 访问后颜色 */
-            text-decoration: none; /* 移除下划线 */
-            /* border-bottom: solid 1px #000000; */
-        }
-
-        
-        a:visited {/* 已访问的链接 */
-            color: #FFFFFF;         /* 访问后颜色 */
-            /* border-bottom: solid 1px #000000; */
-        }
-
-        
-        a:hover {/* 鼠标悬停 */
-            color: #333;         /* 访问后颜色 */
-            text-decoration: none; /* 移除下划线 */
-            /* border-bottom: solid 1px #ffffff; */
-        }
-
-        
-        a:active {/* 点击瞬间 */
-            color: #FFFFFF;          /* 激活时颜色 */
-            /* border-bottom: solid 1px #000000; */
-        }
-
-        /* ====================== */
-        /* 表格和图片样式 */
-        table {
-            border-collapse: collapse;
-            border-radius: 10px;
-        }
-        tr,td{
-            height: 100%;
-        }
-
-        img {
-            border: solid 1px #333;
-            border-radius: 10px;
-        }
-
-
-        .文本居中{
-            text-align: center;
-        }
-
-
-
-        /* ====================== */
-        /* HEADER 样式 */
-        /* ====================== */
-        .header {
-            /*
-            position: fixed;
-            top: 0px;
-            left: 0;
-            
-            margin: 40px auto 0 auto;
-            margin: 0px auto 0 auto;
-
-            width: 100%;
-            */
-
-            display: flex;               /* 弹性布局 */
-            flex-direction: row;
-            justify-content: left;     /* 水平居中 */
-            align-items: center;
-
-           /* background: rgba(204, 204, 204, 1); /* 半透明导航背景 */
-           /* background: rgba(153, 204, 051, 1); /* 半透明导航背景 */
-           /* background: rgba(000, 000, 000, 1);  半透明导航背景 */
-            background-image: linear-gradient(
-                rgba(0, 0, 0, 1), 
-                rgba(0, 0, 0, 0.9), 
-                rgba(0, 0, 0, 0.8), 
-                rgba(0, 0, 0, 0.7), 
-                rgba(0, 0, 0, 0.6), 
-                rgba(0, 0, 0, 0.5), 
-                rgba(0, 0, 0, 0.4),                 
-                rgba(0, 0, 0, 0.3), 
-                rgba(0, 0, 0, 0.2), 
-                rgba(0, 0, 0, 0.1), 
-                rgba(0, 0, 0, 0.0));
-        }
-        
-        .title {
-            margin: 20px 10px 10px 10px;
-            text-align: center;
-        }
-
-        /* ====================== */
-        /* NAVIGATION 样式 */
-        .nav {
-            display: flex;               /* 弹性布局 */
-            justify-content: center;     /* 水平居中 */
-            justify-content: left;     /* 水平居中 */
-
-            /*  gap: 1rem;                  子项间距 */
-            /*  flex-wrap: wrap;             允许换行（移动端适配） */
-
-            /*
-            position: fixed;
-            top: 0px;
-            left: 100px;
-
-            flex-grow: 1;
-
-            margin: 0px auto 0px auto;
-            padding: 0px; 
-
-            width: 100%;
-
-            border-radius: 10px;
-
-            */
-
-            /*  background: rgba(255, 0, 51, 0.1); /* 半透明导航背景 */
-            /*  background: rgba(000, 000, 000, 1); 半透明导航背景 */
-
-            /* backdrop-filter: blur(10px); 毛玻璃效果 */
-        }
-
-        
-        .nav a {
-            margin: 20px 10px 10px 10px;
-            text-decoration: none;
-            text-align: center;
-           /*  background: rgba(204, 255, 102, 0); 半透明导航背景 */
-        }
-
-
-
-
-        /* ====================== */
-        /* MAIN CONTENT 样式 */
-        /* ====================== */
-        .main {
-            margin: 0px auto 0px auto;
-            padding: 0px; /* 页面内边距 */
-
-            border-radius: 10px;
-
-            display: flex;               /* 弹性布局 */
-            flex-direction: column;
-            justify-content: left;       /* 水平居中 */
-            background: rgba(000, 000, 000, 0); /* 半透明导航背景 */
-        }
-
-        
-        .我是谁{
-            position: relative;
-
-        }
-        
-            /*
-        .我在哪{
-            position: absolute;
-            top: 250px;
-            top: 700px;
-            left: 80px;
-            z-index: 1;
-            width: 40%;
-
-        }
-            */
-            /*
-        .我要去做什么{
-            position: absolute;
-            top: 250px;
-            top: 700px;
-            right: 80px;
-            z-index: 1;
-            
-            width: 40%;
-        }*/
-
-        .人生时间轴{
-            margin: 6px auto;
-            padding: 2px;
-            min-width: 100px;
-            line-height: 0.5rem;
-            background-color: #CCCCCC;
-            display: flex;
-            /*
-            border-radius: 5px;*/
-        }
-        .岁数{
-            flex-grow: 1;
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        /*
-        .当前岁数{
-            position: absolute;
-            margin-left: 28.62%;
-        }
-        */
-
-        .当前岁数{
-            background-color: #ff0051;
-            color: #ffffff;
-            border-radius: 100%;
-        }
-
-        .过去{
-            background-color: #ff0051;
-        }
-
-        .休息,.行动{
-            flex-grow: 1;
-        }
-        
-        
-        .问题章节 {
-            margin: 0px;
-            border-radius: 10px;
-            /* background: rgba(000, 000, 000, 0); 半透明导航背景 */
-            color: #FFFFFF;
-        }
-
-        .我的问题 {
-            background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 */
-
-
-            display: flex;
-            flex-direction: row;
-            flex-grow: 1;
-
-            border: solid 1px rgba(204, 204, 204, 1);
-            border-radius: 10px;
-            margin: 10px;
-
-        }
-
-        .问 {
-            max-width: 3rem;
-            min-width: 3rem;
-        }
-
-        .答 {
-            width: 100%;
-        }
-
-        .背景{
-            /*视频
-            top: 0px;
-            left: 0;
-            */
-            width: 100%;
-            margin: 0 auto;
-
-            position: absolute;
-            z-index: -1;
-            
-
-            /*
-            width: 100%;
-            height: auto;
-            text-align: center;
-
-            position: relative;
-            position: fixed;
-
-            width: 90vw;
-            height: 100vh;
-            */
-
-            overflow: hidden;
-        }
-
-        
-        .感觉{
-
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            
-            /*
-            max-width: 100%;
-            margin: 0 auto;
-            height: auto;
-            border-radius: 10px;
-            position: absolute;
-
-            */
-
-            /* 水平居中 + 垂直满屏
-            
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto;
-            height: 100%;
-             */
-        }
-
-
-
-        /* ====================== */
-        /* 两栏布局样式 */
-        /* ====================== */
-        .两栏 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .隐蔽屋, .大大世界 {
-            max-width: 50%;
-            margin: 10px auto;
-            border-radius: 10px;
-            display: flex;
-            flex-grow: 1;
-        }
-
-        .我要去做什么,.我在哪{
-            flex-grow: 1;
-        }
-
-        /* ====================== */
-        /* 时间轴和作息表样式 */
-        /* ====================== */
-        .时间轴,.作息表,.旧目标 {
-            border: solid 1px #333;
-            overflow: hidden;
-            /*
-            width: 100%;
-            
-            */
-        }
-
-        .时间列表 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .日时 {
-            flex-grow: 1;
-        }
-
-        .时间列表 {
-            flex-grow: 1;
-        }
-
-        .任务 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .时间线 {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .时间轴标题 {
-            flex-grow: 1;
-            max-width: 50px;
-        }
-        
-        .时间轴内容 {
-            flex-grow: 1;
-        }
-
-
-        .隐蔽屋{
-            min-width: 50%;
-        }
-
-        .我的物品 {
-            width: 90%;
-            max-width: 1200px; /* 最大宽度限制 */
-            margin: 0px auto;
-            min-width: 50%;
-            
-        }
-
-        .ZZ的隐蔽屋清单 {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9宽高比 (9/16=0.5625) */
-            height: 0;
-            overflow: hidden;
-            height: 300px;
-
-        }
-        
-        .ZZ的隐蔽屋清单 iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 1px solid #ddd; /* 可选边框 */
-            border-radius: 5px; /* 可选圆角 */
-        }
-
-
-        /*
-        .文字作息 div{
-            flex-grow: 1;
-            max-width: 16.66666667%;
-        }
-        */
-
-
-
-        /* ====================== */
-        /* FOOTER 样式 */
-        /* ====================== */
-        .footer {
-           /* position: fixed;
-            bottom: 0;
-            left: 0; */
-            width: 100%;
-            margin: 0px auto 0px auto;
-            background: rgba(000, 000, 000, 0.8); /* 半透明导航背景 */
-            background: rgba(153, 204, 051, 0.5); /* 半透明导航背景 */
-            color: #ffffff;
-            text-align: center;          /* 真-水平居中 */
-        }
-    </style>
-
-</head>
-<body>
-    <!-- ====================== -->
-    <!-- 头部区域 -->
-
-    <div class="header">
-
-        <!-- 标题区域 -->
-        <div class="title">
-            <a href="https://zzdabendan.github.io"> zz的互联网茅草屋  </a>
-            <!--  
-            <h1 class="title">zz的互联网茅草屋</h1>
-            -->
-        </div>
-
-
-        <!-- 导航区域 -->
-        <div class="nav">
-            <a href="#我是谁">  我是谁          </a>
-            <a href="#我是谁">  我在哪          </a>
-            <a href="#我是谁">  我要去做什么 |  </a>
-            <a href="./HTML/zzYBW8-20240717.html">  zz的隐蔽屋8    </a>
-            <a href="./HTML/booklist.html">         我的书签       </a>
-            <a href="./HTML/zongjie.html">          我的总结       </a>
-            <a href="./HTML/sikaoneixin.html">      我的思路       </a>
-            <a href="./HTML/Z.html">                我的简历       </a>
-        </div>
-
-    </div>
-
-    
-    <!-- ====================== -->
-    <!-- 主内容区域 -->
-    <div class="main">
-        <div class="问题章节">
-            <!-- 问题1：我是谁 -->
-            <div class="我的问题 我是谁" id="我是谁">
-                <div class="问">
-                    <h1>我是谁</h1>
-
-                    <p>
-                        我<br>
-                        不<br>
-                        是<br>
-                        你，<br>
-                        我<br>
-                        不<br>
-                        是<br>
-                        他。<br>
-                    </p>
-
-                </div>
-                <div class="答">
-                    
-                    <div class="人生时间轴">
-                        <div class="岁数 过去">0</div>
-                        <div class="岁数 过去">8</div>
-                        <div class="岁数 过去">16</div>
-                        <div class="岁数 "><span class="当前岁数">24</span></div>
-                        <div class="岁数">32</div>
-                        <div class="岁数">40</div>
-                        <div class="岁数">48</div>
-                        <div class="岁数">56</div>
-                        <div class="岁数">64</div>
-                        <div class="岁数">72</div>
-                        <div class="">81</div>
-                        <!-- 
-                        <div class="当前岁数">24</div>
-                         -->
-                    </div>
-
-                    <div class="我的生命">
-
-
-                        <div class="基础">
-                            <div class="两栏">
-
-                                <div class="人">
-                                    <h1>人</h1>
-                                    <br>1，等级，出生
-                                    <br>2，姓名，有名的人
-                                    <br>3，境界，山水，非山水，还是山水，有优缺点的人
-                                    <br>
-                                </div>
-
-                                <div class="">
-                                    <h1>我的生命力</h1>
-                                    <br>一份身体肌肉力的人，第8949天，第8950天，第8951天，第8952天.....
-                                    <br>4，性别
-                                    <br>5，年龄
-                                    <br>6，身高，腰围，手长
-                                    <br>7，体重，体脂，肌肉
-                                    <br>8，神经反应
-                                    <br>
-                                    <br>一个头脑心念力的人，秋天中成长的我，家庭中生活的我，学校中上学的我，公司中工作的我，网络中娱乐的我
-                                    <br>    24岁zz写给未来27年的内心十万字，
-                                    <br>    以后的你实现现在的我的梦想了吗？没有的话快去做。
-                                    <br>    起初只是一次简单的晚睡，熬夜
-                                    <br>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="两栏">
-
-                            <div class="休息">
-                                <br><--
-                                <br>入睡点，睡醒点，休息入睡时间时长，
-                                <br>思路，脑力，念头3个/秒，关注点，关注度，深度宽度>思考点，念头点
-                                <br>
-                            </div>
-
-                            <div class="行动">
-                                <br>-->
-                                <br>起床点，上床点，运动工作时间时长，
-                                <br>效率，体力，动作1个/秒，肌肉力
-                                <br>
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-                    
-
-                    <div class="背景">
-                        <video class="感觉" autoplay loop muted playsinline> <!--  controls-->
-                           <!-- <source src="./VIDEO/个人视频 25.mp4" type="video/mp4"> -->
-                            <source src="./VIDEO/简单背景.mp4" type="video/mp4">
-                        </video>
-                    </div>
-
-                                
-                </div>
-            </div>
-
-
-            <div class="两栏">
-
-                <!-- 问题2：我在哪 -->
-                <div class="我的问题 我在哪">
-                        <div class="问">
-                            <h1>我在哪</h1>
-                            <p>
-                                我<br>
-                                不<br>
-                                在<br>
-                                那<br>
-                                里。<br>
-                            </p>
-                            
-                        </div>
-                        <div class="答">
-
-
-                            <!-- 
-                            <div class="两栏">
-                                <div class="隐蔽屋">
-                                    <img src="../IMG/2024白天.jpg" alt="隐蔽屋" width="100%">
-                                </div>
-
-                                <div class="我的物品">
-                                <div class="ZZ的隐蔽屋清单">
-                                    <iframe 
-                                        src="https://zzdabendan.github.io/HTML/zzYBW8-20240717.html" 
-                                        title="ZZ的隐蔽屋清单"
-                                        allowfullscreen> 
-                                    </iframe>
-                                </div>
-                                </div>
-                            </div>
-                            -->
-
-                            <div class="两栏">
-                                
-                                <div class="我的物品">
-                                <div class="ZZ的隐蔽屋清单">
-                                    <!-- 替换src为目标网址 -->
-                                    <iframe 
-                                        src="https://zzdabendan.github.io/HTML/zzYBW8-20240717.html" 
-                                        title="ZZ的隐蔽屋清单"
-                                        allowfullscreen> <!-- 允许全屏 -->
-                                    </iframe>
-                                </div>
-                                </div>
-
-
-                                <div class="隐蔽屋">
-                                    1234567
-                                    <br>隐蔽屋8-20240717
-                                    <br>
-                                    <br>装备/背包/
-                                    <br>头帽，眼镜
-                                    <br>外衣，上衣
-                                    <br>裤子，内裤
-                                    <br>鞋子，袜子
-                                    <br>
-                                    <br>家具/仓库/
-                                    <br>厨房
-                                    <br>厕所
-                                    <br>门口
-                                    <br>卧室
-                                    <br>书桌
-                                    <br>阳台
-                                    <br>衣柜
-                                    
-                                </div>
-                                
-
-
-                            </div>
-                            
-                            <div class="两栏">
-
-                                <div class="大大世界">
-                                    <img src="../IMG/2025地图资源.png" alt="大大世界" width="100%">
-                                </div>
-
-                                <div class="大大世界">
-                                    <br>人口数，资源数，
-                                    <br>行业数，技能数，
-                                    <br>军事，农业，医疗
-                                    <br>户籍
-                                    <br>中国城市区域
-                                    <br>大大世界，
-                                    <br>
-                                </div>
-
-                            </div>
-
-                            <p>
-                                <br>祖宗，家族，家庭，个体
-                                <br>无生命物，植物，动物，人类
-                                <br>宇宙，xxx，xxx，太阳系，地球，亚洲大陆
-                            </p>
-                            <p><br></p>
-
-                        </div>
-                </div>
-
-                <!-- 问题3：我要去做什么 -->
-                <div class="我的问题 我要去做什么">
-                        <div class="问">
-                            <h1>我要去做什么</h1>
-                            <P>
-                                我<br>
-                                不<br>
-                                该<br>
-                                做。<br>
-                            </P>
-                        </div>
-                        <div class="答">
-                            
-                            <h1 class="文本居中">我要做一个有智慧的人，日知知日，学生学问。彗心慧心，存好心做好人做好事。</h1>
-                            
-                            <div class="两栏">
-                                
-                                <!-- 作息表 -->
-                                <div class="作息表">
-                                    <table border="0" style="width: 100%; text-align: center; ">
-                                        <!-- 表格标题 -->
-                                        <caption><h1 style="font-size: 16px;">20250618作息表</h1></caption>
-
-                                        <!-- 表格页眉 -->
-                                        <thead>
-                                            <tr>
-                                                <th>旧的目标</th>
-                                                <th>正确方法</th>
-                                                <th>新的指标</th>
-                                                <th>工作进度</th>
-                                                <th>开始时间</th>
-                                                <th>结束时间</th>
-                                            </tr>
-                                        </thead>
-
-                                        <!-- 表格主体 -->
-                                        <tbody>
-
-                                            <!-- 111 -->
-                                            <tr>
-                                                <!-- 111作息表 -->
-                                                <td>
-                                                    我要做一个规律作息的人
-                                                </td>
-
-                                                <!-- 222时间轴 -->
-                                                <td>11</td>
-
-
-                                                <!-- 333文字作息 -->
-                                                <td>
-                                                    <div class="作息规划">
-                                                        1.  作息规划<br>
-                                                        工作时间<br>
-                                                        休息时间<br>
-                                                        <hr>
-                                                    </div>
-                                                </td>
-
-                                                <!-- 444时间轴 -->
-                                                <td>
-                                                    <div class="时间轴">
-                                                        <div class="时间线">
-                                                            <div class="时间轴标题"><h1></h1></div>
-                                                            <div class="时间轴内容">
-                                                                <ul class="时间列表">
-                                                                    <li class="日时">00</li>
-                                                                    <li class="日时">01</li>
-                                                                    <li class="日时">02</li>
-                                                                    <li class="日时">03</li>
-                                                                    <li class="日时">04</li>
-                                                                    <li class="日时">05</li>
-                                                                    <li class="日时">06</li>
-                                                                    <li class="日时">07</li>
-                                                                    <li class="日时">08</li>
-                                                                    <li class="日时">09</li>
-                                                                    <li class="日时">10</li>
-                                                                    <li class="日时">11</li>
-                                                                    <li class="日时">12</li>
-                                                                    <li class="日时">13</li>
-                                                                    <li class="日时">14</li>
-                                                                    <li class="日时">15</li>
-                                                                    <li class="日时">16</li>
-                                                                    <li class="日时">17</li>
-                                                                    <li class="日时">18</li>
-                                                                    <li class="日时">19</li>
-                                                                    <li class="日时">20</li>
-                                                                    <li class="日时">21</li>
-                                                                    <li class="日时">22</li>
-                                                                    <li class="日时">23</li>
-                                                                </ul>
-                                                                <ul class="时间列表">
-                                                                    <li class="日时">1</li>
-                                                                    <li class="日时">24</li>
-                                                                    <li class="日时">1440</li>
-                                                                    <li class="日时">86400</li>
-                                                                    <!-- 其他时间项省略 -->
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="任务 作息">
-                                                            <div class="时间轴标题"><h1>作息</h1></div>
-                                                            <div class="时间轴内容">11</div>
-                                                        </div>
-
-                                                        <div class="任务 身体">
-                                                            <div class="时间轴标题"><h1>身体</h1></div>
-                                                            <div class="时间轴内容">11</div>
-                                                        </div>
-                                                        
-                                                        <div class="任务 家务">
-                                                            <div class="时间轴标题"><h1>家务</h1></div>
-                                                            <div class="时间轴内容">11</div>
-                                                        </div>
-
-                                                        <div class="任务 学识">
-                                                            <div class="时间轴标题"><h1>学识</h1></div>
-                                                            <div class="时间轴内容">11</div>
-                                                        </div>
-
-                                                        <div class="任务 工作">
-                                                            <div class="时间轴标题"><h1>工作</h1></div>
-                                                            <div class="时间轴内容">11</div>
-                                                        </div>
-
-                                                        <div class="任务 娱乐">
-                                                            <div class="时间轴标题"><h1>娱乐</h1></div>
-                                                            <div class="时间轴内容">11</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
-                                                <td>11</td>
-                                                <td>11</td>
-                                            </tr>
-
-                                            <!-- 222 -->
-                                            <tr>
-                                                <td>
-                                                    我要做一个每天运动的人
-                                                </td>
-                                                <td>
-                                                    我要做一个58KG的人
-                                                </td>
-                                                <td>
-                                                    <div class="身体管理">
-                                                        2.  身体管理<br>
-                                                        吃饭、<br>
-                                                        补水、<br>
-                                                        锻炼、<br>
-                                                        洗漱 <br>
-                                                        <hr>
-                                                    </div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-
-                                            <!-- 333 -->
-                                            <tr>
-                                                <td>
-                                                    <br>我要做一个整齐家务的人
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                    <div class="家务管理">
-                                                        3.  家务管理<br>
-                                                        整理、<br>
-                                                        清洁、<br>
-                                                        存放物品<br>
-                                                        <hr>
-                                                    </div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-
-                                            <!-- 444 -->
-                                            <tr>
-                                                <td>
-                                                    我要做一个每天学习的人
-                                                </td>
-                                                <td></td>
-                                                <td>
-                                                    <div class="学习成长">
-                                                        4.  学习成长<br>
-                                                        思想、技术、等（其他领域学习）<br>
-
-                                                        <ul class="课程">
-                                                            <li>中国历史</li>
-                                                            <li>中国思想</li>
-                                                            <li>学科目录</li>
-                                                            <li>职业分类大典</li>
-                                                        <br>
-                                                            <li>渐构</li>
-                                                            <li>拼音发音</li>
-                                                            <li>新华字典</li>
-                                                            <li>播音训练</li>
-                                                        <br>
-                                                            <li>运动训练</li>
-                                                            <li>系统解剖</li>
-                                                            <li>膳食营养</li>
-                                                            <li>卓叔增重</li>
-                                                            <li>燃脂塑形</li>
-                                                        <br>
-                                                            <li>冥想</li>
-                                                            <li>中医气功</li>
-                                                            <li>中原武术</li>
-                                                        </ul>
-                                                        <hr>
-                                                    </div>
-
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-
-                                            <!-- 555 -->
-                                            <tr>
-                                                <td>
-                                                    我要做一个工作认真的人
-                                                </td>
-                                                <td></td>
-                                                <td>
-                                                    <div class="职业发展">
-                                                        5.  职业发展<br>
-                                                        行业、<br>
-                                                        岗位<br>
-                                                        简历、<br>
-                                                        流程<br>
-                                                        <hr>
-                                                    </div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            
-                                            <!-- 666 -->
-                                            <tr>
-                                                <td>
-                                                    我要做一个玩法厉害的人
-                                                </td>
-                                                <td>
-                                                    666
-                                                </td>
-                                                <td>
-                                                    <div class="休闲娱乐">
-                                                        6.  休闲娱乐<br>
-                                                        视频、<br>
-                                                        直播、<br>
-                                                        游戏、<br>
-                                                        音乐、<br>
-                                                        小说、<br>
-                                                        漫画、<br>
-                                                        电影、<br>
-                                                        综艺、<br>
-                                                        电视剧<br>
-                                                        <hr>
-                                                    </div>
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-                </div>
-
-            </div>
-      </div>
-    </div>
-
-    <!-- ====================== -->
-    <!-- 页脚区域 -->
-    <div class="footer">
-
-            <p>zz的茅草屋 &copy; 2023 | 更新于 20250617 0452
-
-        <div class="建站流程" style="width: 500px; margin: 10px auto; text-align: left;">
-
-            <div class="网站建立流程" style="margin: 10px auto; ">
-                <h1>网站建立流程
-                <br>
-                    目标观众
-                </h1>
-                未来阅读的我，未来阅读的我，未来阅读的我
-                <br>
-            </div>
-            
-            <div class="建立方法" style="margin: 10px auto; ">
-                <h1>建立方法</h1>
-                基础代码，HTML，CSSS
-                <br>
-            </div>
-            
-            <div class="建立工具" style="margin: 10px auto; ">
-                <h1>建立工具</h1>
-                vscode，chrome
-                <br>
-            </div>
-            
-            <div class="上线步骤" style="margin: 10px auto; ">
-                <h1>上线步骤</h1>
-                编写，发布，主机，域名，文件
-                <br>html代码
-                <br>标题，我的茅草屋，我的简历，我的书签，我的总结，我的思路
-                <br>时间轴，阶段的我，身份环境的我，家庭的我，上学的我，工作的我，网络的我
-                <br>
-                <br>
-
-                <br>css样式
-                <br>
-                <br>
-            </div>
-            
-            
-        </div>
-    </div>
-</body>
-</html>
+首页
+番剧
+直播
+游戏中心
+会员购
+漫画
+赛事
+新世代
+B萌图片B萌
+下载客户端
+9700x
+
+大会员
+消息
+23
+动态
+收藏
+历史
+创作中心
+投稿
+三角洲免费送的藏品箱你领取了吗
+4308
+0
+2025-06-24 21:32:30
+未经作者授权，禁止转载
+00:08 / 01:39
+1080P 高清
+倍速
+发个友善的弹幕见证当下
+弹幕礼仪
+-
+射击游戏
+FPS
+三角洲行动
+你今天的情绪该配什么BGM？来听《舒适区》
+评论
+6
+  
+
+只是一直在等你而已，才不是想被评论呢～
+b站hs
+
+这个能升级吗？
+2025-07-15 18:37
+
+
+回复
+芝士之介
+
+这tm是弹药箱
+2025-07-14 21:01
+
+2
+
+回复
+共2条回复，
+默念你啊
+
+还有别的吗
+2025-07-08 21:02
+
+1
+
+回复
+默念你啊
+
+可以的
+2025-07-08 21:01
+
+
+回复
+
+蟹老板三角洲行动
+ 发消息
+关注 2
+稍后再看
+8/113
+创建者：蛋笨大大
+更多
+loading
+加载中...
+我在川西 找到了死亡搁浅同款绝美场景！
+12.0万播放
+曼波教你三角洲大坝夺舍流出装及点位
+44.2万播放
+【老飞宇】78监狱复合弓单三跑刀！开局轻松1V3却被锤哥一锤撤离！
+1.2万播放
+为了学习明日方舟设计，我搭建了一个网站
+9.0万播放
+一天不听周深就难受 塞尔维亚博主-周深x唐汉霄《末日飞船》reaction
+一天不听周深就难受 塞尔维亚博主-周深x唐汉霄《末日飞船》reaction
+9262播放
+三角洲免费送的藏品箱你领取了吗
+playing 三角洲免费送的藏品箱你领取了吗
+4308播放
+B战首个 偏航鸟 龙卷风机动教程（卧龙出品）
+B战首个 偏航鸟 龙卷风机动教程（卧龙出品）
+5611播放
+这些游戏震撼了全世界玩家！【银紫瞎盘点17】
+这些游戏震撼了全世界玩家！【银紫瞎盘点17】
+38.6万播放
+别误会现代子弹了，它的威力超乎你的想象
+别误会现代子弹了，它的威力超乎你的想象
+28.1万播放
+【黑神话：悟空】4K 最高画质 全收集 全结局 全剧情流程通关攻略 西游背景动作角色扮演游戏 首款国产3A大作【完结】
+【黑神话：悟空】4K 最高画质 全收集 全结局 全剧情流程通关攻略 西游背景动作角色扮演游戏 首款国产3A大作【完结】
+2095.9万播放
+全网首发！新活动全点位来了！罗德岛补给箱？阿米娅手办！「三角洲S5赛季」
+全网首发！新活动全点位来了！罗德岛补给箱？阿米娅手办！「三角洲S5赛季」
+80.7万播放
+演示用真机搭建一个中小网络
+9.1万播放
+【华为服务】7×24小时人工客服
+117.1万播放
+中国制造：工厂批量化生产柴油发动机组全过程-4K
+2.3万播放
+【硬件科普】提升IPS显示器的刷新率有多难
+57.0万播放
+【UP主催更计划】够存100年？阿狸云打造全过程揭秘
+43.7万播放
+【世界周刊】加沙的苦难
+27.5万播放
+家庭组网方式如何选择？AC+AP还是MESH组网？FTTR到底怎么样？ #家庭组网 #wifi覆盖 #沈阳穿线大神 #网络升级改造
+1.9万播放
+【全网首发】最细最全露娜教学，露娜教官手把手教会你！
+120.7万播放
+10W档最强性价比武器！熬走所有竞争对手的G3无敌了。
+36.1万播放
+这里竟然会近小远大！！
+14.0万播放
+全网最细！机密大坝游客中心流放位跑刀教学
+1.9万播放
+博物强识1-4来了！S5赛季任务逃课总结！「三角洲S5赛季」
+56.2万播放
+屎山代码全新力作导致马枪 S5必调设置
+47.5万播放
+教你超高性价比解决S5狙击精英1234丨3X3攻略 M14改枪码 六式zy
+22.4万播放
+loading
+加载中...
+三角洲行动半分钟获取高级藏品箱（真的半分钟）
+00:36
+三角洲行动半分钟获取高级藏品箱（真的半分钟）
+
+五香蛋老师
+26.8万24
+如何白嫖几百万的扩容箱？
+01:23
+如何白嫖几百万的扩容箱？
+
+杰驰电竞-奶奶
+39.4万57
+传说中的百万扩容箱
+01:12
+传说中的百万扩容箱
+
+白之昊
+80.8万87
+你的意思是说我花了5颗非绑定心就看展柜一上一下吗
+01:41
+你的意思是说我花了5颗非绑定心就看展柜一上一下吗
+
+花间持酒゛
+87.0万170
+拿下GTI装备箱
+01:59
+拿下GTI装备箱
+
+黑心等待-
+18.0万39
+这就是为什么要打开受击自动关闭背包功能
+00:27
+这就是为什么要打开受击自动关闭背包功能
+
+゙男闺蜜_
+73.0万49
+三角洲现金为王终于做完了
+01:34
+三角洲现金为王终于做完了
+
+番茄味饺子
+2.8万6
+老傻子装备箱
+00:37
+老傻子装备箱
+
+管道胶带
+55.6万44
+我用《红》装满水友的108格藏品箱，水友把我扔进垃圾桶？？？
+05:35
+我用《红》装满水友的108格藏品箱，水友把我扔进垃圾桶？？？
+
+君君-邦邦电竞
+93.2万325
+三角洲收藏室你可能不知道的小知识  利用好就是你的超大藏品材料箱
+09:04
+三角洲收藏室你可能不知道的小知识 利用好就是你的超大藏品材料箱
+
+秋秋Aki睡不醒
+3.0万16
+【三角洲行动】G.T.I武器想永远的神！
+00:46
+【三角洲行动】G.T.I武器想永远的神！
+
+Ar先手
+34.1万83
+机密溪谷“卖命”一小时能赚多少???
+07:21
+机密溪谷“卖命”一小时能赚多少???
+
+过于水的老洋
+100.3万546
+仓库扩容箱推荐，能放下所有大红！
+01:19
+仓库扩容箱推荐，能放下所有大红！
+
+奇游菌
+10.7万24
+打手给号主藏品箱子全卖了
+01:52
+打手给号主藏品箱子全卖了
+
+TL电竞-29比1哈佛币回收
+11.7万55
+三角洲行动只要存钱就可以白嫖的红箱子
+01:21
+三角洲行动只要存钱就可以白嫖的红箱子
+
+摸大金的猫
+7.1万6
+不是？两格小金就值125万？？？
+00:25
+不是？两格小金就值125万？？？
+
+被打老实的鼠蜀
+25.5万28
+我再也不卡邮箱了呜呜
+04:27
+我再也不卡邮箱了呜呜
+
+西门竹月丶
+25.7万432
+三角洲扩容箱选择，从此不爆仓，性价比拉满，不用升级仓库也够用！
+05:21
+三角洲扩容箱选择，从此不爆仓，性价比拉满，不用升级仓库也够用！
+
+三角洲经济学教父
+63.9万274
+和大人教你如何拿取GTI官方免费的扩展箱和五级头
+03:02
+和大人教你如何拿取GTI官方免费的扩展箱和五级头
+
+浮木不发射
+3.5万5
+一次性预览：买不买通行证的奖励差距
+02:26
+一次性预览：买不买通行证的奖励差距
+
+起舞的女郎
+13.8万20
+展开
