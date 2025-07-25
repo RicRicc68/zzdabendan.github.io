@@ -1,0 +1,460 @@
+
+        /* ====================== */
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
+            list-style: none;
+        }
+
+        /* ====================== */
+        /* 页面基础样式 */
+        body {
+            /* border: solid 1px rgba(255, 255, 255, 1);*/
+            /* line-height: 1.5; 行高为字体大小的1.5倍 */
+            /* background: linear-gradient(135deg, #000000 0%, #000000 100%);  淡蓝色渐变背景 */
+            /* color: #333;  主文本颜色 */
+
+            background-color: #FFFFFF;
+            font-size: 14px; /* 基础字体大小 */
+        }
+
+        h1 {
+            font-size: 14px; /* 基础字体大小 */
+        }
+
+        /* ====================== */
+        /* 链接样式 */
+
+        
+        a:link {/* 未访问的链接 */
+            color: #FFFFFF;         /* 访问后颜色 */
+            text-decoration: none; /* 移除下划线 */
+            /* border-bottom: solid 1px #000000; */
+        }
+
+        
+        a:visited {/* 已访问的链接 */
+            color: #FFFFFF;         /* 访问后颜色 */
+            /* border-bottom: solid 1px #000000; */
+        }
+
+        
+        a:hover {/* 鼠标悬停 */
+            color: #333;         /* 访问后颜色 */
+            text-decoration: none; /* 移除下划线 */
+            /* border-bottom: solid 1px #ffffff; */
+        }
+
+        
+        a:active {/* 点击瞬间 */
+            color: #FFFFFF;          /* 激活时颜色 */
+            /* border-bottom: solid 1px #000000; */
+        }
+
+        /* ====================== */
+        /* 表格和图片样式 */
+        table {
+            border-collapse: collapse;
+            border-radius: 10px;
+        }
+        tr,td{
+            height: 100%;
+        }
+        td{
+            border: solid 1px #FFF;
+        }
+
+        img {
+            border: solid 1px #333;
+            border-radius: 10px;
+        }
+
+
+        .文本居中{
+            text-align: center;
+        }
+
+
+
+        /* ====================== */
+        /* HEADER 样式 */
+        /* ====================== */
+        .header {
+            /*
+            position: fixed;
+            top: 0px;
+            left: 0;
+            
+            margin: 40px auto 0 auto;
+            margin: 0px auto 0 auto;
+
+            width: 100%;
+            */
+
+            display: flex;               /* 弹性布局 */
+            flex-direction: row;
+            justify-content: left;     /* 水平居中 */
+            align-items: center;
+
+           /* background: rgba(204, 204, 204, 1); /* 半透明导航背景 */
+           /* background: rgba(153, 204, 051, 1); /* 半透明导航背景 */
+           /* background: rgba(000, 000, 000, 1);  半透明导航背景 */
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 1), 
+                rgba(0, 0, 0, 0.9), 
+                rgba(0, 0, 0, 0.8), 
+                rgba(0, 0, 0, 0.7), 
+                rgba(0, 0, 0, 0.6), 
+                rgba(0, 0, 0, 0.5), 
+                rgba(0, 0, 0, 0.4),                 
+                rgba(0, 0, 0, 0.3), 
+                rgba(0, 0, 0, 0.2), 
+                rgba(0, 0, 0, 0.1), 
+                rgba(0, 0, 0, 0.0));
+        }
+        
+        .title {
+            margin: 20px 10px 10px 10px;
+            text-align: center;
+        }
+
+        /* ====================== */
+        /* NAVIGATION 样式 */
+        .nav {
+            display: flex;               /* 弹性布局 */
+            justify-content: center;     /* 水平居中 */
+            justify-content: left;     /* 水平居中 */
+
+            /*  gap: 1rem;                  子项间距 */
+            /*  flex-wrap: wrap;             允许换行（移动端适配） */
+
+            /*
+            position: fixed;
+            top: 0px;
+            left: 100px;
+
+            flex-grow: 1;
+
+            margin: 0px auto 0px auto;
+            padding: 0px; 
+
+            width: 100%;
+
+            border-radius: 10px;
+
+            */
+
+            /*  background: rgba(255, 0, 51, 0.1); /* 半透明导航背景 */
+            /*  background: rgba(000, 000, 000, 1); 半透明导航背景 */
+
+            /* backdrop-filter: blur(10px); 毛玻璃效果 */
+        }
+
+        
+        .nav a {
+            margin: 20px 10px 10px 10px;
+            text-decoration: none;
+            text-align: center;
+           /*  background: rgba(204, 255, 102, 0); 半透明导航背景 */
+        }
+
+
+
+
+        /* ====================== */
+        /* MAIN CONTENT 样式 */
+        /* ====================== */
+        .main {
+            margin: 0px auto 0px auto;
+            padding: 0px; /* 页面内边距 */
+
+            border-radius: 10px;
+
+            display: flex;               /* 弹性布局 */
+            flex-direction: column;
+            justify-content: left;       /* 水平居中 */
+            background: rgba(000, 000, 000, 0); /* 半透明导航背景 */
+        }
+
+        
+        .我是谁{
+            position: relative;
+
+        }
+        
+            /*
+        .我在哪{
+            position: absolute;
+            top: 250px;
+            top: 700px;
+            left: 80px;
+            z-index: 1;
+            width: 40%;
+
+        }
+            */
+            /*
+        .我要去做什么{
+            position: absolute;
+            top: 250px;
+            top: 700px;
+            right: 80px;
+            z-index: 1;
+            
+            width: 40%;
+        }*/
+
+        .人生时间轴{
+            margin: 6px auto;
+            padding: 2px;
+            min-width: 100px;
+            line-height: 0.5rem;
+            background-color: #CCCCCC;
+            display: flex;
+            /*
+            border-radius: 5px;*/
+        }
+        .岁数{
+            flex-grow: 1;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /*
+        .当前岁数{
+            position: absolute;
+            margin-left: 28.62%;
+        }
+        */
+
+        .当前岁数{
+            background-color: #ff0051;
+            color: #ffffff;
+            border-radius: 100%;
+        }
+
+        .过去{
+            background-color: #ff0051;
+        }
+
+        .休息,.行动{
+            flex-grow: 1;
+        }
+        
+        
+        .问题章节 {
+            margin: 0px;
+            border-radius: 10px;
+            /* background: rgba(000, 000, 000, 0); 半透明导航背景 */
+            color: #FFFFFF;
+        }
+
+        .我的问题 {
+            background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 */
+
+
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+
+            border: solid 1px rgba(204, 204, 204, 1);
+            border-radius: 10px;
+            margin: 10px;
+
+        }
+
+        .问 {
+            max-width: 3rem;
+            min-width: 3rem;
+        }
+
+        .答 {
+            width: 100%;
+        }
+
+        .背景{
+            /*视频
+            top: 0px;
+            left: 0;
+            */
+            width: 100%;
+            margin: 0 auto;
+
+            position: absolute;
+            z-index: -1;
+            
+
+            /*
+            width: 100%;
+            height: auto;
+            text-align: center;
+
+            position: relative;
+            position: fixed;
+
+            width: 90vw;
+            height: 100vh;
+            */
+
+            overflow: hidden;
+        }
+
+        
+        .感觉{
+
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            
+            /*
+            max-width: 100%;
+            margin: 0 auto;
+            height: auto;
+            border-radius: 10px;
+            position: absolute;
+
+            */
+
+            /* 水平居中 + 垂直满屏
+            
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            height: 100%;
+             */
+        }
+
+
+
+        /* ====================== */
+        /* 两栏布局样式 */
+        /* ====================== */
+        .两栏 {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .隐蔽屋, .大大世界 {
+            max-width: 50%;
+            margin: 10px auto;
+            border-radius: 10px;
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .我要去做什么,.我在哪{
+            flex-grow: 1;
+        }
+        .我在哪1{
+            max-width: 20%;
+        }
+        .我要去做什么{
+            max-width: 80%;
+        }
+
+
+        /* ====================== */
+        /* 时间轴和作息表样式 */
+        /* ====================== */
+        .时间轴,.作息表,.旧目标 {
+            border: solid 1px #333;
+            overflow: hidden;
+            /*
+            width: 100%;
+            
+            */
+        }
+
+        .时间列表 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .日时 {
+            flex-grow: 1;
+        }
+
+        .时间列表 {
+            flex-grow: 1;
+        }
+
+        .任务 {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .时间线 {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .时间轴标题 {
+            flex-grow: 1;
+            max-width: 50px;
+        }
+        
+        .时间轴内容 {
+            flex-grow: 1;
+        }
+
+
+        .隐蔽屋{
+            min-width: 50%;
+        }
+
+        .我的物品 {
+            width: 90%;
+            max-width: 1200px; /* 最大宽度限制 */
+            margin: 0px auto;
+            min-width: 50%;
+            
+        }
+
+        .ZZ的隐蔽屋清单 {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9宽高比 (9/16=0.5625) */
+            height: 0;
+            overflow: hidden;
+            height: 300px;
+
+        }
+        
+        .ZZ的隐蔽屋清单 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ddd; /* 可选边框 */
+            border-radius: 5px; /* 可选圆角 */
+        }
+
+
+        /*
+        .文字作息 div{
+            flex-grow: 1;
+            max-width: 16.66666667%;
+        }
+        */
+
+
+
+        /* ====================== */
+        /* FOOTER 样式 */
+        /* ====================== */
+        .footer {
+           /* position: fixed;
+            bottom: 0;
+            left: 0; */
+            width: 100%;
+            margin: 0px auto 0px auto;
+            background: rgba(000, 000, 000, 0.8); /* 半透明导航背景 */
+            background: rgba(153, 204, 051, 0.5); /* 半透明导航背景 */
+            color: #ffffff;
+            text-align: center;          /* 真-水平居中 */
+        }
