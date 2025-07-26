@@ -61,7 +61,7 @@ img{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 1;
 
     line-height: 2rem;
 
@@ -112,5 +112,6 @@ img{
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
+    z-index: -1;
     
 }
