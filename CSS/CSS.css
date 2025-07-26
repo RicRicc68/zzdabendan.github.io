@@ -11,23 +11,23 @@
 
 /* 链接样式 未访问的链接 已访问的链接 鼠标悬停 点击瞬间*/
 a:link {
-    color: #FFFFFF;         /* 访问后颜色 */
+    color: #000000;         /* 访问后颜色 */
     text-decoration: none; /* 移除下划线 */
     /* border-bottom: solid 1px #000000; */
 }
 
 a:visited {
-    color: #FFFFFF;         /* 访问后颜色 */
+    color: #000000;         /* 访问后颜色 */
     /* border-bottom: solid 1px #000000; */
 }
 
 a:hover {
-    color: #333;         /* 访问后颜色 */
+    color: #000000;         /* 访问后颜色 */
     text-decoration: none; /* 移除下划线 */
     /* border-bottom: solid 1px #ffffff; */
 }
 
 a:active {
-    color: #FFFFFF;          /* 激活时颜色 */
+    color: #000000;          /* 激活时颜色 */
     /* border-bottom: solid 1px #000000; */
 }
