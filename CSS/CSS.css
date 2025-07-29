@@ -5,17 +5,24 @@
     box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
     font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
     list-style: none;
+    color: #FFFFFF;
+
 }
 
 h1{
     font-size: 16px;
+    color: #FFFFFF;
 }
 h2{
     font-size: 16px;
+    color: #FFFFFF;
 }
 h3{
     font-size: 16px;
+    color: #FFFFFF;
 }
+
+
 
 /* 链接样式 未访问的链接 已访问的链接 鼠标悬停 点击瞬间*/
 a:link {
@@ -104,6 +111,16 @@ img{
     font-size: 16px;
 }
 
+.主线{
+    display: flex;
+    flex-direction: row;
+}
+
+.主线 div{
+    flex-grow: 1;
+    width: 16.66667%;
+    height: 120px;
+}
 
         
 .感觉{
@@ -114,4 +131,8 @@ img{
     min-height: 100%;
     z-index: -1;
     
+}
+
+div{
+    border: solid 1px white;
 }
