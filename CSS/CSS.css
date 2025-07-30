@@ -5,11 +5,12 @@
     box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
     font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
     list-style: none;
+    color: #000000;
     color: #FFFFFF;
 
 }
 
-h1{
+h1,h2,h3{
     font-size: 16px;
     color: #FFFFFF;
 }
@@ -53,29 +54,50 @@ img{
 }
 
 
+div{
+    border: solid 0px red;
+}
+
+
+
 
 /* 标题导航设置 */
 .title{
+    width: 50%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
 
     line-height: 2rem;
+
+    
+    background-image: linear-gradient(
+            /*    rgba(0, 0, 0, 1), 
+                rgba(0, 0, 0, 0.9), 
+                rgba(0, 0, 0, 0.8), 
+                rgba(0, 0, 0, 0.7), */
+                rgba(0, 0, 0, 0.6), 
+                rgba(0, 0, 0, 0.5), 
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.3), 
+                rgba(0, 0, 0, 0.2), 
+                rgba(0, 0, 0, 0.1), 
+                rgba(0, 0, 0, 0.0));
 }
 .nav{
-    width: 100%;
+    width: 50%;
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     z-index: 1;
 
     line-height: 2rem;
 
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: nowrap;
-
+    justify-content: right;
     background-image: linear-gradient(
             /*    rgba(0, 0, 0, 1), 
                 rgba(0, 0, 0, 0.9), 
@@ -94,8 +116,32 @@ img{
 }
 
 
+.title a,.nav a{
+    flex-grow: 0;
+}
+
+
+
+/* 标题导航设置 */
+
+
+/*
+*/
+        
+.感觉{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    
+}
+
 .main{
-    margin: 50px 0 0 0;
+
+    width: 100%;
+    margin: 50px auto 0 auto;
     
     display: flex;
     flex-direction: column;
@@ -103,9 +149,12 @@ img{
 }
 
 .我的问题{
+    margin: 50px;
+    background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap;*/
+
 }
 .我的问题 h1{
     font-size: 16px;
@@ -120,19 +169,4 @@ img{
     flex-grow: 1;
     width: 16.66667%;
     height: 120px;
-}
-
-        
-.感觉{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-    
-}
-
-div{
-    border: solid 1px white;
 }
