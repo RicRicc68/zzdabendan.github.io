@@ -56,6 +56,7 @@ img{
 
 div{
     border: solid 0px red;
+    border-radius: 5px;
 }
 
 
@@ -170,7 +171,7 @@ div{
     flex-grow: 1;
     width: 16.66667%;
     height: 120px;
-    background: rgba(204, 204, 204, 0.4); /* 半透明导航背景 
+    background: rgba(204, 204, 204, 0.4); /* 半透明导航背景 */
 
 }
 
