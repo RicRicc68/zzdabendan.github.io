@@ -137,6 +137,33 @@ h3{
 /* 标题导航设置 */
 /* ====================================================== */
 
+.main{
+
+    width: 100%;
+    margin: 50px auto 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+.我的问题 h1{
+    font-size: 16px;
+}
+
+
+.我是谁{
+    margin: 50px;
+    background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.属性{
+    margin: 10px;
+}
         
 .感觉{
     position: fixed;
@@ -153,27 +180,6 @@ h3{
     margin: 5px;
 }
 
-.main{
-
-    width: 100%;
-    margin: 50px auto 0 auto;
-    
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-}
-
-.我是谁{
-    margin: 50px;
-    background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.我的问题 h1{
-    font-size: 16px;
-}
 
 .姓名,.年龄出生等级{
     width: 100%;
