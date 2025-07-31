@@ -170,3 +170,12 @@ div{
     width: 16.66667%;
     height: 120px;
 }
+
+
+.网站建立流程{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
