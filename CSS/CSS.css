@@ -156,7 +156,7 @@ div{
     flex-wrap: nowrap;
 }
 
-.我的问题{
+.我是谁{
     margin: 50px;
     background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 */
     display: flex;
@@ -172,7 +172,10 @@ div{
     width: 100%;
 }
 .主要经历,.一份身体肌肉力的人,.一个头脑心念力的人{
-    width: 33.3333%;
+    max-width: 33.3333%;
+}
+.主要经历{
+    max-width: 23.3333%;
 }
 
 
