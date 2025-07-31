@@ -238,12 +238,16 @@ h3{
 }
 
 .主线 div{
-    margin: 10px;
-    flex-grow: 1;
     width: 16.66667%;
-    height: 120px;
-    background: rgba(204, 204, 204, 0.4); /* 半透明导航背景 */
+    height: 100px;
+    margin: 10px 0 10px 10px;
 
+    border-radius: 0;
+    border-top: solid 6px greenyellow;
+
+    flex-grow: 1;
+
+    background: rgba(204, 204, 204, 0.2); /* 半透明导航背景 */
 }
 
 
