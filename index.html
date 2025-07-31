@@ -45,7 +45,8 @@
 
             <div class="属性 年龄出生等级">
                 <h2>年龄，出生，等级</h2>
-                    <ul class="年龄" style="display: flex;">
+
+                <ul class="年龄" style="display: flex;">
                         <li style="flex-grow: 1;">0</li>
                         <li style="flex-grow: 1;">8</li>
                         <li style="flex-grow: 1;">16</li>
@@ -57,7 +58,8 @@
                         <li style="flex-grow: 1;">64</li>
                         <li style="flex-grow: 1;">72</li>
                         <li style="flex-grow: 1;">81</li>
-                    </ul>
+                </ul>
+
             </div>
             
             <div class="属性 主要经历">
@@ -110,7 +112,9 @@
         </div>
 
         <!-- 问题2：我在哪 <h1>我在哪:我不在那里。</h1>-->
-        <div class="我的问题 我在哪">
+        <div id="mySidenav" class="我的问题 我在哪 ">
+
+
 
             <div class="宇宙">
             
@@ -125,7 +129,8 @@
 
             </div>
 
-            <div class="隐蔽屋12345678">
+            <div class="隐蔽屋">
+                
 
                 <h2>隐蔽屋12345678-20240717</h2>
 
@@ -136,40 +141,44 @@
                     </iframe>
                 </div>
 
-                <div class="我的物品">
-                    <h3>装备/</h3>
-                    <ul>
-                        <li>头帽，眼镜</li>
-                        <li>外衣，上衣</li>
-                        <li>裤子，内裤</li>
-                        <li>鞋子，袜子</li>
-                    </ul>
-                </div>
+                <div class="隐蔽屋12345678">
 
-                <div class="我的物品">
-                    <h3>背包/</h3>
-                    <ul>
-                        <li>钥匙</li>
-                        <li>证件</li>
-                    </ul>
-                </div>
+                    <div class="我的物品">
+                        <h3>装备/</h3>
+                        <ul>
+                            <li>头帽，眼镜</li>
+                            <li>外衣，上衣</li>
+                            <li>裤子，内裤</li>
+                            <li>鞋子，袜子</li>
+                        </ul>
+                    </div>
 
-                <div class="我的物品">
-                    <h3>家具/</h3>
-                    <ul>
-                        <li>厨房</li>
-                        <li>厕所</li>
-                        <li>门口</li>
-                        <li>卧室</li>
-                        <li>书桌</li>
-                        <li>阳台</li>
-                        <li>衣柜</li>
-                    </ul>
-                </div>
+                    <div class="我的物品">
+                        <h3>背包/</h3>
+                        <ul>
+                            <li>钥匙</li>
+                            <li>证件</li>
+                        </ul>
+                    </div>
 
-                <div class="我的物品">
-                    <h3>仓库/</h3>
-                    行李箱，收纳箱，收纳箱，收纳箱，收纳箱
+                    <div class="我的物品">
+                        <h3>家具/</h3>
+                        <ul>
+                            <li>厨房</li>
+                            <li>厕所</li>
+                            <li>门口</li>
+                            <li>卧室</li>
+                            <li>书桌</li>
+                            <li>阳台</li>
+                            <li>衣柜</li>
+                        </ul>
+                    </div>
+
+                    <div class="我的物品">
+                        <h3>仓库/</h3>
+                        行李箱，收纳箱，收纳箱，收纳箱，收纳箱
+                    </div>
+
                 </div>
 
             </div>
@@ -373,5 +382,63 @@
         zz的茅草屋 &copy; 2023 | 更新于 20250617 0452
         
     </div>
+
+
+
+
+    <!-- 
+
+
+        <span onclick="openNav()">open</span>
+
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border:solid 1px red; padding: 0 20px; color: #F00;">×</a>
+
+        <script>
+            function openNav() {
+            document.getElementById("mySidenav").style.width = "100VW";
+            document.getElementById("main").style.marginLeft = "250px";
+            }
+
+            /* 设置侧边导航的宽度为 0，页面内容的左外边距为 0 */
+            function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            }
+        </script>
+
+
+                
+        /* 关闭按钮的位置和样式（右上角） */
+        .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        }
+
+        
+        .我在哪{
+            /*
+            
+            width: 0;
+            height: 100%;
+
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, 1); /* 半透明导航背景 */
+
+            
+            */
+
+        }
+
+        overflow-x: hidden; /* 禁用水平滚动 */
+        padding-top: 60px; /* 将内容放置在距顶部 60px 的位置 */
+        transition: 0.5s; /* 0.5秒的过渡效果，用于侧边导航的滑动显示 */
+
+     -->
 </body>
 </html>
