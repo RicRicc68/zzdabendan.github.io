@@ -166,9 +166,12 @@ div{
 }
 
 .主线 div{
+    margin: 10px;
     flex-grow: 1;
     width: 16.66667%;
     height: 120px;
+    background: rgba(204, 204, 204, 0.4); /* 半透明导航背景 
+
 }
 
 
