@@ -221,13 +221,14 @@ h3{
 .隐蔽屋12345678{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .我的物品{
     flex-grow: 1;
-    width: 25%;
+    width: 48%;
     background: rgba(204, 204, 51, 0.4); /* 半透明导航背景 */
-    margin: 20px;
+    margin: 10px;
 
 }
 
@@ -265,6 +266,12 @@ h3{
 /* 标题导航设置 */
 /* ====================================================== */
 
+
+.footer{
+    background: rgba(153, 204, 051, 0.5); /* 半透明导航背景 */
+    background: rgba(0, 0, 0, 0.5); /* 半透明导航背景 */
+
+}
 .网站建立流程{
     display: flex;
     flex-direction: row;
@@ -273,6 +280,8 @@ h3{
 .网站建立流程 div{
     width: 25%;
     margin: 20px;
-    background: rgba(153, 204, 051, 0.5); /* 半透明导航背景 */
+    background: rgba(000, 000, 000, 0.0); /* 半透明导航背景 */
+    background: rgba(255, 255, 255, 0.0); /* 半透明导航背景 */
+    border-top: solid 6px #fff;
 
 }
