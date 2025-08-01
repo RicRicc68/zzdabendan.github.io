@@ -219,16 +219,23 @@ h3{
 
 
 .隐蔽屋12345678{
+
+    width: 100%;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+
 
 .我的物品{
     flex-grow: 1;
     width: 48%;
     background: rgba(204, 204, 51, 0.4); /* 半透明导航背景 */
     margin: 10px;
+
+    overflow: scroll;
 
 }
 
