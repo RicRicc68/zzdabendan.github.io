@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box; /* 确保元素的边框和内边距不会增加元素的总宽度 */
     font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; /* 设置全局字体 */
+    font-size: 14px;
     list-style: none;
     color: #000000;
     color: #FFFFFF;
@@ -188,16 +189,18 @@ h3{
 
 
 .姓名,.年龄出生等级{
-    width: 100%;
+    min-width: 100%;
 }
 
 .主要经历{
-    max-width: 30%;
+    max-width: 25%;
     flex-grow: 1;
+    overflow-y: scroll;
+    height: 500px;
 }
 
 .一份身体肌肉力的人{
-    max-width: 30%;
+    max-width: 25%;
     flex-grow: 1;
 }
 
