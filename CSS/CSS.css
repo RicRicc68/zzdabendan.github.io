@@ -192,20 +192,20 @@ h3{
 }
 
 .主要经历{
-    max-width: 33.3333%;
+    max-width: 30%;
+    flex-grow: 1;
 }
 
 .一份身体肌肉力的人{
-    max-width: 33.3333%;
+    max-width: 30%;
+    flex-grow: 1;
 }
 
 .一个头脑心念力的人{
-    max-width: 43.3333%;
+    max-width: 50%;
+    flex-grow: 1;
 }
 
-.主要经历{
-    max-width: 23.3333%;
-}
 
 .说话{
     display: flex;
