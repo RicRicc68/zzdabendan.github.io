@@ -14,6 +14,36 @@
 }
 
 
+/* 完全隐藏滚动条*/
+
+* {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE和Edge */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari和Opera */
+}
+
+body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE和Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari和Opera */
+}
+
+div {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE和Edge */
+}
+
+div::-webkit-scrollbar {
+    display: none; /* Chrome, Safari和Opera */
+}
+
+
 /* 链接样式 未访问的链接 已访问的链接 鼠标悬停 点击瞬间*/
 
 a:link {
@@ -193,19 +223,18 @@ h3{
 }
 
 .主要经历{
-    max-width: 25%;
+    max-width: 10%;
     flex-grow: 1;
     overflow-y: scroll;
-    height: 500px;
 }
 
 .一份身体肌肉力的人{
-    max-width: 25%;
+    max-width: 10%;
     flex-grow: 1;
 }
 
 .一个头脑心念力的人{
-    max-width: 40%;
+    max-width: 70%;
     flex-grow: 1;
 }
 
@@ -218,7 +247,22 @@ h3{
     width: 25%;
     flex-grow: 1;
 }
-
+.说的话{
+    width: 25%;
+    flex-grow: 1;
+}
+.想听的话{
+    width: 25%;
+}
+.喜欢的{
+    width: 10%;
+}
+.应该说的话{
+    width: 55%;
+}
+.想说的话{
+    width: 10%;
+}
 
 
 /* ====================================================== */
@@ -228,8 +272,17 @@ h3{
 
 
 .我在哪{
-    margin:0 50px 50px 50px;
+
+    position: fixed;
+    bottom: 0;
+    left: 50px;
+    width: 200px;
+    height: 400px;
+
+    margin: 0 50px 50px 50px;
+    margin: 0 ;
     background: rgba(000, 000, 000, 0.4); /* 半透明导航背景 */
+
 }
 
 
@@ -251,7 +304,7 @@ h3{
 
 .主线 div{
     width: 16.66667%;
-    height: 400px;
+    height: 100px;
     margin: 10px 0 10px 10px;
 
     border-radius: 0;
