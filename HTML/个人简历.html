@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 16px;
+
+        }
+
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .个人简历 {
+            background-color: #f5f5f5;
+            color: #000;
+            font-family: '微软雅黑', Courier, monospace;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .个人头像 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .个人信息 {
+            margin: 20px auto;
+            width: 100%;
+            background-color: #6699cc;
+            margin: 20px auto;
+        }
+
+        .基本信息 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 10px auto;
+        }
+
+        .基本信息 li {
+            margin: 0 10px;
+            background-color: #f5f5f5;
+            color: #000;
+            margin: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .求职意向 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        /*=========================================*/
+
+        .教育经历 {
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        .教育经历-项目 {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        .学校课程 {
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        /*=========================================*/
+
+        .工作经历 {
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        .工作经历-项目 {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        .工作内容 {
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        /*=========================================*/
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <h1>个人简历</h1>
+
+    </div>
+
+    <div class="main">
+        <div class="个人简历">
+
+            <div class="个人信息">
+                <h2>个人头像</h2>
+                <img src="../IMG/肥肉.jpg" alt="个人头像" class="个人头像">
+
+                <h2>基本信息</h2>
+                <ul class="基本信息">
+                    <li>姓名：<br>ZZ</li>
+                    <li>年龄：<br>25岁</li>
+                    <li>性别：<br>男</li>
+                    <li>电话：<br>13800000000</li>
+                    <li>邮箱：<br>zhangsan@example.com</li>
+                </ul>
+            </div>
+
+            <hr>
+            <h2>求职意向</h2>
+            <ul class="求职意向">
+                <li>意向岗位: <br>xxx</li>
+                <li>意向城市: <br>南昌</li>
+                <li>期望薪资: <br>￥9999</li>
+                <li>求职类型: <br>全职</li>
+            </ul>
+
+            <h2>教育经历</h2>
+            <div class="教育经历">
+                <div class="教育经历-项目">
+                    <p><b>2019年09月——2022年07月</b> | 江西信息应用职业技术学院 | 计算机网络技术：专科</p>
+                    <p class="学校课程">课程：
+                        <br>组网技术、Linux系统、无线技术、Windows系统、综合布线等等
+                    </p>
+                    <hr>
+                </div>
+            </div>
+
+            <h2>工作经历</h2>
+            <div class="工作经历">
+
+                <div class="工作经历-项目">
+                    <p><b>2021年07月——2021年09月</b> | 媒体行业 | 视频剪辑 | ￥1800 | <b>南昌酷哦文化传播有限公司</b></p>
+                    <hr>
+                    <p class="工作内容">工作内容：
+                        <br>负责视频剪辑，负责视频上传，负责视频推广
+                    </p>
+                </div>
+
+                <div class="工作经历-项目">
+                    <p><b>2021年10月——2021年10月</b> | 物流行业 | 分拣工人 | ￥1800 | <b>某京东厂库</b></p>
+                    <hr>
+                    <p class="工作内容">工作内容：
+                        <br>负责物流分拣，负责订单处理，负责客户服务
+                    </p>
+                </div>
+
+                <div class="工作经历-项目">
+                    <p><b>2021年12月——2021年12月</b> | 制造行业 | 装配工人 | ￥1800 | <b>南昌龙旗</b></p>
+                    <hr>
+                    <p class="工作内容">工作内容：
+                        <br>负责制造装配
+                    </p>
+                </div>
+
+                <div class="工作经历-项目">
+                    <p><b>2022年03月——2022年05月</b> | 驾校行业 | 技术专员 | ￥3500 | <b>南昌人才驾校有限公司</b></p>
+                    <hr>
+                    <p class="工作内容">工作内容：
+                        <br>负责驾校设备维护技术，负责客户服务
+                    </p>
+                </div>
+
+                <div class="工作经历-项目">
+                    <p><b>2022年06月——2025年02月</b> | 客服行业 | 运维专员 | ￥4500 | <b>湖南德沃信息技术有限公司</b></p>
+                    <hr>
+                    <p class="工作内容">工作内容：
+                        <br>负责客服技术维护，负责客户服务
+                    </p>
+                </div>
+            </div>
+
+
+            <h2>所获奖项，质资证书</h2>
+            <p>1</p>
+
+            <h2>自我评价，兴趣爱好</h2>
+            <p>爱好是游戏 喜欢的人物，菜</p>
+        </div>
+
+    </div>
+
+    <div class="footer"></div>
+</body>
+
+</html>
