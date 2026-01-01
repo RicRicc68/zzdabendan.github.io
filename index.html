@@ -2,1215 +2,473 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEB14</title>
-    <!-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="CSS/CSS.css"> -->
-    <style>
-        /*================================================================================================*/
-        *,
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            z-index: 1;
-            font-size: 16px;
-        }
-
-        ul,
-        ol {
-            list-style-type: none;
-        }
-
-        a {
-            text-decoration: none;
-            /* 移除下划线 */
-        }
-
-        a:link {
-            color: #000000;
-            /* 访问后颜色 */
-        }
-
-        a:visited {
-            color: #000000;
-            /* 访问后颜色 */
-        }
-
-        a:hover {
-            color: #000000;
-            /* 访问后颜色 */
-        }
-
-        a:active {
-            color: #000000;
-            /* 激活时颜色 */
-        }
-
-        span {
-            border: solid 1px black;
-            border-radius: 5px;
-            display: inline-block;
-            color: white;
-            /*
-            padding: 8px 20px;
-            */
-            border-radius: 25px;
-            background-color: #2196F3;
-            margin-top: 8px;
-        }
-
-        *::-webkit-scrollbar {
-            display: none;
-            /* Chrome, Safari和Opera */
-        }
-
-        img {
-            width: 100%;
-        }
-
-        .图片 {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /*================================================================================================*/
-        .nav {
-            /*
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 100;
-            */
-
-            background-color: rgba(000, 000, 000, 0.0);
-
-            background-image: url(./IMG/大楼.jpg);
-            background-size: cover;
-            background-position: center;
-
-            width: 100%;
-            height: 200px;
-
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-
-            overflow: hidden;
-        }
-
-        .nav ul {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-        .nav ul li {
-            flex-grow: 1;
-        }
-
-        /*================================================================================================*/
-
-        .banner {
-            width: 100%;
-        }
-
-        .main {
-            background-color: rgba(255, 255, 255, 0);
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            overflow: hidden;
-
-
-        }
-
-        .footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #ffffff;
-            text-align: center;
-            padding: 15px;
-            margin: 20px 0 0 0;
-        }
-
-        /*================================================================================================*/
-        .经历 {
-
-            position: relative;
-            overflow: hidden;
-            /* padding-top: 56.25%; 16:9 宽高比（9 除以 16 等于 0.5625） */
-
-            background-color: rgba(204, 204, 204, 0.0);
-
-
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            overflow: hidden;
-            justify-content: space-between;
-            height: 188px;
-
-        }
-
-        /*================================================================================================*/
-
-        .已见 {
-            transform: rotateY(10deg);
-
-            background-color: rgba(153, 204, 051, 0.0);
-            color: #000000;
-
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: end;
-            width: 50%;
-            height: 188px;
-            overflow: hidden;
-        }
-
-        .经验 {
-            transform: rotateY(40deg);
-
-            background-color: rgba(255, 255, 255, 1.0);
-            flex-grow: 1;
-            width: 20%;
-            border-radius: 5px 5px 0px 0px;
-            border-right: solid 2px rgba(153, 204, 051, 0.4);
-            overflow: hidden;
-
-        }
-
-        .经验1 {
-            height: 60%;
-        }
-
-        .经验2 {
-            height: 30%;
-        }
-
-        .经验3 {
-            height: 15%;
-        }
-
-        .经验4 {
-            height: 10%;
-        }
-
-        .经验5 {
-            height: 5%;
-        }
-
-        .经验6 {
-            height: 3%;
-        }
-
-        /*================================================================================================*/
-
-        .背景 {
-            z-index: -1;
-
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            background-color: rgba(204, 204, 204, 0.0);
-
-            margin: 50px 0 0 0;
-
-        }
-
-        .直播,
-        .视频 {
-            width: 300px;
-            height: auto;
-            border-radius: 5px;
-            /*
-            height: 300px;
-            */
-
-        }
-
-        /*
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            
-        .背景 h1{
-            background-color: rgba(204, 204, 204, 0.0);
-        }
-       
-       .背景图片{
-            width: 80%;
-            max-width: 1200px;
-            height: auto;
-            margin: 0 auto;
-       }
-       
-       .直播 iframe{
-            width: 100%;
-            height: 100vh;
-       }
-
-       .背景 iframe{
-            width: 100%;
-            height: auto;
-            min-height: 200px;
-       }
-
-       .视频{
-            z-index: 1;
-            position: fixed;
-            right: 0;
-            bottom: 0;
-
-            min-width: 100%;
-            min-height: 100%;
-       }
-        */
-        /*================================================================================================*/
-
-
-        .未见 {
-            background-color: rgba(153, 204, 051, 0.0);
-            color: #ffffff;
-
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            width: 50%;
-            height: 188px;
-            overflow: hidden;
-        }
-
-        .问题全 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .问题 {
-            flex-grow: 1;
-        }
-
-        /*================================================================================================*/
-
-        .精神 {
-            background-color: rgba(0, 0, 0, 0);
-            width: 100%;
-            overflow: scroll;
-            margin: 0 03%;
-        }
-
-        .说话 {
-            overflow: scroll;
-        }
-
-        .说的话 {
-            display: flex;
-            flex-direction: row;
-            margin: 5px 0px 0px 0px;
-            width: 3600PX;
-            width: 100%;
-        }
-
-        /*================================================================================================*/
-        .想听的话 {
-            background-color: rgba(255, 255, 255, 1.0);
-            color: #000;
-
-            display: flex;
-            flex-direction: row;
-
-            width: 80%;
-            height: 150px;
-            margin: auto;
-            border: solid 1px #000;
-            overflow: hidden;
-        }
-
-        .想听的话1,
-        .想听的话2,
-        .想听的话3,
-        .想听的话4,
-        .想听的话5,
-        .想听的话6 {
-            flex-grow: 1;
-            width: 25%;
-        }
-
-        /*================================================================================================*/
-        .喜欢的 {
-            background-color: rgba(153, 153, 153, 0.0);
-            color: #000;
-
-            display: flex;
-            flex-direction: row;
-
-            width: 80%;
-            height: 150px;
-            margin: auto;
-            border: solid 1px #000;
-            overflow: hidden;
-        }
-
-        .喜欢的1,
-        .喜欢的2,
-        .喜欢的3,
-        .喜欢的4,
-        .喜欢的5,
-        .喜欢的6 {
-            width: 16.667%;
-            height: auto;
-        }
-
-        /*================================================================================================*/
-        .应该说的话 {
-            background-color: rgba(204, 204, 204, 0.0);
-            color: #000;
-
-            display: flex;
-            flex-direction: row;
-
-            width: 80%;
-            height: 150px;
-            margin: auto;
-            border: solid 1px #000;
-            overflow: hidden;
-        }
-
-        .应该说的话 .主线 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        /*================================================================================================*/
-        .想说的话 {
-            background-color: rgba(051, 051, 051, 0.0);
-            color: #000;
-
-            display: flex;
-            flex-direction: row;
-
-            width: 80%;
-            height: 150px;
-            margin: auto;
-            border: solid 1px #000;
-            overflow: hidden;
-        }
-
-        .主线 {
-            width: 16.667%;
-            border-left: solid 1px #FFF;
-            overflow: scroll;
-        }
-
-        .主线 ul {
-            flex-grow: 1;
-        }
-
-        /*================================================================================================*/
-
-        .身体 {
-            background-color: rgba(255, 255, 255, 0);
-            width: 100%;
-            max-height: 100px;
-        }
-
-
-        .地图 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .环境 {
-            background-color: rgba(204, 204, 204, 0.8);
-            margin: 10px 10px 0px 0px;
-            flex-grow: 1;
-            width: 16.7777%;
-        }
-
-        /*================================================================================================*/
-
-        @media only screen and (max-width: 768px) {
-
-            /* 针对手机： */
-            *,
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-        }
-
-        /*================================================================================================*/
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识库</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0));
+
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+    }
+
+    nav {
+      position: fixed;
+      top: 100px;
+      left: 0;
+      width: 200px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    main {
+      margin: 88px 20px 20px 220px;
+
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    img {
+      width: 80%;
+      margin: 40px auto;
+      display: block;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+      background-color: #CCC;
+    }
+
+    .知识库内容 {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      width: 90%;
+      margin: 40px auto 20px auto;
+
+    }
+
+    .知识库内容 h2 {
+      color: #333;
+      font-size: 28px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+    }
+
+    .知识库内容 h3 {
+      color: #FFF;
+      font-size: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #333333;
+    }
+
+    .知识库内容 p {
+      color: #000;
+      background: linear-gradient(to bottom, rgba(204, 255, 103, 0.0), rgba(255, 255, 255, 0.3));
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+
+    }
+
+    .知识库操作 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .知识库操作 .操作 {
+      margin: 0 10px;
+      flex: 1;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- nav -->
+  <header>
+    <h1>知识库</h1>
+  </header>
 
-    <div class="nav">
-        <div class="title">
-            <h1>zz的互联网茅草屋-内心的十万字-思路格式化
-                世界好大，空有一身 A beautiful big world, I am so lucky to have a body
-            </h1>
+  <nav>
+    <ul>
+      <li><a href="#" style="position: fixed; bottom: 10px; left: 10px; 
+          margin: 20px; 
+          background-color: #333; 
+          color: #fff; 
+          padding: 10px; 
+          border-radius: 5px;">返回最上层</a>
+      </li>
+      <li><a href="#">首页</a></li>
+      <li><a href="#">知识库</a></li>
+      <li><a href="#">关于我们</a></li>
+      <li><a href="#">知识1：怎么样使用知识库？</a></li>
+      <li><a href="#">知识2：怎么样安装系统？</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- 知识1：怎么样使用知识库？ -->
+    <div class="知识库内容 ">
+      <h2>知识1：怎么样使用知识库？</h2>
+
+      <div class="知识库操作">
+
+        <div class="操作">
+          <h3>新建知识库</h3>
+          <p>
+            <br>新建知识库
+          </p>
         </div>
-        <hr>
-        <ul class="目录">
-            <li><a href="./个人简历.html">个人简历</a></li>
-            <li><a href="./写作之前.html">写作之前<br>目的、方法、工具、作品</a></li>
-            <li><a href="#">ZZ的隐蔽屋8</a></li>
-            <li><a href="https://zzdabendan.github.io/HTML/booklist.html">书签</a></li>
-            <li><a href="https://github.com/zzdabendan/zzdabendan.github.io/tree/main">githubtreemain</a></li>
-            <li><a href="https://zzdabendan.github.io">茅草屋</a></li>
-        </ul>
-    </div>
-
-    <!-- main -->
-    <div class="main">
-
-        <div class="经历">
-
-
-            <div class="背景">
-
-                <!--   
-                    <div class="主体"><img src="./IMG/骨架.png" alt="骨架.png"></div>
-                    <img src="./IMG/wzrysjhdxbd.png" alt="wzrysjhdxbd.png" class="背景图片">
-
-                    蛋笨大大21648980
-                    <iframe src="https://live.bilibili.com/21648980?live_from=85021" 
-                        class="直播" scrolling="no" frameborder="no" allowfullscreen="true">
-                    </iframe>
-                    
-                    老飞宇667878
-                    <iframe src="https://live.bilibili.com/7878" 
-                        class="直播" scrolling="no" frameborder="no" allowfullscreen="true">
-                    </iframe>
-
-                    央视频21623527
-                    <iframe src="https://live.bilibili.com/21623527"
-                        class="直播" scrolling="no" frameborder="no" allowfullscreen="true">
-                    </iframe>
-
-                    <video  loop muted playsinline autoplay controls> 
-                        class="视频 感觉" 
-                        <source src="./VIDEO/个人视频 25.mp4" type="video/mp4">
-                        <source src="./VIDEO/打AK3.mp4" type="video/mp4">
-                        <source src="./VIDEO/打AK2.mp4" type="video/mp4">
-                        <source src="./VIDEO/跑步.mp4" type="video/mp4">
-                    </video>
-                -->
-
-                <iframe src="//player.bilibili.com/player.html?bvid=BV1pKhTznE1Z&page=1&high_quality=1&danmaku=0"
-                    class="视频" scrolling="no" frameborder="no" allowfullscreen="true">
-                </iframe>
-
-            </div>
-
-            <div class="已见">
-
-                <div class="经验 经验1">
-                    我习惯在玩累了手机小说电脑游戏之后睡觉，
-                    <br>醒来或者是普通放假时间;
-                    <br>或者是上学日;
-                    <br>或者是工作日。
-                    <br>住过不同地方，
-                    第8949天第8950天第8951天第8952天.....
-                </div>
-
-                <div class="经验 经验2">
-                    秋天中成长的我：
-                    <br>在新手村一般过年时候，配老爸老妈回家看奶奶伯伯等亲人，醒了一般9点以后，不用锻炼，不用做饭，不用工作，每天只是玩电脑手机的日子。
-                </div>
-
-                <div class="经验 经验3">
-                    家庭中生活的我：
-                    <br>在练级区一，需要赶校车上学，经常跟同学玩游戏，最后成绩不够，没能升学到本区域高级副本。
-                </div>
-
-                <div class="经验 经验4">
-                    学校中上学的我：
-                    <br>在练习区二，通过朋友到老家的副本学习新知识，学到了副本无关的其他知识，最后升级到练习区三的副本进行更高层次学习。
-                </div>
-
-                <div class="经验 经验5">
-                    网络中娱乐的我：
-                    <br>在练习区三，认识了室友，一起度过简短的两年，最后和同班一起到学校推荐副本进行更高级层次进行学习，由于专业和发展方向意见不同离开实习副本。
-                </div>
-
-                <div class="经验 经验6">
-                    公司中工作的我：
-                    <br>zz24级写给27级的内心十万字目前正在附件兜兜转转的生活着，这些事我的经历。
-                </div>
-
-            </div>
-
-            <div class="未见">
-                <ul class="问题全">
-                    <li class="问题">我是谁 我是 我不是</li>
-                    <li class="问题">你在做什么 你为什么要做 你现在开心吗</li>
-                    <li class="问题">我在哪</li>
-                    <li class="问题">我要做 我有 我没</li>
-                    <li class="问题">我最该做什么</li>
-                    <li class="问题">应该要关注什么 怎么专注现在</li>
-                    <li class="问题">怎么照顾自己呢 哪个身体部位最重要呢 大脑和小脑谁大呢</li>
-                    <li class="问题">为什么要吃饭 吃啥呢</li>
-                    <li class="问题">走路为什么要用脚</li>
-                    <li class="问题">下次去哪玩呢</li>
-                    <li class="问题">手机能用多久呢</li>
-                    <li class="问题">月亮是亮的吗</li>
-                    <li class="问题">未来来没来</li>
-                    <li class="问题">熊猫到底是熊还是猫</li>
-                    <li class="问题">是什么 为什么 怎么办</li>
-                    <li class="问题">你是谁啊</li>
-                </ul>
-            </div>
-
+        <div class="操作">
+          <h3>保存知识库</h3>
+          <p>
+            <br>保存知识库
+          </p>
         </div>
-
-
-        <div class="精神">
-
-            <div class="说话">
-
-                <div class="说的话 想听的话">
-
-
-                    <div class="想听的话1">
-                        <p>
-                            自我实现...
-                            <br>尊重需求...
-                            <br>归属与爱需求...
-                            <br>安全需求...
-                            <br>生理需求...食物、水、睡眠、空气和性
-                        </p>
-                    </div>
-
-                    <div class="想听的话2 鬼谷子">
-                        <p>
-                            10岁以内的孩子需要有人理解，
-                            <br>10-20岁的孩子需要认同，
-                            <br>20-30岁的孩子需要机会，
-                            <br>30-40岁的人需要肯定和赞美，
-                            <br>40-50岁的人需要尊敬，
-                            <br>50-60岁的人需要晚辈的敬佩，
-                            <br>60以上的人需要晚辈的崇拜
-                        </p>
-                    </div>
-
-                    <div class="想听的话3 黄金时代">
-                        <p>
-                            想爱想吃想永远生猛下去
-                            <br>好吃懒做好逸恶劳贪财好色的小人
-                        </p>
-                    </div>
-
-
-                    <div class="想听的话4 马斯洛需求金字塔">
-                        <div class="图片">
-                            <img src="./IMG/马斯洛需求金字塔.jpg" alt="马斯洛需求金字塔.jpg">
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="说的话 喜欢的">
-
-                    <div class="喜欢的1">
-                        <ul>
-                            <li>喜欢的生活</li>
-                            <li>我喜欢很有智慧的人</li>
-                            <li>我喜欢规律作息的人</li>
-                            <li>我喜欢每天运动的人</li>
-                            <li>我喜欢整齐家务的人</li>
-                            <li>我喜欢每天学习的人</li>
-                            <li>我喜欢工作认真的人</li>
-                            <li>我喜欢玩法厉害的人</li>
-                            <li>我喜欢思考周全的人</li>
-                            <li>我喜欢说话沟通的人</li>
-                            <li>我喜欢做事成功的人</li>
-                        </ul>
-                    </div>
-
-                    <div class="喜欢的2">
-                        <div class="图片">
-                            <img src="./IMG/肌肉.jpg" alt="肌肉.jpg">
-                        </div>
-                    </div>
-
-                    <div class="喜欢的3">
-                        <div class="图片">
-                            <img src="./IMG/2024白天.jpg" alt="隐蔽屋">
-                        </div>
-                    </div>
-
-                    <div class="喜欢的4">
-                        <div class="图片">
-                            <img src="./IMG/证书.png" alt="证书.png">
-                        </div>
-                    </div>
-
-                    <div class="喜欢的5">
-                        <div class="图片">
-                            <img src="./IMG/公司.jpg" alt="公司.jpg">
-                        </div>
-                        <ul>
-                            <li>喜欢的物品</li>
-                            <li>华为17promax</li>
-                            <li>DJI MINI 5 PRO</li>
-                            <li>喜欢的物品</li>
-                        </ul>
-                    </div>
-
-                    <div class="喜欢的6">
-                        <div class="图片">
-                            <img src="./IMG/长大.jpg" alt="长大.jpg">
-                        </div>
-                        <ul>
-                            <li>喜欢的游戏</li>
-                            <li>喜欢的音乐</li>
-                            <li>喜欢的食物</li>
-                            <li>喜欢的故事</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="说的话 应该说的话">
-
-                    <div class="主线">
-                        <ul class="日期">
-                            <li>0秒 </li>
-                            <li>1秒 </li>
-                            <li>2秒 </li>
-                            <li>3秒 </li>
-                            <li>4秒 </li>
-                            <li>5秒 </li>
-                            <li>6秒 </li>
-                            <li>0时 </li>
-                            <li>1时 </li>
-                            <li>2时 </li>
-                            <li>3时 </li>
-                            <li>4时 </li>
-                            <li>5时 </li>
-                            <li>6时 </li>
-                            <li>7时 </li>
-                            <li>8时 </li>
-                            <li>9时 </li>
-                            <li>10时 </li>
-                            <li>11时 </li>
-                            <li>12时 </li>
-                            <li>13时 </li>
-                            <li>14时 </li>
-                            <li>15时 </li>
-                            <li>16时 </li>
-                            <li>17时 </li>
-                            <li>18时 </li>
-                            <li>19时 </li>
-                            <li>20时 </li>
-                            <li>21时 </li>
-                            <li>22时 </li>
-                            <li>23时 </li>
-                            <li>0天 </li>
-                            <li>1天 </li>
-                            <li>2天 </li>
-                            <li>3天 </li>
-                            <li>4天 </li>
-                            <li>5天 </li>
-                            <li>6天 </li>
-                            <li>7天 </li>
-                            <li>8天 </li>
-                            <li>9天 </li>
-                            <li>10天</li>
-                            <li>8777天</li>
-                            <li>8776天</li>
-                            <li>8775天</li>
-                        </ul>
-
-                        <ul class="体力">
-                            <li>
-                                <h1>思考力</h1>
-                            </li>
-                            <li>
-                                <h1>肌肉力</h1>
-                            </li>
-                            <li>
-                                <h1>领导力</h1>
-                            </li>
-                            <li>
-                                <h1>执行力</h1>
-                            </li>
-                            <li>
-                                <h1>创造力</h1>
-                            </li>
-                            <li>
-                                <h1>沟通力</h1>
-                            </li>
-                            <li>
-                                <h1>自制力</h1>
-                            </li>
-                            <li>
-                                <h1>学习力</h1>
-                            </li>
-                            <li>
-                                <h1>眼力</h1>
-                            </li>
-                            <li>
-                                <h1>记忆力</h1>
-                            </li>
-                            <li>
-                                <h1>遗忘力</h1>
-                            </li>
-                            <li>
-                                <h1>想象力</h1>
-                            </li>
-                            <li>
-                                <h1>重量</h1>
-                            </li>
-
-                            <li>
-                                <h1>境界</h1>
-                            </li>
-                            <li>山水</li>
-                            <li>非山水</li>
-                            <li>还是山水</li>
-                            <li>有优缺点 <br> 的人</li>
-
-                            <li>
-                                <h1>看书境界</h1>
-                            </li>
-                            <li>楼台把月</li>
-                            <li>庭中望月</li>
-                            <li>管中窥豹</li>
-
-                            <li>
-                                <h1>读书境界</h1>
-                            </li>
-                            <li>不知手之<br>舞之足之<br>蹈之者</li>
-                            <li>知好之者</li>
-                            <li>得一两句<br>而喜</li>
-                            <li>读了全然<br>无所事者</li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="主线">
-
-                        <ol>
-                            <li>体重</li>
-                            <li>68.5KG</li>
-                            <li>68.0KG</li>
-                            <li>67.5KG</li>
-                            <li>67.0KG</li>
-                            <li>66.5KG</li>
-                            <li>66.0KG</li>
-                            <li>65.5KG</li>
-                            <li>65.0KG</li>
-                            <li>64.5KG</li>
-                            <li>64.0KG</li>
-                            <li>63.5KG</li>
-                            <li>63.0KG</li>
-                            <li>62.5KG</li>
-                            <li>62.0KG</li>
-                            <li>61.5KG</li>
-                            <li>61.0KG</li>
-                            <li>60.5KG</li>
-                            <li>60.0KG</li>
-                            <li>59.5KG</li>
-                            <li>59.0KG</li>
-                            <li>58.5KG</li>
-                            <li>58.0KG</li>
-                        </ol>
-
-
-                        <ol>
-                            <li>
-                                <h1>摄入</h1>
-                            </li>
-                            <li>早餐</li>
-                            <li>午餐</li>
-                            <li>晚餐</li>
-                            <li>
-                                <h1>消耗</h1>
-                            </li>
-                            <li>10个/1组</li>
-                            <li>20个/3组</li>
-                            <li>40个/4组</li>
-                            <li>50个/5组</li>
-                            <li>60个/6组</li>
-                            <li>70个/7组</li>
-                            <li>80个/8组</li>
-                            <li>90个/9组</li>
-                            <li>100个/10组</li>
-                        </ol>
-
-
-
-                    </div>
-
-                    <div class="主线">
-
-
-                        <ul class="物品清单">
-                            <li class="个人物品">
-                                <ul>
-                                    <li>
-                                        <h1>个人物品</h1>
-                                    </li>
-                                    <li>上衣</li>
-                                    <li>内衣</li>
-                                    <li>外套</li>
-                                    <li>裤子</li>
-                                    <li>袜子</li>
-                                    <li>鞋子</li>
-                                    <li>面部</li>
-                                    <li>头部</li>
-                                    <li>手</li>
-                                </ul>
-                            </li>
-
-                            <li class="背包物品">
-                                <ul>
-                                    <li>
-                                        <h1>背包物品</h1>
-                                    </li>
-                                    <li>医疗急救</li>
-                                    <li>塑料应急</li>
-                                    <li>食品水源</li>
-                                    <li>电子物品</li>
-                                    <li>钥匙</li>
-                                    <li>证件</li>
-                                </ul>
-                            </li>
-
-
-                            <li class="家具物品">
-                                <ul>
-                                    <li>
-                                        <h1>家具物品</h1>
-                                    </li>
-                                    <li>床铺</li>
-                                    <li>书桌</li>
-                                    <li>阳台</li>
-                                    <li>厨房</li>
-                                    <li>厕所</li>
-                                </ul>
-                            </li>
-
-
-                            <li class="仓库物品">
-                                <ul>
-
-                                    <li>
-                                        <h1>清洁</h1>
-                                    </li>
-                                    <li>
-                                        <h1>存放</h1>
-                                    </li>
-                                    <li>
-                                        <h1>分类</h1>
-                                    </li>
-                                    <li>
-                                        <h1>仓库物品</h1>
-                                    </li>
-                                    <li>白收纳箱1（内衣）</li>
-                                    <li>白收纳箱2（外衣）</li>
-                                    <li>白收纳箱3（裤子）</li>
-                                    <li>白收纳箱4（工具）</li>
-                                    <li>白收纳箱5（书本）</li>
-                                    <li>白收纳箱6（包装）</li>
-                                    <li>白收纳箱7（食品）</li>
-                                    <li>白收纳箱8（厨具）</li>
-                                    <li>黑收纳箱1（鞋子）</li>
-                                    <li>黑收纳箱2（挡风被）</li>
-                                    <li>黑收纳箱3（健身）</li>
-                                    <li>黑收纳箱4（空）</li>
-                                    <li>黑收纳箱5（空）</li>
-                                    <li>黑收纳箱6（空）</li>
-                                    <li>黑收纳箱7（清洁）</li>
-                                    <li>黑收纳箱8（空）</li>
-                                </ul>
-                            </li>
-                        </ul>
-
-
-                        <ul>
-                            <li>
-                                <h1>同源的人</h1>
-                            </li>
-                            <li>
-                                <h1>认识的人</h1>
-                            </li>
-                            <li>
-                                <h1>有关系的人</h1>
-                            </li>
-                            <li>
-                                <h1>说话的人</h1>
-                            </li>
-                            <li>基本沟通过程</li>
-                            <li>沟通分类和目标
-                                <br>亲子沟通，
-                                <br>管理沟通，
-                                <br>跨语言沟通，
-                                <br>跨文化沟通
-                            </li>
-                            <li>基本沟通方式</li>
-                            <li>沟通目的</li>
-                            <li>
-                                <h1>开心的人</h1>
-                            </li>
-                        </ul>
-
-
-                        <br>
-                    </div>
-
-                    <div class="主线">
-                        <ul>
-
-                            <li>
-                                <h1>专家</h1>
-                            </li>
-                            <li>高级工程师</li>
-                            <li>中级工程师</li>
-                            <li>初级工程师</li>
-                            <li>助手</li>
-                            <li>
-                                <h1>小学</h1>
-                            </li>
-                            <li>
-                                <h1>大学</h1>
-                            </li>
-                            <li>
-                                <h1>高中</h1>
-                            </li>
-                            <li>
-                                <h1>初中</h1>
-                            </li>
-                            <li>语文</li>
-                            <li>数学</li>
-                            <li>英语</li>
-                            <li>政治</li>
-                            <li>历史上下五千年</li>
-                            <li>物理</li>
-                            <li>地理</li>
-                            <li>化学</li>
-                            <li>生物</li>
-
-                        </ul>
-
-
-                    </div>
-
-                    <div class="主线">
-                        公司排行榜，各种职业
-                        苹果
-                        华为
-                        国企
-                        字节跳动
-                        微软
-                        小米
-
-                        研发
-                        后端
-                        客户端
-                        数据挖掘
-                        前端
-                        基础架构
-                        运维
-                        大数据
-                        多媒体
-                        自然语言处理
-                        测试
-                        安全
-                        机器学习
-                        算法
-                        计算机视觉
-                        硬件
-
-
-
-                        <ul>
-                            <li>客服3500-3800-4500元</li>
-                            <li>
-                                工作记录和汇报
-                                <br>2024年05月07日技术岗位述职报告
-                                <br>2023年06月19日技术岗位述职报告
-                                <br>2022年09月28日技术岗位入职转正报告
-                                <br>2025-2024-2023-2022年总结，无
-                                <br>月报周报日报
-                            </li>
-                            <li>驾校3500元</li>
-                            <li>电子2500元</li>
-                            <li>物流500元</li>
-                            <li>实习1800元</li>
-                            <li>招待1盒饭饭</li>
-                        </ul>
-                    </div>
-
-                    <div class="主线">
-                        <ul>
-                            <li>
-                                <h1>视频直播</h1>
-                            </li>
-                            <li>
-                                <h1>游戏电影</h1>
-                            </li>
-                            <li>
-                                <h1>音乐小说</h1>
-                            </li>
-                            <li>
-                                <h1>漫画动漫</h1>
-                            </li>
-                            <li>
-                                <h1>综艺电视剧</h1>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-
-                <div class="说的话 想说的话">
-
-                    <div class="主线 想说的话1">
-
-                    </div>
-
-                    <div class="主线 想说的话2">
-                    </div>
-
-                    <div class="主线 想说的话3">
-                    </div>
-
-                    <div class="主线 想说的话4">
-                    </div>
-
-                    <div class="主线 想说的话5">
-                    </div>
-
-                    <div class="主线 想说的话6">
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="操作">
+          <h3>修改知识库</h3>
+          <p>
+            <br>修改知识库
+          </p>
         </div>
-
-        <div class="身体">
-            <div class="地图">
-
-                <div class="环境 宇宙 1">
-                    <h2>宇宙</h2>
-                    <img src="../IMG/2025地图资源.png" alt="大大世界">
-
-                    <p>
-                        <br>人口数
-                        <br>资源数
-                        <br>行业数
-                        <br>技能数
-
-                        <br>
-                        <br>xxxx太阳系
-                        <br>地球亚洲大陆
-                        <br>无生命物植物动物
-
-                        <br>
-                        <br>人类祖宗
-                        <br>家族家庭
-                        <br>个体
-
-                        <br>
-                        <br>大大世界
-                        <br>中国城市区域
-                        <br>户籍军事
-                        <br>农业医疗
-                        <br>
-
-                    </p>
-                </div>
-
-                <div class="环境 个人 2">
-                    个人
-                </div>
-
-                <div class="环境 隐蔽屋 3">
-                    <h2>隐蔽屋820240717</h2>
-
-                    <div class="隐蔽屋12345678">
-                        <div class="我的物品">
-                            <div class="资源">
-                                <br>钱币：59
-                                <br>银行：4900
-                                <br>电子：4.93
-                            </div>
-                        </div>
-
-                        <div class="我的物品">
-                            <h3>家具/</h3>
-                            <ul style="display: flex;">
-                                <li>卧室床铺<div class=""><img src="../IMG/家具-1床铺.jpg" alt="家具-1床铺.jpg"></div>
-                                </li>
-                                <li>书桌阳台<div class=""><img src="../IMG/家具-2桌面.jpg" alt="家具-2桌面.jpg"></div>
-                                </li>
-                                <li>衣柜物品<div class=""><img src="../IMG/家具-3衣柜.jpg" alt="家具-3衣柜.jpg"></div>
-                                </li>
-                                <li>门口过道<div class=""><img src="../IMG/家具-4过道.jpg" alt="家具-4过道.jpg"></div>
-                                </li>
-                                <li>厨房厕所<div class=""><img src="../IMG/家具-5厨房.jpg" alt="家具-5厨房.jpg"></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="环境 学校 4">
-                    学校
-                </div>
-
-                <div class="环境 副本地 5">
-                    <h2>副本地520220628-202508XX</h2>
-                    <img src="../IMG/" alt="副本地520220628-202508XX">
-                </div>
-
-                <div class="环境 虚拟世界 6">
-                    <h2>游戏世界1</h2>
-                    <h2>音乐世界1</h2>
-                    <h2>文字世界1</h2>
-                    <h2>美食世界1</h2>
-                    <h2>电影世界1</h2>
-                    <h2>漫画世界1</h2>
-                    <img src="../IMG/" alt="副本地520220628-202508XX">
-                </div>
-
-            </div>
-        </div>
+      </div>
 
     </div>
 
-    <!-- footer -->
-    <div class="footer">
-        <h1>结束</h1>
-        <p>
-            ZZ的互联网茅草屋 &copy; 2023 | 更新于 20251202
-            <br>以后的你实现现在的我的梦想了吗？没有的话快去做。起初只是一次简单的晚睡，熬夜
-        </p>
+    <!-- 知识2：怎么样安装系统？ -->
+    <div class="知识库内容">
+      <h2>知识2：怎么样安装系统？</h2>
+
+      <h3>知识背景</h3>
+      <p>
+        为业务工作人员提供标准化计算机工作，运维人员制定系统安装流程
+      </p>
+
+      <h3>准备工具</h3>
+      <p>
+      <ul>
+        <li>工作时间：30分钟</li>
+        <li>工作场地：大办公房间</li>
+        <li>计算机硬件：Intel i5-8250U 1.6GHz 8GB RAM 512GB SSD</li>
+        <li>U盘</li>
+        <li>操作系统：Windows 10 LSTC</li>
+        <li>PE工具安装包</li>
+        <li>常用办公软件</li>
+      </ul>
+      </p>
+
+
+      <h3>电脑安装配置</h3>
+      <p>
+        组装电脑
+        <br>连接电源
+        <br>连接显示器
+        <br>连接键盘
+        <br>连接鼠标
+        <br>连接网卡
+        <br>连接声卡
+        <br>连接显卡
+        <br>连接硬盘
+        <br>连接U盘
+        <br>
+        <br>检查BIOS设置
+        <br>检查BIOS版本
+        <br>检查administrator密码
+        <br>检查BIOS时间是否正确
+        <br>检查BIOS是否开启了UEFI模式
+        <br>检查启动项是否正确
+        <br>检查安全启动是否已禁用
+        <br>检查快速启动是否已禁用
+        <br>保存并退出
+      </p>
+      <img src="图片/BIOS设置.png" alt="BIOS设置">
+
+
+      <h3>PE系统U盘制作</h3>
+      <p>
+        删除所有分区，清理硬盘
+        <img src="../IMG/小知识库/img1.png" alt="硬盘分区">
+
+        快速分区
+        <img src="../IMG/小知识库/img2.png" alt="安装系统">
+
+        GPT分区，按需分单双分区，esp分区默认勾选，msr分区默认勾选
+        <img src="../IMG/小知识库/img3.png" alt="完成安装">
+
+        <br>选择Windows10lstc镜像，引导驱动器默认，安装驱动器位置选择要安装的硬盘，选项选择默认
+        <img src="../IMG/小知识库/img4.png" alt="重启电脑">
+
+        <br>完成安装后，将U盘从电脑中取出 ，重启电脑进行系统初始化OOBE阶段
+      <ul>
+        <li>是<img src="../IMG/小知识库/img5.png" alt="重启电脑"></li>
+        <li>是<img src="../IMG/小知识库/img6.png" alt="重启电脑"></li>
+        <li>跳过<img src="../IMG/小知识库/img7.png" alt="重启电脑"></li>
+        <li>我没有Internet连接<img src="../IMG/小知识库/img7.png" alt="重启电脑"></li>
+        <li>继续执行有限设置<img src="../IMG/小知识库/img9.png" alt="重启电脑"></li>
+        <li>接受<img src="../IMG/小知识库/img10.png" alt="重启电脑"></li>
+        <li>账户名自定义<img src="../IMG/小知识库/img11.png" alt="重启电脑"></li>
+        <li>密码空<img src="../IMG/小知识库/img12.png" alt="重启电脑"></li>
+        <li>接受<img src="../IMG/小知识库/img13.png" alt="重启电脑"></li>
+      </ul>
+
+      </p>
+
+
+      <h3>删除默认账号</h3>
+      <p>
+        打开计算机管理，打开本地用户与组，打开用户，右键Administrator，选择属性
+        <img src="../IMG/小知识库/img14.png" alt="重启电脑">
+        将账户以禁用勾选去除，点击确认
+        <img src="../IMG/小知识库/img15.png" alt="重启电脑">
+        注销默认用户，返回登录界面，登陆Administrator
+        <img src="../IMG/小知识库/img16.png" alt="重启电脑">
+        打开控制面板，选择类别查看方式，点击用户账户，点击删除用户账户，选择默认账户
+        <img src="../IMG/小知识库/img17.png" alt="重启电脑">
+        删除默认账号，选择删除文件
+        <img src="../IMG/小知识库/img18.png" alt="重启电脑">
+
+      </p>
+
+      <h3>安装office</h3>
+      <p>
+        从U盘或服务器中装载office镜像
+        <img src="../IMG/小知识库/img19.png" alt="重启电脑">
+
+        点击setup
+        <img src="../IMG/小知识库/img20.png" alt="重启电脑">
+
+        输入安装手册中的授权码，继续，选择下一步，选择安装
+        <img src="../IMG/小知识库/img21.png" alt="重启电脑">
+
+        <br>卸载office默认软件
+        <img src="../IMG/小知识库/img22.png" alt="重启电脑">
+
+        打开程序卸载，右键office，选择添加或删除功能
+        <img src="../IMG/小知识库/img23.png" alt="重启电脑">
+
+        保留word，excel，powerpoint，继续
+        <img src="../IMG/小知识库/img24.png" alt="重启电脑">
+
+
+        打开office任意1个组件，word，excel，powerpoint，继续
+        <img src="../IMG/小知识库/img29.png" alt="重启电脑">
+        继续
+        <img src="../IMG/小知识库/img30.png" alt="重启电脑">
+        查看授权时间为试用期30天
+        <img src="../IMG/小知识库/img31.png" alt="重启电脑">
+
+      </p>
+
+
+      <h3>激活系统</h3>
+      <p>
+        打开powershell，输入安装手册中的命令
+        <img src="../IMG/小知识库/img25.png" alt="重启电脑">
+
+        激活Windows选择1，激活office选择2
+        <img src="../IMG/小知识库/img26.png" alt="重启电脑">
+
+        完成Windows激活，按0返回选择页面
+        <img src="../IMG/小知识库/img27.png" alt="重启电脑">
+
+        继续激活office
+        <img src="../IMG/小知识库/img28.png" alt="重启电脑">
+
+        <!-- 
+        
+        <img src="../IMG/小知识库/img29.png" alt="重启电脑">
+        <img src="../IMG/小知识库/img30.png" alt="重启电脑">
+        <img src="../IMG/小知识库/img31.png" alt="重启电脑">
+        -->
+
+        完成office激活
+        <img src="../IMG/小知识库/img32.png" alt="重启电脑">
+        查看office激活状态
+        <img src="../IMG/小知识库/img33.png" alt="重启电脑">
+      </p>
+
+
+      <h3>更新系统</h3>
+      <p>
+        更新系统到最新版本
+        <img src="../IMG/小知识库/img35.png" alt="重启电脑">
+
+        删除系统默认软件应用
+        <img src="../IMG/小知识库/img34.png" alt="重启电脑">
+      </p>
+
+      <h3>安装驱动</h3>
+      <p>
+        查看可选更新，勾选可安装的驱动
+        <br>补全网卡驱动、 声卡驱动、显卡驱动
+        <br>若无法更新，使用其他更新软件
+      </p>
+
+      <h3>安装办公软件</h3>
+      <p>
+        安装浏览器
+        <br>安装输入法，/S 参数可静默安装
+        <br>安装输入法2
+        <br>安装通讯工具
+        <br>安装安全助手
+        <br><s>若系统无图片查看器，可修改注册表安装Windows图片查看器</s>
+        <!-- 
+        <img src="../IMG/小知识库/img36.png" alt="重启电脑">
+         -->
+        <img src="../IMG/小知识库/img37.png" alt="重启电脑">
+
+      </p>
+
+      <h3>修改计算机名</h3>
+      <p>
+        右键开始菜单，选择系统，选择重命名计算机
+        <img src="../IMG/小知识库/img36.png" alt="重启电脑">
+
+        修改计算机名，修改域控环境
+        <img src="../IMG/小知识库/img38.png" alt="重启电脑">
+
+        修改系统管理员密码，重启系统，选择下一步
+        <img src="../IMG/小知识库/img39.png" alt="重启电脑">
+
+        更新后背景自动变更为Windows聚焦，可修改为图片，还原默认Windows系统壁纸
+        <img src="../IMG/小知识库/img40.png" alt="重启电脑">
+      </p>
+
+
     </div>
+
+    <!-- 知识3：怎么样封装系统？ -->
+    <div class="知识库内容">
+      <h2>知识3：怎么样封装系统？</h2>
+      <h3>知识背景</h3>
+      <p>
+        封装系统是指将操作系统和应用程序安装在一个镜像文件中，以便在多台计算机上快速部署。
+        <br>优势在于可以减少安装时间和错误率，同时也可以确保所有计算机上的系统配置一致。
+      </p>
+
+      <h3>准备工作</h3>
+      <ul>
+        <li>一批品牌配置相同的电脑，<s>也可以不同</s></li>
+        <li>虚拟机</li>
+        <li>操作系统镜像文件</li>
+        <li>准备好要封装的应用程序安装文件</li>
+      </ul>
+
+      <h3>新建虚拟机</h3>
+      <p>
+        <br>选择版本
+        <br>选择配置
+        <br>选择网络
+        <br>选择启动顺序
+        <br>部署虚拟机，安装Windows10lstc
+      </p>
+
+      <h3>审核模式</h3>
+      <p>
+        <br>oobe阶段，按键盘shift+F10，自动重启
+        <br>取消sysprep
+      </p>
+
+      <h3>更新系统</h3>
+      <p>
+        安装应用程序，如office、浏览器、输入法等
+      </p>
+
+      <h3>安装应用程序</h3>
+      <p>
+        <br>安装office
+        <br>删除默认组件
+        <br>删除系统默认软件应用
+      </p>
+
+      <h3>将需要的文件和说明书复制到C盘</h3>
+      <p>
+        <br>将安装文件复制到C盘
+        <br>将说明书复制到C盘
+      </p>
+
+      <h3>封装系统</h3>
+      <p>
+        <br>sysprep
+        <br>重启虚拟机
+        <br>在MDT服务器上创建任务序列
+        <br>部署任务序列
+      </p>
+
+      <h3>测试系统</h3>
+      <p>
+        <br>在MDT服务器上创建测试任务序列
+        <br>部署测试任务序列
+        <br>测试系统是否正常
+      </p>
+
+
+    </div>
+
+    <!-- 知识4：怎么样使用MDT服务器部署系统？ -->
+    <div class="知识库内容">
+      <h2>知识4：怎么样使用MDT服务器部署系统？</h2>
+      <h3>知识背景</h3>
+      <p>
+        MDT服务器是一个用于部署Windows操作系统的工具，它可以帮助管理员快速部署系统到多台计算机上。
+      </p>
+
+      <h3>准备工作</h3>
+      <p>
+        <br>安装MDT服务器
+        <br>配置MDT服务器
+        <br>创建部署任务序列
+      </p>
+
+      <h3>部署系统</h3>
+      <p>
+        知识库内容4
+      </p>
+
+      <h3>测试系统</h3>
+      <p>
+        知识库内容5
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2023 知识库. All rights reserved.</p>
+  </footer>
 
 </body>
 
