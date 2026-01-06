@@ -1,2 +1,1 @@
-Hello.
-我的人生网站，世界好大，记录生活。
+Hello Github!
