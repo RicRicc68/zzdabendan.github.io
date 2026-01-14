@@ -39,6 +39,32 @@
             list-style: none;
         }
 
+        .表格 {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .表格 table {
+            width: 90vw;
+            height: 90vh;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        .表格 table td {
+            background-color: rgba(245, 245, 245, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+
 
 
         .个人信息 {
@@ -163,7 +189,7 @@
 
 
             <div class="段落 表格">
-                <table border="1" cellspacing="0" style="width: 100%; text-align: center;">
+                <table>
                     <tr>
                         <td>1</td>
                         <td>2</td>
