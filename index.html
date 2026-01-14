@@ -2,642 +2,638 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人简历</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人简历</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
 
-        .main {
-            background-color: #fff;
-            color: #000;
-            width: 90%;
-            height: 100%;
-            margin: 0 auto;
-        }
+    .main {
+      background-color: #fff;
+      color: #000;
+      width: 90%;
+      height: 100%;
+      margin: 0 auto;
+    }
 
-        h1 {
-            text-align: center;
-            margin: 20px auto;
-            padding: 10px 0;
-            font-weight: bold;
-            color: #000;
-            font-size: 24px;
-            line-height: 40px;
-        }
+    h1 {
+      text-align: center;
+      margin: 20px auto;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #000;
+      font-size: 24px;
+      line-height: 40px;
+    }
 
-        h2 {
-            font-size: 20px;
-        }
+    h2 {
+      font-size: 20px;
+    }
 
-        ul {
-            list-style: none;
-        }
+    ul {
+      list-style: none;
+    }
 
-        .表格 {
-            pointer-events: none;
+    .表格 {
+      pointer-events: none;
 
-            position: fixed;
-            top: 0;
-            left: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
 
-            width: 100vw;
-            height: 100vh;
+      width: 100vw;
+      height: 100vh;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .表格 table {
-            width: 100vw;
-            height: 100vh;
-            text-align: center;
-            border-collapse: collapse;
-        }
+    .表格 table {
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      border-collapse: collapse;
+    }
 
-        .表格 table td {
-            background-color: rgba(245, 245, 245, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.0);
-        }
-
-
+    .表格 table td {
+      background-color: rgba(245, 245, 245, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.0);
+    }
 
 
-        .个人信息 {
-            display: flex;
-            flex-direction: row;
-            align-items: start;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 20px auto;
-            width: 100%;
-        }
-
-        .个人信息-项目 {
-            margin: 10px auto;
-            width: 30%;
-        }
-
-        .个人头像 {
-            margin: 0 auto;
-        }
-
-        .基本信息 {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: start;
-            flex-wrap: wrap;
-            margin: 10px auto;
-        }
 
 
-        .求职意向 {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 20px auto;
-            width: 100%;
-        }
+    .个人信息 {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      width: 100%;
+    }
 
-        .个人能力 {
-            display: flex;
-            flex-direction: row;
-            align-items: start;
-            justify-content: space-between;
-            flex-wrap: no-wrap;
-            margin: 10px auto;
-            gap: 10px;
-        }
+    .个人信息-项目 {
+      margin: 10px auto;
+      width: 30%;
+    }
 
-        .计划 ul li {
-            margin-bottom: 5px;
-            padding: 5px;
-            border-radius: 5px;
-        }
+    .个人头像 {
+      margin: 0 auto;
+    }
 
-        /*=========================================*/
+    .基本信息 {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      flex-wrap: wrap;
+      margin: 10px auto;
+    }
 
-        .教育经历 {
-            margin: 20px auto;
-            width: 90%;
-        }
 
-        .教育经历-项目 {
-            background-color: #f5f5f5;
-            padding: 10px;
-            margin: 20px auto;
-            width: 100%;
-        }
+    .求职意向 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      width: 100%;
+    }
 
-        .学校课程 {
-            margin: 20px auto;
-            width: 100%;
-        }
+    .个人能力 {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: space-between;
+      flex-wrap: no-wrap;
+      margin: 10px auto;
+      gap: 10px;
+    }
 
-        /*=========================================*/
+    .计划 ul li {
+      margin-bottom: 5px;
+      padding: 5px;
+      border-radius: 5px;
+    }
 
-        .工作经历 {
-            margin: 20px auto;
-            width: 90%;
-        }
+    /*=========================================*/
 
-        .工作经历-项目 {
-            background-color: #f5f5f5;
-            padding: 10px;
-            margin: 20px auto;
-            width: 100%;
-        }
+    .教育经历 {
+      margin: 20px auto;
+      width: 90%;
+    }
 
-        .工作内容 {
-            margin: 20px auto;
-            width: 100%;
-        }
+    .教育经历-项目 {
+      background-color: #f5f5f5;
+      padding: 10px;
+      margin: 20px auto;
+      width: 100%;
+    }
 
-        /*=========================================*/
+    .学校课程 {
+      margin: 20px auto;
+      width: 100%;
+    }
 
-        .footer {
-            margin: 20px auto;
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
-            line-height: 20px;
-            color: #666;
-            border-top: 1px solid #666;
-            padding-top: 10px;
-            margin-top: 20px;
-            padding-bottom: 20px;
-        }
-    </style>
+    /*=========================================*/
+
+    .工作经历 {
+      margin: 20px auto;
+      width: 90%;
+    }
+
+    .工作经历-项目 {
+      background-color: #f5f5f5;
+      padding: 10px;
+      margin: 20px auto;
+      width: 100%;
+    }
+
+    .工作内容 {
+      margin: 20px auto;
+      width: 100%;
+    }
+
+    /*=========================================*/
+
+    .footer {
+      margin: 20px auto;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      line-height: 20px;
+      color: #666;
+      border-top: 1px solid #666;
+      padding-top: 10px;
+      margin-top: 20px;
+      padding-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="nav">
-        <h1>个人简历</h1>
+  <div class="nav">
+  </div>
+
+  <div class="main">
+
+    <div class="标题">
+      <h1>个人简历</h1>
     </div>
 
-    <div class="main">
+    <div class="正文">
 
-        <div class="正文">
+      <div class="段落 表格">
+        <table>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>31</td>
+            <td>32</td>
+            <td>33</td>
+            <td>34</td>
+            <td>35</td>
+            <td>36</td>
+            <td>37</td>
+            <td>38</td>
+            <td>39</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>41</td>
+            <td>42</td>
+            <td>43</td>
+            <td>44</td>
+            <td>45</td>
+            <td>46</td>
+            <td>47</td>
+            <td>48</td>
+            <td>49</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>51</td>
+            <td>52</td>
+            <td>53</td>
+            <td>54</td>
+            <td>55</td>
+            <td>56</td>
+            <td>57</td>
+            <td>58</td>
+            <td>59</td>
+            <td>60</td>
+          </tr>
+          <tr>
+            <td>61</td>
+            <td>62</td>
+            <td>63</td>
+            <td>64</td>
+            <td>65</td>
+            <td>66</td>
+            <td>67</td>
+            <td>68</td>
+            <td>69</td>
+            <td>70</td>
+          </tr>
+          <tr>
+            <td>71</td>
+            <td>72</td>
+            <td>73</td>
+            <td>74</td>
+            <td>75</td>
+            <td>76</td>
+            <td>77</td>
+            <td>78</td>
+            <td>79</td>
+            <td>80</td>
+          </tr>
+          <tr>
+            <td>81</td>
+            <td>82</td>
+            <td>83</td>
+            <td>84</td>
+            <td>85</td>
+            <td>86</td>
+            <td>87</td>
+            <td>88</td>
+            <td>89</td>
+            <td>90</td>
+          </tr>
+          <tr>
+            <td>91</td>
+            <td>92</td>
+            <td>93</td>
+            <td>94</td>
+            <td>95</td>
+            <td>96</td>
+            <td>97</td>
+            <td>98</td>
+            <td>99</td>
+            <td>100</td>
+          </tr>
 
-            <div class="段落 表格">
-                <table>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                        <td>25</td>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
-                        <td>29</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>31</td>
-                        <td>32</td>
-                        <td>33</td>
-                        <td>34</td>
-                        <td>35</td>
-                        <td>36</td>
-                        <td>37</td>
-                        <td>38</td>
-                        <td>39</td>
-                        <td>40</td>
-                    </tr>
-                    <tr>
-                        <td>41</td>
-                        <td>42</td>
-                        <td>43</td>
-                        <td>44</td>
-                        <td>45</td>
-                        <td>46</td>
-                        <td>47</td>
-                        <td>48</td>
-                        <td>49</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>51</td>
-                        <td>52</td>
-                        <td>53</td>
-                        <td>54</td>
-                        <td>55</td>
-                        <td>56</td>
-                        <td>57</td>
-                        <td>58</td>
-                        <td>59</td>
-                        <td>60</td>
-                    </tr>
-                    <tr>
-                        <td>61</td>
-                        <td>62</td>
-                        <td>63</td>
-                        <td>64</td>
-                        <td>65</td>
-                        <td>66</td>
-                        <td>67</td>
-                        <td>68</td>
-                        <td>69</td>
-                        <td>70</td>
-                    </tr>
-                    <tr>
-                        <td>71</td>
-                        <td>72</td>
-                        <td>73</td>
-                        <td>74</td>
-                        <td>75</td>
-                        <td>76</td>
-                        <td>77</td>
-                        <td>78</td>
-                        <td>79</td>
-                        <td>80</td>
-                    </tr>
-                    <tr>
-                        <td>81</td>
-                        <td>82</td>
-                        <td>83</td>
-                        <td>84</td>
-                        <td>85</td>
-                        <td>86</td>
-                        <td>87</td>
-                        <td>88</td>
-                        <td>89</td>
-                        <td>90</td>
-                    </tr>
-                    <tr>
-                        <td>91</td>
-                        <td>92</td>
-                        <td>93</td>
-                        <td>94</td>
-                        <td>95</td>
-                        <td>96</td>
-                        <td>97</td>
-                        <td>98</td>
-                        <td>99</td>
-                        <td>100</td>
-                    </tr>
+        </table>
+      </div>
 
-                </table>
-            </div>
+      <div class="段落 个人信息">
 
-            <div class="段落 个人信息">
+        <div class="个人信息-项目 基本信息">
+          <h2>基本信息</h2>
+          <ul class="基本信息">
+            <li>姓名：ZZ</li>
+            <li>年龄：25岁</li>
+            <li>性别：男</li>
+            <li>电话：10000000000</li>
+            <li>电话：10000000000</li>
+            <li>电话：10000000000</li>
+            <li>微信：10000000000</li>
+            <li>QQ：10000000000</li>
+            <li>QQ：10000000000</li>
+            <li>QQ：10000000000</li>
+            <li>邮箱：zhangsan@example.com</li>
+            <li>博客：<a href="https://zzdabendan.github.io">https://zzdabendan.github.io</a></li>
+            <li>博客：<a href="http://121.199.57.184">http://121.199.57.184</a></li>
+            <li>B站：<a href="https://space.bilibili.com/414851680">https://space.bilibili.com/</a></li>
+            <li>github：<a href="https://github.com/zzdabendan/">https://github.com/zzdabendan/</a></li>
+            <li>抖音：douyin</li>
+            <li></li>
+          </ul>
 
-                <div class="个人信息-项目 基本信息">
-                    <h2>基本信息</h2>
-                    <ul class="基本信息">
-                        <li>姓名：ZZ</li>
-                        <li>年龄：25岁</li>
-                        <li>性别：男</li>
-                        <li>电话：10000000000</li>
-                        <li>电话：10000000000</li>
-                        <li>电话：10000000000</li>
-                        <li>微信：10000000000</li>
-                        <li>QQ：10000000000</li>
-                        <li>QQ：10000000000</li>
-                        <li>QQ：10000000000</li>
-                        <li>邮箱：zhangsan@example.com</li>
-                        <li>博客：<a href="https://zzdabendan.github.io">https://zzdabendan.github.io</a></li>
-                        <li>博客：<a href="http://121.199.57.184">http://121.199.57.184</a></li>
-                        <li>B站：<a href="https://space.bilibili.com/414851680">https://space.bilibili.com/</a></li>
-                        <li>github：<a href="https://github.com/zzdabendan/">https://github.com/zzdabendan/</a></li>
-                        <li>抖音：douyin</li>
-                        <li></li>
-                    </ul>
-
-                </div>
-
-                <div class="个人信息-项目 头像">
-                    <h2>个人头像</h2>
-                    <!-- 
-                    <img src="../../IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%">
-                    -->
-                    <img src="./IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%">
-
-                </div>
-
-                <div class="个人信息-项目 计划">
-                    <h2>个人计划</h2>
-                    <ul>
-                        <li><span style="background-color: #CCC; border-radius: 5px;">人一定要有目标1：</span><br>睡觉，闭目养神</li>
-                        <li><span style="background-color: #CCC; border-radius: 5px;">人一定要有目标2：</span><br>好好呼吸，保持气息和头脑清醒
-                        </li>
-                        <li><span
-                                style="background-color: #CCC; border-radius: 5px;">人一定要有目标3：</span><br>好好保持身体姿态，站正，坐正，走正
-                        </li>
-                        <li><span style="background-color: #CCC; border-radius: 5px;">人一定要有目标4：</span><br>喝水，早餐午餐晚餐</li>
-                        <li><span style="background-color: #CCC; border-radius: 5px;">人一定要靠感觉和计划行动：</span><br>计划
-                        </li>
-
-                        <li><span style="background-color: #CCC; border-radius: 5px;">人一定要有目标5：</span><br>整理家务，倒垃圾，洗鞋子
-                        </li>
-                        <li><span style="background-color: #CCC; border-radius: 5px;">人一定呀有目标6：</span><br>保持个人健康，洗漱</li>
-                        <li><span
-                                style="background-color: #CCC; border-radius: 5px;">人一定要有目标7：</span><br>锻炼，热身，有氧，力量，腿部，深蹲
-                        </li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="段落 高级信息">
-                <h2>高级信息</h2>
-                <div class="个人能力">
-                    </ul>
-                    <ul>
-                        <li>等级：8888</li>
-                        <li>学历：6+3+3+3</li>
-                        <li>资产：-1999</li>
-                        <li>经验：0.3+0.3+3.6</li>
-                        <li>体力：3/100</li>
-                        <li>精神：3/100</li>
-                        <li>心脏：正常</li>
-                        <li>肺部：正常</li>
-                        <li>肝脏：正常</li>
-                        <li>胃部：正常</li>
-                        <li>肾脏：正常</li>
-                        <li>大脑：正常</li>
-                        <li></li>
-
-                    </ul>
-
-                    <ul>
-                        <li>家境</li>
-                        <li>人脉</li>
-                        <li>权势</li>
-                        <li>钱财</li>
-                        <li>境界</li>
-                        <li>资产</li>
-                        <li>幸运</li>
-                        <li>颜值</li>
-                        <li>经验</li>
-                        <li>眼力</li>
-                        <li>气质</li>
-                        <li>性格</li>
-                        <li>智商</li>
-                        <li>情商</li>
-                        <li>勇敢</li>
-                        <li>大胆</li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-
-                    <ul>
-                        <li>生存能力</li>
-                        <li>呼吸能力</li>
-                        <li>消化能力</li>
-                        <li>运动能力</li>
-                        <li>休息能力</li>
-                        <li>排泄能力</li>
-                        <li>免疫能力</li>
-                        <li>咀嚼能力</li>
-                        <li>代谢能力</li>
-                        <li>跳跃能力</li>
-                        <li>跑步能力</li>
-                        <li>武术能力</li>
-                        <li>肌肉力</li>
-                        <li>力量</li>
-                        <li>速度</li>
-                        <li>耐力</li>
-                        <li>柔韧</li>
-                        <li>重量</li>
-                        <li>放松能力</li>
-                        <li>熬夜能力</li>
-
-                    </ul>
-
-                    <ul>
-
-                        <li>社交能力</li>
-                        <li>识人能力</li>
-                        <li>欣赏能力</li>
-                        <li>夸赞能力</li>
-                        <li>骂人能力</li>
-                        <li>照顾能力</li>
-                        <li>爱的能力</li>
-                        <li>情绪能力</li>
-                        <li>表情能力</li>
-                        <li>开心能力</li>
-                        <li>抗压能力</li>
-                        <li>沟通力</li>
-                        <li>共情力</li>
-                        <li>感染力</li>
-                        <li>领导力</li>
-                        <li>执行力</li>
-                        <li>说服能力</li>
-                        <li>批评能力</li>
-                        <li>采纳能力</li>
-                        <li>建议能力</li>
-                    </ul>
-
-                    <ul>
-                        <li>家务能力</li>
-                        <li>整理能力</li>
-                        <li>叠被子能力</li>
-                        <li>清洁能力</li>
-                        <li>洗被子能力</li>
-                        <li>理发能力</li>
-                        <li>化妆能力</li>
-                        <li>打扮能力</li>
-                    </ul>
-
-                    <ul>
-                        <li>大脑能力</li>
-                        <li>预知能力</li>
-                        <li>学习能力</li>
-                        <li>记忆能力</li>
-                        <li>遗忘能力</li>
-                        <li>记录能力</li>
-                        <li>起名字能力</li>
-                        <li>算数能力</li>
-                        <li>数学能力</li>
-                        <li>写字能力</li>
-                        <li>识字能力</li>
-                        <li>读音能力</li>
-                        <li>读书能力</li>
-                        <li>写作能力</li>
-                        <li>提问能力</li>
-                        <li>推演能力</li>
-                        <li>计谋能力</li>
-                        <li>计划能力</li>
-                        <li>判断能力</li>
-                        <li>选择能力</li>
-                        <li>分析能力</li>
-                        <li>复盘能力</li>
-                        <li>搜索能力</li>
-                        <li>检查能力</li>
-                        <li>检验能力</li>
-                        <li>比较能力</li>
-                        <li>分类能力</li>
-                        <li>评价能力</li>
-                        <li>总结能力</li>
-                        <li>疲劳能力</li>
-                        <li>摸鱼能力</li>
-                        <li>打断能力</li>
-                        <li>停止能力</li>
-                        <li>小脑能力</li>
-
-
-                    </ul>
-
-                    <ul>
-                        <li>工作能力</li>
-                        <li>找客户能力</li>
-                        <li>找需求能力</li>
-                        <li>生产能力</li>
-                        <li>耕种能力</li>
-                        <li>采收能力</li>
-                        <li>建造能力</li>
-                        <li>教育能力</li>
-                        <li>防护能力</li>
-                        <li>疗愈能力</li>
-                        <li>救援能力</li>
-                        <li>侦查能力</li>
-                        <li>抓捕能力</li>
-                        <li>做人能力</li>
-                        <li>自制力</li>
-                        <li>创造力</li>
-                        <li>想象力</li>
-                        <li>意志力</li>
-                        <li>设计能力</li>
-                        <li>制图能力</li>
-                        <li>制作能力</li>
-                        <li>维修能力</li>
-                        <li>修图能力</li>
-                        <li>剪辑能力</li>
-                        <li>教学能力</li>
-                        <li>翻译能力</li>
-                        <li>发言能力</li>
-                        <li>说话能力</li>
-                        <li>演讲能力</li>
-                        <li>销售能力</li>
-                        <li>接待能力</li>
-                        <li>办公能力</li>
-                        <li>表格能力</li>
-                        <li>文档能力</li>
-                        <li>演示能力</li>
-                        <li>函数能力</li>
-                        <li>编程能力</li>
-                        <li>管理能力</li>
-                    </ul>
-
-                    <ul>
-                        <li>娱乐能力</li>
-                        <li>钢琴能力</li>
-                        <li>游戏能力</li>
-                        <li>绘画能力</li>
-                        <li>唱歌能力</li>
-
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="段落 求职意向">
-                <h2>求职意向</h2>
-                <ul class="求职意向">
-                    <li>意向岗位: <br>xxx</li>
-                    <li>意向城市: <br>南昌</li>
-                    <li>期望薪资: <br>￥9999</li>
-                    <li>求职类型: <br>全职</li>
-                </ul>
-            </div>
-
-            <div class="段落 教育经历">
-                <h2>教育经历</h2>
-                <div class="教育经历">
-                    <div class="教育经历-项目">
-                        <p><b>2019年09月——2022年07月</b> | 江西信息应用职业技术学院 | 计算机网络技术：专科</p>
-                        <p class="学校课程">课程：组网技术、Linux系统、无线技术、Windows系统、综合布线等等</p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            <div class="段落 工作经历">
-                <h2>工作经历</h2>
-                <div class="工作经历">
-
-                    <div class="工作经历-项目">
-                        <p><b>2021年07月——2021年09月</b> | 媒体行业 | 视频剪辑 | ￥1800 | <b>南昌酷哦文化传播有限公司</b></p>
-                        <p class="工作内容">工作内容：负责视频剪辑，负责视频上传，负责视频推广</p>
-                        <hr>
-                    </div>
-
-                    <div class="工作经历-项目">
-                        <p><b>2021年10月——2021年10月</b> | 物流行业 | 分拣工人 | ￥1800 | <b>某京东厂库</b></p>
-                        <p class="工作内容">工作内容：负责物流分拣，负责订单处理，负责客户服务</p>
-                        <hr>
-                    </div>
-
-                    <div class="工作经历-项目">
-                        <p><b>2021年12月——2021年12月</b> | 制造行业 | 装配工人 | ￥1800 | <b>南昌龙旗</b></p>
-                        <p class="工作内容">工作内容：负责制造装配</p>
-                        <hr>
-                    </div>
-
-                    <div class="工作经历-项目">
-                        <p><b>2022年03月——2022年05月</b> | 驾校行业 | 技术专员 | ￥3500 | <b>南昌人才驾校有限公司</b></p>
-                        <p class="工作内容">工作内容：负责驾校设备维护技术，负责客户服务</p>
-                        <hr>
-                    </div>
-
-                    <div class="工作经历-项目">
-                        <p><b>2022年06月——2026年00月</b> | 客服行业 | 运维专员 | ￥4500 | <b>湖南德沃信息技术有限公司</b></p>
-                        <p class="工作内容">工作内容：负责客服技术维护，负责客户服务</p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            <div class="段落 所获奖项">
-                <h2>所获奖项，质资证书</h2>
-                <h2>自我评价，兴趣爱好</h2>
-            </div>
         </div>
 
+        <div class="个人信息-项目 头像">
+          <h2>个人头像</h2>
+          <img src="./IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%">
+          <!-- <img src="../../IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%"> -->
+        </div>
+
+        <div class="个人信息-项目 计划">
+          <h2>个人计划</h2>
+          <ul>
+            <li><span style="background-color: #FFFFCC; border-radius: 5px;">人一定要有目标1：</span><br>睡觉，闭目养神</li>
+            <li><span style="background-color: #FFFFCC; border-radius: 5px;">人一定要有目标2：</span><br>好好呼吸，保持气息和头脑清醒</li>
+            <li><span style="background-color: #FFFFCC; border-radius: 5px;">人一定要有目标3：</span><br>好好保持身体姿态，站正，坐正，走正</li>
+            <li><span style="background-color: #FFFFCC; border-radius: 5px;">人一定要有目标4：</span><br>喝水，早餐午餐晚餐</li>
+            <li><span style="background-color: #CCC; border-radius: 5px;">人一定要靠感觉和计划行动：</span><br>计划</li>
+            <li><span style="background-color: #CCC; border-radius: 5px;">人一定要有目标5：</span><br>整理家务，倒垃圾，洗鞋子</li>
+            <li><span style="background-color: #CCC; border-radius: 5px;">人一定呀有目标6：</span><br>保持个人健康，洗漱</li>
+            <li><span style="background-color: #CCC; border-radius: 5px;">人一定要有目标7：</span><br>锻炼，热身，有氧，力量，腿部，深蹲</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="段落 高级信息">
+        <h2>高级信息</h2>
+        <div class="个人能力">
+          </ul>
+          <ul>
+            <li>等级：8888</li>
+            <li>学历：6+3+3+3</li>
+            <li>资产：-1999</li>
+            <li>经验：0.3+0.3+3.6</li>
+            <li>体力：3/100</li>
+            <li>精神：3/100</li>
+            <li>心脏：正常</li>
+            <li>肺部：正常</li>
+            <li>肝脏：正常</li>
+            <li>胃部：正常</li>
+            <li>肾脏：正常</li>
+            <li>大脑：正常</li>
+            <li></li>
+
+          </ul>
+
+          <ul>
+            <li>家境</li>
+            <li>人脉</li>
+            <li>权势</li>
+            <li>钱财</li>
+            <li>境界</li>
+            <li>资产</li>
+            <li>幸运</li>
+            <li>颜值</li>
+            <li>经验</li>
+            <li>眼力</li>
+            <li>气质</li>
+            <li>性格</li>
+            <li>智商</li>
+            <li>情商</li>
+            <li>勇敢</li>
+            <li>大胆</li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+
+          <ul>
+            <li>生存能力</li>
+            <li>呼吸能力</li>
+            <li>消化能力</li>
+            <li>运动能力</li>
+            <li>休息能力</li>
+            <li>排泄能力</li>
+            <li>免疫能力</li>
+            <li>咀嚼能力</li>
+            <li>代谢能力</li>
+            <li>跳跃能力</li>
+            <li>跑步能力</li>
+            <li>武术能力</li>
+            <li>肌肉力</li>
+            <li>力量</li>
+            <li>速度</li>
+            <li>耐力</li>
+            <li>柔韧</li>
+            <li>重量</li>
+            <li>放松能力</li>
+            <li>熬夜能力</li>
+
+          </ul>
+
+          <ul>
+
+            <li>社交能力</li>
+            <li>识人能力</li>
+            <li>欣赏能力</li>
+            <li>夸赞能力</li>
+            <li>骂人能力</li>
+            <li>照顾能力</li>
+            <li>爱的能力</li>
+            <li>情绪能力</li>
+            <li>表情能力</li>
+            <li>开心能力</li>
+            <li>抗压能力</li>
+            <li>沟通力</li>
+            <li>共情力</li>
+            <li>感染力</li>
+            <li>领导力</li>
+            <li>执行力</li>
+            <li>说服能力</li>
+            <li>批评能力</li>
+            <li>采纳能力</li>
+            <li>建议能力</li>
+          </ul>
+
+          <ul>
+            <li>家务能力</li>
+            <li>整理能力</li>
+            <li>叠被子能力</li>
+            <li>清洁能力</li>
+            <li>洗被子能力</li>
+            <li>理发能力</li>
+            <li>化妆能力</li>
+            <li>打扮能力</li>
+          </ul>
+
+          <ul>
+            <li>大脑能力</li>
+            <li>预知能力</li>
+            <li>学习能力</li>
+            <li>记忆能力</li>
+            <li>遗忘能力</li>
+            <li>记录能力</li>
+            <li>起名字能力</li>
+            <li>算数能力</li>
+            <li>数学能力</li>
+            <li>写字能力</li>
+            <li>识字能力</li>
+            <li>读音能力</li>
+            <li>读书能力</li>
+            <li>写作能力</li>
+            <li>提问能力</li>
+            <li>推演能力</li>
+            <li>计谋能力</li>
+            <li>计划能力</li>
+            <li>判断能力</li>
+            <li>选择能力</li>
+            <li>分析能力</li>
+            <li>复盘能力</li>
+            <li>搜索能力</li>
+            <li>检查能力</li>
+            <li>检验能力</li>
+            <li>比较能力</li>
+            <li>分类能力</li>
+            <li>评价能力</li>
+            <li>总结能力</li>
+            <li>疲劳能力</li>
+            <li>摸鱼能力</li>
+            <li>打断能力</li>
+            <li>停止能力</li>
+            <li>小脑能力</li>
+
+
+          </ul>
+
+          <ul>
+            <li>工作能力</li>
+            <li>找客户能力</li>
+            <li>找需求能力</li>
+            <li>生产能力</li>
+            <li>耕种能力</li>
+            <li>采收能力</li>
+            <li>建造能力</li>
+            <li>教育能力</li>
+            <li>防护能力</li>
+            <li>疗愈能力</li>
+            <li>救援能力</li>
+            <li>侦查能力</li>
+            <li>抓捕能力</li>
+            <li>做人能力</li>
+            <li>自制力</li>
+            <li>创造力</li>
+            <li>想象力</li>
+            <li>意志力</li>
+            <li>设计能力</li>
+            <li>制图能力</li>
+            <li>制作能力</li>
+            <li>维修能力</li>
+            <li>修图能力</li>
+            <li>剪辑能力</li>
+            <li>教学能力</li>
+            <li>翻译能力</li>
+            <li>发言能力</li>
+            <li>说话能力</li>
+            <li>演讲能力</li>
+            <li>销售能力</li>
+            <li>接待能力</li>
+            <li>办公能力</li>
+            <li>表格能力</li>
+            <li>文档能力</li>
+            <li>演示能力</li>
+            <li>函数能力</li>
+            <li>编程能力</li>
+            <li>管理能力</li>
+          </ul>
+
+          <ul>
+            <li>娱乐能力</li>
+            <li>钢琴能力</li>
+            <li>游戏能力</li>
+            <li>绘画能力</li>
+            <li>唱歌能力</li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="段落 求职意向">
+        <h2>求职意向</h2>
+        <ul class="求职意向">
+          <li>意向岗位: <br>xxx</li>
+          <li>意向城市: <br>南昌</li>
+          <li>期望薪资: <br>￥9999</li>
+          <li>求职类型: <br>全职</li>
+        </ul>
+      </div>
+
+      <div class="段落 教育经历">
+        <h2>教育经历</h2>
+        <div class="教育经历">
+          <div class="教育经历-项目">
+            <p><b>2019年09月——2022年07月</b> | 江西信息应用职业技术学院 | 计算机网络技术：专科</p>
+            <p class="学校课程">课程：组网技术、Linux系统、无线技术、Windows系统、综合布线等等</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+
+      <div class="段落 工作经历">
+        <h2>工作经历</h2>
+        <div class="工作经历">
+
+          <div class="工作经历-项目">
+            <p><b>2021年07月——2021年09月</b> | 媒体行业 | 视频剪辑 | ￥1800 | <b>南昌酷哦文化传播有限公司</b></p>
+            <p class="工作内容">工作内容：负责视频剪辑，负责视频上传，负责视频推广</p>
+            <hr>
+          </div>
+
+          <div class="工作经历-项目">
+            <p><b>2021年10月——2021年10月</b> | 物流行业 | 分拣工人 | ￥1800 | <b>某京东厂库</b></p>
+            <p class="工作内容">工作内容：负责物流分拣，负责订单处理，负责客户服务</p>
+            <hr>
+          </div>
+
+          <div class="工作经历-项目">
+            <p><b>2021年12月——2021年12月</b> | 制造行业 | 装配工人 | ￥1800 | <b>南昌龙旗</b></p>
+            <p class="工作内容">工作内容：负责制造装配</p>
+            <hr>
+          </div>
+
+          <div class="工作经历-项目">
+            <p><b>2022年03月——2022年05月</b> | 驾校行业 | 技术专员 | ￥3500 | <b>南昌人才驾校有限公司</b></p>
+            <p class="工作内容">工作内容：负责驾校设备维护技术，负责客户服务</p>
+            <hr>
+          </div>
+
+          <div class="工作经历-项目">
+            <p><b>2022年06月——2026年00月</b> | 客服行业 | 运维专员 | ￥4500 | <b>湖南德沃信息技术有限公司</b></p>
+            <p class="工作内容">工作内容：负责客服技术维护，负责客户服务</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+
+      <div class="段落 所获奖项">
+        <h2>所获奖项，质资证书</h2>
+        <h2>自我评价，兴趣爱好</h2>
+      </div>
     </div>
 
-    <div class="footer">
-        <p>联系我：10000000000<br>邮箱：zhangsan@example.com</p>
+    <div class="结尾">
+
     </div>
+
+  </div>
+
+  <div class="footer">
+    <p>联系我：10000000000<br>邮箱：zhangsan@example.com</p>
+  </div>
 </body>
 
 </html>
