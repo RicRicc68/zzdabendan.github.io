@@ -81,16 +81,18 @@
     .个人信息 {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
+
       align-items: start;
       justify-content: space-around;
-      flex-wrap: wrap;
+
       margin: 20px auto;
       width: 100%;
     }
 
     .个人信息-项目 {
       margin: 10px auto;
-      width: 30%;
+      width: 100%;
     }
 
     .个人头像 {
@@ -100,10 +102,9 @@
     .基本信息 {
       display: flex;
       flex-direction: column;
-      align-items: start;
-      justify-content: start;
       flex-wrap: wrap;
-      margin: 10px auto;
+      align-items: start;
+      justify-content: space-between;
     }
 
 
@@ -328,7 +329,6 @@
         </table>
       </div>
 
-
       <div class="段落 未命名段落">
         <h2>未命名段落</h2>
         <ul>
@@ -345,6 +345,13 @@
       </div>
 
       <div class="段落 个人信息">
+
+
+        <div class="个人信息-项目 头像">
+          <h2>个人头像</h2>
+          <img src="./IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%">
+          <!-- <img src="../../IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%"> -->
+        </div>
 
         <div class="个人信息-项目 基本信息">
           <h2>基本信息</h2>
@@ -370,11 +377,6 @@
 
         </div>
 
-        <div class="个人信息-项目 头像">
-          <h2>个人头像</h2>
-          <img src="./IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%">
-          <!-- <img src="../../IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%"> -->
-        </div>
 
         <div class="个人信息-项目 计划">
           <h2>个人计划</h2>
