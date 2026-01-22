@@ -20,6 +20,8 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            font-size: 16px;
+
         }
 
         table,
@@ -98,12 +100,9 @@
 
 
         .小隐蔽屋1 {
-            background-color: #EEEEEE;
-
-            padding: 5px;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 5px;
+            gap: 15px;
             overflow: wrap;
         }
 
@@ -116,8 +115,26 @@
 
         .系统安装 .方法 {
             margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #FF0051;
+            border-radius: 5px;
+        }
+
+
+        .步骤 {
+            margin: 10px auto;
+            padding: 10px;
             border: 1px solid #CCCCCC;
             border-radius: 5px;
+        }
+
+        .步骤:nth-child(2n) {
+            background-color: #F5F5F5;
+        }
+
+        .步骤 h3 {
+            margin-bottom: 10px;
+            background-color: aliceblue;
         }
     </style>
 </head>
@@ -189,7 +206,7 @@
 
     <div class="内容">
 
-        <div class="段落 2个人背包">
+        <div class="段落 个人背包2">
             <table>
                 <caption>2背包</caption>
                 <tr>
@@ -245,7 +262,7 @@
             </table>
         </div>
 
-        <div class="段落 3个人行李">
+        <div class="段落 个人行李3">
             <table>
                 <caption>3行李</caption>
                 <tr>
@@ -279,7 +296,7 @@
             </table>
         </div>
 
-        <div class="段落 4桌面物品">
+        <div class="段落 桌面物品4">
             <table>
                 <caption>4桌面</caption>
                 <tr>
@@ -591,7 +608,7 @@
             </table>
         </div>
 
-        <div class="段落 5床铺物品">
+        <div class="段落 床铺物品5">
             <table>
                 <caption>5床铺</caption>
                 <tr>
@@ -646,7 +663,7 @@
             </table>
         </div>
 
-        <div class="段落 6厨房物品">
+        <div class="段落 厨房物品6">
             <table>
                 <caption>6厨房</caption>
                 <tr>
@@ -722,7 +739,7 @@
             </table>
         </div>
 
-        <div class="段落 7清洁工具">
+        <div class="段落 清洁工具7">
             <table>
                 <caption>7清洁工具</caption>
                 <tr>
@@ -819,7 +836,7 @@
             </table>
         </div>
 
-        <div class="段落 8小收纳箱">
+        <div class="段落 小收纳箱8">
             <table>
                 <caption>8小收纳箱</caption>
                 <tr>
@@ -931,28 +948,8 @@
             </table>
         </div>
 
-        <div class="段落 9系统安装步骤">
+        <div class="段落 系统安装步骤9">
             <h2>系统安装步骤</h2>
-
-            <div class="步骤 硬件设备安装接线">
-                <h3>硬件设备安装接线</h3>
-                <ol>
-                    <li>CPU</li>
-                    <li>内存</li>
-                    <li>硬盘</li>
-                    <li>主板</li>
-                    <li>电源</li>
-                    <li>显卡</li>
-                    <li>网卡</li>
-                    <li>声卡</li>
-                    <li>显示器</li>
-                    <li>摄像头</li>
-                    <li>麦克风</li>
-                    <li>扬声器，耳机</li>
-                    <li>键盘鼠标</li>
-                    <li>打印机</li>
-                </ol>
-            </div>
 
             <div class="步骤 系统故障">
                 <h3>系统故障</h3>
@@ -975,6 +972,26 @@
                         </pre>
                     </li>
                 </ul>
+            </div>
+
+            <div class="步骤 硬件设备安装接线">
+                <h3>硬件设备安装接线</h3>
+                <ol>
+                    <li>CPU</li>
+                    <li>内存</li>
+                    <li>硬盘</li>
+                    <li>主板</li>
+                    <li>电源</li>
+                    <li>显卡</li>
+                    <li>网卡</li>
+                    <li>声卡</li>
+                    <li>显示器</li>
+                    <li>摄像头</li>
+                    <li>麦克风</li>
+                    <li>扬声器，耳机</li>
+                    <li>键盘鼠标</li>
+                    <li>打印机</li>
+                </ol>
             </div>
 
             <div class="步骤 系统安装">
@@ -1240,7 +1257,43 @@
                 </pre>
             </div>
 
+            <div class="步骤 我的全部文件">
+                <pre>
+            00-我的全部文件
+            000-未整理文件
+            0-驱动
+            1-系统
+            2-软件
+            3-配置
+            4-数据
+            Game
+            Steam
+            WeGameApps
+            生活1-地图
+            生活2-时间
+            生活3-任务-1-作息
+            生活3-任务-2-身体
+            生活3-任务-3-家务
+            生活3-任务-4-娱乐
+            生活3-任务-5-学识
+            生活3-任务-6-职业
+            生活3-标题-ZZ茅草屋-内心十万字-格式化思路
+            
+            </pre>
+
+            </div>
+
+            <div class="步骤 我的书签">
+                <ol>
+                    <li><a href="" target="_blank">知识库</a></li>
+                    <li><a href="" target="_blank">个人物品</a></li>
+                </ol>
+
+
+            </div>
+
         </div>
+
 
 
         <div class="结尾">
