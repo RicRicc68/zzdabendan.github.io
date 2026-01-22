@@ -12,6 +12,10 @@
             list-style-type: none;
         }
 
+        pre {
+            font-size: 18px;
+            line-height: 25px;
+        }
 
         table {
             border-collapse: collapse;
@@ -54,6 +58,22 @@
             width: 150px;
         }
 
+        .分类,
+        .序号,
+        .名称,
+        .数目,
+        .备注 {
+            text-align: center;
+        }
+
+        .数目 {
+            width: 200px;
+        }
+
+        .备注 {
+            width: 150px;
+        }
+
 
 
         .标题 {
@@ -93,6 +113,12 @@
             text-align: center;
             width: 190px;
         }
+
+        .系统安装 .方法 {
+            margin: 10px auto;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -109,42 +135,42 @@
 
             <div class="隐蔽屋1">
                 <h2>老老家房子</h2>
-                <p>隐蔽屋1</p>
+                <p>隐蔽屋1（00000000-00000000）</p>
             </div>
 
             <div class="隐蔽屋2">
                 <h2>沙田仔老房子</h2>
-                <p>隐蔽屋2</p>
+                <p>隐蔽屋2（00000000-00000000）</p>
             </div>
 
             <div class="隐蔽屋3">
                 <h2>沙田仔新房子</h2>
-                <p>隐蔽屋3</p>
+                <p>隐蔽屋3（00000000-00000000）</p>
             </div>
 
             <div class="隐蔽屋4">
                 <h2>大埔村宿舍高楼层</h2>
-                <p>隐蔽屋4</p>
+                <p>隐蔽屋4（00000000-00000000）</p>
             </div>
 
             <div class="隐蔽屋5">
                 <h2>大埔村2楼</h2>
-                <p>隐蔽屋5</p>
+                <p>隐蔽屋5（20060000-00000000）</p>
             </div>
 
             <div class="隐蔽屋6">
                 <h2>大埔村初中3楼</h2>
-                <p>隐蔽屋6</p>
+                <p>隐蔽屋6（20150000-20160000）</p>
             </div>
 
             <div class="隐蔽屋7">
                 <h2>五中学校旁小区2栋</h2>
-                <p>隐蔽屋7</p>
+                <p>隐蔽屋7（20160000-20190400）</p>
             </div>
 
             <div class="隐蔽屋8">
                 <h2>江信学校宿舍9栋231室</h2>
-                <p>隐蔽屋8</p>
+                <p>隐蔽屋8（20190900-20210700）</p>
             </div>
 
             <div class="隐蔽屋9">
@@ -176,21 +202,21 @@
                 <tr>
                     <td rowspan="6">1</td>
                     <td>1</td>
-                    <td>1</td>
+                    <td>房间钥匙</td>
                     <td>1</td>
                     <td>1</td>
                 </tr>
                 <tr>
                     <!-- 合并单元格2 -->
                     <td>2</td>
-                    <td>2</td>
+                    <td>银行卡</td>
                     <td>2</td>
                     <td>2</td>
                 </tr>
                 <tr>
                     <!-- 合并单元格2 -->
                     <td>3</td>
-                    <td>2</td>
+                    <td>身份证</td>
                     <td>2</td>
                     <td>2</td>
                 </tr>
@@ -215,6 +241,7 @@
                     <td>2</td>
                     <td>2</td>
                 </tr>
+
             </table>
         </div>
 
@@ -231,42 +258,21 @@
                 <tr>
                     <td rowspan="6">1</td>
                     <td>1</td>
-                    <td>1</td>
+                    <td>空</td>
                     <td>1</td>
                     <td>1</td>
                 </tr>
                 <tr>
                     <!-- 合并单元格2 -->
                     <td>2</td>
-                    <td>2</td>
+                    <td>空</td>
                     <td>2</td>
                     <td>2</td>
                 </tr>
                 <tr>
                     <!-- 合并单元格2 -->
                     <td>3</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <!-- 合并单元格2 -->
-                    <td>4</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <!-- 合并单元格2 -->
-                    <td>5</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <!-- 合并单元格2 -->
-                    <td>6</td>
-                    <td>2</td>
+                    <td>空</td>
                     <td>2</td>
                     <td>2</td>
                 </tr>
@@ -284,7 +290,7 @@
                     <th>备注</th>
                 </tr>
                 <tr>
-                    <td rowspan="6">4</td>
+                    <td rowspan="19">4</td>
                     <td>1</td>
                     <td>掌上无人机</td>
                     <td>大疆NEO</td>
@@ -293,37 +299,294 @@
                 <tr>
                     <!-- 合并单元格2 -->
                     <td>2</td>
-                    <td>2</td>
+                    <td>手机充电器</td>
                     <td>2</td>
                     <td>2</td>
                 </tr>
                 <tr>
-                    <!-- 合并单元格2 -->
+                    <!-- 合并单元格3 -->
                     <td>3</td>
-                    <td>2</td>
+                    <td>旧手机充电器</td>
                     <td>2</td>
                     <td>2</td>
                 </tr>
                 <tr>
-                    <!-- 合并单元格2 -->
+                    <!-- 合并单元格4 -->
                     <td>4</td>
-                    <td>2</td>
+                    <td>数据线</td>
                     <td>2</td>
                     <td>2</td>
                 </tr>
                 <tr>
-                    <!-- 合并单元格2 -->
+                    <!-- 合并单元格5 -->
                     <td>5</td>
-                    <td>2</td>
-                    <td>2</td>
+                    <td>电排插1</td>
+                    <td>公牛单排插排</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格6 -->
+                    <td>6</td>
+                    <td>电排插2</td>
+                    <td>公牛多开关插排</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格7 -->
+                    <td>7</td>
+                    <td>电排插3</td>
+                    <td>小米双排插排</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格8 -->
+                    <td>8</td>
+                    <td>智能插座</td>
+                    <td>小米智能插座</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格9 -->
+                    <td>9</td>
+                    <td>手机1<br>
+                        手机2<br>
+                        手机3<br>
+                        手机4<br>
+                        手机5<br>
+                        手机6<br>
+                        手机7<br>
+                        手机8<br>
+                        手机9<br>
+                    </td>
+                    <td>三星
+                        <br>诺基亚
+                        <br>酷米
+                        <br>荣耀
+                        <br>华为9x
+                        <br>小米note10
+                        <br>小米k60
+                        <br>小米note14trobe
+                        <br>小米
+                    </td>
                     <td>2</td>
                 </tr>
                 <tr>
-                    <!-- 合并单元格2 -->
-                    <td>6</td>
+                    <!-- 合并单元格10 -->
+                    <td>10</td>
+                    <td>手机1旧手机</td>
+                    <td>20191000
+                    </td>
+                    <td>1599</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格11 -->
+                    <td>11</td>
+                    <td>手机2</td>
+                    <td>20230000
+                    </td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格12 -->
+                    <td>12</td>
+                    <td>笔记本1
+                        <br>CPU
+                        <br>内存
+                        <br>存储
+                        <br>显示器
+                    </td>
+                    <td>20251000
+                        <br>M1
+                        <br>8G
+                        <br>
+                        <br>
+                    </td>
+                    <td>5500-3500元</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格13 -->
+                    <td>13</td>
+                    <td>笔记本2
+                        <br>CPU
+                        <br>内存
+                        <br>存储
+                        <br>显示器
+                    </td>
+                    <td>20251000
+                        <br>M1
+                        <br>8G
+                        <br>
+                        <br>
+                    </td>
+                    <td>2600元</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格14 -->
+                    <td>14</td>
+                    <td>电脑2
+                        <br>CPU
+                        <br>GPU
+                        <br>内存
+                        <br>存储
+                        <br>主板
+                        <br>电源
+                        <br>散热
+                        <br>机箱
+                        <br>显示器
+                        <br>音响
+                        <br>耳机
+                        <br>麦克风
+                        <br>键盘
+                        <br>鼠标
+                        <br>鼠标垫
+                    </td>
+                    <td>20180000
+                        <br>AMDR53400G
+                        <br>Vage8
+                        <br>十铨8G*2
+                        <br>紫光固态 480G
+                        <br>微星 B450I
+                        <br>傻瓜超人 350W
+                        <br>65W
+                        <br>ITX 傻瓜超人K39
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </td>
+                    <td>2500元</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格15 -->
+                    <td>15</td>
+                    <td>电脑2
+                        <br>CPU
+                        <br>GPU
+                        <br>内存
+                        <br>存储
+                        <br>主板
+                        <br>电源
+                        <br>散热
+                        <br>机箱
+                        <br>显示器
+                        <br>音响
+                        <br>耳机
+                        <br>麦克风
+                        <br>键盘
+                        <br>鼠标
+                        <br>鼠标垫
+                    </td>
+                    <td>20191111
+                        <br>AMDR53400G
+                        <br>Vage8
+                        <br>十铨8G*2
+                        <br>紫光固态 480G
+                        <br>微星 B450I
+                        <br>傻瓜超人 350W
+                        <br>65W
+                        <br>ITX 傻瓜超人K39
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </td>
+                    <td>3800元</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格16 -->
+                    <td>16</td>
+                    <td>电脑3
+                        <br>CPU
+                        <br>GPU
+                        <br>内存
+                        <br>存储
+                        <br>主板
+                        <br>电源
+                        <br>散热
+                        <br>机箱
+                        <br>显示器1
+                        <br>显示器2
+                        <br>音响
+                        <br>耳机
+                        <br>麦克风
+                        <br>键盘
+                        <br>鼠标
+                        <br>鼠标垫
+                    </td>
+                    <td>20230000
+                        <br>AMDR77700
+                        <br>RTX 4060
+                        <br>光威 6000 48Gx2
+                        <br>梵想1T+希捷4T+希捷4T+希捷4T
+                        <br><a href="">系统安装步骤</a>
+                        <br>华硕 B650M重炮手WIFI
+                        <br>利民 TG650 650W
+                        <br>利民 PA140 WHITE
+                        <br>MATX 先马 趣造2白色
+                        <br>联想 R27QE 27
+                        <br>红米 60Hz IPS 1080P
+                        <br>漫步者
+                        <br>飞利浦 9000
+                        <br>微翼
+                        <br>VGN V98PROV2极地狐轴
+                        <br>罗技 G304 ATK星闪版
+                        <br>凯雷防滑乱纹
+                    </td>
+                    <td>9900
+                        <br>2000
+                        <br>2000
+                        <br>2000
+                        <br>0
+                        <br>600
+                        <br>200
+                        <br>300
+                        <br>900
+                        <br>500
+                        <br>600
+                        <br>400
+                        <br>300
+                        <br>100
+                    </td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格17 -->
+                    <td>17</td>
+                    <td>手柄</td>
+                    <td>北通定制黑神话</td>
                     <td>2</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格18 -->
+                    <td>18</td>
+                    <td>U盘</td>
+                    <td>梵想固态U盘256G
+                        <br>梵想高速U盘64G
+                        <br>梵想高速U盘128G
+                    </td>
                     <td>2</td>
-                    <td>2</td>
+                </tr>
+                <tr>
+                    <!-- 合并单元格19 -->
+                    <td>19</td>
+                    <td>移动WiFi1
+                        <br>移动WiFi2
+                    </td>
+                    <td>华为随行WIFI3PRO蓝色
+                        <br>华为随行WIFI5白色
+                    </td>
+                    <td>599元/12月
+                        <br>599元/12月
+                        <br>500元
+                        <br>200元
+                    </td>
                 </tr>
             </table>
         </div>
@@ -560,132 +823,429 @@
             <table>
                 <caption>8小收纳箱</caption>
                 <tr>
-                    <th>分类</th>
-                    <th>序号</th>
-                    <th>名称</th>
-                    <th>数目</th>
-                    <th>备注</th>
+                    <th class="分类">分类</th>
+                    <th class="序号">序号</th>
+                    <th class="名称">名称</th>
+                    <th class="数目">数目</th>
+                    <th class="备注">备注</th>
                 </tr>
                 <tr>
-                    <td rowspan="16">8</td>
-                    <td>1</td>
-                    <td>白收纳箱1</td>
-                    <td>上衣</td>
-                    <td>1</td>
+                    <td class="分类" rowspan="16">8</td>
+                    <td class="序号">1</td>
+                    <td class="名称">白收纳箱1</td>
+                    <td class="数目">上衣</td>
+                    <td class="备注" rowspan="8">326.5元（两个99元*4-69）</td>
                 </tr>
                 <tr>
                     <!-- 第2行 -->
-                    <td>2</td>
-                    <td>白收纳箱2</td>
-                    <td>裤子</td>
-                    <td>2</td>
+                    <td class="序号">2</td>
+                    <td class="名称">白收纳箱2</td>
+                    <td class="数目">裤子</td>
                 </tr>
                 <tr>
                     <!-- 第3行 -->
-                    <td>3</td>
-                    <td>白收纳箱3</td>
-                    <td>外衣</td>
-                    <td>2</td>
+                    <td class="序号">3</td>
+                    <td class="名称">白收纳箱3</td>
+                    <td class="数目">外衣</td>
                 </tr>
                 <tr>
                     <!-- 第4行 -->
-                    <td>4</td>
-                    <td>白收纳箱4</td>
-                    <td>包装</td>
-                    <td>2</td>
+                    <td class="序号">4</td>
+                    <td class="名称">白收纳箱4</td>
+                    <td class="数目">包装</td>
                 </tr>
                 <tr>
                     <!-- 第5行 -->
-                    <td>5</td>
-                    <td>白收纳箱5</td>
-                    <td>工具</td>
-                    <td>2</td>
+                    <td class="序号">5</td>
+                    <td class="名称">白收纳箱5</td>
+                    <td class="数目">工具</td>
                 </tr>
                 <tr>
                     <!-- 第6行 -->
-                    <td>6</td>
-                    <td>白收纳箱6</td>
-                    <td>书本</td>
-                    <td>2</td>
+                    <td class="序号">6</td>
+                    <td class="名称">白收纳箱6</td>
+                    <td class="数目">书本</td>
                 </tr>
                 <tr>
                     <!-- 第7行 -->
-                    <td>7</td>
-                    <td>白收纳箱7</td>
-                    <td>食物</td>
-                    <td>2</td>
+                    <td class="序号">7</td>
+                    <td class="名称">白收纳箱7</td>
+                    <td class="数目">食物</td>
                 </tr>
                 <tr>
                     <!-- 第8行 -->
-                    <td>8</td>
-                    <td>白收纳箱8</td>
-                    <td>厨具</td>
-                    <td>2</td>
+                    <td class="序号">8</td>
+                    <td class="名称">白收纳箱8</td>
+                    <td class="数目">厨具</td>
                 </tr>
                 <tr>
                     <!-- 第9行 -->
-                    <td>9</td>
-                    <td>黑收纳箱9</td>
-                    <td>清洁工具</td>
-                    <td>2</td>
+                    <td class="序号">9</td>
+                    <td class="名称">黑收纳箱9</td>
+                    <td class="数目">清洁工具</td>
+                    <td class="备注" rowspan="8">391.5元（116.7+195+79.8）</td>
                 </tr>
                 <tr>
                     <!-- 第10行 -->
-                    <td>10</td>
-                    <td>黑收纳箱10</td>
-                    <td>健身工具</td>
-                    <td>2</td>
+                    <td class="序号">10</td>
+                    <td class="名称">黑收纳箱10</td>
+                    <td class="数目">健身工具</td>
                 </tr>
                 <tr>
                     <!-- 第11行 -->
-                    <td>11</td>
-                    <td>黑收纳箱11</td>
-                    <td>鞋子</td>
-                    <td>2</td>
+                    <td class="序号">11</td>
+                    <td class="名称">黑收纳箱11</td>
+                    <td class="数目">鞋子</td>
                 </tr>
                 <tr>
                     <!-- 第12行 -->
-                    <td>12</td>
-                    <td>黑收纳箱12</td>
-                    <td>挡风被</td>
-                    <td>2</td>
+                    <td class="序号">12</td>
+                    <td class="名称">黑收纳箱12</td>
+                    <td class="数目">挡风被</td>
                 </tr>
                 <tr>
                     <!-- 第13行 -->
-                    <td>13</td>
-                    <td>黑收纳箱13</td>
-                    <td>折叠</td>
-                    <td>2</td>
+                    <td class="序号">13</td>
+                    <td class="名称">黑收纳箱13</td>
+                    <td class="数目">折叠</td>
                 </tr>
                 <tr>
                     <!-- 第14行 -->
-                    <td>14</td>
-                    <td>黑收纳箱14</td>
-                    <td>折叠</td>
-                    <td>2</td>
+                    <td class="序号">14</td>
+                    <td class="名称">黑收纳箱14</td>
+                    <td class="数目">折叠</td>
                 </tr>
                 <tr>
                     <!-- 第15行 -->
-                    <td>15</td>
-                    <td>黑收纳箱15</td>
-                    <td>折叠</td>
-                    <td>2</td>
+                    <td class="序号">15</td>
+                    <td class="名称">黑收纳箱15</td>
+                    <td class="数目">折叠</td>
                 </tr>
                 <tr>
                     <!-- 第16行 -->
-                    <td>16</td>
-                    <td>黑收纳箱16</td>
-                    <td>折叠</td>
-                    <td>2</td>
+                    <td class="序号">16</td>
+                    <td class="名称">黑收纳箱16</td>
+                    <td class="数目">折叠</td>
                 </tr>
 
             </table>
         </div>
-    </div>
 
-    <div class="结尾">
+        <div class="段落 9系统安装步骤">
+            <h2>系统安装步骤</h2>
 
-    </div>
+            <div class="步骤 硬件设备安装接线">
+                <h3>硬件设备安装接线</h3>
+                <ol>
+                    <li>CPU</li>
+                    <li>内存</li>
+                    <li>硬盘</li>
+                    <li>主板</li>
+                    <li>电源</li>
+                    <li>显卡</li>
+                    <li>网卡</li>
+                    <li>声卡</li>
+                    <li>显示器</li>
+                    <li>摄像头</li>
+                    <li>麦克风</li>
+                    <li>扬声器，耳机</li>
+                    <li>键盘鼠标</li>
+                    <li>打印机</li>
+                </ol>
+            </div>
+
+            <div class="步骤 系统故障">
+                <h3>系统故障</h3>
+                <ul>
+                    <li>喵喵折2025年故障视频</li>
+                    <li>https://www.bilibili.com/video/BV17WZ4YsEiX</li>
+
+                    <li>
+                        <pre>
+                        无法进行磁盘分区：关闭BitLocker正在等待激活
+                        https://www.cnblogs.com/bupang/p/18748328
+
+                        Win10/Win11系统BitLocker正在等待激活如何解决？
+                        https://zhuanlan.zhihu.com/p/684331145
+
+                        manage-bde -off D:
+                        manage-bde -off E:
+                        manage-bde -status D:
+                        manage-bde -status E:
+                        </pre>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="步骤 系统安装">
+                <h3>安装系统方法</h3>
+
+                <div class="方法 1">
+                    第1种：微软官方U盘制作工具+刻录制作工具
+                </div>
+
+                <div class="方法 2">
+                    第2种：Ventoy工具+PE工具+克隆工具
+                    <br>https://www.bilibili.com/video/BV1DJ411D79y
+                </div>
+
+                <div class="方法">
+                    第3种：应答文本自动化安装系统
+                </div>
+
+                <div class="方法 3">
+                    第4种：WindowsServer的WDS部署服务器网络安装，WDS+MDT
+                </div>
+
+                <div class="方法 4">
+                    <pre>
+                    第5种：封装系统
+
+                    清除更新缓存命令
+                    完成后可运行DISM /Online /Cleanup-Image /StartComponentCleanup清理更新缓存。
+
+                    封装命令
+                    cd C:\Windows\System32\Sysprep
+                    C:\Windows\System32\sysprep\sysprep.exe /generalize /oobe /shutdown
+                    /unattend:C:\Windows\System32\sysprep\Unattend.xml
+                    sysprep /generalize /oobe /shutdown /unattend:C:\Windows\System32\Sysprep\unattend.xml
+                    sysprep.exe /generalize /oobe /shutdown /unattend:C:\Windows\System32\Sysprep\unattend.xml
+
+                    sysprep.exe /oobe /generalize /shutdown /mode:vm
+                    sysprep.exe /oobe /generalize /shutdown /mode:vm /unattend:C:\Windows\System32\Sysprep\unattend.xml
+                    C:\Windows\System32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm
+                    /unattend:C:\Windows\System32\Sysprep\unattend.xml
+
+                    ========================================================================
+                    导出命令1，哔哩哔哩熊哥
+                    dism /capture-image /imagefile:J:\install.wim /capturedir:G:\ /name:""Windows11_Custom""
+
+                    ========================================================================
+                    导出命令2，百度知道
+                    https://baijiahao.baidu.com/s?id=1838572099616189682&wfr=spider&for=pc
+
+                    Dism /Capture-Image /ImageFile:D:\000\1.wim /CaptureDir:C:\ /Name:Windows10backup1
+                    /Description:myfirstimage
+                    Dism /Capture-Image /ImageFile:D:\install.wim /CaptureDir:C:\ /Name:WIN10
+
+                    参数1，在上述代码中，
+                    “D:\000\1.wim”是你希望将wim包保存的位置，你可以根据需要自由设定。
+                    参数2，而
+                    “/CaptureDir:C:\”则指定了要备份的Windows系统盘，即C盘。
+                    参数3，此外，
+                    “Name”参数用于命名镜像，
+                    参数4，而
+                    “Description”参数则用于提供镜像的描述（尽管它是可选的）。
+
+                    ========================================================================
+                    导出命令3，参考人工智能deekseep
+                    dism /capture-image /imagefile:D:\ThickImage.wim /capturedir:C:\ /name:""MyThickImage""
+                    dism /capture-image /imagefile:D:\ThickImage.wim /capturedir:C:\ /name:""Windows 10 Enterprise LTSC2021""
+                    dism /capture-image /imagefile:D:\ThickImage.wim /capturedir:C:\ /name:""Windows 11 Enterprise LTSC2024""
+                    </pre>
+
+                </div>
+
+                <div class="方法 5">
+                    <pre>
+                    第6种：PVE安装
+
+                    知乎
+                    PVE 使用教程
+                    https://www.cnblogs.com/dyanbk/p/19028529
+
+                    Proxmox VE 9.0 正式发布：开源虚拟化平台的 20 周年里程碑升级发布背景与基础架构革新
+                    https://zhuanlan.zhihu.com/p/1936370499262345333
+
+
+                    PVE|中小型虚拟化平台|proxmox-ve的安装部署和初步使用
+                    https://blog.csdn.net/alwaysbefine/article/details/139548712
+
+                    ProxmoxVE 干掉 VMware
+                    https://blog.csdn.net/alwaysbefine/article/details/139548712
+
+
+                    手贱的删除解析dns配置导致无法启动
+                    https://www.lategege.com/?p=625#google_vignette
+
+
+                    https://www.proxmox.com/en/
+                    https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso
+
+                    PVE安全启动
+                    https://imacos.top/2023/11/15/45/
+                    https://blog.csdn.net/qq_38641599/article/details/142491335
+                    https://www.cnblogs.com/hotch9507/p/18893173
+                    https://blog.51cto.com/u_16213446/11728895"
+                    </pre>
+
+                </div>
+
+            </div>
+
+            <div class="步骤 系统配置">
+                <pre>
+
+                <h3>系统配置</h3>
+                初始化密钥，协议，添加密码
+                修改计算机名，IP地址，壁纸，桌面快捷方式，文件管理器快捷方式，配置任务栏
+                修改多窗口设置
+                修改多显示器布局
+                设置显示超时时间
+                设置电源睡眠时间
+                修改鼠标设置
+                任务计划程序自动关机设置
+
+                <h3>系统功能配置</h3>
+                高级系统设置打开系统动画，系统后台资源分配程序
+                关闭服务器管理器开机自启
+                去除系统密码限制
+                去除开机Ctrl+Alt+Del限制
+                取消系统关机理由限制
+                去除IE浏览器安全增强限制
+                添加系统镜像备份源 [装载的磁盘]:\sources\sxs
+                添加系统组件传真服务器
+                添加系统组件打印和文件服务
+                添加系统组件.NET3.5
+                添加系统组件DirectPlay
+                添加系统组件Windows Searth
+                添加系统组件优质Windows音频服务体验
+                启用系统自带索引服务
+                恢复系统自带微软商店
+                https://apps.microsoft.com/detail/9wzdncrfjbmp?hl=zh-CN&gl=US
+                添加系统组件Hyper-V虚拟机管理器
+                虚拟机代数区别
+                https://learn.microsoft.com/
+                zh-cn/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V
+                Hyper三种网络区别
+                https://blog.csdn.net/boliang319/article/details/128731372
+                新建虚拟交换机，类型外部网络
+                修改适配器取消IPV6
+                虚拟机导入导出
+                https://blog.csdn.net/qq_43530416/article/details/107734967
+                手把手教你Hyper-V虚拟机克隆与迁移，简单又高效
+                https://www.bilibili.com/video/BV1oiqUYAEw4/
+                Windows Server 2022 Hyper-V：设置虚拟交换机与虚拟机默认位置
+                https://edu.51cto.com/article/note/30446.html
+                关于Hyper-V网络设置经验总结（Default Switch/固定IP/SSH）
+                https://bbs.huaweicloud.com/blogs/324280
+
+                </pre>
+            </div>
+
+            <div class="步骤 系统激活">
+                系统激活 irm https://get.activated.win | iex
+
+            </div>
+
+            <div class="步骤 更新驱动">
+                <pre>
+                <h3>更新驱动</h3>
+                安装驱动芯片，芯片官网AMD驱动
+                https://www.amd.com/zh-cn/support/download/drivers.html
+                安装驱动显卡，显卡官网NVIDIA驱动
+                https://www.nvidia.cn/geforce/drivers/
+                七彩虹官网
+                https://www.colorful.cn/home/DownLoadInfo?mid=102&id=2066
+                主板官网驱动，微星主板B450I
+                https://www.msicn.com.cn/Motherboard/B450I-GAMING-PLUS-AC/support#bios
+                微星小飞机
+                https://www.msi.com/Landing/afterburner/graphics-cards
+                华硕驱动
+                https://www.asus.com.cn/support/download-center/
+                B650M重炮手
+                https://www.asus.com.cn/
+                motherboards-components/
+                motherboards/tuf-gaming/tuf-gaming-b650m-plus-wifi/helpdesk_download/?model2Name=TUF-GAMING-B650M-PLUS-WIFI
+                安装驱动网络
+                安装驱动无线网络
+                第三方驱动
+                系统更新驱动
+                </pre>
+            </div>
+
+            <div class="步骤 软件安装">
+                <pre>
+                <h3>日常娱乐专业软件列表</h3>
+            	安装Todesk
+                安装WinRAR
+                https://www.rarlab.com/download.htm
+                安装讯飞输入法
+                安装微信
+                安装钉钉
+                安装飞书
+                安装阿里邮箱
+                安装谷歌Chrome浏览器
+                https://google.cn/chrome/
+                安装WPS
+                安装Visual Studio Code
+                https://code.visualstudio.com/docs/?dv=win64user
+                安装VLC
+                https://www.videolan.org/vlc/#download
+                安装哔哩哔哩
+                安装steam
+                安装雷神加速器，启用登录失败节点加速更新steam
+                https://www.bilibili.com/video/BV1R9DTY2EDf
+                安装HEVC视频扩展
+                store.rg-adguard.net/这个网站
+                选择productid，
+                输入：9n4wgh0z6vhq，
+                搜索后选择合适的版本下载即可安装。
+                或者选择url，复制微软商店里的链接粘贴进去也能下载，下载appxbundle后缀的安装包双击安装就可以了
+                打开开发者模式
+                输入Powershell命令
+                https://zhuanlan.zhihu.com/p/707056662
+                安装VMware
+                解决Hyper-V冲突
+                https://developer.aliyun.com/article/895462
+                解决Hyper-V外部网络冲突，VMware虚拟机编辑器更改桥接模式，更改自动桥接，适配器描述
+                配置虚拟机
+                部署服务器
+                域控服务器
+                测试客户端Windows
+                测试客户端Linux
+                测试PE系统
+                连接FNOS，创建同步任务
+                </pre>
+            </div>
+
+            <div class="步骤 直播资料">
+                <pre>
+                视频设备配置简介	
+                CPU AMD R7-7700
+                显卡 RTX 4060
+                内存 光威 6000 48Gx2
+                硬盘 西数 SN500 500G
+                主板 华硕 B650M重炮手WIFI
+                电源 利民 TG650
+                散热 利民 PA140 WHITE
+                机箱 先马 趣造2
+                设备配置 
+                显示器 红米 60Hz IPS 1080P
+                摄像头 /
+                耳机 飞利浦 9000
+                麦克风 微翼
+                鼠标 罗技 G304
+                键盘 VGN V98PROV2极地狐轴
+                鼠标垫 凯雷防滑乱纹
+                视频配置 
+                录像设置 OBS
+                剪辑软件 DaVinci Resolve
+                剪辑设备 /
+                游戏配置 
+                游戏名称 三角洲行动
+                游戏时间 0分钟
+                画面设置 高-中-低
+                加速器 雷神UU加速器			
+                </pre>
+            </div>
+
+        </div>
+
+
+        <div class="结尾">
+
+        </div>
 
 </body>
 
