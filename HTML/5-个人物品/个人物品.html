@@ -1239,40 +1239,6 @@ https://blog.51cto.com/u_16213446/11728895
         </div>
 
         <div class="步骤 5软件安装" style="height: 500px; overflow: auto;">
-          <pre>
-<h3>5软件安装</h3>
-<h3>软件安装命令</h3>
-
-复制服务器中的安装包至电脑系统桌面
-copy \\10.50.51.201\zm\"系统软件激活"\*.exe C:\Users\Administrator\Desktop
-
-删除桌面所有软件
-DEL C:\Users\Administrator\Desktop\*.exe
-DEL C:\Users\Administrator\Desktop\*.msi
-
-================================================================
-
-移动到admin用户桌面
-CD C:\Users\admin\Desktop
-
-
-部分软件静默安装命令
-WPS_Setup.exe /s /v/qn
-W.P.S.14252.20.2871.exe /S -agreelicense
-iFlyIME_Setup_3.0.1738.exe /S
-sogou_wubi_5.5f.exe /S
-winrar-x64-701sc.exe /S
-Chrome	 /silent /install
-
-常用软件的静默安装参数，双击自动安装
-https://cloud.tencent.com/developer/article/1538138
-
-"WPS Office"-静默安装(附参数Silent Installation Parameters)
-https://www.bilibili.com/read/cv33291303/?opus_fallback=1
-
-start /wait wps.exe /S -agreelicense "/D=D:\WPS"
-
-          </pre>
 
           <div class="书签分栏" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr;
             justify-items: center; align-items: start; overflow: auto;">
@@ -2519,6 +2485,42 @@ start /wait wps.exe /S -agreelicense "/D=D:\WPS"
             </table>
 
           </div>
+
+          <pre>
+<h3>5软件安装</h3>
+<h3>软件安装命令</h3>
+
+复制服务器中的安装包至电脑系统桌面
+copy \\10.50.51.201\zm\"系统软件激活"\*.exe C:\Users\Administrator\Desktop
+
+删除桌面所有软件
+DEL C:\Users\Administrator\Desktop\*.exe
+DEL C:\Users\Administrator\Desktop\*.msi
+
+================================================================
+
+移动到admin用户桌面
+CD C:\Users\admin\Desktop
+
+
+部分软件静默安装命令
+WPS_Setup.exe /s /v/qn
+W.P.S.14252.20.2871.exe /S -agreelicense
+iFlyIME_Setup_3.0.1738.exe /S
+sogou_wubi_5.5f.exe /S
+winrar-x64-701sc.exe /S
+Chrome	 /silent /install
+
+常用软件的静默安装参数，双击自动安装
+https://cloud.tencent.com/developer/article/1538138
+
+"WPS Office"-静默安装(附参数Silent Installation Parameters)
+https://www.bilibili.com/read/cv33291303/?opus_fallback=1
+
+start /wait wps.exe /S -agreelicense "/D=D:\WPS"
+
+          </pre>
+
         </div>
 
         <div class="步骤 6系统激活">
