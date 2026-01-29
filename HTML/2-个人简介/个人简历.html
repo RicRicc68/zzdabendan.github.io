@@ -72,6 +72,20 @@
 
     /*==========================================================================*/
 
+    .正文 {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .目标 {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #f5f5f5;
+    }
 
     .个人头像 {
       margin: 0 auto;
@@ -84,19 +98,9 @@
       flex-direction: column;
       flex-wrap: wrap;
       align-items: start;
-      justify-content: space-between;
     }
 
 
-    .求职意向 {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin: 20px auto;
-      width: 100%;
-    }
 
     .个人能力 {
       display: flex;
@@ -115,6 +119,15 @@
     }
 
     /*=========================================*/
+
+    .求职意向 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      width: 100%;
+    }
 
     .教育经历 {
       margin: 20px auto;
@@ -181,11 +194,9 @@
       <p>本页字数为：1234字，将消耗您5分钟阅读时间</p>
     </div>
 
-
-
     <div class="正文">
 
-      <div class="段落 背景 表格">
+      <div class="段落 背景表格 表格" style="width: 100%;">
         <table>
           <tr>
             <td>1</td>
@@ -311,14 +322,48 @@
         </table>
       </div>
 
-      <div class="段落 头像">
+      <div class="段落 个人计划" style="width: 100%;">
+        <h2>个人计划</h2>
+        <p>人一定要靠感觉和计划行动：感觉直接快速依赖经验。计划复杂，需要时间和耐心。</p>
+        <div class="目标">
+          <div class="目标1" style="width: 33%;">
+            <ul>
+              <li><span>人一定要有目标1和方案：</span><br>睡觉，每天8小时，起床时间减少8小时等于24时<br>闭目养神，每小时休息15分钟<br>获得精神</li>
+              <li><span>人一定要有目标2和方案：</span><br>好好呼吸，保持气息和头脑清醒，<br>获得体力</li>
+              <li><span>人一定要有目标3和方案：</span><br>好好保持身体姿态，站正，坐正，走正，<br>获得行动力</li>
+              <li><span>人一定要有目标4和方案：</span><br>喝水，早餐午餐晚餐<br>获得营养，保持健康</li>
+              <li><span>人一定要有目标5和方案：</span><br>整理家务，倒垃圾，洗鞋子</li>
+              <li><span>人一定呀有目标6和方案：</span><br>保持个人健康，洗漱</li>
+              <li><span>人一定要有目标7和方案：</span><br>锻炼，热身，有氧，力量，腿部，深蹲</li>
+            </ul>
+          </div>
+
+          <div class="目标2" style="width: 33%;">
+            <ul>
+              <li><span>目标7和方案：</li>
+            </ul>
+          </div>
+
+          <div class="目标3" style="width: 33%;">
+            <ul>
+              <li><span>人一定要有目标8和方案：</span><br>驾照</li>
+              <li><span>人一定要有目标9和方案：</span><br>工作总结</li>
+            </ul>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="段落 个人头像" style="width: 50%;">
         <h2>个人头像</h2>
         <img src="./IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%">
         <img src="../../IMG/个人简历/37.jpg" alt="个人头像" class="个人头像" width="100%">
         <!---->
       </div>
 
-      <div class="段落 基本信息">
+      <div class="段落 基本信息" style="width: 50%;">
         <h2>基本信息</h2>
         <ul class="基本信息">
           <li>姓名：ZZ</li>
@@ -342,7 +387,7 @@
 
       </div>
 
-      <div class="段落 高级信息">
+      <div class="段落 高级信息" style="width: 100%;">
         <h2>高级信息</h2>
         <div class="个人能力">
           </ul>
@@ -538,50 +583,8 @@
 
       </div>
 
-      <div class="段落 计划">
-        <h2>个人计划</h2>
-        <ul>
-          <li>人一定要靠感觉和计划行动：
-            <br>感觉直接快速依赖经验。
-            <br>计划复杂，需要时间和耐心。
-          </li>
-          <li><span style="background-color: #FFFFCC;">人一定要有目标1和方案：</span>
-            <br>睡觉，每天8小时，起床时间减少8小时等于24时
-            <br>闭目养神，每小时休息15分钟
-            <br>获得精神
-          </li>
-          <li><span style="background-color: #FFFFCC;">人一定要有目标2和方案：</span>
-            <br>好好呼吸，保持气息和头脑清醒，
-            <br>获得体力
-          </li>
-          <li><span style="background-color: #FFFFCC;">人一定要有目标3和方案：</span>
-            <br>好好保持身体姿态，站正，坐正，走正，
-            <br>获得行动力
-          </li>
-          <li><span style="background-color: #FFFFCC;">人一定要有目标4和方案：</span>
-            <br>喝水，早餐午餐晚餐
-            <br>获得营养，保持健康
-          </li>
-          <li><span style="background-color: #CCCCCC;">人一定要有目标5和方案：</span>
-            <br>整理家务，倒垃圾，洗鞋子
-          </li>
-          <li><span style="background-color: #CCCCCC;">人一定呀有目标6和方案：</span>
-            <br>保持个人健康，洗漱
-          </li>
-          <li><span style="background-color: #CCCCCC;">人一定要有目标7和方案：</span>
-            <br>锻炼，热身，有氧，力量，腿部，深蹲
-          </li>
-          <li>
-            <span style="background-color: #CCCCCC;">人一定要有目标8和方案：</span>
-            <br>驾照
-          </li>
-          <li><span style="background-color: #CCCCCC;">人一定要有目标9和方案：</span>
-            <br>工作总结
-          </li>
-        </ul>
-      </div>
 
-      <div class="段落 求职意向">
+      <div class="段落 求职意向" style="width: 100%;">
         <h2>求职意向</h2>
         <ul class="求职意向">
           <li>意向岗位: <br>xxx</li>
@@ -591,7 +594,7 @@
         </ul>
       </div>
 
-      <div class="段落 教育经历">
+      <div class="段落 教育经历" style="width: 100%;">
         <h2>教育经历</h2>
         <div class="教育经历">
           <div class="教育经历-项目">
@@ -602,7 +605,7 @@
         </div>
       </div>
 
-      <div class="段落 工作经历">
+      <div class="段落 工作经历" style="width: 100%;">
         <h2>工作经历</h2>
         <div class="工作经历">
 
@@ -638,7 +641,7 @@
         </div>
       </div>
 
-      <div class="段落 所获奖项">
+      <div class="段落 所获奖项" style="width: 100%;">
         <h2>所获奖项，质资证书</h2>
         <h2>自我评价，兴趣爱好</h2>
       </div>
