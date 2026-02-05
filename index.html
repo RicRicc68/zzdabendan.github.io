@@ -139,12 +139,17 @@
       border: 1px solid #e0e0e0;
       padding: 15px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 400px;
     }
 
     /* 并排div标题样式 */
     .side-by-side-div h4 {
-      margin: 0 0 10px 0;
+      margin: 0;
       font-size: 16px;
+      flex: 0 0 auto;
     }
 
     /* 并排div链接样式 */
@@ -152,13 +157,19 @@
       color: #333;
       text-decoration: none;
       display: block;
-      height: 100%;
     }
 
     /* 并排div链接hover样式 */
     .side-by-side-div a:hover {
       color: #555;
       text-decoration: underline;
+    }
+
+    /* 并排div iframe样式 */
+    .side-by-side-div iframe {
+      flex: 1 1 0;
+      min-height: 300px;
+      border: none;
     }
 
     /* 选项容器样式 */
