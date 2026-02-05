@@ -7,7 +7,7 @@
   <!-- 响应式布局设置 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 页面标题 -->
-  <title>个人网站</title>
+  <title>全屏div示例</title>
   <!-- 内部CSS样式 -->
   <style>
     /* 全局样式重置 */
@@ -17,434 +17,259 @@
       box-sizing: border-box;
     }
 
-    /* 元素样式 */
-    iframe {
-      border: none;
-      width: 1200px;
-      height: 400px;
-      margin-bottom: 30px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
     /* 基础样式 */
     body {
-      background-color: white;
-      color: black;
-      font-family: Arial, sans-serif;
+      overflow: hidden;
+      font-family: "Microsoft YaHei", Arial, sans-serif;
+      font-size: 14px;
       line-height: 1.6;
     }
 
-    /* 主容器样式 */
-    .container {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 20px 15px;
+    /* 标题样式 */
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
-    /* 头部样式 */
-    header {
-      text-align: left;
-      margin-bottom: 30px;
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 18px;
     }
 
-    /* 游戏功能部分样式 */
-    .game-section {
-      margin-bottom: 30px;
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 16px;
     }
 
-    /* 游戏流程容器样式 */
-    .game-flow {
-      max-width: 100%;
-      margin: 0 auto;
-      position: relative;
-      padding-left: 20px;
+    h4 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 14px;
     }
 
-    /* 游戏阶段样式 */
-    .game-stage {
-      margin-bottom: 30px;
-      position: relative;
-    }
-
-    /* 阶段左侧垂直线样式 */
-    .game-stage::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background-color: #333;
-      border-radius: 2px;
-      z-index: -1;
-    }
-
-    /* 阶段左侧细线样式 */
-    .game-stage::after {
-      content: '';
-      position: absolute;
-      left: 1px;
-      top: 10px;
-      bottom: 10px;
-      width: 2px;
-      background-color: #333;
-      border-radius: 1px;
-      z-index: -1;
-    }
-
-    /* 游戏阶段容器样式 */
-    .stage-container {
-      display: flex;
-      align-items: stretch;
-      overflow: hidden;
-    }
-
-    /* 阶段标题样式 */
-    .stage-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 5px 8px;
-      background-color: transparent;
-      color: #333;
-      margin: 0;
-      min-width: 80px;
-      flex-shrink: 0;
-    }
-
-    /* 阶段标题文本样式 */
-    .stage-title {
-      font-size: 12px;
-      font-weight: normal;
-      margin: 0;
-    }
-
-    /* 阶段内容区域样式 */
-    .stage-content {
-      flex: 1;
-      padding: 15px;
-      background-color: #f9f9f9;
-    }
-
-    /* 存档容器样式 */
-    .save-container {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 12px;
-      overflow-x: hidden;
-      padding-bottom: 10px;
-    }
-
-    /* 单个存档单元样式 */
-    .save-item {
-      flex: 0 0 280px;
-      background-color: white;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
-
-    /* 存档头部样式 */
-    .save-header {
-      padding: 10px 15px 8px;
-      background-color: #333;
-      color: white;
-    }
-
-    /* 存档头部标题样式 */
-    .save-header h4 {
-      margin: 0;
+    h5 {
       font-size: 14px;
       font-weight: bold;
+      margin-bottom: 12px;
     }
 
-    /* 存档头部附加信息样式 */
-    .save-header p {
-      font-size: 10px;
-      margin: 5px 0 0 0;
-    }
-
-    /* 存档内容样式 */
-    .save-body {
-      padding: 10px 15px;
-    }
-
-    /* 存档内容文本样式 */
-    .save-body p {
+    h6 {
       font-size: 12px;
-      color: #666;
-      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* 正文样式 */
+    p {
+      font-size: 14px;
       margin-bottom: 15px;
     }
 
-    /* 存档链接容器样式 */
-    .save-links {
-      margin-top: 5px;
-      padding-top: 5px;
+    /* 全屏div样式 */
+    .fullscreen-div {
+      width: 100vw;
+      height: 100vh;
+      background-color: #f5f5f5;
+      padding: 20px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    /* 存档链接样式 */
-    .save-links a {
-      display: block;
-      padding: 4px 0;
+    /* 四分之一高度div样式 */
+    .quarter-div {
+      flex: 1 1 0;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+    }
+
+    /* 小div样式 */
+    .small-div {
+      flex: 0 0 auto;
+      max-height: 80px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* 小div标题样式 */
+    .small-div h3 {
+      margin: 0;
+      flex: 0 0 auto;
+      font-size: 16px;
+    }
+
+    /* 小div选项容器样式 */
+    .small-div .options-container {
+      flex: 1 1 0;
+      margin-top: 0;
+    }
+
+    /* 大div样式 */
+    .large-div {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* 大div标题样式 */
+    .large-div h3 {
+      margin: 0;
+      flex: 0 0 auto;
+    }
+
+    /* 并排div容器样式 */
+    .side-by-side-container {
+      display: flex;
+      gap: 10px;
+      flex: 1 1 0;
+    }
+
+    /* 并排div样式 */
+    .side-by-side-div {
+      flex: 1 1 0;
+      background-color: #f8f8f8;
+      border: 1px solid #e0e0e0;
+      padding: 15px;
+      text-align: center;
+    }
+
+    /* 并排div标题样式 */
+    .side-by-side-div h4 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+
+    /* 并排div链接样式 */
+    .side-by-side-div a {
       color: #333;
       text-decoration: none;
-      font-size: 13px;
+      display: block;
+      height: 100%;
     }
 
-    /* 存档链接 hover 样式 */
-    .save-links a:hover {
+    /* 并排div链接hover样式 */
+    .side-by-side-div a:hover {
       color: #555;
       text-decoration: underline;
     }
 
-    /* 通用阶段选项样式 */
-    .stage-options {
+    /* 选项容器样式 */
+    .options-container {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-start;
       gap: 8px;
-      padding: 15px;
-      background-color: #f9f9f9;
-      margin: 0;
-      flex: 1;
+      margin-top: 10px;
     }
 
-    /* 难度选项样式（适用于新建游戏、保存游戏、重新开始） */
-    .stage-options.difficulty-options {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 0;
-      padding: 0;
-      height: 100%;
-    }
-
-    /* 难度选项按钮基础样式 */
-    .stage-options.difficulty-options .option-button {
-      flex: 1;
-      text-align: center;
-      margin: 0;
-      border-radius: 0;
-      border: none;
-      background-color: #f0f0f0;
-      padding: 10px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.2;
-    }
-
-    /* 现实难度按钮样式（占据更大空间） */
-    .stage-options.difficulty-options .option-button.reality-difficulty {
-      flex: 2;
-      background-color: #e0e0e0;
-    }
-
-    /* 无背景选项容器样式（仅用于保存游戏阶段） */
-    .stage-options.difficulty-options.no-background .option-button {
-      background-color: transparent;
-      position: relative;
-    }
-
-    /* 活人微死按钮样式（占据更大空间） */
-    .stage-options.difficulty-options.no-background .option-button.living-difficulty {
-      flex: 2;
-      background-color: #f0f0f0;
-    }
-
-    /* 无背景选项按钮下划线样式 */
-    .stage-options.difficulty-options.no-background .option-button::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 20%;
-      width: 60%;
-      height: 2px;
-      background-color: #333;
-    }
-
-    /* 选项按钮基础样式 */
+    /* 选项按钮样式 */
     .option-button {
-      padding: 8px 14px;
-      border: 1px solid #333;
-      background-color: white;
+      padding: 6px 12px;
+      border: 1px solid #e0e0e0;
+      background-color: #ffffff;
       cursor: pointer;
       font-size: 12px;
       border-radius: 4px;
       text-decoration: none;
-      color: black;
+      color: #333;
       display: inline-block;
     }
 
-    /* 选项按钮 hover 样式 */
+    /* 选项按钮hover样式 */
     .option-button:hover {
       background-color: #f0f0f0;
-    }
-
-    /* 页脚样式 */
-    footer {
-      text-align: center;
-      font-size: 11px;
-      color: #666;
-      padding: 0;
-    }
-
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-
-      /* 响应式阶段标题样式 */
-      .stage-header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-
-      /* 响应式阶段选项样式 */
-      .stage-options {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      /* 响应式选项按钮样式 */
-      .option-button {
-        width: 200px;
-        text-align: center;
-      }
     }
   </style>
 </head>
 
 <body>
-  <!-- 主容器 -->
-  <div class="container">
-    <!-- 页面头部 -->
-    <header>
-    </header>
+  <!-- 全屏div -->
+  <div class="fullscreen-div">
+    <!-- 第一个div -->
+    <div class="quarter-div small-div">
+      <h3>新建游戏</h3>
+      <div class="options-container">
+        <button class="option-button">现实难度</button>
+        <button class="option-button">简单难度</button>
+        <button class="option-button">困难难度</button>
+        <button class="option-button">完美难度</button>
+      </div>
+    </div>
 
-    <!-- 游戏功能部分 -->
-    <section class="game-section">
-      <!-- 游戏流程容器 -->
-      <div class="game-flow">
-        <!-- 新建游戏阶段 -->
-        <div class="game-stage">
-          <div class="stage-container">
-            <!-- 阶段标题 -->
-            <div class="stage-header">
-              <h3 class="stage-title">新建游戏</h3>
-            </div>
-            <!-- 阶段选项 -->
-            <div class="stage-options difficulty-options">
-              <button class="option-button reality-difficulty">现实难度</button>
-              <button class="option-button">简单难度</button>
-              <button class="option-button">困难难度</button>
-              <button class="option-button">完美难度</button>
-            </div>
-          </div>
+    <!-- 第二个div -->
+    <div class="quarter-div large-div">
+      <h3>继续游戏</h3>
+      <!-- 并排的5个div容器 -->
+      <div class="side-by-side-container">
+        <!-- 第一个并排div -->
+        <div class="side-by-side-div">
+          <a href="./HTML/2-个人简介/个人简历.html" target="_blank">
+            <h4>个人简历</h4>
+          </a>
+          <iframe src="./HTML/2-个人简介/个人简历.html" frameborder="0" width="100%" height="300"></iframe>
         </div>
 
-        <!-- 继续游戏阶段 -->
-        <div class="game-stage">
-          <div class="stage-container">
-            <!-- 阶段标题 -->
-            <div class="stage-header">
-              <h3 class="stage-title">继续游戏</h3>
-            </div>
-            <!-- 存档容器 -->
-            <div class="stage-content">
-              <div class="save-container">
-                <!-- 存档1: 第1章 -->
-                <div class="save-item">
-                  <div class="save-header">
-                    <h4>存档1: 第1章 - 初始冒险</h4>
-                    <p>完成度：25%</p>
-                    <p>最后保存：2026-01-28</p>
-                  </div>
-                  <div class="save-body">
-                    <p>无</p>
-
-                    <div class="">
-                      <iframe src="https://zzdabendan.github.io/HTML/2-个人简介/个人简历.html" frameborder="0"></iframe>
-                      <iframe src="https://zzdabendan.github.io/HTML/1-写作之前/写作之前.html" frameborder="0"></iframe>
-                      <iframe src="https://zzdabendan.github.io/HTML/5-个人物品/个人物品.html" frameborder="0"></iframe>
-                      <iframe src="https://zzdabendan.github.io/HTML/4-小知识库/小知识库.html" frameborder="0"></iframe>
-                      <iframe src="https://zzdabendan.github.io/HTML/3-小茅草屋/小茅草屋.html" frameborder="0"></iframe>
-                    </div>
-                    <div class="save-links">
-                      <a href="./HTML/2-个人简介/个人简历.html" target="_blank">个人简历</a>
-                      <a href="./HTML/1-写作之前/写作之前.html" target="_blank">写作之前</a>
-                      <a href="./HTML/5-个人物品/个人物品.html" target="_blank">个人物品</a>
-                      <a href="./HTML/4-小知识库/个人物品.html" target="_blank">小知识库</a>
-                      <a href="./HTML/3-小茅草屋/小茅草屋.html" target="_blank">小茅草屋</a>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 存档2: 第3章 -->
-                <div class="save-item">
-                  <div class="save-header">
-                    <h4>存档2: 第3章 - 成长之路</h4>
-                    <p>完成度：60%</p>
-                    <p>最后保存：2026-01-27</p>
-                  </div>
-                  <div class="save-body">
-                    <p>空</p>
-                  </div>
-                </div>
-
-                <!-- 存档3: 最终章 -->
-                <div class="save-item">
-                  <div class="save-header">
-                    <h4>存档3: 最终章 - 巅峰对决</h4>
-                    <p>完成度：90%</p>
-                    <p>最后保存：2026-01-26</p>
-                  </div>
-                  <div class="save-body">
-                    <p>空</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- 第二个并排div -->
+        <div class="side-by-side-div">
+          <a href="./HTML/1-写作之前/写作之前.html" target="_blank">
+            <h4>写作之前</h4>
+          </a>
+          <iframe src="./HTML/1-写作之前/写作之前.html" frameborder="0" width="100%" height="300"></iframe>
         </div>
 
-        <!-- 保存游戏阶段 -->
-        <div class="game-stage">
-          <div class="stage-container">
-            <!-- 阶段标题 -->
-            <div class="stage-header">
-              <h3 class="stage-title">保存游戏</h3>
-            </div>
-            <!-- 阶段选项 -->
-            <div class="stage-options difficulty-options no-background">
-              <button class="option-button living-difficulty">活人微死</button>
-              <button class="option-button">又活一天</button>
-              <button class="option-button">元气满满</button>
-              <button class="option-button">一命无伤通关</button>
-            </div>
-          </div>
+        <!-- 第三个并排div -->
+        <div class="side-by-side-div">
+          <a href="./HTML/5-个人物品/个人物品.html" target="_blank">
+            <h4>个人物品</h4>
+          </a>
+          <iframe src="./HTML/5-个人物品/个人物品.html" frameborder="0" width="100%" height="300"></iframe>
         </div>
 
-        <!-- 重新开始阶段 -->
-        <div class="game-stage">
-          <div class="stage-container">
-            <!-- 阶段标题 -->
-            <div class="stage-header">
-              <h3 class="stage-title">重新开始</h3>
-            </div>
-            <!-- 阶段选项 -->
-            <div class="stage-options difficulty-options">
-              <button class="option-button">重新开始整个游戏</button>
-              <button class="option-button">重新开始并选择难度</button>
-              <button class="option-button">重新开始当前章节</button>
-            </div>
-          </div>
+        <!-- 第四个并排div -->
+        <div class="side-by-side-div">
+          <a href="./HTML/4-小知识库/个人物品.html" target="_blank">
+            <h4>小知识库</h4>
+          </a>
+          <iframe src="./HTML/4-小知识库/个人物品.html" frameborder="0" width="100%" height="300"></iframe>
+        </div>
+
+        <!-- 第五个并排div -->
+        <div class="side-by-side-div">
+          <a href="./HTML/3-小茅草屋/小茅草屋.html" target="_blank">
+            <h4>小茅草屋</h4>
+          </a>
+          <iframe src="./HTML/3-小茅草屋/小茅草屋.html" frameborder="0" width="100%" height="300"></iframe>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- 页面页脚 -->
-    <footer>
-    </footer>
+    <!-- 第三个div -->
+    <div class="quarter-div small-div">
+      <h3>保存游戏</h3>
+      <div class="options-container">
+        <button class="option-button">活人微死</button>
+        <button class="option-button">又活一天</button>
+        <button class="option-button">元气满满</button>
+        <button class="option-button">一命无伤通关</button>
+      </div>
+    </div>
+
+    <!-- 第四个div -->
+    <div class="quarter-div small-div">
+      <h3>重新开始</h3>
+      <div class="options-container">
+        <button class="option-button">重新开始整个游戏</button>
+        <button class="option-button">重新开始并选择难度</button>
+        <button class="option-button">重新开始当前章节</button>
+      </div>
+    </div>
   </div>
 </body>
 
