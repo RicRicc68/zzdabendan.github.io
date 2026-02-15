@@ -1,3037 +1,979 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
+  <!-- 文档类型声明 -->
   <meta charset="UTF-8">
+  <!-- 响应式布局设置 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 页面标题 -->
   <title>个人物品</title>
+  <!-- 内部CSS样式 -->
   <style>
+    /* 全局样式重置 */
     * {
       margin: 0;
       padding: 0;
-      list-style-type: none;
+      box-sizing: border-box;
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
     }
 
-    pre {
-      font-size: 18px;
-      line-height: 25px;
-      overflow: hidden;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      font-size: 16px;
+    /* 基础样式 */
+    body {
+      font-family: "Microsoft YaHei", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      background-color: #f5f5f5;
+      padding: 20px;
 
     }
 
-    table,
-    th,
-    td {
-      border: 1px solid black;
-    }
 
-    th,
-    td {
-      padding: 5px;
-    }
-
-    th {
-      background-color: #CC9999;
-      color: #fff;
-    }
-
-    tr th:nth-child(1) {
-      text-align: center;
-      width: 50px;
-    }
-
-    tr td:nth-child(1) {
-      text-align: center;
-      width: 50px;
-    }
-
-    table tr:nth-child(2) td:nth-child(2) {
-      text-align: center;
-      width: 50px;
-    }
-
-    tr td:nth-last-child(2) {
-      text-align: center;
-      width: 200px;
-    }
-
-    tr td:nth-last-child(1) {
-      text-align: center;
-      width: 150px;
-    }
-
-    .分类,
-    .序号,
-    .名称,
-    .数目,
-    .备注 {
+    /* 标题样式 */
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
       text-align: center;
     }
 
-    .数目 {
-      width: 200px;
-    }
-
-    .备注 {
-      width: 150px;
-    }
-
-
-
-    .标题 {
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .目录 {
-      width: 100%;
-      margin: 10px auto;
-      font-size: 12px;
-    }
-
-    .内容 {
-      width: 80%;
-      margin: 10px auto;
-    }
-
-    .段落 {
-      margin: 10px auto;
-    }
-
-
-    .小隐蔽屋1 {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
+    /* Flex容器样式 */
+    .flex-container {
+      display: flex;
       gap: 10px;
-      overflow: scroll;
+      margin-bottom: 20px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      border-radius: 4px;
     }
 
-    .小隐蔽屋1 div {
-      border: 1px solid black;
-      border-radius: 5px;
+    /* 主盒子样式 */
+    .child-div-1,
+    .child-div-2,
+    .child-div-3 {
+      padding: 10px;
+      border-radius: 4px;
       text-align: center;
-      width: 150px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 1px solid #e0e0e0;
     }
 
-    .系统安装 .方法 {
-      margin: 10px auto;
-      padding: 10px;
-      border: 1px solid #FF0051;
-      border-radius: 5px;
+    /* 第一个主盒子样式（25%宽度） */
+    .child-div-1 {
+      flex: 0 0 25%;
     }
 
-
-    .步骤 {
-      margin: 10px auto;
-      padding: 10px;
-      border: 1px solid #CCCCCC;
-      border-radius: 5px;
+    /* 第二个主盒子样式（25%宽度） */
+    .child-div-2 {
+      flex: 0 0 25%;
     }
 
-    .步骤:nth-child(2n) {
-      background-color: #F5F5F5;
+    /* 第三个主盒子样式（50%宽度） */
+    .child-div-3 {
+      flex: 0 0 50%;
     }
 
-    .步骤 h3 {
-      margin-bottom: 10px;
-      background-color: aliceblue;
+    /* 主盒子标题样式 */
+    .child-div-1 h3,
+    .child-div-2 h3,
+    .child-div-3 h3 {
+      margin: 0;
+      font-size: 14px;
     }
 
-    .我的书签9 tr:nth-child(1) {
-      background-color: #336699;
-      color: #fff;
+    /* 子盒子容器样式 */
+    .sub-boxes-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
     }
 
-    .我的书签9 tr:nth-child(2n) {
-      background-color: #F5F5F5;
-      width: 100px;
+    /* 子盒子样式 */
+    .sub-box {
+      flex: 1 1 calc(50% - 3px);
+      min-width: 70px;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      color: #333;
+      border: 1px solid #e0e0e0;
     }
 
-    .我的书签9 tr td:nth-child(1) {
-      width: 100px;
+    /* 表格容器样式 */
+    .table-container {
+      margin-top: 6px;
+      font-size: 9px;
+      text-align: left;
+      max-height: 180px;
+      overflow-y: auto;
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    /* 表格样式 */
+    .table-container table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    /* 表格单元格样式 */
+    .table-container th,
+    .table-container td {
+      padding: 2px 4px;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    /* 表格标题样式 */
+    .table-container th {
+      font-weight: bold;
+      background-color: #f5f5f5;
+    }
+
+    /* 表格行样式 */
+    .table-container tr:nth-child(even) {
+      background-color: #fafafa;
     }
   </style>
 </head>
 
 <body>
 
-
-
-  <div class="内容">
-    <div class="段落 系统安装步骤10">
-      <h2>系统安装步骤</h2>
-      <div class="步骤 0总步骤" style="position: sticky; top: 0;">
-        <ol style="display: flex; flex-direction: row;">
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">1系统故障</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">2硬件安装</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">3系统安装</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">4驱动安装</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">5软件安装</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">6系统激活</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">7系统配置</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">8我的文件</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">9我的书签</li>
-          <li style="flex-grow: 1; background-color: #CCCCCC; margin: 2px; padding: 5px; border-radius: 5px;">10直播配置
-          </li>
-        </ol>
+  <!-- Flex容器 -->
+  <div class="flex-container">
+    <!-- 第一个子div（25%宽度） -->
+    <div class="child-div-1">
+      <h3>出行工具</h3>
+      <div class="sub-boxes-container">
+        <div class="sub-box">
+          出行
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>电动车</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>钥匙</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>雨伞</td>
+                <td>可用</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="sub-box">
+          工具
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>手套</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>头盔</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>护膝</td>
+                <td>可用</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="sub-box">
+          个人装备
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>上衣</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>裤子</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>头帽</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>手部</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>脚部</td>
+                <td>可用</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="步骤 1分步骤">
-
-        <div class="步骤 1系统故障">
-          <h3>1系统故障</h3>
-          <p>
-            喵喵折2025年故障视频
-            <br>
-            https://www.bilibili.com/video/BV17WZ4YsEiX
-          </p>
-
-          <p>
-          <pre>
-无法进行磁盘分区：关闭BitLocker正在等待激活
-https://www.cnblogs.com/bupang/p/18748328
-Win10/Win11系统BitLocker正在等待激活如何解决？
-https://zhuanlan.zhihu.com/p/684331145
-manage-bde -off D:
-manage-bde -off E:
-manage-bde -status D:
-manage-bde -status E:
-</pre>
-
-
-          </p>
-        </div>
-
-        <div class="步骤 2硬件安装">
-          <h3>2硬件安装</h3>
-          <ol>
-            <li>CPU</li>
-            <li>内存</li>
-            <li>硬盘</li>
-            <li>主板</li>
-            <li>电源</li>
-            <li>显卡</li>
-            <li>网卡</li>
-            <li>声卡</li>
-            <li>显示器</li>
-            <li>摄像头</li>
-            <li>麦克风</li>
-            <li>扬声器，耳机</li>
-            <li>键盘鼠标</li>
-            <li>打印机</li>
-          </ol>
-          <img src="./IMG/家庭网络.png" alt="家庭网络" width="100%">
-
-        </div>
-
-        <div class="步骤 3系统安装">
-          <h3>3系统安装</h3>
-
-          <div class="方法 1">
-            第1种：微软官方U盘制作工具+刻录制作工具
-          </div>
-
-          <div class="方法 2">
-            第2种：Ventoy工具+PE工具+克隆工具
-            <br>https://www.bilibili.com/video/BV1DJ411D79y
-          </div>
-
-          <div class="方法">
-            第3种：应答文本自动化安装系统
-          </div>
-
-          <div class="方法 3">
-            第4种：WindowsServer的WDS部署服务器网络安装，WDS+MDT
-          </div>
-
-          <div class="方法 4">
-            <pre>
-第5种：封装系统
-清除更新缓存命令
-完成后可运行DISM /Online /Cleanup-Image /StartComponentCleanup清理更新缓存。
-封装命令
-cd C:\Windows\System32\Sysprep
-C:\Windows\System32\sysprep\sysprep.exe /generalize /oobe /shutdown
-/unattend:C:\Windows\System32\sysprep\Unattend.xml
-sysprep /generalize /oobe /shutdown /unattend:C:\Windows\System32\Sysprep\unattend.xml
-sysprep.exe /generalize /oobe /shutdown /unattend:C:\Windows\System32\Sysprep\unattend.xml
-sysprep.exe /oobe /generalize /shutdown /mode:vm
-sysprep.exe /oobe /generalize /shutdown /mode:vm /unattend:C:\Windows\System32\Sysprep\unattend.xml
-C:\Windows\System32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm
-/unattend:C:\Windows\System32\Sysprep\unattend.xml
-========================================================================
-导出命令1，哔哩哔哩熊哥
-dism /capture-image /imagefile:J:\install.wim /capturedir:G:\ /name:""Windows11_Custom""
-========================================================================
-导出命令2，百度知道
-https://baijiahao.baidu.com/s?id=1838572099616189682&wfr=spider&for=pc
-Dism /Capture-Image /ImageFile:D:\000\1.wim /CaptureDir:C:\ /Name:Windows10backup1
-/Description:myfirstimage
-Dism /Capture-Image /ImageFile:D:\install.wim /CaptureDir:C:\ /Name:WIN10
-参数1，在上述代码中，
-“D:\000\1.wim”是你希望将wim包保存的位置，你可以根据需要自由设定。
-参数2，而
-“/CaptureDir:C:\”则指定了要备份的Windows系统盘，即C盘。
-参数3，此外，
-“Name”参数用于命名镜像，
-参数4，而
-“Description”参数则用于提供镜像的描述（尽管它是可选的）。
-========================================================================
-导出命令3，参考人工智能deekseep
-dism /capture-image /imagefile:D:\ThickImage.wim /capturedir:C:\ /name:""MyThickImage""
-dism /capture-image /imagefile:D:\ThickImage.wim /capturedir:C:\ /name:""Windows 10 Enterprise LTSC2021""
-dism /capture-image /imagefile:D:\ThickImage.wim /capturedir:C:\ /name:""Windows 11 Enterprise LTSC2024""
-                    </pre>
-          </div>
-
-          <div class="方法 5">
-            <pre>
-第6种：PVE安装
-知乎
-PVE 使用教程
-https://www.cnblogs.com/dyanbk/p/19028529
-Proxmox VE 9.0 正式发布：开源虚拟化平台的 20 周年里程碑升级发布背景与基础架构革新
-https://zhuanlan.zhihu.com/p/1936370499262345333
-PVE|中小型虚拟化平台|proxmox-ve的安装部署和初步使用
-https://blog.csdn.net/alwaysbefine/article/details/139548712
-ProxmoxVE 干掉 VMware
-https://blog.csdn.net/alwaysbefine/article/details/139548712
-手贱的删除解析dns配置导致无法启动
-https://www.lategege.com/?p=625#google_vignette
-https://www.proxmox.com/en/
-https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso
-PVE安全启动
-https://imacos.top/2023/11/15/45/
-https://blog.csdn.net/qq_38641599/article/details/142491335
-https://www.cnblogs.com/hotch9507/p/18893173
-https://blog.51cto.com/u_16213446/11728895
-                    </pre>
-
-          </div>
-
-        </div>
-
-        <div class="步骤 4驱动安装">
-
-          <h3>4驱动安装</h3>
-
-          <table>
-            <tr>
-              <th>序号</th>
-              <th>名称</th>
-              <th>链接</th>
-            </tr>
-            <tr>
-              <td> 1 </td>
-              <td> 安装驱动芯片，芯片官网AMD驱动 </td>
-              <td> <a href="	https://www.amd.com/zh-cn/support/download/drivers.html	" target="_blank">
-                  https://www.amd.com/zh-cn/support/download/drivers.html </a> </td>
-            </tr>
-            <tr>
-              <td> 2 </td>
-              <td> 安装驱动显卡，显卡官网NVIDIA驱动 </td>
-              <td> <a href="	https://www.nvidia.cn/geforce/drivers/	" target="_blank">
-                  https://www.nvidia.cn/geforce/drivers/ </a> </td>
-            </tr>
-            <tr>
-              <td> 3 </td>
-              <td> 七彩虹官网 </td>
-              <td> <a href="	https://www.colorful.cn/home/DownLoadInfo?mid=102&id=2066	" target="_blank">
-                  https://www.colorful.cn/home/DownLoadInfo?mid=102&id=2066 </a> </td>
-            </tr>
-            <tr>
-              <td> 4 </td>
-              <td> 主板官网驱动，微星主板B450I </td>
-              <td> <a href="	https://www.msicn.com.cn/Motherboard/B450I-GAMING-PLUS-AC/support#bios	" target="_blank">
-                  https://www.msicn.com.cn/Motherboard/B450I-GAMING-PLUS-AC/support#bios </a> </td>
-            </tr>
-            <tr>
-              <td> 5 </td>
-              <td> 微星小飞机 </td>
-              <td> <a href="	https://www.msi.com/Landing/afterburner/graphics-cards	" target="_blank">
-                  https://www.msi.com/Landing/afterburner/graphics-cards </a> </td>
-            </tr>
-            <tr>
-              <td> 6 </td>
-              <td> 华硕驱动 </td>
-              <td> <a href="	https://www.asus.com.cn/support/download-center/	" target="_blank">
-                  https://www.asus.com.cn/support/download-center/ </a> </td>
-            </tr>
-            <tr>
-              <td> 7 </td>
-              <td> B650M重炮手 </td>
-              <td> <a
-                  href="	https://www.asus.com.cn/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650m-plus-wifi/helpdesk_download/?model2Name=TUF-GAMING-B650M-PLUS-WIFI	"
-                  target="_blank">
-                  https://www.asus.com.cn/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650m-plus-wifi/helpdesk_download/?model2Name=TUF-GAMING-B650M-PLUS-WIFI
-                </a> </td>
-            </tr>
-            <tr>
-              <td> 8 </td>
-              <td> 安装驱动网络 </td>
-              <td> <a href="		" target="_blank"> </a> </td>
-            </tr>
-            <tr>
-              <td> 9 </td>
-              <td> 安装驱动无线网络 </td>
-              <td> <a href="		" target="_blank"> </a> </td>
-            </tr>
-            <tr>
-              <td> 10 </td>
-              <td> 第三方驱动 </td>
-              <td> <a href="		" target="_blank"> </a> </td>
-            </tr>
-            <tr>
-              <td> 11 </td>
-              <td> 系统更新驱动 </td>
-              <td> <a href="		" target="_blank"> </a> </td>
-            </tr>
-
-          </table>
-
-        </div>
-
-        <div class="步骤 5软件安装" style="height: 1500px; overflow: auto;">
-          <h3>5软件安装</h3>
-
-          <div class="书签分栏">
-
-            <!-- 软件安装列表 -->
-            <table>
-              <tr>
-                <th> 序号 </th>
-                <th> 软件名称 </th>
-                <th> 下载链接 </th>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 任务管理器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Microsoft Edge </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Windows 轻松使用 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> iSCSl 发起程序 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> ODBC Data Sources (32-bit) </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> ODBC 数据源(64 位) </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Windows 内存诊断 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 本地安全策略 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 磁盘清理 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 打印管理 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 服务 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 高级安全 Windows Defender 防火墙 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 恢复驱动器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 计算机管理 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 任务计划程序 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 事件查看器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 碎片整理和优化驱动器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 系统配置 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 系统信息 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 性能监视器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 注册表编辑器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 资源监视器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 组件服务 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Windows 附件 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 字符映射表 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Math Input Panel </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Windows Media Player </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Windows 传真和扫描步骤记录器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 画图计算器记事本 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 截图工具 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 快速助手 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> 写字板远程桌面连接 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 自带软件 </td>
-                <td> Windows PowerShell </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-
-
-            </table>
-
-            <!-- 软件安装列表 -->
-            <table>
-              <tr>
-                <th> 序号 </th>
-                <th> 软件名称 </th>
-                <th> 下载链接 </th>
-              </tr>
-              <tr>
-                <td> 设备驱动-显卡 </td>
-                <td> NVIDA </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网卡驱动 </td>
-                <td> 华硕主板驱动下载 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 键盘驱动 </td>
-                <td> ATK V HUB </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 鼠标驱动 </td>
-                <td> Logitech G HUB </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 小米手机协同 </td>
-                <td> MIUI+ </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 虚拟机应用 </td>
-                <td> VMware </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 采集卡驱动 </td>
-                <td> AVerMedia RECentral 4 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 虚拟声卡 </td>
-                <td> VoiceMeeter </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 视频直播工具 </td>
-                <td> 哔哩哔哩直播姬 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 文件快速搜索工具 </td>
-                <td> Everything </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 文件解压工具 </td>
-                <td> WinRAR </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 文字输入法 </td>
-                <td> 讯飞输入法 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 文件解压工具 </td>
-                <td> 7-Zip </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 图片查看器 </td>
-                <td> Honeyview </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 视频播放器 </td>
-                <td> PotPlayer </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 图片编辑工具 </td>
-                <td> PS </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 视频剪辑工具 </td>
-                <td> PR </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 视频特效工具 </td>
-                <td> AE </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 图片编辑工具 </td>
-                <td> AI </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 工业制图工具 </td>
-                <td> CAD </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 办公文档处理工具 </td>
-                <td> WPS </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 组件 </td>
-                <td> 表格 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 组件 </td>
-                <td> 文档 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 组件 </td>
-                <td> 演示 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网页渲染工具 </td>
-                <td> Chrome浏览器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 视频播放平台 </td>
-                <td> 哔哩哔哩 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 游戏网络加速器 </td>
-                <td> UU加速器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 游戏下载游玩平台 </td>
-                <td> WeGame </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 游戏下载游玩平台 </td>
-                <td> Steam </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 游戏下载游玩平台 </td>
-                <td> Epic </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 电脑运行状态监控显示工具 </td>
-                <td> MSI Afterburner </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 微软安装包格式转化器 </td>
-                <td> EMCO MSI Package Builder 11 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 系统操作效率工具 </td>
-                <td> Quicker </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 电脑系统远程控制工具 </td>
-                <td> ToDesk </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 直播工具 </td>
-                <td> OBS </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯工具 </td>
-                <td> QQ </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 办公流程结构图制作工具 </td>
-                <td> Visio </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 代码编辑工具 </td>
-                <td> Visual Studio Code </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网站加速工具 </td>
-                <td> Watt Toolkit </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯工具 </td>
-                <td> 阿里邮箱 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络共享文件平台 </td>
-                <td> 阿里云盘 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯工具 </td>
-                <td> 钉钉 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯工具 </td>
-                <td> 飞书 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 打字教学工具 </td>
-                <td> 金山打字通 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯工具 </td>
-                <td> 腾讯会议 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 办公工具 </td>
-                <td> 腾讯文档 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯工具 </td>
-                <td> 微信 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络服务平台 </td>
-                <td> 小米云服务 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 视频平台 </td>
-                <td> 央视影音 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-
-            </table>
-
-            <!-- 软件安装列表 -->
-            <table>
-              <tr>
-                <th> 序号 </th>
-                <th> 软件名称 </th>
-                <th> 下载链接 </th>
-              </tr>
-              <tr>
-                <td> 常用工具栏 </td>
-                <td> 途强 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 常用工具栏 </td>
-                <td> 雅迪 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 常用工具栏 </td>
-                <td> 渐构 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 常用工具栏 </td>
-                <td> 网址 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 常用工具栏 </td>
-                <td> 文件管理 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 笔记 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 相机 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 录音机 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 相册 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 浏览器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 系统自动化类 </td>
-                <td> 自动任务 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 系统自动化类 </td>
-                <td> 米家 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 系统自动化类 </td>
-                <td> 小爱同学 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 系统自动化类 </td>
-                <td> 小爱视觉 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 系统自动化类 </td>
-                <td> 小爱翻译 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 系统自动化类 </td>
-                <td> 万能遥控 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 身体类 </td>
-                <td> 小米运动健康 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 软件类 </td>
-                <td> 应用商城 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 软件类 </td>
-                <td> 下载管理 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 软件类 </td>
-                <td> 设置 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 软件类 </td>
-                <td> 游戏加速 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 软件类 </td>
-                <td> 计算器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 天气类 </td>
-                <td> 天气 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 天气类 </td>
-                <td> 指南针 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 天气类 </td>
-                <td> 时钟 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 天气类 </td>
-                <td> 日历 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 联系人 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 电话 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 短信 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 电子邮箱 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 小米社区 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 小米商城 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 讯飞输入法 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 剪映 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 必剪 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> WPS Office </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 腾讯文档 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> 夸克 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> QQ浏览器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> X浏览器 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 编辑类 </td>
-                <td> Edge </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络类 </td>
-                <td> 天翼云盘 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络类 </td>
-                <td> 阿里云盘 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络类 </td>
-                <td> 百度网盘 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络类 </td>
-                <td> 花瓣测速 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络类 </td>
-                <td> 智慧生活 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络类 </td>
-                <td> 迅雷 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络类 </td>
-                <td> ToDesk </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 身体类 </td>
-                <td> 3Dbody解剖 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 身体类 </td>
-                <td> Keep </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 身体类 </td>
-                <td> Zepp </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 身体类 </td>
-                <td> G动 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 身体类 </td>
-                <td> 薄荷健康 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 软件类 </td>
-                <td> 一个木函 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 天气类 </td>
-                <td> 腾讯地图 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 天气类 </td>
-                <td> 百度地图 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 天气类 </td>
-                <td> 高德地图 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 学习强国 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 智慧中小学 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 中国大学MOOC </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 考试宝 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 新华字典 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 学习通 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 国家数字图书馆 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 扇贝单词英语版 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 学习类 </td>
-                <td> 手机知网 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 百度 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 百度百科 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 百度贴吧 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> QQ </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 微信 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 腾讯会议 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 钉钉 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 飞书 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> QQ邮箱 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 通讯类 </td>
-                <td> 阿里邮箱 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 贝壳找房 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> BOSS直聘 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 拉勾招聘 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 学信网 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 电子社保卡 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 江西人社 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 国家政务服务平台 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 国家反诈中心 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 住行类 </td>
-                <td> 个人所得税 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 中国工商银行 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 江西银行 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 中国建设银行 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 招商银行 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 江西农商 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 云闪付 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 支付宝 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 阿里云 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 中国电信 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 知乎 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 微博 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 支付类 </td>
-                <td> 大众点评 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 小红书 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 哔哩哔哩 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 央视影音 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> AcFun </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 虎牙直播 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 腾讯视频 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 抖音 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> QQ音乐 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 网易云音乐 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 古诗文网 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 刺猬猫阅读 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 起点读书 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 网易有道词典 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 萌娘百科 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 讯飞星火 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 飞卢小说 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 晋江小说阅读 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 王者荣耀 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 娱乐类 </td>
-                <td> 王者营地 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> CSDN </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 知识星球 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> Mattermost </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 编程狮 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 酷安 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 国务院 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 央视新闻 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 人民日报 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 央视财经 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 国家医保服务平台 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 论坛社区类 </td>
-                <td> 一证通查 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 中国邮政 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 邮政EMS </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 顺丰同城急送 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 顺丰速运 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 京东快递 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 菜鸟 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 货拉拉 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 物流类 </td>
-                <td> 德邦快递 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 猪八戒 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 美团众包 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 美团外卖 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 肯德基 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 恒生活 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 饿了么 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 携程旅行 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 滴滴出行 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 大卖 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 猫眼 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 必胜客 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 京东 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 天猫 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 淘宝 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 咸鱼 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 拼多多 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 华为商城 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 华硕商城 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 联想 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> IKEA宜家家居 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 比亚迪王朝 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 美团 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 好物清单 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 阿里巴巴 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-              <tr>
-                <td> 网络购物类 </td>
-                <td> 转转 </td>
-                <td> <a href="	链接	" target="_blank"> 链接 </a> </td>
-              </tr>
-
-            </table>
-
-          </div>
-
-          <h3>软件安装命令</h3>
-
-          <pre>
-复制服务器中的安装包至电脑系统桌面
-copy \\10.50.51.201\zm\"系统软件激活"\*.exe C:\Users\Administrator\Desktop
-
-删除桌面所有软件
-DEL C:\Users\Administrator\Desktop\*.exe
-DEL C:\Users\Administrator\Desktop\*.msi
-
-================================================================
-
-移动到admin用户桌面
-CD C:\Users\admin\Desktop
-
-
-部分软件静默安装命令
-WPS_Setup.exe /s /v/qn
-W.P.S.14252.20.2871.exe /S -agreelicense
-iFlyIME_Setup_3.0.1738.exe /S
-sogou_wubi_5.5f.exe /S
-winrar-x64-701sc.exe /S
-Chrome	 /silent /install
-
-常用软件的静默安装参数，双击自动安装
-https://cloud.tencent.com/developer/article/1538138
-
-"WPS Office"-静默安装(附参数Silent Installation Parameters)
-https://www.bilibili.com/read/cv33291303/?opus_fallback=1
-
-start /wait wps.exe /S -agreelicense "/D=D:\WPS"
-
-          </pre>
-
-        </div>
-
-        <div class="步骤 6系统激活">
-          <h3>6系统激活</h3>
-          <p> irm https://get.activated.win | iex</p>
-        </div>
-
-        <div class="步骤 7系统配置">
-          <h3>7系统配置</h3>
-          <pre>
-初始化密钥，协议，添加密码
-修改计算机名，IP地址，壁纸，桌面快捷方式，文件管理器快捷方式，配置任务栏
-修改多窗口设置
-修改多显示器布局
-设置显示超时时间
-设置电源睡眠时间
-修改鼠标设置
-任务计划程序自动关机设置
-
-清理C盘空间
-https://cloud.tencent.com/developer/article/2006519
-
-重装初始化配置
-https://cloud.tencent.com/developer/article/2006558
-
-域控服务器备份
-https://cloud.tencent.com/developer/article/2006555
-
-戴尔服务器配置raid，安装系统
-https://cloud.tencent.com/developer/article/2006601
-
-<h3>系统功能配置</h3>
-高级系统设置打开系统动画，系统后台资源分配程序
-关闭服务器管理器开机自启
-去除系统密码限制
-去除开机Ctrl+Alt+Del限制
-取消系统关机理由限制
-去除IE浏览器安全增强限制
-添加系统镜像备份源 [装载的磁盘]:\sources\sxs
-添加系统组件传真服务器
-添加系统组件打印和文件服务
-添加系统组件.NET3.5
-添加系统组件DirectPlay
-添加系统组件Windows Searth
-添加系统组件优质Windows音频服务体验
-启用系统自带索引服务
-恢复系统自带微软商店
-https://apps.microsoft.com/detail/9wzdncrfjbmp?hl=zh-CN&gl=US
-添加系统组件Hyper-V虚拟机管理器
-虚拟机代数区别
-https://learn.microsoft.com/zh-cn/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V
-Hyper三种网络区别
-https://blog.csdn.net/boliang319/article/details/128731372
-新建虚拟交换机，类型外部网络
-修改适配器取消IPV6
-虚拟机导入导出
-https://blog.csdn.net/qq_43530416/article/details/107734967
-手把手教你Hyper-V虚拟机克隆与迁移，简单又高效
-https://www.bilibili.com/video/BV1oiqUYAEw4/
-Windows Server 2022 Hyper-V：设置虚拟交换机与虚拟机默认位置
-https://edu.51cto.com/article/note/30446.html
-关于Hyper-V网络设置经验总结（Default Switch/固定IP/SSH）
-https://bbs.huaweicloud.com/blogs/324280
-解决Hyper-V外部网络冲突
-https://developer.aliyun.com/article/895462
-VMware虚拟机编辑器更改桥接模式，更改自动桥接，适配器描述	
-配置虚拟机	
-部署服务器	
-域控服务器	
-测试客户端Windows	
-测试客户端Linux	
-测试PE系统	
-连接FNOS，创建同步任务	
-                </pre>
-        </div>
-
-        <div class="步骤 8我的文件">
-          <h3>8我的文件</h3>
-          <div class="SSD1">
-            <h4>电脑系统盘</h4>
-          </div>
-          <div class="HDD0">
-            <h4>电脑资料盘</h4>
-            <pre>
-00-我的全部文件
-000-未整理文件
-0-驱动
-1-系统
-2-软件
-3-配置
-4-数据
-Game
-Steam
-WeGameApps
-生活1-地图
-生活2-时间
-生活3-任务-1-作息
-生活3-任务-2-身体
-生活3-任务-3-家务
-生活3-任务-4-娱乐
-生活3-任务-5-学识
-生活3-任务-6-职业
-生活3-标题-ZZ茅草屋-内心十万字-格式化思路
-            </pre>
-          </div>
-          <div class="HDD1">
-            <h4>电脑备份盘</h4>
-          </div>
-          <div class="HDD2">
-            <h4>电脑冷备盘</h4>
-          </div>
-          <div class="HDD3">
-            <h4>电脑娱乐盘</h4>
-          </div>
-
-          <div class="USB1">
-            <h4>USB盘1</h4>
-          </div>
-
-          <div class="USB2">
-            <h4>USB盘2</h4>
-          </div>
-
-          <div class="USB3">
-            <h4>USB盘3</h4>
-          </div>
-
-          <div class="手机内存">
-            <h4>手机内存1</h4>
-          </div>
-
-          <div class="手机内存">
-            <h4>手机内存2</h4>
-          </div>
-
-          <div class="大疆">
-            <h4>大疆</h4>
-          </div>
-
-        </div>
-
-        <div class="步骤 9我的书签 我的书签9" style="height: 1500px; overflow: auto;">
-          <h3>9我的书签</h3>
-
-          <!-- ============================书签模板========================== -->
-          <table style="text-align: center;">
-            <caption>书签模板</caption>
-            <tr>
-              <td style="width: 50px;">1</td>
-              <td style="width: 50px;">2</td>
-              <td style="width: 50px;">3</td>
-              <td style="width: 50px;">4</td>
-              <td style="width: 50px;">5</td>
-              <td style="width: 50px;">6</td>
-              <td style="width: 50px;">7</td>
-              <td style="width: 50px;">8</td>
-              <td style="width: 50px;">9</td>
-              <td style="width: 50px;">10</td>
-              <td style="width: 50px;">11</td>
-              <td style="width: 50px;">12</td>
-              <td style="width: 50px;">13</td>
-              <td style="width: 50px;">14</td>
-              <td style="width: 50px;">15</td>
-            </tr>
-            <tr>
-              <td style="width: 50px;">&lt;tr&gt;</td>
-              <!-- tr开始 -->
-              <td style="width: 50px;">&lt;td&gt;</td>
-              <td style="width: 50px;">序号</td>
-              <td style="width: 50px;">&lt;/td&gt;</td>
-              <!-- 名称 -->
-              <td style="width: 50px;">&lt;td&gt;</td>
-              <td style="width: 50px;">名称</td>
-              <td style="width: 50px;">&lt;/td&gt;</td>
-              <!--  -->
-              <td style="width: 50px;">&lt;td&gt;</td>
-              <!-- 链接开始 -->
-              <td style="width: 50px;">&lt;a href="</td>
-              <td style="width: 50px;">链接</td>
-              <td style="width: 50px;">" target="_blank"></td>
-              <td style="width: 50px;">链接</td>
-              <td style="width: 50px;">&lt;/a&gt;</td>
-              <!-- 链接结尾 -->
-              <td style="width: 50px;">&lt;/td&gt;</td>
-              <!-- tr结束 -->
-              <td style="width: 50px;">&lt;/tr&gt;</td>
-            </tr>
-
-          </table>
-
-          <div class="书签分栏" style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr;
-            justify-items: center; align-items: start; overflow: auto;">
-
-            <!-- ==============================2身体================================ -->
-            <table>
-              <caption>2身体</caption>
-              <!-- 序号 名称 链接==================================== -->
-              <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>链接</th>
-              </tr>
-
-              <tr>
-                <td> 1 </td>
-                <td> Keep </td>
-                <td> <a href="	https://gotokeep.com/	" target="_blank"> https://gotokeep.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 2 </td>
-                <td> 薄荷网 </td>
-                <td> <a href="	https://www.boohee.com/	" target="_blank"> https://www.boohee.com/ </a> </td>
-              </tr>
-
-            </table>
-
-            <!-- ==============================3身体================================ -->
-            <table>
-              <caption>3身体</caption>
-              <!-- 序号 名称 链接==================================== -->
-              <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>链接</th>
-              </tr>
-              <tr>
-                <td> 1 </td>
-                <td> 个人博客 </td>
-                <td> <a href="	https://zzdabendan.github.io/	" target="_blank"> https://zzdabendan.github.io/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 2 </td>
-                <td> 华为随行wifi 3 Pro </td>
-                <td> <a href="	http://192.168.8.254/" target="_blank"> http://192.168.8.254/ </a> </td>
-              </tr>
-              <tr>
-                <td> 3 </td>
-                <td> B450I-GAMING-PLUS-AC/ </td>
-                <td> <a href="	https://www.msi.cn/Motherboard/B450I-GAMING-PLUS-AC/support	" target="_blank">
-                    https://www.msi.cn/Motherboard/B450I-GAMING-PLUS-AC/support </a> </td>
-              </tr>
-              <tr>
-                <td> 4 </td>
-                <td> Internet Download Manager Registration </td>
-                <td> <a href="	https://secure.internetdownloadmanager.com/buy_idm.html	" target="_blank">
-                    https://secure.internetdownloadmanager.com/buy_idm.html </a> </td>
-              </tr>
-              <tr>
-                <td> 4 </td>
-                <td> 微信文件传输助手 </td>
-                <td> <a href="	https://szfilehelper.weixin.qq.com/	" target="_blank">
-                    https://szfilehelper.weixin.qq.com/ </a> </td>
-              </tr>
-
-
-
-            </table>
-
-            <!-- ==============================4身体================================ -->
-            <table>
-              <caption>4身体</caption>
-              <!-- 序号 名称 链接==================================== -->
-              <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>链接</th>
-              </tr>
-              <tr>
-                <td> 1 </td>
-                <td> 渐构 </td>
-                <td> <a href="	https://www.modevol.com/	" target="_blank"> https://www.modevol.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 2 </td>
-                <td> 自由钢琴 </td>
-                <td> <a href="	https://www.autopiano.cn/	" target="_blank"> https://www.autopiano.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 3 </td>
-                <td> 知识星球 </td>
-                <td> <a href="	https://www.zsxq.com/	" target="_blank"> https://www.zsxq.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 4 </td>
-                <td> 智慧中小学 </td>
-                <td> <a href="	https://basic.smartedu.cn/	" target="_blank"> https://basic.smartedu.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 5 </td>
-                <td> 19高考卷 </td>
-                <td> <a href="	http://edu.people.com.cn/GB/n1/2019/0608/c116076-31125588.html?ivk_sa=1024609v	"
-                    target="_blank"> http://edu.people.com.cn/GB/n1/2019/0608/c116076-31125588.html?ivk_sa=1024609v
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 6 </td>
-                <td> 江西信息学院官网 </td>
-                <td> <a href="	http://www.jxcia.com/	" target="_blank"> http://www.jxcia.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 7 </td>
-                <td> 清华大学官网 </td>
-                <td> <a href="	https://www.tsinghua.edu.cn/	" target="_blank"> https://www.tsinghua.edu.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 8 </td>
-                <td> 北京大学官网 </td>
-                <td> <a href="	https://www.pku.edu.cn	" target="_blank"> https://www.pku.edu.cn </a> </td>
-              </tr>
-              <tr>
-                <td> 9 </td>
-                <td> 学习强国 </td>
-                <td> <a href="	https://www.xuexi.cn/	" target="_blank"> https://www.xuexi.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 10 </td>
-                <td> 中国大学MOOC </td>
-                <td> <a href="	https://www.icourse163.org/	" target="_blank"> https://www.icourse163.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 11 </td>
-                <td> 哔哩哔哩课堂 </td>
-                <td> <a href="	https://www.bilibili.com/cheese/	" target="_blank"> https://www.bilibili.com/cheese/
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 12 </td>
-                <td> 万维网 </td>
-                <td> <a href="	https://www.w3school.com.cn/index.html	" target="_blank">
-                    https://www.w3school.com.cn/index.html </a> </td>
-              </tr>
-              <tr>
-                <td> 13 </td>
-                <td> 鸟哥的linux </td>
-                <td> <a href="	https://linux.vbird.org/linux_basic/	" target="_blank">
-                    https://linux.vbird.org/linux_basic/
-                  </a> </td>
-              </tr>
-              <tr>
-                <td> 14 </td>
-                <td> Linux就该这么学 </td>
-                <td> <a href="	https://www.linuxprobe.com/	" target="_blank"> https://www.linuxprobe.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 15 </td>
-                <td> 博客园 </td>
-                <td> <a href="	https://www.cnblogs.com/	" target="_blank"> https://www.cnblogs.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 16 </td>
-                <td> CSDN </td>
-                <td> <a href="	https://www.csdn.net/	" target="_blank"> https://www.csdn.net/ </a> </td>
-              </tr>
-              <tr>
-                <td> 17 </td>
-                <td> 鸿鹄论坛 </td>
-                <td> <a href="	https://bbs.hh010.com/	" target="_blank"> https://bbs.hh010.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 18 </td>
-                <td> 羽兔网 </td>
-                <td> <a href="	https://www.yutu.cn/	" target="_blank"> https://www.yutu.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 19 </td>
-                <td> 菜鸟教程 </td>
-                <td> <a href="	https://www.runoob.com/	" target="_blank"> https://www.runoob.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 20 </td>
-                <td> 鱼皮 </td>
-                <td> <a href="	https://www.codefather.cn	" target="_blank"> https://www.codefather.cn </a> </td>
-              </tr>
-              <tr>
-                <td> 21 </td>
-                <td> AD域新建用户账户：New-ADUser - 何星星 </td>
-                <td> <a href="	https://hexingxing.cn/new-aduser/	" target="_blank"> https://hexingxing.cn/new-aduser/
-                  </a>
-                </td>
-              </tr>
-
-            </table>
-
-            <!-- ==============================5身体================================ -->
-            <table>
-              <caption>5身体</caption>
-              <!-- 序号 名称 链接==================================== -->
-              <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>链接</th>
-              </tr>
-              <tr>
-                <td> 1 </td>
-                <td> 美国国家标准协会 </td>
-                <td> <a href="	https://www.ansi.org/	" target="_blank"> https://www.ansi.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 2 </td>
-                <td> IEEE </td>
-                <td> <a href="	https://www.ieee.org/	" target="_blank"> https://www.ieee.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 3 </td>
-                <td> IETF </td>
-                <td> <a href="	https://www.ietf.org/	" target="_blank"> https://www.ietf.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 4 </td>
-                <td> ISO国际标准化组织 </td>
-                <td> <a href="	https://www.iso.org/home.html	" target="_blank"> https://www.iso.org/home.html </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 5 </td>
-                <td> 文泉书局 </td>
-                <td> <a href="	https://wqbook.wqxuetang.com/	" target="_blank"> https://wqbook.wqxuetang.com/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 6 </td>
-                <td> 中国政府网 </td>
-                <td> <a href="	https://www.gov.cn/	" target="_blank"> https://www.gov.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 7 </td>
-                <td> 中国军网 </td>
-                <td> <a href="	http://www.81.cn/	" target="_blank"> http://www.81.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 8 </td>
-                <td> 人民日报 </td>
-                <td> <a href="	http://www.people.cn/	" target="_blank"> http://www.people.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 9 </td>
-                <td> CCTV </td>
-                <td> <a href="	https://sports.cctv.com/tabletennis/	" target="_blank">
-                    https://sports.cctv.com/tabletennis/
-                  </a> </td>
-              </tr>
-              <tr>
-                <td> 10 </td>
-                <td> 央视网 </td>
-                <td> <a href="	https://www.cctv.com/	" target="_blank"> https://www.cctv.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 11 </td>
-                <td> 中国营养学会 </td>
-                <td> <a href="	https://www.cnsoc.org/	" target="_blank"> https://www.cnsoc.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 12 </td>
-                <td> 国家法律法规数据库 </td>
-                <td> <a href="	https://flk.npc.gov.cn/index.html	" target="_blank"> https://flk.npc.gov.cn/index.html
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 13 </td>
-                <td> 终身教育平台 </td>
-                <td> <a href="	https://le.ouchn.cn/home+	" target="_blank"> https://le.ouchn.cn/home+ </a> </td>
-              </tr>
-              <tr>
-                <td> 14 </td>
-                <td> 国家企业信用信息公示系统 </td>
-                <td> <a href="	https://shiming.gsxt.gov.cn/index.html	" target="_blank">
-                    https://shiming.gsxt.gov.cn/index.html </a> </td>
-              </tr>
-              <tr>
-                <td> 15 </td>
-                <td> 软考 </td>
-                <td> <a href="	https://www.ruankao.org.cn/	" target="_blank"> https://www.ruankao.org.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 16 </td>
-                <td> 中国计算机技术职业资格网 </td>
-                <td> <a href="	https://www.ruankao.org.cn/introduction/zgsz	" target="_blank">
-                    https://www.ruankao.org.cn/introduction/zgsz </a> </td>
-              </tr>
-              <tr>
-                <td> 17 </td>
-                <td> 国家智慧教育公共服务平台 </td>
-                <td> <a href="	https://www.smartedu.cn/	" target="_blank"> https://www.smartedu.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 18 </td>
-                <td> 国家能源集团 </td>
-                <td> <a href="	https://www.ceic.com/	" target="_blank"> https://www.ceic.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 19 </td>
-                <td> 国家电网 </td>
-                <td> <a href="	http://www.sgcc.com.cn/	" target="_blank"> http://www.sgcc.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 20 </td>
-                <td> 电信 </td>
-                <td> <a href="	http://www.chinatelecom.com.cn/	" target="_blank"> http://www.chinatelecom.com.cn/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 21 </td>
-                <td> 联通 </td>
-                <td> <a href="	http://www.chinaunicom.com.cn/	" target="_blank"> http://www.chinaunicom.com.cn/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 22 </td>
-                <td> 移动 </td>
-                <td> <a href="	https://it.10086.cn/indexc.html	" target="_blank"> https://it.10086.cn/indexc.html </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 23 </td>
-                <td> ChatGPT </td>
-                <td> <a href="	https://chat-gpt.org/zh	" target="_blank"> https://chat-gpt.org/zh </a> </td>
-              </tr>
-              <tr>
-                <td> 24 </td>
-                <td> Apple </td>
-                <td> <a href="	https://www.apple.com.cn/	" target="_blank"> https://www.apple.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 25 </td>
-                <td> 华为 </td>
-                <td> <a href="	https://www.huawei.com/cn/	" target="_blank"> https://www.huawei.com/cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 26 </td>
-                <td> 小米 </td>
-                <td> <a href="	https://www.mi.com/	" target="_blank"> https://www.mi.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 27 </td>
-                <td> 比亚迪 </td>
-                <td> <a href="	https://mall.bydauto.com.cn/pc/	" target="_blank"> https://mall.bydauto.com.cn/pc/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 28 </td>
-                <td> 比亚迪 </td>
-                <td> <a href="	https://www.byd.com/	" target="_blank"> https://www.byd.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 29 </td>
-                <td> 大疆 </td>
-                <td> <a href="	https://www.dji.com/cn	" target="_blank"> https://www.dji.com/cn </a> </td>
-              </tr>
-              <tr>
-                <td> 30 </td>
-                <td> 戴尔/ 外星人 </td>
-                <td> <a href="	https://www.dell.com/support/home/zh-cn/Products?app=drivers	" target="_blank">
-                    https://www.dell.com/support/home/zh-cn/Products?app=drivers </a> </td>
-              </tr>
-              <tr>
-                <td> 31 </td>
-                <td> 宏碁 </td>
-                <td> <a href="	https://www.acer.com.cn/support.html?type=1	" target="_blank">
-                    https://www.acer.com.cn/support.html?type=1 </a> </td>
-              </tr>
-              <tr>
-                <td> 32 </td>
-                <td> 惠普 </td>
-                <td> <a href="	https://support.hp.com/cn-zh/drivers	" target="_blank">
-                    https://support.hp.com/cn-zh/drivers
-                  </a> </td>
-              </tr>
-              <tr>
-                <td> 33 </td>
-                <td> 联想 </td>
-                <td> <a href="	https://newsupport.lenovo.com.cn/notebook.html	" target="_blank">
-                    https://newsupport.lenovo.com.cn/notebook.html </a> </td>
-              </tr>
-              <tr>
-                <td> 34 </td>
-                <td> 联想 </td>
-                <td> <a href="	https://www.lenovo.com.cn/	" target="_blank"> https://www.lenovo.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 35 </td>
-                <td> 联想 </td>
-                <td> <a href="	https://support.lenovo.com/	" target="_blank"> https://support.lenovo.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 36 </td>
-                <td> 华硕 / ROG </td>
-                <td> <a href="	https://www.asus.com.cn/support/Download-Center/	" target="_blank">
-                    https://www.asus.com.cn/support/Download-Center/ </a> </td>
-              </tr>
-              <tr>
-                <td> 37 </td>
-                <td> 七彩虹 </td>
-                <td> <a href="	https://www.colorful.cn/product.aspx?mid=158	" target="_blank">
-                    https://www.colorful.cn/product.aspx?mid=158 </a> </td>
-              </tr>
-              <tr>
-                <td> 38 </td>
-                <td> 微星 </td>
-                <td> <a href="	https://www.msi.cn/support/download/	" target="_blank">
-                    https://www.msi.cn/support/download/
-                  </a> </td>
-              </tr>
-              <tr>
-                <td> 39 </td>
-                <td> 雷神 </td>
-                <td> <a href="	https://www.thunderobot.com/service/download.html	" target="_blank">
-                    https://www.thunderobot.com/service/download.html </a> </td>
-              </tr>
-              <tr>
-                <td> 40 </td>
-                <td> 神舟 </td>
-                <td> <a href="	http://archive.hasee.com/Chinese/download/computer.aspx	" target="_blank">
-                    http://archive.hasee.com/Chinese/download/computer.aspx </a> </td>
-              </tr>
-              <tr>
-                <td> 41 </td>
-                <td> 机械师 </td>
-                <td> <a href="	https://www.machenike.com/offline/driverUnit	" target="_blank">
-                    https://www.machenike.com/offline/driverUnit </a> </td>
-              </tr>
-              <tr>
-                <td> 42 </td>
-                <td> 机械革命 </td>
-                <td> <a href="	https://www.mechrevo.com/service/	" target="_blank"> https://www.mechrevo.com/service/
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 43 </td>
-                <td> 阿里云 </td>
-                <td> <a href="	https://www.aliyun.com/	" target="_blank"> https://www.aliyun.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 44 </td>
-                <td> 阿里邮箱 </td>
-                <td> <a href="	https://qiye.aliyun.com/	" target="_blank"> https://qiye.aliyun.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 45 </td>
-                <td> 阿里云盘 </td>
-                <td> <a href="	https://www.aliyundrive.com/drive	" target="_blank"> https://www.aliyundrive.com/drive
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 46 </td>
-                <td> 阿里巴巴 </td>
-                <td> <a href="	https://www.alibabagroup.com/about-alibaba#culture-and-values	" target="_blank">
-                    https://www.alibabagroup.com/about-alibaba#culture-and-values </a> </td>
-              </tr>
-              <tr>
-                <td> 47 </td>
-                <td> 京东 </td>
-                <td> <a href="	https://www.jd.com/	" target="_blank"> https://www.jd.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 48 </td>
-                <td> 腾讯 </td>
-                <td> <a href="	https://www.qq.com/	" target="_blank"> https://www.qq.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 49 </td>
-                <td> QQ </td>
-                <td> <a href="	https://im.qq.com/index/	" target="_blank"> https://im.qq.com/index/ </a> </td>
-              </tr>
-              <tr>
-                <td> 50 </td>
-                <td> 微信 </td>
-                <td> <a href="	https://weixin.qq.com/	" target="_blank"> https://weixin.qq.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 51 </td>
-                <td> 网易 </td>
-                <td> <a href="	https://www.163.com/	" target="_blank"> https://www.163.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 52 </td>
-                <td> 有道翻译 </td>
-                <td> <a href="	https://fanyi.youdao.com/index.html#/	" target="_blank">
-                    https://fanyi.youdao.com/index.html#/ </a> </td>
-              </tr>
-              <tr>
-                <td> 53 </td>
-                <td> 360官网 </td>
-                <td> <a href="	https://www.360.cn/	" target="_blank"> https://www.360.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 54 </td>
-                <td> 百度 </td>
-                <td> <a href="	https://www.baidu.com/	" target="_blank"> https://www.baidu.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 55 </td>
-                <td> 百度云盘 </td>
-                <td> <a href="	https://pan.baidu.com/	" target="_blank"> https://pan.baidu.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 56 </td>
-                <td> 长江储存 </td>
-                <td> <a href="	https://www.ymtc.com/	" target="_blank"> https://www.ymtc.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 57 </td>
-                <td> 龙芯 </td>
-                <td> <a href="	https://www.loongson.cn/	" target="_blank"> https://www.loongson.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 58 </td>
-                <td> 海康威视 </td>
-                <td> <a href="	https://www.hikvision.com/cn/	" target="_blank"> https://www.hikvision.com/cn/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 59 </td>
-                <td> 锐捷 </td>
-                <td> <a href="	https://www.ruijie.com.cn/	" target="_blank"> https://www.ruijie.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 60 </td>
-                <td> 深信服 </td>
-                <td> <a href="	https://www.sangfor.com.cn/	" target="_blank"> https://www.sangfor.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 61 </td>
-                <td> H3C </td>
-                <td> <a href="	https://www.h3c.com/cn/	" target="_blank"> https://www.h3c.com/cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 62 </td>
-                <td> Cisco </td>
-                <td> <a href="	https://www.cisco.com/c/zh_cn/index.html	" target="_blank">
-                    https://www.cisco.com/c/zh_cn/index.html </a> </td>
-              </tr>
-              <tr>
-                <td> 63 </td>
-                <td> Intel </td>
-                <td> <a href="	https://www.intel.cn/content/www/cn/zh/homepage.html	" target="_blank">
-                    https://www.intel.cn/content/www/cn/zh/homepage.html </a> </td>
-              </tr>
-              <tr>
-                <td> 64 </td>
-                <td> Nvdia </td>
-                <td> <a href="	https://www.nvidia.cn/	" target="_blank"> https://www.nvidia.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 65 </td>
-                <td> AMD </td>
-                <td> <a href="	https://www.amd.com/zh-hans	" target="_blank"> https://www.amd.com/zh-hans </a> </td>
-              </tr>
-              <tr>
-                <td> 66 </td>
-                <td> Microsoft </td>
-                <td> <a href="	https://www.microsoft.com/zh-cn/	" target="_blank"> https://www.microsoft.com/zh-cn/
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 67 </td>
-                <td> 微软官方安装工具下载： </td>
-                <td> <a href="	https://www.microsoft.com/zh-cn/software-download	" target="_blank">
-                    https://www.microsoft.com/zh-cn/software-download </a> </td>
-              </tr>
-              <tr>
-                <td> 68 </td>
-                <td> MSDN我告诉你 </td>
-                <td> <a href="	https://msdn.itellyou.cn/	" target="_blank"> https://msdn.itellyou.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 69 </td>
-                <td> MSDN新版 </td>
-                <td> <a href="	https://next.itellyou.cn/	" target="_blank"> https://next.itellyou.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 70 </td>
-                <td> Windows下载 </td>
-                <td> <a href="	https://hellowindows.cn/	" target="_blank"> https://hellowindows.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 71 </td>
-                <td> visual studio code </td>
-                <td> <a href="	https://code.visualstudio.com/	" target="_blank"> https://code.visualstudio.com/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 72 </td>
-                <td> GitHub </td>
-                <td> <a href="	https://github.com/	" target="_blank"> https://github.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 73 </td>
-                <td> Edgeless PE </td>
-                <td> <a href="	https://home.edgeless.top/	" target="_blank"> https://home.edgeless.top/ </a> </td>
-              </tr>
-              <tr>
-                <td> 74 </td>
-                <td> 微PE工具箱 </td>
-                <td> <a href="	https://www.wepe.com.cn/	" target="_blank"> https://www.wepe.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 75 </td>
-                <td> FirPE Project </td>
-                <td> <a href="	https://www.firpe.cn/	" target="_blank"> https://www.firpe.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 76 </td>
-                <td> HotPE </td>
-                <td> <a href="	https://www.hotpe.top/	" target="_blank"> https://www.hotpe.top/ </a> </td>
-              </tr>
-              <tr>
-                <td> 77 </td>
-                <td> Ventoy </td>
-                <td> <a href="	https://www.ventoy.net/cn/index.html	" target="_blank">
-                    https://www.ventoy.net/cn/index.html
-                  </a> </td>
-              </tr>
-              <tr>
-                <td> 78 </td>
-                <td> Rufus刻盘工具下载： </td>
-                <td> <a href="	rufus.ie	" target="_blank"> rufus.ie </a> </td>
-              </tr>
-              <tr>
-                <td> 79 </td>
-                <td> 图吧工具箱 </td>
-                <td> <a href="	http://www.tbtool.cn/	" target="_blank"> http://www.tbtool.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 80 </td>
-                <td> 谷歌浏览器 </td>
-                <td> <a href="	https://www.google.cn/intl/zh-CN/chrome/	" target="_blank">
-                    https://www.google.cn/intl/zh-CN/chrome/ </a> </td>
-              </tr>
-              <tr>
-                <td> 81 </td>
-                <td> 火狐浏览器 </td>
-                <td> <a href="	http://www.firefox.com.cn/	" target="_blank"> http://www.firefox.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 82 </td>
-                <td> Adobe </td>
-                <td> <a href="	https://www.adobe.com/cn/	" target="_blank"> https://www.adobe.com/cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 83 </td>
-                <td> Office Tool Plus </td>
-                <td> <a href="	https://otp.landian.vip/zh-cn/	" target="_blank"> https://otp.landian.vip/zh-cn/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 84 </td>
-                <td> WPS办公软件 </td>
-                <td> <a href="	https://www.wps.cn/	" target="_blank"> https://www.wps.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 85 </td>
-                <td> 虚拟声卡 </td>
-                <td> <a href="	https://www.bilibili.com/read/cv22485313/	" target="_blank">
-                    https://www.bilibili.com/read/cv22485313/ </a> </td>
-              </tr>
-              <tr>
-                <td> 86 </td>
-                <td> 虚拟声卡2025 </td>
-                <td> <a href="	https://www.bilibili.com/opus/1025190852268392467	" target="_blank">
-                    https://www.bilibili.com/opus/1025190852268392467 </a> </td>
-              </tr>
-              <tr>
-                <td> 87 </td>
-                <td> 视频播放器 </td>
-                <td> <a href="	http://www.videolan.org/	" target="_blank"> http://www.videolan.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 88 </td>
-                <td> wallpaper </td>
-                <td> <a href="	https://wall.alphacoders.com/	" target="_blank"> https://wall.alphacoders.com/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 89 </td>
-                <td> 壁纸 </td>
-                <td> <a href="	https://zhuanlan.zhihu.com/p/340687865	" target="_blank">
-                    https://zhuanlan.zhihu.com/p/340687865 </a> </td>
-              </tr>
-              <tr>
-                <td> 90 </td>
-                <td> linux kernel </td>
-                <td> <a href="	https://www.kernel.org/	" target="_blank"> https://www.kernel.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 91 </td>
-                <td> GNU </td>
-                <td> <a href="	https://www.gnu.org/	" target="_blank"> https://www.gnu.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 92 </td>
-                <td> 容器 </td>
-                <td> <a href="	https://www.docker.com/	" target="_blank"> https://www.docker.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 93 </td>
-                <td> Redhat Linux 红帽 </td>
-                <td> <a href="	https://www.redhat.com/zh	" target="_blank"> https://www.redhat.com/zh </a> </td>
-              </tr>
-              <tr>
-                <td> 94 </td>
-                <td> kubernetes社区 </td>
-                <td> <a href="	https://www.kubernetes.org.cn/	" target="_blank"> https://www.kubernetes.org.cn/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 95 </td>
-                <td> 统信操作系统 </td>
-                <td> <a href="	https://www.uniontech.com/	" target="_blank"> https://www.uniontech.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 96 </td>
-                <td> Ubuntu </td>
-                <td> <a href="	https://cn.ubuntu.com/	" target="_blank"> https://cn.ubuntu.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 97 </td>
-                <td> kubernetes </td>
-                <td> <a href="	https://kubernetes.io/zh-cn/	" target="_blank"> https://kubernetes.io/zh-cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 98 </td>
-                <td> nginx网站服务器 </td>
-                <td> <a href="	https://nginx.org/en/	" target="_blank"> https://nginx.org/en/ </a> </td>
-              </tr>
-              <tr>
-                <td> 99 </td>
-                <td> apache网站服务器 </td>
-                <td> <a href="	https://apache.org/	" target="_blank"> https://apache.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 100 </td>
-                <td> zabbix监控 </td>
-                <td> <a href="	http://grandage.cn/	" target="_blank"> http://grandage.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 101 </td>
-                <td> Zabbix </td>
-                <td> <a href="	https://www.zabbix.com/cn	" target="_blank"> https://www.zabbix.com/cn </a> </td>
-              </tr>
-              <tr>
-                <td> 102 </td>
-                <td> ssh工具 </td>
-                <td> <a href="	https://www.xshell.com/zh/xshell/	" target="_blank"> https://www.xshell.com/zh/xshell/
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 103 </td>
-                <td> 网易开源镜像站 </td>
-                <td> <a href="	http://mirrors.163.com/	" target="_blank"> http://mirrors.163.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 104 </td>
-                <td> 清华大学开源软件镜像站 </td>
-                <td> <a href="	https://mirrors.tuna.tsinghua.edu.cn/	" target="_blank">
-                    https://mirrors.tuna.tsinghua.edu.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 105 </td>
-                <td> Vmware虚拟机 </td>
-                <td> <a href="	https://www.vmware.com/cn.html	" target="_blank"> https://www.vmware.com/cn.html </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 106 </td>
-                <td> Python </td>
-                <td> <a href="	https://www.python.org/	" target="_blank"> https://www.python.org/ </a> </td>
-              </tr>
-              <tr>
-                <td> 107 </td>
-                <td> pycharm </td>
-                <td> <a href="	https://www.jetbrains.com/pycharm/	" target="_blank">
-                    https://www.jetbrains.com/pycharm/
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 108 </td>
-                <td> git </td>
-                <td> <a href="	https://git-scm.com/	" target="_blank"> https://git-scm.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 109 </td>
-                <td> deepseek </td>
-                <td> <a href="	https://chat.deepseek.com/	" target="_blank"> https://chat.deepseek.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 110 </td>
-                <td> wlop货摊 </td>
-                <td> <a href="	https://wlop.huotan.net/	" target="_blank"> https://wlop.huotan.net/ </a> </td>
-              </tr>
-
-
-            </table>
-
-            <!-- ==============================6身体================================ -->
-            <table>
-              <caption>6身体</caption>
-              <!-- 序号 名称 链接==================================== -->
-              <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>链接</th>
-              </tr>
-              <tr>
-                <td> 1 </td>
-                <td> steam </td>
-                <td> <a href="	https://store.steampowered.com/	" target="_blank"> https://store.steampowered.com/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 2 </td>
-                <td> 黑神话悟空 </td>
-                <td> <a href="	https://www.heishenhua.com/	" target="_blank"> https://www.heishenhua.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 3 </td>
-                <td> 腾讯游戏 </td>
-                <td> <a href="	https://www.wegame.com.cn/	" target="_blank"> https://www.wegame.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 4 </td>
-                <td> 游戏科学 </td>
-                <td> <a href="	https://www.gamesci.com.cn/	" target="_blank"> https://www.gamesci.com.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 5 </td>
-                <td> 芒果时光音乐会2周深《听见下雨的声音》 </td>
-                <td> <a href="	https://www.mgtv.com/b/501604/18021763.html	" target="_blank">
-                    https://www.mgtv.com/b/501604/18021763.html </a> </td>
-              </tr>
-              <tr>
-                <td> 6 </td>
-                <td> 哔哩哔哩黑神话悟空《戒网》 </td>
-                <td> <a href="	https://www.bilibili.com/video/BV1Ye4y1f7kA/	" target="_blank">
-                    https://www.bilibili.com/video/BV1Ye4y1f7kA/ </a> </td>
-              </tr>
-              <tr>
-                <td> 7 </td>
-                <td> 抖音创作者中心 </td>
-                <td> <a href="	https://creator.douyin.com/	" target="_blank"> https://creator.douyin.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 8 </td>
-                <td> 腾讯视频 </td>
-                <td> <a href="	https://v.qq.com/channel/choice?channel_2022=1	" target="_blank">
-                    https://v.qq.com/channel/choice?channel_2022=1 </a> </td>
-              </tr>
-              <tr>
-                <td> 9 </td>
-                <td> 哔哩哔哩 </td>
-                <td> <a href="	https://www.bilibili.com/	" target="_blank"> https://www.bilibili.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 10 </td>
-                <td> 虎牙 </td>
-                <td> <a href="	https://www.huya.com/	" target="_blank"> https://www.huya.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 11 </td>
-                <td> 爱奇艺 </td>
-                <td> <a href="	https://www.iqiyi.com/	" target="_blank"> https://www.iqiyi.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 12 </td>
-                <td> 快手 </td>
-                <td> <a href="	https://www.kuaishou.com/	" target="_blank"> https://www.kuaishou.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 13 </td>
-                <td> 优酷 </td>
-                <td> <a href="	https://youku.com/	" target="_blank"> https://youku.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 14 </td>
-                <td> 咩播云插件 </td>
-                <td> <a href="	https://yun.miebo.cn/	" target="_blank"> https://yun.miebo.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 15 </td>
-                <td> 飞卢小说网 </td>
-                <td> <a href="	https://b.faloo.com/	" target="_blank"> https://b.faloo.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 16 </td>
-                <td> 刺猬猫阅读 </td>
-                <td> <a href="	https://mip.ciweimao.com/	" target="_blank"> https://mip.ciweimao.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 17 </td>
-                <td> 龙的天空 </td>
-                <td> <a href="	https://www.lkong.com/	" target="_blank"> https://www.lkong.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 18 </td>
-                <td> 111 </td>
-                <td> <a href="	https://www.llss.app/wp/	" target="_blank"> https://www.llss.app/wp/ </a> </td>
-              </tr>
-              <tr>
-                <td> 19 </td>
-                <td> 起点中文网 </td>
-                <td> <a href="	https://www.qidian.com/	" target="_blank"> https://www.qidian.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 20 </td>
-                <td> 优书网 </td>
-                <td> <a href="	https://www.yousuu.com/	" target="_blank"> https://www.yousuu.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 21 </td>
-                <td> 萌娘百科 </td>
-                <td> <a href="	https://zh.moegirl.org.cn/Mainpage	" target="_blank">
-                    https://zh.moegirl.org.cn/Mainpage
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 22 </td>
-                <td> sao热风工作室 </td>
-                <td> <a href="	http://www.gpbeta.com/post/tag/sao-utils/	" target="_blank">
-                    http://www.gpbeta.com/post/tag/sao-utils/ </a> </td>
-              </tr>
-              <tr>
-                <td> 23 </td>
-                <td> 猴子 </td>
-                <td> <a href="	https://gigamonkeys.com/code-reading/	" target="_blank">
-                    https://gigamonkeys.com/code-reading/ </a> </td>
-              </tr>
-              <tr>
-                <td> 24 </td>
-                <td> 自由钢琴 </td>
-                <td> <a href="	https://www.autopiano.cn/	" target="_blank"> https://www.autopiano.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 25 </td>
-                <td> 图片压缩 </td>
-                <td> <a href="	https://tinypng.com/	" target="_blank"> https://tinypng.com/ </a> </td>
-              </tr>
-              <tr>
-                <td> 26 </td>
-                <td> 影视飓风 </td>
-                <td> <a href="	https://www.ysjf.com/home	" target="_blank"> https://www.ysjf.com/home </a> </td>
-              </tr>
-              <tr>
-                <td> 27 </td>
-                <td> 学习方舟风格网站 </td>
-                <td> <a href="	https://www.ignoredone.space/	" target="_blank"> https://www.ignoredone.space/ </a>
-                </td>
-              </tr>
-              <tr>
-                <td> 28 </td>
-                <td> 字节跳动编辑器 </td>
-                <td> <a href="	https://www.trae.cn/	" target="_blank"> https://www.trae.cn/ </a> </td>
-              </tr>
-              <tr>
-                <td> 29 </td>
-                <td> Chrome离线版本下载地址 </td>
-                <td> <a href="	https://www.cnblogs.com/ywaanig/p/19326115	" target="_blank">
-                    https://www.cnblogs.com/ywaanig/p/19326115 </a> </td>
-              </tr>
-              <tr>
-                <td> 30 </td>
-                <td> advancedinstaller </td>
-                <td> <a href="	https://www.advancedinstaller.com/downloading.html	" target="_blank">
-                    https://www.advancedinstaller.com/downloading.html </a> </td>
-              </tr>
-              <tr>
-                <td> 31 </td>
-                <td> 金山翻译 </td>
-                <td> <a href="	https://www.iciba.com/translate	" target="_blank"> https://www.iciba.com/translate </a>
-                </td>
-              </tr>
-
-
-            </table>
-
-
-          </div>
-
-        </div>
-
-        <div class="步骤 10个人计划">
-          <h2>个人计划</h2>
-          <p>人一定要靠感觉和计划行动：感觉直接快速依赖经验。计划复杂，需要时间和耐心。
-            人不吃饭就会饿死，人吃饭就会饱
-            人不休息就会累死，人休息就会闲
-            人不学习就会笨死，人学习就会灵
-
-          </p>
-          <div class="目标">
-            <div class="目标1" style="width: 33%;">
-              <ul>
-                <!-- 目标1 -->
-                <li>
-                  <hr>
-                  <h3>人一定要有目标1和方案：睡觉</h3>
-                  <p>每天8小时，起床时间8小时减少8小时等于24时</p>
-                  <p>闭目养神，每小时休息15分钟<br>获得精神</p>
-                </li>
-                <!-- 目标2 -->
-                <li>
-                  <hr>
-                  <h3>人一定要有目标2和方案：呼吸</h3>
-                  <p>保持气息和头脑清醒，</p>
-                  <p>获得体力</p>
-                </li>
-                <!-- 目标3 -->
-                <li>
-                  <hr>
-                  <h3>人一定要有目标3和方案：姿态</h3>
-                  <p>站正，坐正，走正</p>
-                  <p>获得行动力</p>
-                </li>
-                <!-- 目标4 -->
-                <li>
-                  <hr>
-                  <h3>人一定要有目标4和方案：饮食</h3>
-                  <p>喝水，早餐午餐晚餐</p>
-                  <p>获得营养，保持健康</p>
-                </li>
-                <!-- 目标5 -->
-                <li>
-                  <hr>
-                  <h3>人一定要有目标5和方案：卫生</h3>
-                  <p>保持个人卫生，洗漱</p>
-                </li>
-                <!-- 目标6 -->
-                <li>
-                  <hr>
-                  <h3>人一定要有目标6和方案：家务</h3>
-                  <p>整理家务，倒垃圾，洗鞋子，洗衣服</p>
-                </li>
-                <!-- 目标7 -->
-                <li>
-                  <hr>
-                  <h3>人一定要有目标7和方案：运动</h3>
-                  <p>锻炼，热身，有氧，力量，腿部，深蹲</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="目标2" style="width: 33%;">
-              <ul>
-                <li>
-                  <hr>
-                  <h3>人一定要有目标7和方案：运动</h3>
-                  <p>锻炼，热身，有氧，力量，腿部，深蹲</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="目标3" style="width: 33%;">
-              <ul>
-                <li>
-                  <hr>
-                  <h3>人一定要有目标8和方案：</h3>
-                  <p>驾照</p>
-                </li>
-                <li>
-                  <hr>
-                  <h3>人一定要有目标9和方案：</h3>
-                  <p>工作总结</p>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
     </div>
 
+    <!-- 第二个子div（25%宽度） -->
+    <div class="child-div-2">
+      <h3>背包行李仓库</h3>
+      <div class="sub-boxes-container">
+        <div class="sub-box">
+          背包
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>房间钥匙</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>银行卡</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>身份证</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
 
-    <div class="目录">
-
-      <div class="段落 小隐蔽屋1">
-
-        <div class="隐蔽屋1">
-          <h2>老老家房子</h2>
-          <p>隐蔽屋1</p>
-          <p>（00000000-00000000）</p>
+            </table>
+          </div>
         </div>
-
-        <div class="隐蔽屋2">
-          <h2>沙田仔老房子</h2>
-          <p>隐蔽屋2</p>
-          <p>（00000000-00000000）</p>
+        <div class="sub-box">
+          行李
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>空</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>空</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>空</td>
+                <td>2</td>
+              </tr>
+            </table>
+          </div>
         </div>
+        <div class="sub-box">
+          仓库
+          <div class="table-container">
+            <table>
+              <tr>
+                <th class="序号">序号</th>
+                <th class="名称">名称</th>
+                <th class="数目">数目</th>
+                <th class="备注">备注</th>
+              </tr>
+              <tr>
+                <td class="序号">1</td>
+                <td class="名称">白收纳箱1</td>
+                <td class="数目">上衣</td>
+                <td class="备注" rowspan="8">326.5元（两个99元*4-69）</td>
+              </tr>
+              <tr>
+                <!-- 第2行 -->
+                <td class="序号">2</td>
+                <td class="名称">白收纳箱2</td>
+                <td class="数目">裤子</td>
+              </tr>
+              <tr>
+                <!-- 第3行 -->
+                <td class="序号">3</td>
+                <td class="名称">白收纳箱3</td>
+                <td class="数目">外衣</td>
+              </tr>
+              <tr>
+                <!-- 第4行 -->
+                <td class="序号">4</td>
+                <td class="名称">白收纳箱4</td>
+                <td class="数目">包装</td>
+              </tr>
+              <tr>
+                <!-- 第5行 -->
+                <td class="序号">5</td>
+                <td class="名称">白收纳箱5</td>
+                <td class="数目">工具</td>
+              </tr>
+              <tr>
+                <!-- 第6行 -->
+                <td class="序号">6</td>
+                <td class="名称">白收纳箱6</td>
+                <td class="数目">书本</td>
+              </tr>
+              <tr>
+                <!-- 第7行 -->
+                <td class="序号">7</td>
+                <td class="名称">白收纳箱7</td>
+                <td class="数目">食物</td>
+              </tr>
+              <tr>
+                <!-- 第8行 -->
+                <td class="序号">8</td>
+                <td class="名称">白收纳箱8</td>
+                <td class="数目">厨具</td>
+              </tr>
+              <tr>
+                <!-- 第9行 -->
+                <td class="序号">9</td>
+                <td class="名称">黑收纳箱9</td>
+                <td class="数目">清洁工具</td>
+                <td class="备注" rowspan="8">391.5元（116.7+195+79.8）</td>
+              </tr>
+              <tr>
+                <!-- 第10行 -->
+                <td class="序号">10</td>
+                <td class="名称">黑收纳箱10</td>
+                <td class="数目">健身工具</td>
+              </tr>
+              <tr>
+                <!-- 第11行 -->
+                <td class="序号">11</td>
+                <td class="名称">黑收纳箱11</td>
+                <td class="数目">鞋子</td>
+              </tr>
+              <tr>
+                <!-- 第12行 -->
+                <td class="序号">12</td>
+                <td class="名称">黑收纳箱12</td>
+                <td class="数目">挡风被</td>
+              </tr>
+              <tr>
+                <!-- 第13行 -->
+                <td class="序号">13</td>
+                <td class="名称">黑收纳箱13</td>
+                <td class="数目">折叠</td>
+              </tr>
+              <tr>
+                <!-- 第14行 -->
+                <td class="序号">14</td>
+                <td class="名称">黑收纳箱14</td>
+                <td class="数目">折叠</td>
+              </tr>
+              <tr>
+                <!-- 第15行 -->
+                <td class="序号">15</td>
+                <td class="名称">黑收纳箱15</td>
+                <td class="数目">折叠</td>
+              </tr>
+              <tr>
+                <!-- 第16行 -->
+                <td class="序号">16</td>
+                <td class="名称">黑收纳箱16</td>
+                <td class="数目">折叠</td>
+              </tr>
 
-        <div class="隐蔽屋3">
-          <h2>沙田仔新房子</h2>
-          <p>隐蔽屋3</p>
-          <p>（00000000-00000000）</p>
+            </table>
+          </div>
         </div>
-
-        <div class="隐蔽屋4">
-          <h2>大埔村宿舍高楼层</h2>
-          <p>隐蔽屋4</p>
-          <p>（00000000-00000000）</p>
-        </div>
-
-        <div class="隐蔽屋5">
-          <h2>大埔村2楼</h2>
-          <p>隐蔽屋5</p>
-          <p>（20060000-00000000）</p>
-        </div>
-
-        <div class="隐蔽屋6">
-          <h2>大埔村初中3楼</h2>
-          <p>隐蔽屋6</p>
-          <p>（20150000-20160000）</p>
-        </div>
-
-        <div class="隐蔽屋7">
-          <h2>五中学校旁小区2栋</h2>
-          <p>隐蔽屋7</p>
-          <p>（20160000-20190400）</p>
-        </div>
-
-        <div class="隐蔽屋8">
-          <h2>江信学校宿舍9栋231室</h2>
-          <p>隐蔽屋8</p>
-          <p>（20190900-20210700）</p>
-        </div>
-
-        <div class="隐蔽屋9">
-          <h2>长胜小区</h2>
-          <p>隐蔽屋9</p>
-          <p>（20210700-20240714）</p>
-        </div>
-
-        <div class="隐蔽屋10">
-          <h2>闵行小区</h2>
-          <p>隐蔽屋10</p>
-          <p>（20240714-20260000）</p>
-        </div>
-
       </div>
+    </div>
 
+    <!-- 第三个子div（50%宽度） -->
+    <div class="child-div-3">
+      <h3>家具工具</h3>
+      <div class="sub-boxes-container">
+        <div class="sub-box">
+          卧室
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>枕头</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>被子</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>竹席</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>床单</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="sub-box">
+          桌子
+          <div class="table-container">
+            <table>
+              <caption>4桌面</caption>
+              <tr>
+                <th>分类</th>
+                <th>序号</th>
+                <th>名称</th>
+                <th>数目</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td rowspan="19">4</td>
+                <td>1</td>
+                <td>掌上无人机</td>
+                <td>大疆NEO</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格2 -->
+                <td>2</td>
+                <td>手机充电器</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格3 -->
+                <td>3</td>
+                <td>旧手机充电器</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格4 -->
+                <td>4</td>
+                <td>数据线</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格5 -->
+                <td>5</td>
+                <td>电排插1</td>
+                <td>公牛单排插排</td>
+                <td>200</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格6 -->
+                <td>6</td>
+                <td>电排插2</td>
+                <td>公牛多开关插排</td>
+                <td>200</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格7 -->
+                <td>7</td>
+                <td>电排插3</td>
+                <td>小米双排插排</td>
+                <td>200</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格8 -->
+                <td>8</td>
+                <td>智能插座</td>
+                <td>小米智能插座</td>
+                <td>200</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格9 -->
+                <td>9</td>
+                <td>手机1<br>
+                  手机2<br>
+                  手机3<br>
+                  手机4<br>
+                  手机5<br>
+                  手机6<br>
+                  手机7<br>
+                  手机8<br>
+                  手机9<br>
+                </td>
+                <td>三星
+                  <br>诺基亚
+                  <br>酷米
+                  <br>荣耀
+                  <br>华为9x
+                  <br>小米note10
+                  <br>小米k60
+                  <br>小米note14trobe
+                  <br>小米
+                </td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格10 -->
+                <td>10</td>
+                <td>手机1旧手机</td>
+                <td>20191000
+                </td>
+                <td>1599</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格11 -->
+                <td>11</td>
+                <td>手机2</td>
+                <td>20230000
+                </td>
+                <td>2000</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格12 -->
+                <td>12</td>
+                <td>笔记本1
+                  <br>CPU
+                  <br>内存
+                  <br>存储
+                  <br>显示器
+                </td>
+                <td>20251000
+                  <br>M1
+                  <br>8G
+                  <br>
+                  <br>
+                </td>
+                <td>5500-3500元</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格13 -->
+                <td>13</td>
+                <td>笔记本2
+                  <br>CPU
+                  <br>内存
+                  <br>存储
+                  <br>显示器
+                </td>
+                <td>20251000
+                  <br>M1
+                  <br>8G
+                  <br>
+                  <br>
+                </td>
+                <td>2600元</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格14 -->
+                <td>14</td>
+                <td>电脑2
+                  <br>CPU
+                  <br>GPU
+                  <br>内存
+                  <br>存储
+                  <br>主板
+                  <br>电源
+                  <br>散热
+                  <br>机箱
+                  <br>显示器
+                  <br>音响
+                  <br>耳机
+                  <br>麦克风
+                  <br>键盘
+                  <br>鼠标
+                  <br>鼠标垫
+                </td>
+                <td>20180000
+                  <br>AMDR53400G
+                  <br>Vage8
+                  <br>十铨8G*2
+                  <br>紫光固态 480G
+                  <br>微星 B450I
+                  <br>傻瓜超人 350W
+                  <br>65W
+                  <br>ITX 傻瓜超人K39
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </td>
+                <td>2500元</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格15 -->
+                <td>15</td>
+                <td>电脑2
+                  <br>CPU
+                  <br>GPU
+                  <br>内存
+                  <br>存储
+                  <br>主板
+                  <br>电源
+                  <br>散热
+                  <br>机箱
+                  <br>显示器
+                  <br>音响
+                  <br>耳机
+                  <br>麦克风
+                  <br>键盘
+                  <br>鼠标
+                  <br>鼠标垫
+                </td>
+                <td>20191111
+                  <br>AMDR53400G
+                  <br>Vage8
+                  <br>十铨8G*2
+                  <br>紫光固态 480G
+                  <br>微星 B450I
+                  <br>傻瓜超人 350W
+                  <br>65W
+                  <br>ITX 傻瓜超人K39
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </td>
+                <td>3800元</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格16 -->
+                <td>16</td>
+                <td>电脑3
+                  <br>CPU
+                  <br>GPU
+                  <br>内存
+                  <br>存储
+                  <br>主板
+                  <br>电源
+                  <br>散热
+                  <br>机箱
+                  <br>显示器1
+                  <br>显示器2
+                  <br>音响
+                  <br>耳机
+                  <br>麦克风
+                  <br>键盘
+                  <br>鼠标
+                  <br>鼠标垫
+                </td>
+                <td>20230000
+                  <br>AMDR77700
+                  <br>RTX 4060
+                  <br>光威 6000 48Gx2
+                  <br>梵想1T+希捷4T+希捷4T+希捷4T
+                  <br><a href="">系统安装步骤</a>
+                  <br>华硕 B650M重炮手WIFI
+                  <br>利民 TG650 650W
+                  <br>利民 PA140 WHITE
+                  <br>MATX 先马 趣造2白色
+                  <br>联想 R27QE 27
+                  <br>红米 60Hz IPS 1080P
+                  <br>漫步者
+                  <br>飞利浦 9000
+                  <br>微翼
+                  <br>VGN V98PROV2极地狐轴
+                  <br>罗技 G304 ATK星闪版
+                  <br>凯雷防滑乱纹
+                </td>
+                <td>9900
+                  <br>2000
+                  <br>2000
+                  <br>2000
+                  <br>0
+                  <br>600
+                  <br>200
+                  <br>300
+                  <br>900
+                  <br>500
+                  <br>600
+                  <br>400
+                  <br>300
+                  <br>100
+                </td>
+              </tr>
+              <tr>
+                <!-- 合并单元格17 -->
+                <td>17</td>
+                <td>手柄</td>
+                <td>北通定制黑神话</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格18 -->
+                <td>18</td>
+                <td>U盘</td>
+                <td>梵想固态U盘256G
+                  <br>梵想高速U盘64G
+                  <br>梵想高速U盘128G
+                </td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <!-- 合并单元格19 -->
+                <td>19</td>
+                <td>移动WiFi1
+                  <br>移动WiFi2
+                </td>
+                <td>华为随行WIFI3PRO蓝色
+                  <br>华为随行WIFI5白色
+                </td>
+                <td>599元/12月
+                  <br>599元/12月
+                  <br>500元
+                  <br>200元
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="sub-box">
+          阳台
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>晾衣架</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>花盆</td>
+                <td>可用</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="sub-box">
+          厨房
+          <div class="table-container">
+            <table>
+              <caption>6厨房</caption>
+              <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>电饭锅</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>平底锅</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>电磁炉</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>烧水壶</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>大米</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>面条</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>鸡蛋</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>白菜</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>鱼罐头</td>
+                <td>2</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="sub-box">
+          厕所
+          <div class="table-container">
+            <table>
+              <caption>7清洁工具</caption>
+              <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>水桶、抹布、一次性手套<br>扫把和簸箕、垃圾桶和垃圾袋</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>洗衣液</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>84消毒液</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>洗洁精</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>厨房清洁剂（重油污）</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>厕所清洁剂</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>毛巾</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>水杯、牙刷、牙膏</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>肥皂、洗面奶、爽肤水、保湿膏</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>电动剃须刀、手动剃须刀<br>理发器、平剪、牙剪、鼻毛剪<br>清洁小盒子（指甲剪，耳朵勺）</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>棉签</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>保鲜膜</td>
+                <td>2</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="sub-box">
+          柜子
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>备注</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>书柜</td>
+                <td>可用</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>储物柜</td>
+                <td>可用</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-
-
 </body>
 
 </html>
