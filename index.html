@@ -91,10 +91,10 @@
     /* 小div样式 */
     .small-div {
       flex: 0 0 auto;
-      max-height: 80px;
+      max-height: 180px;
       padding: 10px 20px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 20px;
     }
 
@@ -197,6 +197,11 @@
     .option-button:hover {
       background-color: #f0f0f0;
     }
+
+    /* 内容区域样式 */
+    .content-area {
+      border: 1px solid #000000;
+    }
   </style>
 </head>
 
@@ -211,6 +216,12 @@
         <button class="option-button">简单难度，休闲模式</button>
         <button class="option-button">困难难度，挑战模式</button>
         <button class="option-button">完美难度，职业模式</button>
+      </div>
+      <!-- 内容区域 -->
+      <div class="content-area">
+        <p>早上好！大大世界。</p>
+        <p>今天在做什么？</p>
+        <p>要开心呀。</p>
       </div>
     </div>
 
