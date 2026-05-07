@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>布局24</title>
+  <title>布局26</title>
   <style>
     /* 极简样式：只有基础宽度/高度/边距/灰白背景色 */
     * {
@@ -33,29 +33,37 @@
     /* 布局 */
 
     .header {
-      padding: 20px 0 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo {
+      flex: 1;
+      color: #ffffff;
+      justify-content: flex-start;
+      padding: 20px;
     }
 
     .title {
-
+      justify-content: center;
       text-align: center;
       color: #ffffff;
       font-size: 24px;
-      padding: 20px 0;
     }
 
     /* 布局 */
-
-
     .nav {
+      flex: 1;
+      justify-content: flex-end;
       background-color: #003366;
+      padding: 20px;
     }
 
     .nav ul {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
+      justify-content: flex-end;
+      gap: 15px;
     }
 
     .nav ul li {
@@ -176,48 +184,54 @@
 <body>
 
   <!-- ========== 头部区域 header ========== -->
+  <!-- ========== 导航区域 nav ========== -->
 
   <div class="header">
+
+    <div class="logo">
+      <h1>布局25</h1>
+    </div>
+
     <div class="title">
       <h2>header</h2>
     </div>
-  </div>
 
-
-  <!-- ========== 导航区域 nav ========== -->
-  <div class="nav">
-    <ul>
-      <li>1锻炼计划</li>
-      <li>2饮食计划</li>
-      <li>3家务计划</li>
-      <li>4学习计划</li>
-      <li>5工作计划</li>
-      <li>6休息计划</li>
-      <li>7其他计划</li>
-    </ul>
-
-    <!-- 临时三分组 -->
-    <div class="navdiv">
-
-      <div class="navdivdiv">
-        <h3>个人锻炼状态，个人锻炼目标</h3>
-        <p>最简化模型：68kg→58kg</p>
-
-      </div>
-
-      <div class="navdivdiv">
-        <h3>现实锻炼情况，具体锻炼步骤</h3>
-        <p>最简化情况：场地→时间→人员→设备</p>
-      </div>
-
-      <div class="navdivdiv">
-        <h3>机会实现情况，具体实现情况</h3>
-        <p>最简化机会：2026年5月7日→2026年6月10日</p>
-      </div>
-
+    <div class="nav">
+      <ul>
+        <li>1锻炼</li>
+        <li>2饮食</li>
+        <li>3家务</li>
+        <li>4学习</li>
+        <li>5工作</li>
+        <li>6休息</li>
+        <li>7其他</li>
+      </ul>
     </div>
 
   </div>
+
+
+
+  <!-- 临时三分组 -->
+  <div class="navdiv">
+
+    <div class="navdivdiv">
+      <h3>个人锻炼状态，个人锻炼目标</h3>
+      <p>最简化模型：68kg→58kg</p>
+    </div>
+
+    <div class="navdivdiv">
+      <h3>现实锻炼情况，具体锻炼步骤</h3>
+      <p>最简化情况：场地→时间→人员→设备</p>
+    </div>
+
+    <div class="navdivdiv">
+      <h3>机会实现情况，具体实现情况</h3>
+      <p>最简化机会：2026年5月7日→2026年6月10日</p>
+    </div>
+
+  </div>
+
 
   <!-- ========== 主区域 main ========== -->
   <div class="main">
