@@ -2,533 +2,533 @@
 <html lang="zh-CN">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>布局16</title>
-  <style>
-    /* 极简样式：只有基础宽度/高度/边距/灰白背景色 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>布局16</title>
+  <style>
+    /* 极简样式：只有基础宽度/高度/边距/灰白背景色 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    body {
-      background: #FFFFFF;
-    }
+    body {
+      background: #FFFFFF;
+    }
 
-    ul {
-      list-style: none;
-    }
+    ul {
+      list-style: none;
+    }
 
-    .header,
-    .nav,
-    .main,
-    .footer {
-      background: rgba(204, 204, 204, 0.5);
-    }
+    .header,
+    .nav,
+    .main,
+    .footer {
+      background: rgba(204, 204, 204, 0.5);
+    }
 
-    .title {
-      text-align: center;
-    }
+    .title {
+      text-align: center;
+    }
 
-    .nav {
-      background-color: #ffffff;
-    }
+    .nav {
+      background-color: #ffffff;
+    }
 
-    .nav ul {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-    }
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
 
-    .nav ul li {
-      padding: 10px 0;
-      text-align: center;
-    }
-
-
-    .main {
-      max-width: 1200px;
-      margin: 0 auto;
-      background-color: #ffffff;
-    }
-
-    .section {
-      background-color: #FFFFFF;
-      display: flex;
-      margin-bottom: 10px;
-      gap: 10px;
-    }
-
-    .article {
-      border-radius: 10px;
-      background-color: #ffffff;
-      border: 1px solid #cccccc;
-      padding: 10px;
-      flex: 7;
-    }
-
-    .aside {
-      border-radius: 10px;
-      background-color: #ffffff;
-      border: 1px solid #cccccc;
-      padding: 10px;
-      flex: 3;
-    }
+    .nav ul li {
+      padding: 10px 0;
+      text-align: center;
+    }
 
 
-    /* 书签墙 */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #ffffff;
+    }
 
-    .link-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
+    .section {
+      background-color: #FFFFFF;
+      display: flex;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
 
-    .link-card {
-      padding: 0.3rem;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
-      text-decoration: none;
-      color: #444;
-      font-size: 0.9rem;
-    }
+    .article {
+      border-radius: 10px;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      padding: 10px;
+      flex: 7;
+    }
 
-    .link-card:hover {
-      border-color: #007bff;
-    }
-  </style>
+    .aside {
+      border-radius: 10px;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      padding: 10px;
+      flex: 3;
+    }
+
+
+    /* 书签墙 */
+
+    .link-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .link-card {
+      padding: 0.3rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #444;
+      font-size: 0.9rem;
+    }
+
+    .link-card:hover {
+      border-color: #007bff;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- ========== 头部区域 header ========== -->
+  <!-- ========== 头部区域 header ========== -->
 
-  <div class="header">
-    <div class="title">
-      <h2>header</h2>
-    </div>
-  </div>
-
-
-  <!-- ========== 导航区域 nav ========== -->
-  <div class="nav">
-    <ul>
-      <li>1锻炼计划</li>
-      <li>2饮食计划</li>
-      <li>3家务计划</li>
-      <li>4学习计划</li>
-      <li>5工作计划</li>
-      <li>6休息计划</li>
-      <li>7其他计划</li>
-    </ul>
-  </div>
-
-  <!-- ========== 主区域 main ========== -->
-  <div class="main">
+  <div class="header">
+    <div class="title">
+      <h2>header</h2>
+    </div>
+  </div>
 
 
+  <!-- ========== 导航区域 nav ========== -->
+  <div class="nav">
+    <ul>
+      <li>1锻炼计划</li>
+      <li>2饮食计划</li>
+      <li>3家务计划</li>
+      <li>4学习计划</li>
+      <li>5工作计划</li>
+      <li>6休息计划</li>
+      <li>7其他计划</li>
+    </ul>
+  </div>
 
-
-    <!-- 临时三分组 -->
-    <div class="section">
-
-      <div class="article">
-        <h3>个人锻炼状态，个人锻炼目标</h3>
-        <p>最简化模型：68kg→58kg</p>
-      </div>
-
-      <div class="article">
-        <h3>现实锻炼情况，具体锻炼步骤</h3>
-        <p>最简化情况：场地→时间→人员→设备</p>
-      </div>
-
-      <div class="article">
-        <h3>机会实现情况，具体实现情况</h3>
-        <p>最简化机会：2026年5月7日→2026年6月10日</p>
-      </div>
-
-    </div>
-
-
-
-    <!-- 第二个 section 分组：包含 article 主栏目 + aside 附属内容 -->
-    <!-- <h2 style="display: none;">section · 区块 B</h2> -->
-    <div class="section">
-
-      <div class="article">
-        <!-- <h3>article / 主要文章栏目</h3> -->
-        <p>
-          互联网，草稿，家，业，重，学，习，锻，财，生活，恋，婚，菜，鸡，蛋，面，牛，奶，文，字，书，电脑，
-          简历，软件，目录，文件，器，计划，招聘，岗，社会，国，学历，关系，史，思，考，议，述职，转正，面试，
-          经验，规划，校，大学，高中，沟通，游戏，网吧，家人，朋友，恋人，喜，欢，爱，情，自恋，精，气，神，观念，
-          喜好，窗户，心情，图，中国，外国，餐厅，面条，草，肉，水，盐，营养，空，白，训练，体系，专注，结构，职业，
-          早晨，中午，睡觉，起床，汽车，飞机，旋翼，站台，安检，门票，轨道，风景，姐姐，哥哥，同学，手机，英雄，分类，
-          歌曲，周深，美声，故乡，声音，气息，节气，太阳，温暖，境界，春晚，男女，能力，力气，智慧，城市，存钱，工资，
-          外卖，做饭，清洗，整理，孩子，教育，医院，法律，房子，成本，储蓄，人格，吸引，优秀，付出，情绪，辅助，来源，
-          根本，意义，脑，小脑，手臂，肌肉，写字，衣服，课本，教室，经典，方法，原理，步骤，目标，首，尾，道路，人，性，
-          现象，物理，科目，木头，树，生命，打猎，血液，刀，剑，弓箭，盾牌，武器，心，数学，语文，音乐，体育，天地，观察，
-          规律，反复，循环，能量，过程，行动，需求，清洗，志向，努力，梦想，朋友，敌人，上升，下落，能量来源，能量相聚，能量，谋划，变动，名字，
-          心里面：开心高兴，难过悲伤，愤怒生气，尴尬，好奇，恐惧害怕，惊讶，
-          身体上：快乐，痛苦，酸甜苦辣咸，刺耳，黑暗，享受，舒适，闷热，冰冷
-        </p>
-      </div>
-
-      <div class="aside">
-        <!-- <h3>aside / 附属侧边栏</h3> -->
-        <ul>
-          <li>爷爷姥姥</li>
-          <li>小学初中</li>
-          <li>高中三年</li>
-          <li>大学三件</li>
-          <li>工作1</li>
-          <li>工作2</li>
-          <li>工作3</li>
-        </ul>
-      </div>
-
-    </div>
-
-
-
-    <!-- 链接分组 -->
-    <!-- <h2 style="display: none;">section · 区块 A</h2> -->
-    <div class="section">
-
-      <div class="article">
-        <!-- <h3>article / 主要文章栏目</h3> -->
-
-        <div class="link-grid" id="linkGrid"></div>
-
-        <script>
-          const links = [
-            { keyword: '国家能源集团', url: 'https://www.ceic.com/' },
-            { keyword: '国家电网', url: 'http://www.sgcc.com.cn/' },
-            { keyword: '电信', url: 'http://www.chinatelecom.com.cn/' },
-            { keyword: '联通', url: 'http://www.chinaunicom.com.cn/' },
-            { keyword: '移动', url: 'https://it.10086.cn/indexc.html' },
-            { keyword: 'Apple', url: 'https://www.apple.com.cn/' },
-            { keyword: '华为', url: 'https://www.huawei.com/cn/' },
-            { keyword: '小米', url: 'https://www.mi.com/' },
-            { keyword: '比亚迪商城', url: 'https://mall.bydauto.com.cn/pc/' },
-            { keyword: '比亚迪', url: 'https://www.byd.com/' },
-            { keyword: '大疆', url: 'https://www.dji.com/cn' },
-            { keyword: '戴尔/外星人', url: 'https://www.dell.com/support/home/zh-cn/Products?app=drivers' },
-            { keyword: '宏碁', url: 'https://www.acer.com.cn/support.html?type=1' },
-            { keyword: '惠普', url: 'https://support.hp.com/cn-zh/drivers' },
-            { keyword: '联想服务', url: 'https://newsupport.lenovo.com.cn/notebook.html' },
-            { keyword: '联想官网', url: 'https://www.lenovo.com.cn/' },
-            { keyword: '联想支持', url: 'https://support.lenovo.com/' },
-            { keyword: '华硕/ROG', url: 'https://www.asus.com.cn/support/Download-Center/' },
-            { keyword: '七彩虹', url: 'https://www.colorful.cn/product.aspx?mid=158' },
-            { keyword: '微星', url: 'https://www.msi.cn/support/download/' },
-            { keyword: '雷神', url: 'https://www.thunderobot.com/service/download.html' },
-            { keyword: '神舟', url: 'http://archive.hasee.com/Chinese/download/computer.aspx' },
-            { keyword: '机械师', url: 'https://www.machenike.com/offline/driverUnit' },
-            { keyword: '机械革命', url: 'https://www.mechrevo.com/service/' },
-            { keyword: '长江储存', url: 'https://www.ymtc.com/' },
-            { keyword: '龙芯', url: 'https://www.loongson.cn/' },
-            { keyword: '海康威视', url: 'https://www.hikvision.com/cn/' },
-            { keyword: '锐捷', url: 'https://www.ruijie.com.cn/' },
-            { keyword: '深信服', url: 'https://www.sangfor.com.cn/' },
-            { keyword: 'H3C', url: 'https://www.h3c.com/cn/' },
-            { keyword: 'Cisco', url: 'https://www.cisco.com/c/zh_cn/index.html' },
-            { keyword: 'Intel', url: 'https://www.intel.cn/content/www/cn/zh/homepage.html' },
-            { keyword: 'Nvidia', url: 'https://www.nvidia.cn/' },
-            { keyword: 'AMD', url: 'https://www.amd.com/zh-hans' },
-            { keyword: '图吧工具箱', url: 'http://www.tbtool.cn/' },
-            { keyword: '虚拟声卡', url: 'https://www.bilibili.com/read/cv22485313/' },
-            { keyword: '虚拟声卡2025', url: 'https://www.bilibili.com/opus/1025190852268392467' },
-            { keyword: '视频播放器', url: 'http://www.videolan.org/' },
-            { keyword: 'B450I主板', url: 'https://www.msi.cn/Motherboard/B450I-GAMING-PLUS-AC/support' },
-            { keyword: 'AMD驱动', url: 'https://www.amd.com/zh-cn/support/download/drivers.html' },
-            { keyword: 'NVIDIA驱动', url: 'https://www.nvidia.cn/geforce/drivers/' },
-            { keyword: '七彩虹下载', url: 'https://www.colorful.cn/home/DownLoadInfo?mid=102&id=2066' },
-            { keyword: '微星B450I', url: 'https://www.msicn.com.cn/Motherboard/B450I-GAMING-PLUS-AC/support#bios' },
-            { keyword: '微星小飞机', url: 'https://www.msi.com/Landing/afterburner/graphics-cards' },
-            { keyword: '华硕驱动', url: 'https://www.asus.com.cn/support/download-center/' },
-            { keyword: 'B650M重炮手', url: 'https://www.asus.com.cn/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650m-plus-wifi/helpdesk_download/?model2Name=TUF-GAMING-B650M-PLUS-WIFI' },
-            { keyword: '字节编辑器', url: 'https://www.trae.cn/' },
-            { keyword: 'Chrome离线', url: 'https://www.cnblogs.com/ywaanig/p/19326115' },
-            { keyword: 'advancedinstaller', url: 'https://www.advancedinstaller.com/downloading.html' },
-            { keyword: 'VS Code', url: 'https://code.visualstudio.com/' },
-            { keyword: 'GitHub', url: 'https://github.com/' },
-            { keyword: '谷歌浏览器', url: 'https://www.google.cn/intl/zh-CN/chrome/' },
-            { keyword: '火狐浏览器', url: 'http://www.firefox.com.cn/' },
-            { keyword: 'Adobe', url: 'https://www.adobe.com/cn/' },
-            { keyword: 'Office Tool', url: 'https://otp.landian.vip/zh-cn/' },
-            { keyword: 'WPS', url: 'https://www.wps.cn/' },
-            { keyword: '壁纸站', url: 'https://wall.alphacoders.com/' },
-            { keyword: 'DeepSeek', url: 'https://chat.deepseek.com/' },
-            { keyword: 'ChatGPT', url: 'https://chat-gpt.org/zh' },
-            { keyword: 'IDM', url: 'https://secure.internetdownloadmanager.com/buy_idm.html' },
-            { keyword: 'Microsoft', url: 'https://www.microsoft.com/zh-cn/' },
-            { keyword: '微软安装工具', url: 'https://www.microsoft.com/zh-cn/software-download' },
-            { keyword: 'MSDN', url: 'https://msdn.itellyou.cn/' },
-            { keyword: 'MSDN新版', url: 'https://next.itellyou.cn/' },
-            { keyword: 'Windows下载', url: 'https://hellowindows.cn/' },
-            { keyword: 'Edgeless PE', url: 'https://home.edgeless.top/' },
-            { keyword: '微PE', url: 'https://www.wepe.com.cn/' },
-            { keyword: 'FirPE', url: 'https://www.firpe.cn/' },
-            { keyword: 'HotPE', url: 'https://www.hotpe.top/' },
-            { keyword: 'Ventoy', url: 'https://www.ventoy.net/cn/index.html' },
-            { keyword: 'Rufus', url: 'https://rufus.ie' },
-            { keyword: 'Linux Kernel', url: 'https://www.kernel.org/' },
-            { keyword: 'GNU', url: 'https://www.gnu.org/' },
-            { keyword: 'Docker', url: 'https://www.docker.com/' },
-            { keyword: 'Redhat', url: 'https://www.redhat.com/zh' },
-            { keyword: 'K8s社区', url: 'https://www.kubernetes.org.cn/' },
-            { keyword: '统信系统', url: 'https://www.uniontech.com/' },
-            { keyword: 'Ubuntu', url: 'https://cn.ubuntu.com/' },
-            { keyword: 'Kubernetes', url: 'https://kubernetes.io/zh-cn/' },
-            { keyword: 'Nginx', url: 'https://nginx.org/en/' },
-            { keyword: 'Apache', url: 'https://apache.org/' },
-            { keyword: 'Zabbix', url: 'http://grandage.cn/' },
-            { keyword: 'Zabbix官网', url: 'https://www.zabbix.com/cn' },
-            { keyword: 'Xshell', url: 'https://www.xshell.com/zh/xshell/' },
-            { keyword: '网易镜像站', url: 'http://mirrors.163.com/' },
-            { keyword: '清华镜像站', url: 'https://mirrors.tuna.tsinghua.edu.cn/' },
-            { keyword: 'VMware', url: 'https://www.vmware.com/cn.html' },
-            { keyword: 'Python', url: 'https://www.python.org/' },
-            { keyword: 'PyCharm', url: 'https://www.jetbrains.com/pycharm/' },
-            { keyword: 'Git', url: 'https://git-scm.com/' },
-            { keyword: 'ANSI', url: 'https://www.ansi.org/' },
-            { keyword: 'IEEE', url: 'https://www.ieee.org/' },
-            { keyword: 'IETF', url: 'https://www.ietf.org/' },
-            { keyword: 'ISO', url: 'https://www.iso.org/home.html' },
-            { keyword: '文泉书局', url: 'https://wqbook.wqxuetang.com/' },
-            { keyword: '中国政府网', url: 'https://www.gov.cn/' },
-            { keyword: '中国军网', url: 'http://www.81.cn/' },
-            { keyword: '人民日报', url: 'http://www.people.cn/' },
-            { keyword: 'CCTV', url: 'https://sports.cctv.com/tabletennis/' },
-            { keyword: '央视网', url: 'https://www.cctv.com/' },
-            { keyword: '中国营养学会', url: 'https://www.cnsoc.org/' },
-            { keyword: '法律法规库', url: 'https://flk.npc.gov.cn/index.html' },
-            { keyword: '终身教育平台', url: 'https://le.ouchn.cn/home' },
-            { keyword: '企业信用', url: 'https://shiming.gsxt.gov.cn/index.html' },
-            { keyword: '软考', url: 'https://www.ruankao.org.cn/' },
-            { keyword: '智慧教育', url: 'https://www.smartedu.cn/' },
-            { keyword: '微信文件传输', url: 'https://szfilehelper.weixin.qq.com/' },
-            { keyword: '图片压缩', url: 'https://tinypng.com/' },
-            { keyword: '自由钢琴', url: 'https://www.autopiano.cn/' },
-            { keyword: '阿里云', url: 'https://www.aliyun.com/' },
-            { keyword: '阿里邮箱', url: 'https://qiye.aliyun.com/' },
-            { keyword: '阿里云盘', url: 'https://www.aliyundrive.com/drive' },
-            { keyword: '阿里巴巴', url: 'https://www.alibabagroup.com/about-alibaba#culture-and-values' },
-            { keyword: '京东', url: 'https://www.jd.com/' },
-            { keyword: '腾讯', url: 'https://www.qq.com/' },
-            { keyword: 'QQ', url: 'https://im.qq.com/index/' },
-            { keyword: '微信', url: 'https://weixin.qq.com/' },
-            { keyword: '网易', url: 'https://www.163.com/' },
-            { keyword: '有道翻译', url: 'https://fanyi.youdao.com/index.html#/' },
-            { keyword: '360', url: 'https://www.360.cn/' },
-            { keyword: '百度', url: 'https://www.baidu.com/' },
-            { keyword: '百度云盘', url: 'https://pan.baidu.com/' },
-            { keyword: '金山翻译', url: 'https://www.iciba.com/translate' },
-            { keyword: '影视飓风', url: 'https://www.ysjf.com/home' },
-            { keyword: '哔哩哔哩', url: 'https://www.bilibili.com/' },
-            { keyword: '虎牙', url: 'https://www.huya.com/' },
-            { keyword: '爱奇艺', url: 'https://www.iqiyi.com/' },
-            { keyword: '快手', url: 'https://www.kuaishou.com/' },
-            { keyword: '优酷', url: 'https://youku.com/' },
-            { keyword: '咩播云插件', url: 'https://yun.miebo.cn/' },
-            { keyword: '飞卢小说', url: 'https://b.faloo.com/' },
-            { keyword: '刺猬猫', url: 'https://mip.ciweimao.com/' },
-            { keyword: '龙的天空', url: 'https://www.lkong.com/' },
-            { keyword: '起点中文', url: 'https://www.qidian.com/' },
-            { keyword: '优书网', url: 'https://www.yousuu.com/' },
-            { keyword: 'Steam', url: 'https://store.steampowered.com/' },
-            { keyword: '黑神话悟空', url: 'https://www.heishenhua.com/' },
-            { keyword: 'WeGame', url: 'https://www.wegame.com.cn/' },
-            { keyword: '游戏科学', url: 'https://www.gamesci.com.cn/' },
-            { keyword: '芒果音乐', url: 'https://www.mgtv.com/b/501604/18021763.html' },
-            { keyword: '黑神话戒网', url: 'https://www.bilibili.com/video/BV1Ye4y1f7kA/' },
-            { keyword: '抖音创作', url: 'https://creator.douyin.com/' },
-            { keyword: '腾讯视频', url: 'https://v.qq.com/channel/choice?channel_2022=1' },
-            { keyword: '渐构', url: 'https://www.modevol.com/' },
-            { keyword: '知识星球', url: 'https://www.zsxq.com/' },
-            { keyword: '智慧中小学', url: 'https://basic.smartedu.cn/' },
-            { keyword: '19高考卷', url: 'http://edu.people.com.cn/GB/n1/2019/0608/c116076-31125588.html?ivk_sa=1024609v' },
-            { keyword: '江西信息学院', url: 'http://www.jxcia.com/' },
-            { keyword: '清华大学', url: 'https://www.tsinghua.edu.cn/' },
-            { keyword: '北京大学', url: 'https://www.pku.edu.cn' },
-            { keyword: '学习强国', url: 'https://www.xuexi.cn/' },
-            { keyword: '中国大学MOOC', url: 'https://www.icourse163.org/' },
-            { keyword: '哔哩哔哩课堂', url: 'https://www.bilibili.com/cheese/' },
-            { keyword: 'W3School', url: 'https://www.w3school.com.cn/index.html' },
-            { keyword: '鸟哥Linux', url: 'https://linux.vbird.org/linux_basic/' },
-            { keyword: 'Linux就该这么学', url: 'https://www.linuxprobe.com/' },
-            { keyword: '博客园', url: 'https://www.cnblogs.com/' },
-            { keyword: 'CSDN', url: 'https://www.csdn.net/' },
-            { keyword: '鸿鹄论坛', url: 'https://bbs.hh010.com/' },
-            { keyword: '羽兔网', url: 'https://www.yutu.cn/' },
-            { keyword: '菜鸟教程', url: 'https://www.runoob.com/' },
-            { keyword: 'Keep', url: 'https://gotokeep.com/' },
-            { keyword: '薄荷网', url: 'https://www.boohee.com/' },
-            { keyword: '猴子阅读', url: 'https://gigamonkeys.com/code-reading/' },
-            { keyword: '壁纸知乎', url: 'https://zhuanlan.zhihu.com/p/340687865' },
-            { keyword: '鱼皮', url: 'https://www.codefather.cn' },
-            { keyword: 'wlop货摊', url: 'https://wlop.huotan.net/' },
-            { keyword: '萌娘百科', url: 'https://zh.moegirl.org.cn/Mainpage' },
-            { keyword: '个人博客', url: 'https://zzdabendan.github.io/' },
-            { keyword: 'SAO工作室', url: 'http://www.gpbeta.com/post/tag/sao-utils/' },
-            { keyword: '学习方舟', url: 'https://www.ignoredone.space/' },
-            { keyword: '何星星AD', url: 'https://hexingxing.cn/new-aduser/' }
-          ];
-
-          const grid = document.getElementById('linkGrid');
-
-          links.forEach(item => {
-            const a = document.createElement('a');
-            a.href = item.url;
-            a.className = 'link-card';
-            a.textContent = item.keyword;
-            grid.appendChild(a);
-          });
-        </script>
-
-      </div>
+  <!-- ========== 主区域 main ========== -->
+  <div class="main">
 
 
 
 
-    </div>
+    <!-- 临时三分组 -->
+    <div class="section">
+
+      <div class="article">
+        <h3>个人锻炼状态，个人锻炼目标</h3>
+        <p>最简化模型：68kg→58kg</p>
+      </div>
+
+      <div class="article">
+        <h3>现实锻炼情况，具体锻炼步骤</h3>
+        <p>最简化情况：场地→时间→人员→设备</p>
+      </div>
+
+      <div class="article">
+        <h3>机会实现情况，具体实现情况</h3>
+        <p>最简化机会：2026年5月7日→2026年6月10日</p>
+      </div>
+
+    </div>
 
 
-    <!-- 两份组 网站简介 文章列表 -->
-    <div class="section">
 
-      <div class="article">
-        <!-- <h3>article / 主要文章栏目</h3> -->
+    <!-- 第二个 section 分组：包含 article 主栏目 + aside 附属内容 -->
+    <!-- <h2 style="display: none;">section · 区块 B</h2> -->
+    <div class="section">
 
-        <h2>网站简介</h2>
-        <p>
-          <br>121.199.57.184
-          <br>danbendada.wiki
-          <br>
-          <br>本网站使用阿里云的云计算服务器搭建
-          <br>创建时间：2025年8月03日 10:43:00
-          <br>到期时间：2027年8月13日 23:59:59
-          <br>生命时间剩余：16月
-          <br>
-          <br>本网站是用于：编写知识经验，个人简历，个人经历，生活笔记。
-          <br>2026年3月。使用Wiki.js系统，wikijs是一个知识库系统。
-          <br>支持多种编写方式：可视化编辑界面，HTML网页，markdown笔记
-          <br>怎么样搭建？看第十三篇文章内容/work/work_13
-        </p>
-      </div>
+      <div class="article">
+        <!-- <h3>article / 主要文章栏目</h3> -->
+        <p>
+          互联网，草稿，家，业，重，学，习，锻，财，生活，恋，婚，菜，鸡，蛋，面，牛，奶，文，字，书，电脑，
+          简历，软件，目录，文件，器，计划，招聘，岗，社会，国，学历，关系，史，思，考，议，述职，转正，面试，
+          经验，规划，校，大学，高中，沟通，游戏，网吧，家人，朋友，恋人，喜，欢，爱，情，自恋，精，气，神，观念，
+          喜好，窗户，心情，图，中国，外国，餐厅，面条，草，肉，水，盐，营养，空，白，训练，体系，专注，结构，职业，
+          早晨，中午，睡觉，起床，汽车，飞机，旋翼，站台，安检，门票，轨道，风景，姐姐，哥哥，同学，手机，英雄，分类，
+          歌曲，周深，美声，故乡，声音，气息，节气，太阳，温暖，境界，春晚，男女，能力，力气，智慧，城市，存钱，工资，
+          外卖，做饭，清洗，整理，孩子，教育，医院，法律，房子，成本，储蓄，人格，吸引，优秀，付出，情绪，辅助，来源，
+          根本，意义，脑，小脑，手臂，肌肉，写字，衣服，课本，教室，经典，方法，原理，步骤，目标，首，尾，道路，人，性，
+          现象，物理，科目，木头，树，生命，打猎，血液，刀，剑，弓箭，盾牌，武器，心，数学，语文，音乐，体育，天地，观察，
+          规律，反复，循环，能量，过程，行动，需求，清洗，志向，努力，梦想，朋友，敌人，上升，下落，能量来源，能量相聚，能量，谋划，变动，名字，
+          心里面：开心高兴，难过悲伤，愤怒生气，尴尬，好奇，恐惧害怕，惊讶，
+          身体上：快乐，痛苦，酸甜苦辣咸，刺耳，黑暗，享受，舒适，闷热，冰冷
+        </p>
+      </div>
 
-      <div class="article">
-        <!-- <h3>article / 主要文章栏目</h3> -->
-        <details open>
-          <summary>生活知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/life/life_1">生活知识1</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_2">生活知识2</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_3">生活知识3</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_4">生活知识4</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_5">生活知识5</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_6">生活知识6</a></dd>
-          </dl>
-        </details>
+      <div class="aside">
+        <!-- <h3>aside / 附属侧边栏</h3> -->
+        <ul>
+          <li>爷爷姥姥</li>
+          <li>小学初中</li>
+          <li>高中三年</li>
+          <li>大学三件</li>
+          <li>工作1</li>
+          <li>工作2</li>
+          <li>工作3</li>
+        </ul>
+      </div>
 
-        <details>
-          <summary>工作知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/work/work_1">工作知识01</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_2">工作知识02</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_3">工作知识03</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_4">工作知识04</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_5">工作知识05</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_6">工作知识06</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_7">工作知识07</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_8">工作知识08</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_9">工作知识09</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_10">工作知识10</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_11">工作知识11</a></dd>
-          </dl>
-        </details>
-
-        <details>
-          <summary>草稿知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/test/test_1">草稿知识1</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/test/test_2">草稿知识2</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/test/test_3">草稿知识3</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/test/test_4">草稿知识4</a></dd>
-          </dl>
-
-        </details>
-
-        <details>
-          <summary>娱乐知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/game/game_1">娱乐知识1</a></dd>
-          </dl>
-        </details>
-
-        <details>
-          <summary>旧知识库分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/jzsk/jzsk_0">旧知识库0</a></dd>
-          </dl>
-        </details>
-
-      </div>
-
-    </div>
-
-    <!-- 直播 -->
-    <div class="section">
-
-      <!-- 主栏目 article -->
-      <div class="article">
-        <iframe src="//player.bilibili.com/player.html?bvid=BV1pKhTznE1Z" scrolling="no" frameborder="no"
-          allowfullscreen="true" style="width: 100%; height: 500px;">
-        </iframe>
-      </div>
-
-      <!-- 附属内容 aside -->
-      <div class="aside">
-        <iframe src="https://live.bilibili.com/6?live_from=85021" scrolling="no" frameborder="no" allowfullscreen="true"
-          style="width: 100%; height: 100%;">
-        </iframe>
-      </div>
-
-    </div>
-
-    <!-- 三分组 -->
-    <div class="section">
-
-      <div class="article">
-        <h3>个人状态目标</h3>
-        <p>这是一个段落。</p>
-        <p>这是第二个段落。</p>
-      </div>
-
-      <div class="article">
-        <h3>现实情况步骤</h3>
-        <p>这是一个段落。</p>
-        <p>这是第二个段落。</p>
-      </div>
-
-      <div class="article">
-        <h3>机会实现情况</h3>
-        <p>这是一个段落。</p>
-        <p>这是第二个段落。</p>
-      </div>
-
-    </div>
+    </div>
 
 
-  </div>
 
-  <!-- ========== 页脚区域 footer ========== -->
-  <div class="footer">
-    <h2>footer</h2>
-  </div>
+    <!-- 链接分组 -->
+    <!-- <h2 style="display: none;">section · 区块 A</h2> -->
+    <div class="section">
+
+      <div class="article">
+        <!-- <h3>article / 主要文章栏目</h3> -->
+
+        <div class="link-grid" id="linkGrid"></div>
+
+        <script>
+          const links = [
+            { keyword: '国家能源集团', url: 'https://www.ceic.com/' },
+            { keyword: '国家电网', url: 'http://www.sgcc.com.cn/' },
+            { keyword: '电信', url: 'http://www.chinatelecom.com.cn/' },
+            { keyword: '联通', url: 'http://www.chinaunicom.com.cn/' },
+            { keyword: '移动', url: 'https://it.10086.cn/indexc.html' },
+            { keyword: 'Apple', url: 'https://www.apple.com.cn/' },
+            { keyword: '华为', url: 'https://www.huawei.com/cn/' },
+            { keyword: '小米', url: 'https://www.mi.com/' },
+            { keyword: '比亚迪商城', url: 'https://mall.bydauto.com.cn/pc/' },
+            { keyword: '比亚迪', url: 'https://www.byd.com/' },
+            { keyword: '大疆', url: 'https://www.dji.com/cn' },
+            { keyword: '戴尔/外星人', url: 'https://www.dell.com/support/home/zh-cn/Products?app=drivers' },
+            { keyword: '宏碁', url: 'https://www.acer.com.cn/support.html?type=1' },
+            { keyword: '惠普', url: 'https://support.hp.com/cn-zh/drivers' },
+            { keyword: '联想服务', url: 'https://newsupport.lenovo.com.cn/notebook.html' },
+            { keyword: '联想官网', url: 'https://www.lenovo.com.cn/' },
+            { keyword: '联想支持', url: 'https://support.lenovo.com/' },
+            { keyword: '华硕/ROG', url: 'https://www.asus.com.cn/support/Download-Center/' },
+            { keyword: '七彩虹', url: 'https://www.colorful.cn/product.aspx?mid=158' },
+            { keyword: '微星', url: 'https://www.msi.cn/support/download/' },
+            { keyword: '雷神', url: 'https://www.thunderobot.com/service/download.html' },
+            { keyword: '神舟', url: 'http://archive.hasee.com/Chinese/download/computer.aspx' },
+            { keyword: '机械师', url: 'https://www.machenike.com/offline/driverUnit' },
+            { keyword: '机械革命', url: 'https://www.mechrevo.com/service/' },
+            { keyword: '长江储存', url: 'https://www.ymtc.com/' },
+            { keyword: '龙芯', url: 'https://www.loongson.cn/' },
+            { keyword: '海康威视', url: 'https://www.hikvision.com/cn/' },
+            { keyword: '锐捷', url: 'https://www.ruijie.com.cn/' },
+            { keyword: '深信服', url: 'https://www.sangfor.com.cn/' },
+            { keyword: 'H3C', url: 'https://www.h3c.com/cn/' },
+            { keyword: 'Cisco', url: 'https://www.cisco.com/c/zh_cn/index.html' },
+            { keyword: 'Intel', url: 'https://www.intel.cn/content/www/cn/zh/homepage.html' },
+            { keyword: 'Nvidia', url: 'https://www.nvidia.cn/' },
+            { keyword: 'AMD', url: 'https://www.amd.com/zh-hans' },
+            { keyword: '图吧工具箱', url: 'http://www.tbtool.cn/' },
+            { keyword: '虚拟声卡', url: 'https://www.bilibili.com/read/cv22485313/' },
+            { keyword: '虚拟声卡2025', url: 'https://www.bilibili.com/opus/1025190852268392467' },
+            { keyword: '视频播放器', url: 'http://www.videolan.org/' },
+            { keyword: 'B450I主板', url: 'https://www.msi.cn/Motherboard/B450I-GAMING-PLUS-AC/support' },
+            { keyword: 'AMD驱动', url: 'https://www.amd.com/zh-cn/support/download/drivers.html' },
+            { keyword: 'NVIDIA驱动', url: 'https://www.nvidia.cn/geforce/drivers/' },
+            { keyword: '七彩虹下载', url: 'https://www.colorful.cn/home/DownLoadInfo?mid=102&id=2066' },
+            { keyword: '微星B450I', url: 'https://www.msicn.com.cn/Motherboard/B450I-GAMING-PLUS-AC/support#bios' },
+            { keyword: '微星小飞机', url: 'https://www.msi.com/Landing/afterburner/graphics-cards' },
+            { keyword: '华硕驱动', url: 'https://www.asus.com.cn/support/download-center/' },
+            { keyword: 'B650M重炮手', url: 'https://www.asus.com.cn/motherboards-components/motherboards/tuf-gaming/tuf-gaming-b650m-plus-wifi/helpdesk_download/?model2Name=TUF-GAMING-B650M-PLUS-WIFI' },
+            { keyword: '字节编辑器', url: 'https://www.trae.cn/' },
+            { keyword: 'Chrome离线', url: 'https://www.cnblogs.com/ywaanig/p/19326115' },
+            { keyword: 'advancedinstaller', url: 'https://www.advancedinstaller.com/downloading.html' },
+            { keyword: 'VS Code', url: 'https://code.visualstudio.com/' },
+            { keyword: 'GitHub', url: 'https://github.com/' },
+            { keyword: '谷歌浏览器', url: 'https://www.google.cn/intl/zh-CN/chrome/' },
+            { keyword: '火狐浏览器', url: 'http://www.firefox.com.cn/' },
+            { keyword: 'Adobe', url: 'https://www.adobe.com/cn/' },
+            { keyword: 'Office Tool', url: 'https://otp.landian.vip/zh-cn/' },
+            { keyword: 'WPS', url: 'https://www.wps.cn/' },
+            { keyword: '壁纸站', url: 'https://wall.alphacoders.com/' },
+            { keyword: 'DeepSeek', url: 'https://chat.deepseek.com/' },
+            { keyword: 'ChatGPT', url: 'https://chat-gpt.org/zh' },
+            { keyword: 'IDM', url: 'https://secure.internetdownloadmanager.com/buy_idm.html' },
+            { keyword: 'Microsoft', url: 'https://www.microsoft.com/zh-cn/' },
+            { keyword: '微软安装工具', url: 'https://www.microsoft.com/zh-cn/software-download' },
+            { keyword: 'MSDN', url: 'https://msdn.itellyou.cn/' },
+            { keyword: 'MSDN新版', url: 'https://next.itellyou.cn/' },
+            { keyword: 'Windows下载', url: 'https://hellowindows.cn/' },
+            { keyword: 'Edgeless PE', url: 'https://home.edgeless.top/' },
+            { keyword: '微PE', url: 'https://www.wepe.com.cn/' },
+            { keyword: 'FirPE', url: 'https://www.firpe.cn/' },
+            { keyword: 'HotPE', url: 'https://www.hotpe.top/' },
+            { keyword: 'Ventoy', url: 'https://www.ventoy.net/cn/index.html' },
+            { keyword: 'Rufus', url: 'https://rufus.ie' },
+            { keyword: 'Linux Kernel', url: 'https://www.kernel.org/' },
+            { keyword: 'GNU', url: 'https://www.gnu.org/' },
+            { keyword: 'Docker', url: 'https://www.docker.com/' },
+            { keyword: 'Redhat', url: 'https://www.redhat.com/zh' },
+            { keyword: 'K8s社区', url: 'https://www.kubernetes.org.cn/' },
+            { keyword: '统信系统', url: 'https://www.uniontech.com/' },
+            { keyword: 'Ubuntu', url: 'https://cn.ubuntu.com/' },
+            { keyword: 'Kubernetes', url: 'https://kubernetes.io/zh-cn/' },
+            { keyword: 'Nginx', url: 'https://nginx.org/en/' },
+            { keyword: 'Apache', url: 'https://apache.org/' },
+            { keyword: 'Zabbix', url: 'http://grandage.cn/' },
+            { keyword: 'Zabbix官网', url: 'https://www.zabbix.com/cn' },
+            { keyword: 'Xshell', url: 'https://www.xshell.com/zh/xshell/' },
+            { keyword: '网易镜像站', url: 'http://mirrors.163.com/' },
+            { keyword: '清华镜像站', url: 'https://mirrors.tuna.tsinghua.edu.cn/' },
+            { keyword: 'VMware', url: 'https://www.vmware.com/cn.html' },
+            { keyword: 'Python', url: 'https://www.python.org/' },
+            { keyword: 'PyCharm', url: 'https://www.jetbrains.com/pycharm/' },
+            { keyword: 'Git', url: 'https://git-scm.com/' },
+            { keyword: 'ANSI', url: 'https://www.ansi.org/' },
+            { keyword: 'IEEE', url: 'https://www.ieee.org/' },
+            { keyword: 'IETF', url: 'https://www.ietf.org/' },
+            { keyword: 'ISO', url: 'https://www.iso.org/home.html' },
+            { keyword: '文泉书局', url: 'https://wqbook.wqxuetang.com/' },
+            { keyword: '中国政府网', url: 'https://www.gov.cn/' },
+            { keyword: '中国军网', url: 'http://www.81.cn/' },
+            { keyword: '人民日报', url: 'http://www.people.cn/' },
+            { keyword: 'CCTV', url: 'https://sports.cctv.com/tabletennis/' },
+            { keyword: '央视网', url: 'https://www.cctv.com/' },
+            { keyword: '中国营养学会', url: 'https://www.cnsoc.org/' },
+            { keyword: '法律法规库', url: 'https://flk.npc.gov.cn/index.html' },
+            { keyword: '终身教育平台', url: 'https://le.ouchn.cn/home' },
+            { keyword: '企业信用', url: 'https://shiming.gsxt.gov.cn/index.html' },
+            { keyword: '软考', url: 'https://www.ruankao.org.cn/' },
+            { keyword: '智慧教育', url: 'https://www.smartedu.cn/' },
+            { keyword: '微信文件传输', url: 'https://szfilehelper.weixin.qq.com/' },
+            { keyword: '图片压缩', url: 'https://tinypng.com/' },
+            { keyword: '自由钢琴', url: 'https://www.autopiano.cn/' },
+            { keyword: '阿里云', url: 'https://www.aliyun.com/' },
+            { keyword: '阿里邮箱', url: 'https://qiye.aliyun.com/' },
+            { keyword: '阿里云盘', url: 'https://www.aliyundrive.com/drive' },
+            { keyword: '阿里巴巴', url: 'https://www.alibabagroup.com/about-alibaba#culture-and-values' },
+            { keyword: '京东', url: 'https://www.jd.com/' },
+            { keyword: '腾讯', url: 'https://www.qq.com/' },
+            { keyword: 'QQ', url: 'https://im.qq.com/index/' },
+            { keyword: '微信', url: 'https://weixin.qq.com/' },
+            { keyword: '网易', url: 'https://www.163.com/' },
+            { keyword: '有道翻译', url: 'https://fanyi.youdao.com/index.html#/' },
+            { keyword: '360', url: 'https://www.360.cn/' },
+            { keyword: '百度', url: 'https://www.baidu.com/' },
+            { keyword: '百度云盘', url: 'https://pan.baidu.com/' },
+            { keyword: '金山翻译', url: 'https://www.iciba.com/translate' },
+            { keyword: '影视飓风', url: 'https://www.ysjf.com/home' },
+            { keyword: '哔哩哔哩', url: 'https://www.bilibili.com/' },
+            { keyword: '虎牙', url: 'https://www.huya.com/' },
+            { keyword: '爱奇艺', url: 'https://www.iqiyi.com/' },
+            { keyword: '快手', url: 'https://www.kuaishou.com/' },
+            { keyword: '优酷', url: 'https://youku.com/' },
+            { keyword: '咩播云插件', url: 'https://yun.miebo.cn/' },
+            { keyword: '飞卢小说', url: 'https://b.faloo.com/' },
+            { keyword: '刺猬猫', url: 'https://mip.ciweimao.com/' },
+            { keyword: '龙的天空', url: 'https://www.lkong.com/' },
+            { keyword: '起点中文', url: 'https://www.qidian.com/' },
+            { keyword: '优书网', url: 'https://www.yousuu.com/' },
+            { keyword: 'Steam', url: 'https://store.steampowered.com/' },
+            { keyword: '黑神话悟空', url: 'https://www.heishenhua.com/' },
+            { keyword: 'WeGame', url: 'https://www.wegame.com.cn/' },
+            { keyword: '游戏科学', url: 'https://www.gamesci.com.cn/' },
+            { keyword: '芒果音乐', url: 'https://www.mgtv.com/b/501604/18021763.html' },
+            { keyword: '黑神话戒网', url: 'https://www.bilibili.com/video/BV1Ye4y1f7kA/' },
+            { keyword: '抖音创作', url: 'https://creator.douyin.com/' },
+            { keyword: '腾讯视频', url: 'https://v.qq.com/channel/choice?channel_2022=1' },
+            { keyword: '渐构', url: 'https://www.modevol.com/' },
+            { keyword: '知识星球', url: 'https://www.zsxq.com/' },
+            { keyword: '智慧中小学', url: 'https://basic.smartedu.cn/' },
+            { keyword: '19高考卷', url: 'http://edu.people.com.cn/GB/n1/2019/0608/c116076-31125588.html?ivk_sa=1024609v' },
+            { keyword: '江西信息学院', url: 'http://www.jxcia.com/' },
+            { keyword: '清华大学', url: 'https://www.tsinghua.edu.cn/' },
+            { keyword: '北京大学', url: 'https://www.pku.edu.cn' },
+            { keyword: '学习强国', url: 'https://www.xuexi.cn/' },
+            { keyword: '中国大学MOOC', url: 'https://www.icourse163.org/' },
+            { keyword: '哔哩哔哩课堂', url: 'https://www.bilibili.com/cheese/' },
+            { keyword: 'W3School', url: 'https://www.w3school.com.cn/index.html' },
+            { keyword: '鸟哥Linux', url: 'https://linux.vbird.org/linux_basic/' },
+            { keyword: 'Linux就该这么学', url: 'https://www.linuxprobe.com/' },
+            { keyword: '博客园', url: 'https://www.cnblogs.com/' },
+            { keyword: 'CSDN', url: 'https://www.csdn.net/' },
+            { keyword: '鸿鹄论坛', url: 'https://bbs.hh010.com/' },
+            { keyword: '羽兔网', url: 'https://www.yutu.cn/' },
+            { keyword: '菜鸟教程', url: 'https://www.runoob.com/' },
+            { keyword: 'Keep', url: 'https://gotokeep.com/' },
+            { keyword: '薄荷网', url: 'https://www.boohee.com/' },
+            { keyword: '猴子阅读', url: 'https://gigamonkeys.com/code-reading/' },
+            { keyword: '壁纸知乎', url: 'https://zhuanlan.zhihu.com/p/340687865' },
+            { keyword: '鱼皮', url: 'https://www.codefather.cn' },
+            { keyword: 'wlop货摊', url: 'https://wlop.huotan.net/' },
+            { keyword: '萌娘百科', url: 'https://zh.moegirl.org.cn/Mainpage' },
+            { keyword: '个人博客', url: 'https://zzdabendan.github.io/' },
+            { keyword: 'SAO工作室', url: 'http://www.gpbeta.com/post/tag/sao-utils/' },
+            { keyword: '学习方舟', url: 'https://www.ignoredone.space/' },
+            { keyword: '何星星AD', url: 'https://hexingxing.cn/new-aduser/' }
+          ];
+
+          const grid = document.getElementById('linkGrid');
+
+          links.forEach(item => {
+            const a = document.createElement('a');
+            a.href = item.url;
+            a.className = 'link-card';
+            a.textContent = item.keyword;
+            grid.appendChild(a);
+          });
+        </script>
+
+      </div>
+
+
+
+
+    </div>
+
+
+    <!-- 两份组 网站简介 文章列表 -->
+    <div class="section">
+
+      <div class="article">
+        <!-- <h3>article / 主要文章栏目</h3> -->
+
+        <h2>网站简介</h2>
+        <p>
+          <br>121.199.57.184
+          <br>danbendada.wiki
+          <br>
+          <br>本网站使用阿里云的云计算服务器搭建
+          <br>创建时间：2025年8月03日 10:43:00
+          <br>到期时间：2027年8月13日 23:59:59
+          <br>生命时间剩余：16月
+          <br>
+          <br>本网站是用于：编写知识经验，个人简历，个人经历，生活笔记。
+          <br>2026年3月。使用Wiki.js系统，wikijs是一个知识库系统。
+          <br>支持多种编写方式：可视化编辑界面，HTML网页，markdown笔记
+          <br>怎么样搭建？看第十三篇文章内容/work/work_13
+        </p>
+      </div>
+
+      <div class="article">
+        <!-- <h3>article / 主要文章栏目</h3> -->
+        <details open>
+          <summary>生活知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/life/life_1">生活知识1</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_2">生活知识2</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_3">生活知识3</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_4">生活知识4</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_5">生活知识5</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_6">生活知识6</a></dd>
+          </dl>
+        </details>
+
+        <details>
+          <summary>工作知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/work/work_1">工作知识01</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_2">工作知识02</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_3">工作知识03</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_4">工作知识04</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_5">工作知识05</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_6">工作知识06</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_7">工作知识07</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_8">工作知识08</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_9">工作知识09</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_10">工作知识10</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_11">工作知识11</a></dd>
+          </dl>
+        </details>
+
+        <details>
+          <summary>草稿知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/test/test_1">草稿知识1</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/test/test_2">草稿知识2</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/test/test_3">草稿知识3</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/test/test_4">草稿知识4</a></dd>
+          </dl>
+
+        </details>
+
+        <details>
+          <summary>娱乐知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/game/game_1">娱乐知识1</a></dd>
+          </dl>
+        </details>
+
+        <details>
+          <summary>旧知识库分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/jzsk/jzsk_0">旧知识库0</a></dd>
+          </dl>
+        </details>
+
+      </div>
+
+    </div>
+
+    <!-- 直播 -->
+    <div class="section">
+
+      <!-- 主栏目 article -->
+      <div class="article">
+        <iframe src="//player.bilibili.com/player.html?bvid=BV1pKhTznE1Z" scrolling="no" frameborder="no"
+          allowfullscreen="true" style="width: 100%; height: 500px;">
+        </iframe>
+      </div>
+
+      <!-- 附属内容 aside -->
+      <div class="aside">
+        <iframe src="https://live.bilibili.com/6?live_from=85021" scrolling="no" frameborder="no" allowfullscreen="true"
+          style="width: 100%; height: 100%;">
+        </iframe>
+      </div>
+
+    </div>
+
+    <!-- 三分组 -->
+    <div class="section">
+
+      <div class="article">
+        <h3>个人状态目标</h3>
+        <p>这是一个段落。</p>
+        <p>这是第二个段落。</p>
+      </div>
+
+      <div class="article">
+        <h3>现实情况步骤</h3>
+        <p>这是一个段落。</p>
+        <p>这是第二个段落。</p>
+      </div>
+
+      <div class="article">
+        <h3>机会实现情况</h3>
+        <p>这是一个段落。</p>
+        <p>这是第二个段落。</p>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- ========== 页脚区域 footer ========== -->
+  <div class="footer">
+    <h2>footer</h2>
+  </div>
 
 </body>
 
