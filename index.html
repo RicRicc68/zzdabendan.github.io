@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>布局16</title>
+  <title>布局17</title>
   <style>
     /* 极简样式：只有基础宽度/高度/边距/灰白背景色 */
     * {
@@ -21,6 +21,8 @@
       list-style: none;
     }
 
+    /* 布局 */
+
     .header,
     .nav,
     .main,
@@ -28,12 +30,18 @@
       background: rgba(204, 204, 204, 0.5);
     }
 
+    /* 布局 */
+
     .title {
       text-align: center;
     }
 
+    /* 布局 */
+
+
     .nav {
       background-color: #ffffff;
+      margin: 0 0 30px 0;
     }
 
     .nav ul {
@@ -47,6 +55,22 @@
       padding: 10px 0;
       text-align: center;
     }
+
+    .navdiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .navdivdiv {
+      flex: 1;
+      border-top: 1px solid #cccccc;
+      width: 100%;
+    }
+
+
+    /* 布局 */
 
     .main {
       background-color: #ffffff;
@@ -121,6 +145,28 @@
       <li>6休息计划</li>
       <li>7其他计划</li>
     </ul>
+
+
+    <!-- 临时三分组 -->
+    <div class="navdiv">
+
+      <div class="navdivdiv">
+        <h3>个人锻炼状态，个人锻炼目标</h3>
+        <p>最简化模型：68kg→58kg</p>
+      </div>
+
+      <div class="navdivdiv">
+        <h3>现实锻炼情况，具体锻炼步骤</h3>
+        <p>最简化情况：场地→时间→人员→设备</p>
+      </div>
+
+      <div class="navdivdiv">
+        <h3>机会实现情况，具体实现情况</h3>
+        <p>最简化机会：2026年5月7日→2026年6月10日</p>
+      </div>
+
+    </div>
+
   </div>
 
   <!-- ========== 主区域 main ========== -->
@@ -128,26 +174,6 @@
 
 
 
-
-    <!-- 临时三分组 -->
-    <div class="section">
-
-      <div class="article">
-        <h3>个人锻炼状态，个人锻炼目标</h3>
-        <p>最简化模型：68kg→58kg</p>
-      </div>
-
-      <div class="article">
-        <h3>现实锻炼情况，具体锻炼步骤</h3>
-        <p>最简化情况：场地→时间→人员→设备</p>
-      </div>
-
-      <div class="article">
-        <h3>机会实现情况，具体实现情况</h3>
-        <p>最简化机会：2026年5月7日→2026年6月10日</p>
-      </div>
-
-    </div>
 
 
 
