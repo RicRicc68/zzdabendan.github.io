@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>布局31</title>
+  <title>布局32</title>
   <style>
     /* 极简样式：只有基础宽度/高度/边距/灰白背景色 */
     * {
@@ -73,12 +73,19 @@
     .nav ul li {
       padding: 6px;
       text-align: center;
-      border-radius: 10px;
+      border-radius: 0px;
       background-color: #ffffff;
-      border: 1px solid #003366;
+      border-bottom: 2px solid #003366;
       color: #003366;
       font-size: 16px;
       font-weight: bold;
+    }
+
+    .nav ul li:hover {
+      background-color: #003366;
+      color: #ffffff;
+      border-bottom: 2px solid #ffffff;
+      border-radius: 9px;
     }
 
     /* 导航栏 */
@@ -202,12 +209,6 @@
       border-color: #007bff;
     }
 
-    /* 临时三分组 */
-    .临时三分组,
-    .navdiv {
-      display: none;
-    }
-
     /* 三分组 */
     .danbendada {
       max-width: 1600px;
@@ -250,6 +251,7 @@
 
     <div class="logo">
       <h1>个人头像</h1>
+      <img src="" alt="">
     </div>
 
     <div class="title">
@@ -272,12 +274,23 @@
 
 
 
-  <!-- 临时三分组 -->
+  <!-- 临时-计划三分组 -->
   <div class="navdiv">
 
     <div class="navdivdiv">
       <h3>个人锻炼状态，个人锻炼目标</h3>
-      <p>最简化模型：68kg→58kg</p>
+      <p>最简化模型：<br>
+        68kg→<br>
+        67kg→<br>
+        66kg→<br>
+        65kg→<br>
+        64kg→<br>
+        63kg→<br>
+        62kg→<br>
+        61kg→<br>
+        60kg→<br>
+        59kg→<br>
+        58kg</p>
     </div>
 
     <div class="navdivdiv">
@@ -297,12 +310,8 @@
   <div class="main">
 
 
-
     <!-- 直播 -->
     <div class="section live">
-
-
-
 
       <!-- 主栏目 article -->
       <div class="article">
@@ -605,10 +614,7 @@
 
     </div>
 
-
-
-
-    <!-- 三分组 -->
+    <!-- 四分组 -->
     <div class="section danbendada">
 
       <div class="article">
@@ -702,11 +708,15 @@
         </ul>
       </div>
 
+      <div class="article">
+        <h2>我的简历</h2>
+
+      </div>
     </div>
 
 
 
-    <!-- article 主栏目 + aside 附属内容 -->
+    <!-- 草稿-主栏目附属内容 -->
     <div class="section" style="display: none;">
       <!-- <h2 style="display: none;">section · 区块 B</h2> -->
       <div class="article">
@@ -721,7 +731,7 @@
 
     </div>
 
-    <!-- 两份组 -->
+    <!-- 草稿-两份组 -->
     <div class="section" style="display: none;">
 
       <div class="article">
@@ -736,7 +746,7 @@
 
     </div>
 
-    <!-- 单份组 -->
+    <!-- 草稿-单份组 -->
     <div class="section" style="display: none;">
       <!-- <h2 style="display: none;">section · 区块 A</h2> -->
       <div class="article">
