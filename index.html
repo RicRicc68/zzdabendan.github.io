@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>布局34</title>
+  <title>布局35</title>
   <style>
     /* 极简样式：只有基础宽度/高度/边距/灰白背景色 */
     * {
@@ -29,9 +29,10 @@
       background: #ffffff;
       padding: 10px 20px;
       box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 2px #00000024, 0 3px 1px -2px #0003, 0 1px 5px #0000001f;
       position: relative;
       flex-wrap: wrap;
-      margin-bottom: 3px;
+      margin-bottom: 0px;
     }
 
     /* 左中右三个区域 */
@@ -78,16 +79,16 @@
       position: absolute;
       left: 0;
       width: 100%;
-      background-color: #ffffff;
+      background-color: #F2F2F2;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
       padding: 20px 30px;
       display: none;
       z-index: 200;
-      top: 100%;
+      top: 102%;
+      /* 紧贴导航栏底部 */
       box-sizing: border-box;
-      padding: 10px;
       color: #003366;
     }
 
@@ -218,6 +219,7 @@
     .live {
       margin: 0 auto;
       background-color: #111;
+      background-color: #f2f2f0;
       justify-content: center;
       align-items: center;
       padding: 40px;
