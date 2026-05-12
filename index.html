@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>布局35</title>
+  <title>布局37</title>
   <style>
     /* 极简样式：只有基础宽度/高度/边距/灰白背景色 */
     * {
@@ -227,22 +227,7 @@
       background-color: #111;
       background-color: #f2f2f0;
       justify-content: center;
-      align-items: center;
       padding: 40px;
-    }
-
-    .live iframe {
-      border: 0;
-    }
-
-    .live .article {
-      max-width: 1000px;
-      padding: 0;
-    }
-
-    .live .aside {
-      max-width: 600px;
-      padding: 0;
     }
   </style>
 </head>
@@ -251,7 +236,6 @@
 
   <!-- ========== 头部区域 header ========== -->
   <!-- ========== 导航区域 nav ========== -->
-
   <div class="header">
 
     <div class="logo">
@@ -416,7 +400,19 @@
 
           </div>
         </li>
-        <li>2家务休息</li>
+        <li>2家务休息
+          <div class="navdiv">
+            <div class="navdivdiv">
+              <h3>家务休息</h3>
+            </div>
+            <div class="navdivdiv">
+              <h3>家务休息</h3>
+            </div>
+            <div class="navdivdiv">
+              <h3>家务休息</h3>
+            </div>
+          </div>
+        </li>
         <li>3学习工作</li>
         <li>4其他</li>
       </ul>
@@ -435,16 +431,15 @@
 
 
     <!-- 直播 -->
-    <div class="section live">
+    <div class="section live danbendada">
 
       <!-- 主栏目 article -->
       <div class="article">
 
         <!-- 
-               <iframe src="//player.bilibili.com/player.html?bvid=BV1pKhTznE1Z" scrolling="no" frameborder="no"
+        <iframe src="//player.bilibili.com/player.html?bvid=BV1pKhTznE1Z" scrolling="no" frameborder="no"
           allowfullscreen="false" style="width: 100%; height: 500px;">
         </iframe>
-        
         -->
         <iframe src="//player.bilibili.com/player.html?bvid=BV1KxtGzwEML" scrolling="no" frameborder="no"
           allowfullscreen="false" style="width: 100%; height: 500px;">
@@ -452,13 +447,113 @@
       </div>
 
       <!-- 附属内容 aside -->
-      <div class="aside">
+      <div class="article">
         <iframe src="https://live.bilibili.com/6?live_from=85021" scrolling="no" frameborder="no" allowfullscreen="true"
           style="width: 100%; height: 500px;">
         </iframe>
       </div>
 
+
+
+      <!-- 四分组 -->
+
+      <div class="article">
+        <h2>网站简介</h2>
+        <p>
+          <br>121.199.57.184
+          <br>danbendada.wiki
+          <br>
+          <br>本网站使用阿里云的云计算服务器搭建
+          <br>创建时间：2025年8月03日 10:43:00
+          <br>到期时间：2027年8月13日 23:59:59
+          <br>生命时间剩余：16月
+          <br>
+          <br>本网站是用于：编写知识经验，个人简历，个人经历，生活笔记。
+          <br>2026年3月。使用Wiki.js系统，wikijs是一个知识库系统。
+          <br>支持多种编写方式：可视化编辑界面，HTML网页，markdown笔记
+          <br>怎么样搭建？看第十三篇文章内容/work/work_13
+        </p>
+      </div>
+
+      <div class="article">
+        <h2>我的文章</h2>
+
+        <details open>
+          <summary>生活知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/life/life_1">生活知识1</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_2">生活知识2</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_3">生活知识3</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_4">生活知识4</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_5">生活知识5</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/life/life_6">生活知识6</a></dd>
+          </dl>
+        </details>
+
+        <details>
+          <summary>工作知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/work/work_1">工作知识01</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_2">工作知识02</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_3">工作知识03</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_4">工作知识04</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_5">工作知识05</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_6">工作知识06</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_7">工作知识07</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_8">工作知识08</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_9">工作知识09</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_10">工作知识10</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/work/work_11">工作知识11</a></dd>
+          </dl>
+        </details>
+
+        <details>
+          <summary>草稿知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/test/test_1">草稿知识1</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/test/test_2">草稿知识2</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/test/test_3">草稿知识3</a></dd>
+            <dd><a href="http://danbendada.wiki/zh/test/test_4">草稿知识4</a></dd>
+          </dl>
+
+        </details>
+
+        <details>
+          <summary>娱乐知识分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/game/game_1">娱乐知识1</a></dd>
+          </dl>
+        </details>
+
+        <details>
+          <summary>旧知识库分类</summary>
+          <dl>
+            <dd><a href="http://danbendada.wiki/zh/jzsk/jzsk_0">旧知识库0</a></dd>
+          </dl>
+        </details>
+
+      </div>
+
+      <div class="article">
+        <h2>我的经历</h2>
+
+        <ul>
+          <li>爷爷姥姥</li>
+          <li>小学初中</li>
+          <li>高中三年</li>
+          <li>大学三件</li>
+          <li>工作1</li>
+          <li>工作2</li>
+          <li>工作3</li>
+        </ul>
+      </div>
+
+      <div class="article">
+        <h2>我的简历</h2>
+
+      </div>
     </div>
+
 
     <!-- 单分组 链接分组 -->
     <div class="section ciyun">
@@ -736,106 +831,6 @@
         </div>
       </div>
 
-    </div>
-
-    <!-- 四分组 -->
-    <div class="section danbendada">
-
-      <div class="article">
-        <h2>网站简介</h2>
-        <p>
-          <br>121.199.57.184
-          <br>danbendada.wiki
-          <br>
-          <br>本网站使用阿里云的云计算服务器搭建
-          <br>创建时间：2025年8月03日 10:43:00
-          <br>到期时间：2027年8月13日 23:59:59
-          <br>生命时间剩余：16月
-          <br>
-          <br>本网站是用于：编写知识经验，个人简历，个人经历，生活笔记。
-          <br>2026年3月。使用Wiki.js系统，wikijs是一个知识库系统。
-          <br>支持多种编写方式：可视化编辑界面，HTML网页，markdown笔记
-          <br>怎么样搭建？看第十三篇文章内容/work/work_13
-        </p>
-      </div>
-
-      <div class="article">
-        <h2>我的文章</h2>
-
-        <details open>
-          <summary>生活知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/life/life_1">生活知识1</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_2">生活知识2</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_3">生活知识3</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_4">生活知识4</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_5">生活知识5</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/life/life_6">生活知识6</a></dd>
-          </dl>
-        </details>
-
-        <details>
-          <summary>工作知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/work/work_1">工作知识01</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_2">工作知识02</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_3">工作知识03</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_4">工作知识04</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_5">工作知识05</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_6">工作知识06</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_7">工作知识07</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_8">工作知识08</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_9">工作知识09</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_10">工作知识10</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/work/work_11">工作知识11</a></dd>
-          </dl>
-        </details>
-
-        <details>
-          <summary>草稿知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/test/test_1">草稿知识1</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/test/test_2">草稿知识2</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/test/test_3">草稿知识3</a></dd>
-            <dd><a href="http://danbendada.wiki/zh/test/test_4">草稿知识4</a></dd>
-          </dl>
-
-        </details>
-
-        <details>
-          <summary>娱乐知识分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/game/game_1">娱乐知识1</a></dd>
-          </dl>
-        </details>
-
-        <details>
-          <summary>旧知识库分类</summary>
-          <dl>
-            <dd><a href="http://danbendada.wiki/zh/jzsk/jzsk_0">旧知识库0</a></dd>
-          </dl>
-        </details>
-
-      </div>
-
-      <div class="article">
-        <h2>我的经历</h2>
-
-        <ul>
-          <li>爷爷姥姥</li>
-          <li>小学初中</li>
-          <li>高中三年</li>
-          <li>大学三件</li>
-          <li>工作1</li>
-          <li>工作2</li>
-          <li>工作3</li>
-        </ul>
-      </div>
-
-      <div class="article">
-        <h2>我的简历</h2>
-
-      </div>
     </div>
 
 
