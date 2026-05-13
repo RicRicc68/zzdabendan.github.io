@@ -78,6 +78,15 @@
       color: #ffffff;
     }
 
+    /* 二级头像 */
+
+    .logo ul li:hover .navdiv {
+      display: block;
+      background-color: #F2F2F2;
+      background-color: rgba(242, 242, 242, 0.8);
+    }
+
+
     /* 二级导航栏 */
 
     .navdiv {
@@ -87,7 +96,7 @@
       background-color: #F2F2F2;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 3px solid #ddd;
       padding: 20px 30px;
       display: none;
       z-index: 200;
@@ -101,16 +110,24 @@
       display: block;
       background-color: #F2F2F2;
       background-color: rgba(242, 242, 242, 0.8);
-
     }
 
     .navdivdiv {
       flex: 1;
       text-align: center;
       min-width: 150px;
+      height: 100%;
       background-color: #F2F2F2;
       background-color: rgba(242, 242, 242, 0.8);
+      background-color: rgba(255, 255, 255, 0.8);
+      background-color: #003366;
+      color: #ffffff;
+      margin: 10px;
+    }
 
+    .navflex {
+      display: flex;
+      flex-direction: row;
     }
 
 
@@ -245,9 +262,38 @@
   <div class="header">
 
     <div class="logo">
-      <h1>
-        <img src="个人头像.jpg" alt="个人头像.jpg" width="50px">
-      </h1>
+      <ul>
+        <li>
+          <img src="个人头像.jpg" alt="个人头像.jpg" width="50px">
+          <div class="navdiv">
+            <div class="navflex">
+              <div class="navdivdiv">
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+                <h3>个人能力</h3>
+              </div>
+              <div class="navdivdiv">
+                <h3>个人能力</h3>
+              </div>
+              <div class="navdivdiv">
+                <h3>个人能力</h3>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
 
     <div class="title">
@@ -255,172 +301,198 @@
     </div>
 
     <div class="nav">
+      <h2>未来</h2>
       <!-- 一级导航 -->
       <ul>
         <li>1锻炼饮食
           <!-- 二级导航 -->
           <div class="navdiv">
+            <div class="navflex">
 
-            <div class="navdivdiv">
-              <h3>个人锻炼状态，个人锻炼目标</h3>
+              <div class="navdivdiv">
+                <h3>个人锻炼状态，个人锻炼目标</h3>
 
-              <table border="1" cellspacing="0" align="center" width="100%" height="100%"
-                style="border-collapse: collapse;">
-                <caption>最简化模型</caption>
-                <thead>
-                  <tr>
-                    <th>体重</th>
-                    <th>饮食</th>
-                    <th>动作：跑步</th>
-                    <th>动作：深蹲</th>
-                    <th>动作：俯卧撑</th>
-                    <th>动作：引体向上</th>
-                    <th>动作：平板支撑</th>
-                  </tr>
-                </thead>
+                <table border="1" cellspacing="0" align="center" width="100%" height="100%"
+                  style="border-collapse: collapse;">
+                  <caption>最简化模型</caption>
+                  <thead>
+                    <tr>
+                      <th>体重</th>
+                      <th>饮食</th>
+                      <th>动作：跑步</th>
+                      <th>动作：深蹲</th>
+                      <th>动作：俯卧撑</th>
+                      <th>动作：引体向上</th>
+                      <th>动作：平板支撑</th>
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  <tr>
-                    <td>
-                      68kg→<br>
-                      67kg→<br>
-                      66kg→<br>
-                      65kg→<br>
-                      64kg→<br>
-                      63kg→<br>
-                      62kg→<br>
-                      61kg→<br>
-                      60kg→<br>
-                      59kg→<br>
-                      58kg→<br>
-                    </td>
+                  <tbody>
+                    <tr>
+                      <td>
+                        68kg→<br>
+                        67kg→<br>
+                        66kg→<br>
+                        65kg→<br>
+                        64kg→<br>
+                        63kg→<br>
+                        62kg→<br>
+                        61kg→<br>
+                        60kg→<br>
+                        59kg→<br>
+                        58kg→<br>
+                      </td>
 
-                    <td>
-                      数量1→<br>
-                      数量2→<br>
-                      数量3→<br>
-                      数量4→<br>
-                      数量5→<br>
-                      数量6→<br>
-                      数量7→<br>
-                      数量8→<br>
-                      数量9→<br>
-                      数量10→<br>
-                      数量11→<br>
-                    </td>
+                      <td>
+                        数量1→<br>
+                        数量2→<br>
+                        数量3→<br>
+                        数量4→<br>
+                        数量5→<br>
+                        数量6→<br>
+                        数量7→<br>
+                        数量8→<br>
+                        数量9→<br>
+                        数量10→<br>
+                        数量11→<br>
+                      </td>
 
-                    <td>
-                      数量1→<br>
-                      数量2→<br>
-                      数量3→<br>
-                      数量4→<br>
-                      数量5→<br>
-                      数量6→<br>
-                      数量7→<br>
-                      数量8→<br>
-                      数量9→<br>
-                      数量10→<br>
-                      数量11→<br>
-                    </td>
+                      <td>
+                        数量1→<br>
+                        数量2→<br>
+                        数量3→<br>
+                        数量4→<br>
+                        数量5→<br>
+                        数量6→<br>
+                        数量7→<br>
+                        数量8→<br>
+                        数量9→<br>
+                        数量10→<br>
+                        数量11→<br>
+                      </td>
 
-                    <td>
-                      数量1→<br>
-                      数量2→<br>
-                      数量3→<br>
-                      数量4→<br>
-                      数量5→<br>
-                      数量6→<br>
-                      数量7→<br>
-                      数量8→<br>
-                      数量9→<br>
-                      数量10→<br>
-                      数量11→<br>
-                    </td>
+                      <td>
+                        数量1→<br>
+                        数量2→<br>
+                        数量3→<br>
+                        数量4→<br>
+                        数量5→<br>
+                        数量6→<br>
+                        数量7→<br>
+                        数量8→<br>
+                        数量9→<br>
+                        数量10→<br>
+                        数量11→<br>
+                      </td>
 
-                    <td>
-                      数量1→<br>
-                      数量2→<br>
-                      数量3→<br>
-                      数量4→<br>
-                      数量5→<br>
-                      数量6→<br>
-                      数量7→<br>
-                      数量8→<br>
-                      数量9→<br>
-                      数量10→<br>
-                      数量11→<br>
-                    </td>
-                    <td>
-                      动作1→<br>
-                      动作2→<br>
-                      动作3→<br>
-                      动作4→<br>
-                      动作5→<br>
-                      动作6→<br>
-                      动作7→<br>
-                      动作8→<br>
-                      动作9→<br>
-                      动作10→<br>
-                      动作11→<br>
-                    </td>
-                    <td>
-                      动作1→<br>
-                      动作2→<br>
-                      动作3→<br>
-                      动作4→<br>
-                      动作5→<br>
-                      动作6→<br>
-                      动作7→<br>
-                      动作8→<br>
-                      动作9→<br>
-                      动作10→<br>
-                      动作11→<br>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                      <td>
+                        数量1→<br>
+                        数量2→<br>
+                        数量3→<br>
+                        数量4→<br>
+                        数量5→<br>
+                        数量6→<br>
+                        数量7→<br>
+                        数量8→<br>
+                        数量9→<br>
+                        数量10→<br>
+                        数量11→<br>
+                      </td>
+                      <td>
+                        动作1→<br>
+                        动作2→<br>
+                        动作3→<br>
+                        动作4→<br>
+                        动作5→<br>
+                        动作6→<br>
+                        动作7→<br>
+                        动作8→<br>
+                        动作9→<br>
+                        动作10→<br>
+                        动作11→<br>
+                      </td>
+                      <td>
+                        动作1→<br>
+                        动作2→<br>
+                        动作3→<br>
+                        动作4→<br>
+                        动作5→<br>
+                        动作6→<br>
+                        动作7→<br>
+                        动作8→<br>
+                        动作9→<br>
+                        动作10→<br>
+                        动作11→<br>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-            </div>
+              </div>
 
-            <div class="navdivdiv">
-              <h3>现实锻炼情况，具体锻炼步骤</h3>
-              <p>
-                最简化场地：卧室，楼道，天台，小区<br>
-                最简化时间：5:00-6:00，18:00-19:00<br>
-                最简化设备：瑜伽垫，引体向上撑杆，哑铃，体重秤<br>
-              </p>
-            </div>
+              <div class="navdivdiv">
+                <h3>现实锻炼情况，具体锻炼步骤</h3>
+                <p>
+                  最简化场地：卧室，楼道，天台，小区<br>
+                  最简化时间：5:00-6:00，18:00-19:00<br>
+                  最简化设备：瑜伽垫，引体向上撑杆，哑铃，体重秤<br>
+                </p>
+              </div>
 
-            <div class="navdivdiv">
-              <h3>机会实现情况，具体实现情况</h3>
-              <p>最简化机会：<br>
-                机会1：2026年5月10日<br>
-                机会1：2026年5月11日<br>
-                机会2：2026年5月12日<br>
-                机会3：2026年5月13日<br>
-                机会4：2026年5月14日<br>
-                机会5：2026年5月15日<br>
-                机会6：2026年5月16日<br>
-              </p>
+              <div class="navdivdiv">
+                <h3>机会实现情况，具体实现情况</h3>
+                <p>最简化机会：<br>
+                  机会1：2026年5月10日<br>
+                  机会1：2026年5月11日<br>
+                  机会2：2026年5月12日<br>
+                  机会3：2026年5月13日<br>
+                  机会4：2026年5月14日<br>
+                  机会5：2026年5月15日<br>
+                  机会6：2026年5月16日<br>
+                </p>
+              </div>
             </div>
 
           </div>
         </li>
         <li>2家务休息
           <div class="navdiv">
-            <div class="navdivdiv">
-              <h3>家务休息</h3>
-            </div>
-            <div class="navdivdiv">
-              <h3>家务休息</h3>
-            </div>
-            <div class="navdivdiv">
-              <h3>家务休息</h3>
+            <div class="navflex">
+              <div class="navdivdiv">
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+                <h3>家务休息</h3>
+              </div>
+              <div class="navdivdiv">
+                <h3>家务休息</h3>
+              </div>
+              <div class="navdivdiv">
+                <h3>家务休息</h3>
+              </div>
             </div>
           </div>
         </li>
         <li>3学习工作</li>
         <li>4其他</li>
+        <li> </li>
       </ul>
 
 
@@ -559,7 +631,6 @@
 
       </div>
     </div>
-
 
     <!-- 单分组 链接分组 -->
     <div class="section ciyun">
