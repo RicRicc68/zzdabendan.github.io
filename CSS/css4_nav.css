@@ -5,23 +5,21 @@
 .nav {
     border: 0px solid #000000;
     justify-content: flex-end;
+
 }
 
-.nav ul {
+.navul {
     display: flex;
     flex-direction: row;
-    gap: 20px;
     justify-content: flex-end;
+    gap: 20px;
 }
 
-.nav ul li {
+.navul li {
     list-style: none;
-    border-bottom: 2px solid #000000;
-    padding: 10px;
-    font-weight: bold;
 }
 
-.nav ul li:hover {
+.navul li:hover {
     background-color: #003366;
     color: #ffffff;
     border-radius: 6px;
@@ -34,18 +32,19 @@
     position: relative;
 }
 
-.nav ul li:hover .navdiv {
+.navul li:hover .navdiv {
     display: flex;
     position: absolute;
-    width: 80%;
+    width: 100%;
     top: 105px;
     right: 0;
-    background-color: #003366;
+    background-color: #fff;
 }
 
 .navdivdiv {
     flex: 1;
-    background-color: #ffffff;
+    background-color: #fff;
+
     margin: 10px;
 }
 
