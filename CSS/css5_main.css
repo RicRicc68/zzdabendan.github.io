@@ -1,0 +1,107 @@
+/* main */
+
+.main {
+    padding: 1rem;
+}
+
+.section {
+    display: flex;
+}
+
+.article {
+    flex: 7;
+}
+
+.aside {
+    flex: 3;
+}
+
+
+/* 词云 */
+
+.ciyun {
+    background-color: #eee;
+    background-color: #fff;
+}
+
+.ciyun .article {
+    background-color: #fff;
+    border: 0px solid #cccccc;
+}
+
+/* 书签墙 */
+
+.link-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0.3rem;
+    box-sizing: border-box;
+}
+
+.link-card {
+    padding: 0.3rem;
+    color: #444;
+    color: #003366;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.link-card:hover {
+    border-color: #007bff;
+}
+
+
+
+/* 词云 */
+
+.cloud-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0.3rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cloud-word {
+    padding: 0.3rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #444;
+    color: #003366;
+    white-space: nowrap;
+    background-color: #eee;
+}
+
+.cloud-word:hover {
+    border-color: #007bff;
+}
+
+
+
+
+
+
+/* 三分组 */
+.danbendada {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+
+
+/* 直播 */
+.live {
+    margin: 0 auto;
+    background-color: #111;
+    background-color: #f2f2f0;
+    justify-content: center;
+    padding: 40px;
+}

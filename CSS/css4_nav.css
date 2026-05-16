@@ -1,0 +1,55 @@
+.nav {
+    flex: 1;
+}
+
+.nav {
+    border: 0px solid #000000;
+    justify-content: flex-end;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.nav ul li {
+    list-style: none;
+    border-bottom: 2px solid #000000;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.nav ul li:hover {
+    background-color: #003366;
+    color: #ffffff;
+    border-radius: 6px;
+}
+
+.navdiv {
+    display: none;
+    flex-direction: row;
+    gap: 10px;
+    position: relative;
+}
+
+.nav ul li:hover .navdiv {
+    display: flex;
+    position: absolute;
+    width: 80%;
+    top: 105px;
+    right: 0;
+    background-color: #003366;
+}
+
+.navdivdiv {
+    flex: 1;
+    background-color: #ffffff;
+    margin: 10px;
+}
+
+.navdivdiv ul {
+    display: flex;
+    flex-direction: column;
+}

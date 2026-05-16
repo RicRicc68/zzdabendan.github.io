@@ -1,0 +1,30 @@
+.logo {
+    flex: 1;
+}
+
+.logo {
+    border: 0px solid #000000;
+    justify-content: flex-start;
+}
+
+.grtx {
+    position: relative;
+}
+
+.grxx {
+    display: flex;
+    width: 20%;
+    position: absolute;
+    top: 105px;
+    left: 0;
+    background-color: #003366;
+    margin: 10px;
+}
+
+.logodivdiv {
+    display: block;
+    display: none;
+    flex: 1;
+    margin: 10px;
+    background-color: #ffffff;
+}

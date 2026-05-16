@@ -1,0 +1,8 @@
+.title {
+    flex: 0 0 auto;
+}
+
+.title {
+    border: 0px solid #000000;
+    justify-content: center;
+}
