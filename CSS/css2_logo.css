@@ -72,6 +72,29 @@
     animation: expandBorder 2s infinite ease-out;
 }
 
+
+
+
+/* 三个波纹不同延迟：错开启动时间 */
+/* 立即开始 */
+.ripple-1 {
+    animation-delay: 0s;
+}
+
+/* 延迟0.7秒 */
+.ripple-2 {
+    animation-delay: 0.35s;
+}
+
+/* 延迟1.4秒 */
+.ripple-3 {
+    animation-delay: 0.7s;
+}
+
+
+
+
+
 /* 关键帧：边框从贴合头像逐渐扩大到2.5倍，同时边框颜色变淡直至完全透明 */
 @keyframes expandBorder {
     0% {
