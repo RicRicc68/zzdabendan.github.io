@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymarket Copytrade Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.active {
+            background: #10b981;
+        }
+        
+        .status-dot.inactive {
+            background: #ef4444;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .stat-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 16px;
+        }
+        
+        .stat-value.positive {
+            color: #10b981;
+        }
+        
+        .stat-value.negative {
+            color: #ef4444;
+        }
+        
+        .stat-value.warning {
+            color: #f59e0b;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+        }
+        
+        .alert.info {
+            background: #e0f2fe;
+            border-color: #0284c7;
+            color: #0c4a6e;
+        }
+        
+        .alert.warning {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #78350f;
+        }
+        
+        .alert.danger {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #7f1d1d;
+        }
+        
+        .alert.success {
+            background: #dcfce7;
+            border-color: #10b981;
+            color: #166534;
+        }
+        
+        .position-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        
+        .position-table th {
+            background: #f3f4f6;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .position-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .position-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .badge.active {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge.closed {
+            background: #f3e8e8;
+            color: #7f1d1d;
+        }
+        
+        .badge.loss {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 12px;
+        }
+        
+        .refresh-info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Polymarket Copytrade Bot Dashboard</h1>
+            <div class="status">
+                <div class="status-item">
+                    <div class="status-dot inactive" id="status-dot"></div>
+                    <span>Bot Status: <strong id="bot-status">Stopped</strong></span>
+                </div>
+                <div class="status-item">
+                    <span>Updated: <strong id="last-update">--:--:--</strong></span>
+                </div>
+                <div class="status-item">
+                    <span>Wallet: <strong id="wallet-addr">0x...</strong></span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- ALERTS SECTION -->
+        <div id="alerts-container"></div>
+        
+        <!-- MAIN GRID -->
+        <div class="grid">
+            
+            <!-- PORTFOLIO OVERVIEW -->
+            <div class="card">
+                <h3>💼 Portfolio Overview</h3>
+                
+                <div class="stat">
+                    <span class="stat-label">Wallet Balance</span>
+                    <span class="stat-value" id="wallet-balance">$10.00</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Total Equity</span>
+                    <span class="stat-value" id="total-equity">$10.00</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Unrealized P&L</span>
+                    <span class="stat-value" id="unrealized-pnl">$0.00</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Realized P&L</span>
+                    <span class="stat-value" id="realized-pnl">$0.00</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Total Return</span>
+                    <span class="stat-value" id="total-return">0.00%</span>
+                </div>
+            </div>
+            
+            <!-- RISK METRICS -->
+            <div class="card">
+                <h3>🛡️ Risk Metrics</h3>
+                
+                <div class="stat">
+                    <span class="stat-label">Drawdown</span>
+                    <span class="stat-value warning" id="drawdown">0.00%</span>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="drawdown-bar" style="width: 0%">0%</div>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Active Positions</span>
+                    <span class="stat-value" id="active-positions">0</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Positions Value</span>
+                    <span class="stat-value" id="positions-value">$0.00</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Capital Utilization</span>
+                    <span class="stat-value" id="capital-util">0%</span>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="capital-bar" style="width: 0%">0%</div>
+                </div>
+            </div>
+            
+            <!-- TRADING STATS -->
+            <div class="card">
+                <h3>📊 Trading Statistics</h3>
+                
+                <div class="stat">
+                    <span class="stat-label">Total Trades</span>
+                    <span class="stat-value" id="total-trades">0</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Winning Positions</span>
+                    <span class="stat-value positive" id="winning-pos">0</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Losing Positions</span>
+                    <span class="stat-value negative" id="losing-pos">0</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Win Rate</span>
+                    <span class="stat-value" id="win-rate">--</span>
+                </div>
+                
+                <div class="stat">
+                    <span class="stat-label">Avg Win / Loss</span>
+                    <span class="stat-value" id="avg-wl">--</span>
+                </div>
+            </div>
+            
+            <!-- EQUITY CHART -->
+            <div class="card full-width">
+                <h3>📈 Equity Curve</h3>
+                <div class="chart-container">
+                    <canvas id="equity-chart"></canvas>
+                </div>
+            </div>
+            
+            <!-- OPEN POSITIONS -->
+            <div class="card full-width">
+                <h3>🎯 Open Positions</h3>
+                <table class="position-table">
+                    <thead>
+                        <tr>
+                            <th>Outcome</th>
+                            <th>Trader</th>
+                            <th>Size</th>
+                            <th>Entry</th>
+                            <th>Current</th>
+                            <th>P&L %</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="positions-tbody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; color: #999;">
+                                No open positions yet
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- TOP TRADERS -->
+            <div class="card full-width">
+                <h3>⭐ Top Traders Being Copied</h3>
+                <table class="position-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Trades</th>
+                            <th>Win Rate</th>
+                            <th>ROI %</th>
+                            <th>Score</th>
+                            <th>Sharpe Ratio</th>
+                            <th>Allocation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="traders-tbody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; color: #999;">
+                                Loading traders...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+        <div class="refresh-info">
+            🔄 Auto-refresh ogni 30 secondi
+        </div>
+        
+    </div>
+    
+    <footer>
+        <p>⚠️ <strong>DISCLAIMER:</strong> Questo è uno strumento educativo. I mercati comportano rischi. Non investire denaro che non puoi permetterti di perdere.</p>
+    </footer>
+    
+    <script>
+        // ====================================================================
+        // DASHBOARD JAVASCRIPT
+        // ====================================================================
+        
+        const STATS_FILE = './copytrade_stats.json';
+        const REFRESH_INTERVAL = 30000; // 30 secondi
+        
+        let equityHistory = [];
+        let equityChart = null;
+        let lastError = null;
+        let lastStats = null;
+        
+        // Inizializza dashboard
+        function initDashboard() {
+            setupEquityChart();
+            updateDashboard();
+            setInterval(updateDashboard, REFRESH_INTERVAL);
+        }
+        
+        // Aggiorna dashboard da file stats
+        async function updateDashboard() {
+            try {
+                const response = await fetch(`${STATS_FILE}?t=${Date.now()}`, { cache: 'no-store' });
+                if (!response.ok) throw new Error('Stats file not found');
+                
+                const stats = await response.json();
+                const portfolio = stats.portfolio || {};
+                lastError = null;
+                updateStatus(true);
+                lastStats = stats;
+                
+                document.getElementById('wallet-addr').textContent = stats.wallet_address || '0x...';
+                
+                // Update portfolio stats
+                document.getElementById('wallet-balance').textContent = 
+                    `${formatCurrency(portfolio.wallet_balance)}`;
+                
+                document.getElementById('total-equity').textContent = 
+                    `${formatCurrency(portfolio.total_equity)}`;
+                
+                document.getElementById('unrealized-pnl').textContent = 
+                    `${portfolio.unrealized_pnl >= 0 ? '+' : ''}$${portfolio.unrealized_pnl?.toFixed(2) || '0.00'}`;
+                
+                document.getElementById('realized-pnl').textContent = 
+                    `${portfolio.realized_pnl >= 0 ? '+' : ''}$${portfolio.realized_pnl?.toFixed(2) || '0.00'}`;
+                
+                // Return %
+                const returnPct = (((portfolio.total_equity ?? 0) - 10) / 10 * 100).toFixed(2);
+                const returnEl = document.getElementById('total-return');
+                returnEl.textContent = `${returnPct >= 0 ? '+' : ''}${returnPct}%`;
+                if (returnPct >= 0) {
+                    returnEl.className = 'stat-value positive';
+                } else {
+                    returnEl.className = 'stat-value negative';
+                }
+                
+                // Risk metrics
+                const drawdown = portfolio.drawdown_percent?.toFixed(1) || '0.0';
+                document.getElementById('drawdown').textContent = `${drawdown}%`;
+                document.getElementById('drawdown-bar').style.width = `${Math.min(Math.abs(parseFloat(drawdown)), 100)}%`;
+                
+                document.getElementById('active-positions').textContent = 
+                    portfolio.active_positions || '0';
+                
+                document.getElementById('positions-value').textContent = 
+                    `${formatCurrency(portfolio.total_positions_value)}`;
+                
+                // Capital utilization
+                const totalCapital = (portfolio.wallet_balance ?? 0) + (portfolio.total_positions_value ?? 0);
+                const capUtil = totalCapital > 0 ? 
+                    ((portfolio.total_positions_value ?? 0) / totalCapital * 100).toFixed(1) : '0';
+                document.getElementById('capital-util').textContent = `${capUtil}%`;
+                document.getElementById('capital-bar').style.width = `${capUtil}%`;
+                
+                // Update time
+                const timestampValue = Number(stats.timestamp);
+                const timestampMs = timestampValue > 1e12 ? timestampValue : timestampValue * 1000;
+                document.getElementById('last-update').textContent = 
+                    new Date(timestampMs).toLocaleTimeString('it-IT');
+                
+                // Add to equity history (allow zero equity too)
+                if (portfolio.total_equity !== undefined && portfolio.total_equity !== null) {
+                    equityHistory.push({
+                        time: new Date(timestampMs).toLocaleTimeString('it-IT'),
+                        equity: portfolio.total_equity
+                    });
+                    
+                    // Keep last 100 data points
+                    if (equityHistory.length > 100) {
+                        equityHistory.shift();
+                    }
+                    
+                    updateEquityChart();
+                }
+                
+                // Alerts
+                showAlerts(portfolio);
+                
+            } catch (error) {
+                console.error('Update error:', error);
+            lastError = error;
+            updateStatus(false);
+            if (lastStats) {
+                populateDashboard(lastStats);
+                showAlerts(lastStats.portfolio || {});
+                showAlert('warning', 'Stale data: using last successful stats.');
+            } else {
+                showAlert('warning', 'Cannot load stats file. Make sure bot is running and the file exists.');
+            }
+            }
+        }
+        
+        function populateDashboard(stats) {
+            const portfolio = stats.portfolio || {};
+            document.getElementById('wallet-addr').textContent = stats.wallet_address || '0x...';
+            document.getElementById('wallet-balance').textContent = `${formatCurrency(portfolio.wallet_balance)}`;
+            document.getElementById('total-equity').textContent = `${formatCurrency(portfolio.total_equity)}`;
+            document.getElementById('unrealized-pnl').textContent = `${portfolio.unrealized_pnl >= 0 ? '+' : ''}$${(portfolio.unrealized_pnl ?? 0).toFixed(2)}`;
+            document.getElementById('realized-pnl').textContent = `${portfolio.realized_pnl >= 0 ? '+' : ''}$${(portfolio.realized_pnl ?? 0).toFixed(2)}`;
+            const returnPct = (((portfolio.total_equity ?? 0) - 10) / 10 * 100).toFixed(2);
+            const returnEl = document.getElementById('total-return');
+            returnEl.textContent = `${returnPct >= 0 ? '+' : ''}${returnPct}%`;
+            returnEl.className = `stat-value ${returnPct >= 0 ? 'positive' : 'negative'}`;
+            const drawdown = (portfolio.drawdown_percent ?? 0).toFixed(1);
+            document.getElementById('drawdown').textContent = `${drawdown}%`;
+            document.getElementById('drawdown-bar').style.width = `${Math.min(Math.abs(parseFloat(drawdown)), 100)}%`;
+            document.getElementById('active-positions').textContent = portfolio.active_positions || '0';
+            document.getElementById('positions-value').textContent = `${formatCurrency(portfolio.total_positions_value)}`;
+            const totalCapital = (portfolio.wallet_balance ?? 0) + (portfolio.total_positions_value ?? 0);
+            const capUtil = totalCapital > 0 ? ((portfolio.total_positions_value ?? 0) / totalCapital * 100).toFixed(1) : '0';
+            document.getElementById('capital-util').textContent = `${capUtil}%`;
+            document.getElementById('capital-bar').style.width = `${capUtil}%`;
+            const timestampMs = Number(stats.timestamp) > 1e12 ? Number(stats.timestamp) : Number(stats.timestamp) * 1000;
+            document.getElementById('last-update').textContent = new Date(timestampMs).toLocaleTimeString('it-IT');
+            if (portfolio.total_equity !== undefined && portfolio.total_equity !== null) {
+                equityHistory.push({
+                    time: new Date(timestampMs).toLocaleTimeString('it-IT'),
+                    equity: portfolio.total_equity
+                });
+                if (equityHistory.length > 100) equityHistory.shift();
+                updateEquityChart();
+            }
+        }
+        
+        function formatCurrency(value) {
+            const num = Number(value ?? 0);
+            return `$${num.toFixed(2)}`;
+        }
+        
+        // Setup equity chart
+        function setupEquityChart() {
+            const ctx = document.getElementById('equity-chart').getContext('2d');
+            equityChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Equity',
+                        data: [],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Equity ($)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update equity chart
+        function updateEquityChart() {
+            if (!equityChart) return;
+            
+            equityChart.data.labels = equityHistory.map(e => e.time);
+            equityChart.data.datasets[0].data = equityHistory.map(e => e.equity);
+            equityChart.update();
+        }
+        
+        // Show alerts
+        function showAlerts(portfolio) {
+            const container = document.getElementById('alerts-container');
+            container.innerHTML = '';
+            
+            if (!portfolio || Object.keys(portfolio).length === 0) {
+                return;
+            }
+            
+            // Critical alerts
+            if (portfolio.total_equity !== undefined && portfolio.total_equity < 5) {
+                showAlert('danger', '⚠️ CRITICAL: Equity < $5. Consider stopping bot.');
+            }
+            
+            if (portfolio.drawdown_percent !== undefined && portfolio.drawdown_percent <= -50) {
+                showAlert('warning', '⚠️ WARNING: Max drawdown approaching (-50%)');
+            }
+            
+            if (portfolio.active_positions > 15) {
+                showAlert('info', 'ℹ️  High number of positions open. Monitor closely.');
+            }
+            
+            if (portfolio.total_equity !== undefined && portfolio.total_equity > 10) {
+                showAlert('success', '✅ In profit! Good job!');
+            }
+        }
+        
+        function showAlert(type, message) {
+            const container = document.getElementById('alerts-container');
+            const alertEl = document.createElement('div');
+            alertEl.className = `alert ${type}`;
+            alertEl.textContent = message;
+            container.appendChild(alertEl);
+        }
+        
+        function updateStatus(isRunning) {
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('bot-status');
+            if (isRunning) {
+                statusDot.classList.remove('inactive');
+                statusDot.classList.add('active');
+                statusText.textContent = 'Running';
+            } else {
+                statusDot.classList.remove('active');
+                statusDot.classList.add('inactive');
+                statusText.textContent = 'Stopped';
+            }
+        }
+        
+        // Inizio
+        initDashboard();
+    </script>
+</body>
+</html>
