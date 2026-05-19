@@ -28,3 +28,63 @@
     margin: 10px;
     background-color: #ffffff;
 }
+
+
+
+
+
+
+/* 头像容器：相对定位，让波纹可扩散出去 */
+.grtx {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* 必须 visible，否则扩大的波纹会被裁剪 */
+    overflow: visible;
+}
+
+/* 头像图片：黑色圆形头像 */
+.avatar-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    background-color: #000000;
+}
+
+/* 单层波纹：只有边框扩大，没有背景填充 */
+.ripple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+    /* 黑色边框，初始可见 */
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    /* 无限循环，平滑扩大 */
+    animation: expandBorder 2s infinite ease-out;
+}
+
+/* 关键帧：边框从贴合头像逐渐扩大到2.5倍，同时边框颜色变淡直至完全透明 */
+@keyframes expandBorder {
+    0% {
+        transform: scale(1);
+        border-width: 1px;
+        border-color: rgba(0, 0, 0, 0.6);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(10.5);
+        border-width: 1px;
+        border-color: rgba(0, 0, 0, 0);
+        opacity: 0;
+    }
+}
