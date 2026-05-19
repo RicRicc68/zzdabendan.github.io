@@ -82,7 +82,7 @@
     }
 
     100% {
-        transform: scale(10.5);
+        transform: scale(2.5);
         border-width: 1px;
         border-color: rgba(0, 0, 0, 0);
         opacity: 0;
