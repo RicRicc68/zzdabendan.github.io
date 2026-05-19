@@ -69,10 +69,8 @@
     border: 1px solid rgba(0, 0, 0, 0.6);
     z-index: 1;
     /* 无限循环，平滑扩大 */
-    animation: expandBorder 2s infinite ease-out;
+    animation: expandBorder 1.2s infinite ease-out;
 }
-
-
 
 
 /* 三个波纹不同延迟：错开启动时间 */
@@ -83,12 +81,12 @@
 
 /* 延迟0.7秒 */
 .ripple-2 {
-    animation-delay: 0.35s;
+    animation-delay: 0.4s;
 }
 
 /* 延迟1.4秒 */
 .ripple-3 {
-    animation-delay: 0.7s;
+    animation-delay: 0.8s;
 }
 
 
