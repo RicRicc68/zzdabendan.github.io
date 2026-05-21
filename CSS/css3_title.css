@@ -1,5 +1,6 @@
 .title {
-    flex: 0 0 auto;
+    flex: 1;
+    justify-content: flex-start;
 }
 
 .title {

@@ -1,10 +1,9 @@
 .logo {
-    flex: 1;
+    flex: 0 0 auto;
 }
 
 .logo {
     border: 0px solid #000000;
-    justify-content: flex-start;
 }
 
 .grtx {
