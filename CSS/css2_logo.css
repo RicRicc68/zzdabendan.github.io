@@ -11,24 +11,6 @@
     position: relative;
 }
 
-.grxx {
-    display: flex;
-    width: 20%;
-    position: absolute;
-    top: 105px;
-    left: 0;
-    background-color: #003366;
-    margin: 10px;
-}
-
-.logodivdiv {
-    display: block;
-    display: none;
-    flex: 1;
-    margin: 10px;
-    background-color: #ffffff;
-}
-
 
 
 
@@ -37,8 +19,8 @@
 /* 头像容器：相对定位，让波纹可扩散出去 */
 .grtx {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     /* 必须 visible，否则扩大的波纹会被裁剪 */
     overflow: visible;
@@ -108,4 +90,25 @@
         border-color: rgba(0, 0, 0, 0);
         opacity: 0;
     }
+}
+
+
+
+
+.grxx {
+    display: flex;
+    width: 20%;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    background-color: #003366;
+    margin: 10px;
+}
+
+.logodivdiv {
+    display: block;
+    display: none;
+    flex: 1;
+    margin: 10px;
+    background-color: #ffffff;
 }
