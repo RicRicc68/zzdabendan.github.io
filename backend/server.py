@@ -37,6 +37,14 @@ WORDLISTS_DIR = BTCRECOVER_DIR / "btcrecover" / "wordlists"
 JOB_WORKDIR = Path(os.environ.get("JOB_WORKDIR", str(ROOT_DIR / "data")))
 JOB_WORKDIR.mkdir(parents=True, exist_ok=True)
 
+# HMAC signing key for export audit trails. Persisted in JOB_WORKDIR so it
+# stays stable across restarts (allows re-verification of older exports).
+_SIGN_KEY_FILE = JOB_WORKDIR / ".sign_key"
+if not _SIGN_KEY_FILE.exists():
+    import secrets
+    _SIGN_KEY_FILE.write_text(secrets.token_hex(32))
+EXPORT_SIGNING_KEY = _SIGN_KEY_FILE.read_text().strip().encode()
+
 client = AsyncIOMotorClient(MONGO_URL)
 db = client[DB_NAME]
 
@@ -645,6 +653,153 @@ async def delete_job(job_id: str):
         except Exception:
             pass
     return {"ok": True}
+
+
+# ---------- Export (signed audit trail) ----------
+def _redact_seed_passphrase(cfg: dict) -> dict:
+    if not isinstance(cfg, dict):
+        return cfg
+    out = dict(cfg)
+    if out.get("passphrase"):
+        out["passphrase"] = "***REDACTED***"
+    return out
+
+
+def _sign_payload(payload: dict) -> str:
+    import hashlib
+    import hmac
+    import json as _json
+
+    def _default(o):
+        if isinstance(o, datetime):
+            return o.isoformat()
+        try:
+            return str(o)
+        except Exception:
+            return None
+
+    canon = _json.dumps(payload, sort_keys=True, separators=(",", ":"), default=_default).encode()
+    return hmac.new(EXPORT_SIGNING_KEY, canon, hashlib.sha256).hexdigest()
+
+
+def _hash_logs(lines: List[dict]) -> str:
+    import hashlib
+    h = hashlib.sha256()
+    for entry in lines:
+        s = f"{entry.get('stream','')}:{entry.get('line','')}\n"
+        h.update(s.encode("utf-8", errors="replace"))
+    return h.hexdigest()
+
+
+@api.get("/jobs/{job_id}/export")
+async def export_job(job_id: str, include_logs: bool = False, redact_seed: bool = True):
+    """
+    Return a JSON audit-trail document for a job (running or finished).
+    - `include_logs=true`: embed full log lines (default false: only count + hash)
+    - `redact_seed=false`: include recovered seed in clear (default true: redacted)
+    Adds an HMAC-SHA256 signature over the canonical payload.
+    """
+    runtime = JOBS.get(job_id)
+    doc = await db.jobs.find_one({"job_id": job_id})
+    if not runtime and not doc:
+        raise HTTPException(404, "Job not found")
+    if runtime:
+        lines = list(runtime.logs)
+        status = runtime.status
+        started_at = runtime.started_at
+        finished_at = runtime.finished_at
+        command = runtime.command
+        stats = runtime.stats.model_dump()
+        found_seed = runtime.found_seed
+        error = runtime.error
+        config_snapshot = (doc or {}).get("config_snapshot", {})
+        label = (doc or {}).get("label")
+        created_at = (doc or {}).get("created_at")
+    else:
+        config_snapshot = doc.get("config_snapshot", {})
+        lines = load_logs_from_disk(job_id)
+        if not lines and doc.get("logs_tail"):
+            lines = [{"ts": None, "stream": "archived", "line": l} for l in doc["logs_tail"]]
+        status = doc.get("status")
+        started_at = doc.get("started_at")
+        finished_at = doc.get("finished_at")
+        command = doc.get("command", [])
+        stats = doc.get("stats", {})
+        found_seed = doc.get("found_seed")
+        error = doc.get("error")
+        label = doc.get("label")
+        created_at = doc.get("created_at")
+
+    def _iso(v):
+        if isinstance(v, datetime):
+            return v.isoformat()
+        return v
+
+    duration_sec = None
+    if started_at and finished_at:
+        try:
+            s = started_at if isinstance(started_at, datetime) else datetime.fromisoformat(str(started_at).replace("Z", "+00:00"))
+            f = finished_at if isinstance(finished_at, datetime) else datetime.fromisoformat(str(finished_at).replace("Z", "+00:00"))
+            duration_sec = (f - s).total_seconds()
+        except Exception:
+            duration_sec = None
+
+    payload = {
+        "schema": "seed-recovery-audit/v1",
+        "exported_at": datetime.now(timezone.utc).isoformat(),
+        "job": {
+            "job_id": job_id,
+            "label": label,
+            "status": status,
+            "created_at": _iso(created_at),
+            "started_at": _iso(started_at),
+            "finished_at": _iso(finished_at),
+            "duration_seconds": duration_sec,
+            "error": error,
+        },
+        "tool": {
+            "name": "btcrecover/seedrecover.py",
+            "path": str(BTCRECOVER_DIR),
+            "version": SEEDRECOVER_VERSION,
+        },
+        "command": command,
+        "config_snapshot": _redact_seed_passphrase(config_snapshot),
+        "stats": stats,
+        "result": {
+            "found": bool(found_seed),
+            "seed": (None if redact_seed else found_seed),
+            "seed_redacted": bool(redact_seed and found_seed),
+        },
+        "logs": {
+            "count": len(lines),
+            "sha256": _hash_logs(lines),
+            "included": bool(include_logs),
+            "lines": (lines if include_logs else None),
+        },
+    }
+    payload["signature"] = {
+        "algorithm": "HMAC-SHA256",
+        "value": _sign_payload(payload),
+        "note": "Verify by re-signing the payload above with the server signing key (excluding this 'signature' field).",
+    }
+    return payload
+
+
+@api.post("/exports/verify")
+async def verify_export(payload: dict):
+    """Verify a previously-exported audit JSON. Pass the full payload."""
+    if not isinstance(payload, dict) or "signature" not in payload:
+        raise HTTPException(400, "Missing signature")
+    sig = payload.get("signature", {})
+    received = sig.get("value")
+    body = {k: v for k, v in payload.items() if k != "signature"}
+    expected = _sign_payload(body)
+    valid = (received == expected)
+    logs_hash_ok = None
+    if isinstance(body.get("logs"), dict) and body["logs"].get("included") and body["logs"].get("lines") is not None:
+        logs_hash_ok = (_hash_logs(body["logs"]["lines"]) == body["logs"].get("sha256"))
+    return {"valid": valid, "expected": expected, "received": received, "logs_hash_ok": logs_hash_ok}
+
 
 
 # ---------- Search-space estimate ----------

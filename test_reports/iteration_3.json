@@ -1,0 +1,25 @@
+{
+  "summary": "Tested signed-JSON audit-trail export feature end-to-end. Backend: 16/16 pytest cases passed (schema, include_logs hash integrity, redact_seed=false, 404 for missing job, verify valid/tampered/missing-signature, passphrase redaction with real job, in-memory path, smoke regression). Frontend: export-job-btn and export-row-{id} both produce a JSON file with correct filename pattern seed-recovery-{job8}-{iso}.json, schema='seed-recovery-audit/v1', job.job_id matches, signature.value is 64 hex. Header export uses include_logs=true. export-reveal-toggle only renders when job.found_seed is set (correct behavior).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_export.py",
+    "/app/test_reports/pytest/export_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py is now ~1040 lines; consider splitting export/verify and job lifecycle into separate modules to stay under the 700-line guideline.",
+    "export_job: when job exists only in JOBS (no Mongo doc), config_snapshot/label/created_at silently default to {}/None. Acceptable but could surface a warning field.",
+    "JobHistory.doExport swallows all errors with empty catch (catch (_) {}); user gets no feedback if the export fails. Consider a toast or inline error like JobMonitor does.",
+    "Filename uses ISO timestamp with ':' replaced but '.' too (replace(/[:.]/g,'-')) — fine, just note it is filesystem-safe.",
+    "/api/exports/verify accepts any dict; could be tightened with a Pydantic model + max-payload limit to prevent large-payload DoS."
+  ],
+  "updated_files": ["/app/backend/tests/test_export.py"],
+  "success_rate": {"backend": "100% (16/16)", "frontend": "100% (export buttons + downloads verified)"},
+  "test_credentials": "n/a (no auth)",
+  "seed_data_creation": "Created 2 short-lived test jobs (TEST_export_redact with passphrase, TEST_export_inmem) during tests. All TEST_-prefixed jobs and the test-selected running job were stopped and deleted via the public API at end of run.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Export endpoints live in /app/backend/server.py around lines 658-801. HMAC signing key is at /app/backend/data/.sign_key (persisted). Frontend export logic: JobMonitor.jsx uses include_logs=true and redact_seed=!revealSeed; JobHistory.jsx always uses include_logs=true and redact_seed=true. Test file /app/backend/tests/test_export.py is the regression suite for this feature. Run with: export REACT_APP_BACKEND_URL=<url> && pytest backend/tests/test_export.py -v.",
+  "rca of the issue": "No issues found."
+}

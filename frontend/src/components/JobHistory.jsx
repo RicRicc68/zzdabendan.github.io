@@ -1,8 +1,21 @@
 import React from "react";
-import { fmtDuration, STATUS_COLOR } from "../lib/api";
-import { History, Trash2 } from "lucide-react";
+import { api, fmtDuration, STATUS_COLOR } from "../lib/api";
+import { History, Trash2, Download } from "lucide-react";
 
 export default function JobHistory({ jobs, onSelect, selectedId, onDelete }) {
+  const doExport = async (e, jid) => {
+    e.stopPropagation();
+    try {
+      const r = await api.get(`/jobs/${jid}/export`, { params: { include_logs: true, redact_seed: true } });
+      const blob = new Blob([JSON.stringify(r.data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `seed-recovery-${jid.slice(0, 8)}-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    } catch (_) {}
+  };
   return (
     <div className="card p-5 flex flex-col gap-3" data-testid="job-history">
       <div className="flex items-center justify-between">
@@ -16,7 +29,7 @@ export default function JobHistory({ jobs, onSelect, selectedId, onDelete }) {
       </div>
       <div className="flex flex-col gap-1 max-h-[280px] overflow-y-auto pr-1">
         {jobs.length === 0 && (
-          <div className="text-xs text-slate-600 italic font-mono py-4 text-center">// no jobs yet</div>
+          <div className="text-xs text-slate-600 italic font-mono py-4 text-center">{"// no jobs yet"}</div>
         )}
         {jobs.map((j) => {
           const color = STATUS_COLOR[j.status] || "#94A3B8";
@@ -44,6 +57,14 @@ export default function JobHistory({ jobs, onSelect, selectedId, onDelete }) {
               <span className="text-[10px] font-mono text-slate-500 w-16 text-right">
                 {dur != null ? fmtDuration(dur) : "—"}
               </span>
+              <button
+                onClick={(e) => doExport(e, j.job_id)}
+                className="text-slate-600 hover:text-blue-300 transition-colors"
+                title="Export signed JSON"
+                data-testid={`export-row-${j.job_id}`}
+              >
+                <Download className="h-3 w-3" />
+              </button>
               <button
                 onClick={(e) => { e.stopPropagation(); onDelete(j.job_id); }}
                 className="text-slate-600 hover:text-red-400 transition-colors"
