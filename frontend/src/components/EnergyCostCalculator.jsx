@@ -10,7 +10,7 @@ const CLASS_COLOR = {
   extreme: "#EF4444",
 };
 
-export default function EnergyCostCalculator({ etaSeconds }) {
+export default function EnergyCostCalculator({ etaSeconds, onCostInfo }) {
   const [systemWatts, setSystemWatts] = useState(150);
   const [eurPerKwh, setEurPerKwh] = useState(0.30);
   const [usdToEur, setUsdToEur] = useState(0.92);
@@ -29,6 +29,19 @@ export default function EnergyCostCalculator({ etaSeconds }) {
         usd_to_eur: usdToEur,
       });
       setData(r.data);
+      if (onCostInfo) {
+        const reco = r.data?.recommendation || "";
+        const recoGpu = reco.startsWith("gpu:") ? reco.slice(4) : null;
+        const recoOpt = recoGpu ? r.data.gpu_options.find((g) => g.name === recoGpu) : null;
+        onCostInfo({
+          recommendation: reco,
+          recommendedGpu: recoGpu,
+          etaHuman: recoOpt?.eta_human || r.data?.local?.eta_human,
+          localEtaHuman: r.data?.local?.eta_human,
+          costLocalEur: r.data?.local?.energy_cost_eur,
+          costRentalEur: recoOpt?.rental_cost_eur,
+        });
+      }
     } catch (e) {
       console.error("[EnergyCostCalculator] failed", e);
     } finally { setLoading(false); }

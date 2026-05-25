@@ -1,0 +1,40 @@
+{
+  "summary": "Tested GPU deploy bundle generator end-to-end. Backend: 19/19 pytest cases pass in /app/backend/tests/test_deploy.py covering /api/deploy/preview (vastai 7-file set, runpod swap, invalid-provider 400, Dockerfile content [nvidia/cuda:12.3.2-runtime-ubuntu22.04, pyopencl, btcrecover], run.sh content [seedrecover.py, --enable-opencl], config.json valid JSON with seed_length, passphrase redacted with cleartext 'secret123' absent from all bundle files, vastai-deploy.sh CLI gpu_name filter 'RTX_4090'/'A100'/'RTX_A4000'/'RTX_3090' for the 4 friendly labels, explicit config override, job_id snapshot, no-config fallback) plus /api/deploy/generate (ZIP HTTP 200, Content-Type application/zip, Content-Disposition filename 'seed-recovery-deploy-vastai-…', size > 1KB, all 7 files inside, runpod variant has runpod-deploy.md). Regression smoke pass: /config, /jobs, /jobs/estimate, /jobs/cost-estimate, /wordlists/presets. Frontend (Playwright on live preview URL): deploy-bundle panel visible in left column under Energy Cost, provider select + preview + download buttons clickable, preview yields 7 file tabs with correct data-testids ['deploy-file-tab-dockerfile', 'deploy-file-tab-run-sh', 'deploy-file-tab-config-json', 'deploy-file-tab-candlist-txt', 'deploy-file-tab-verify-txt', 'deploy-file-tab-readme-md', 'deploy-file-tab-vastai-deploy-sh'], clicking each tab updates [data-testid='deploy-preview-content'], switching to runpod swaps the last tab to 'deploy-file-tab-runpod-deploy-md' and removes vastai. Download trigger produces 'seed-recovery-deploy-vastai-2026-05-25T11-07-49-551Z.zip' (9764 bytes) with the exact 7-file payload. No console errors.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/deploy/preview /generate", "issue": "The 'No configuration available' fallback can only be hit when MongoDB has neither a stored default config nor any matching job. In typical deployments the default config seed makes this unreachable — covered defensively in test_no_config_returns_400 with status_code in (200, 400)."},
+      {"endpoint": "/api/deploy/preview", "issue": "Endpoint accepts a raw dict body — no Pydantic schema. Bad types (e.g. provider as int) coerce silently. Consider DeployRequest model with provider: Literal['vastai','runpod']."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "GPU Deploy Bundle panel", "issues": ["The [data-testid='deploy-gpu-name'] 'target: <name>' badge only renders when EnergyCostCalculator emits costInfo with a recommendation. On the default page state ETA is '∞ (too large)' and the calculator shows the empty 'Compute Pre-flight Estimate first' state, so no costInfo is emitted and the deploy bundle header has no target hint. Spec-compliant but a bit surprising — consider defaulting to e.g. 'RTX 3090' in the header even without a recommendation, so the user knows what the generated bundle will target."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_deploy.py",
+    "/app/test_reports/pytest/deploy_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py is now ~1437 lines — the deploy routes (~130 lines) should be extracted into backend/routes/deploy.py alongside cost_estimator/address_verify suggested in prev iteration. Same pattern.",
+    "deploy_generate() and deploy_preview() duplicate ~25 lines of config-resolution + max_dph + generate_bundle invocation. Extract _resolve_deploy_inputs(payload) -> (cfg, wordlist_text, provider, gpu_friendly, max_dph) to honour DRY.",
+    "Both endpoints take a raw dict — no Pydantic validation. A DeployRequest model would surface 422s on invalid provider/gpu_name types and document the schema in OpenAPI.",
+    "deploy_generator.generate_bundle() mutates a copy of cfg in safe_cfg but does not redact other potentially sensitive fields (mpk, wallet_file_path) — currently echoed into verify.txt and config.json. Document this in the README's safety notes (already partially done) and consider an explicit allow-list of fields to include in config.json snapshot.",
+    "_gpu_cli_name strips ' 40GB' suffix correctly but does not handle ' 80GB' uppercase variants other than digits (regex r'\\s+\\d+GB$' is fine; just noting). Add a unit test in deploy_generator for friendly→cli mapping to prevent regressions when new GPUs are added.",
+    "DeployBundleButton.jsx hardcodes `${BACKEND_URL}/api/deploy/generate` via fetch — bypassing the central api.js axios instance. Use the same api client for consistency (interceptors, baseURL, error handling). Reason given is binary blob handling, but axios supports responseType: 'blob'."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_deploy.py"
+  ],
+  "success_rate": {"backend": "100% (19/19 deploy tests + 14/14 cost-estimate regression + 6/6 improvements regression)", "frontend": "100% (all spec assertions pass on live preview URL)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "Test uses an in-memory sample config dict with passphrase 'secret123' to verify redaction; no DB writes performed by deploy tests (the job_id snapshot test creates one TEST_deploy_snap job via POST /api/jobs which is the standard CRUD path).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Deploy bundle generator (POST /api/deploy/preview and POST /api/deploy/generate) is fully validated. Tests in /app/backend/tests/test_deploy.py cover schema, content, redaction, GPU CLI name conversion, ZIP packaging, and regression smoke. Frontend integration verified on live preview URL — file tabs, provider swap, download all working. The legacy test files test_address_verify.py and test_export.py fail at collection time because they assert REACT_APP_BACKEND_URL is set in the environment (the conftest does not load .env). Not deploy-related; main agent should patch those to read from frontend/.env or supply via test-runner env. Also note backend_test.py appears to hang during collection (timed out at 60s) — likely waits on a service or has a slow fixture; investigate separately.",
+  "rca of the issue": "n/a — no issues blocking the feature."
+}

@@ -6,6 +6,7 @@ import MaskPreview from "./components/MaskPreview";
 import WordlistManager from "./components/WordlistManager";
 import SearchSpaceEstimate from "./components/SearchSpaceEstimate";
 import EnergyCostCalculator from "./components/EnergyCostCalculator";
+import DeployBundleButton from "./components/DeployBundleButton";
 import JobMonitor from "./components/JobMonitor";
 import JobHistory from "./components/JobHistory";
 import TerminalPanel from "./components/TerminalPanel";
@@ -37,6 +38,7 @@ export default function App() {
   const [foundSeedModal, setFoundSeedModal] = useState(null);
   const [error, setError] = useState(null);
   const [estimateEta, setEstimateEta] = useState(0);
+  const [costInfo, setCostInfo] = useState(null);
 
   const stream = useJobStream(selectedJobId, BACKEND_URL);
 
@@ -229,7 +231,14 @@ export default function App() {
               saving={savingConfig}
             />
             <SearchSpaceEstimate config={config} onEtaChange={setEstimateEta} />
-            <EnergyCostCalculator etaSeconds={estimateEta} />
+            <EnergyCostCalculator etaSeconds={estimateEta} onCostInfo={setCostInfo} />
+            <DeployBundleButton
+              recommendedGpu={costInfo?.recommendedGpu}
+              etaHuman={costInfo?.etaHuman}
+              localEtaHuman={costInfo?.localEtaHuman}
+              costLocalEur={costInfo?.costLocalEur}
+              costRentalEur={costInfo?.costRentalEur}
+            />
             <MaskPreview config={config} />
             <WordlistManager />
           </div>

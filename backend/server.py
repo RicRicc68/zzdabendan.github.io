@@ -25,10 +25,12 @@ from bson import ObjectId
 from dotenv import load_dotenv
 from fastapi import APIRouter, BackgroundTasks, FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, BeforeValidator, ConfigDict, Field
 
 from btc_address import validate_btc_mainnet_address
+from deploy_generator import generate_bundle
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
@@ -1188,6 +1190,138 @@ async def cost_estimate(payload: dict):
             "note": "Speedup figures are conservative estimates for seedrecover (BIP39/Electrum) workloads. Real performance varies with GPU OpenCL drivers and wallet type. Use --enable-opencl on seedrecover.py when running on GPU.",
         },
     }
+
+
+# ---------- Deploy bundle (vast.ai / RunPod) ----------
+def _gpu_option_by_name(name: str) -> Optional[dict]:
+    for gpu in GPU_OPTIONS:
+        if gpu["name"] == name:
+            return gpu
+    return None
+
+
+@api.post("/deploy/generate")
+async def deploy_generate(payload: dict):
+    """
+    Produce a ZIP bundle (Dockerfile + run.sh + config.json + candlist.txt +
+    provider-specific deploy instructions) ready to ship to vast.ai or RunPod.
+
+    Body:
+      provider:     "vastai" | "runpod"  (default vastai)
+      gpu_name:     friendly name from GPU_OPTIONS (e.g. "vast.ai · RTX 3090")
+      config:       optional config snapshot override (else loads stored config)
+      job_id:       optional — use that job's snapshot
+      eta_human:    optional, for the README
+      local_eta_human, cost_local_eur, cost_rental_eur: optional, for the README
+    """
+    import io
+    import zipfile
+
+    provider = (payload.get("provider") or "vastai").lower()
+    if provider not in ("vastai", "runpod"):
+        raise HTTPException(400, "provider must be 'vastai' or 'runpod'")
+
+    # Resolve config
+    cfg = payload.get("config")
+    if not cfg and payload.get("job_id"):
+        doc = await db.jobs.find_one({"job_id": payload["job_id"]})
+        if doc:
+            cfg = doc.get("config_snapshot", {})
+    if not cfg:
+        stored = await db.config.find_one({"_id": "default"})
+        if stored:
+            stored.pop("_id", None)
+            cfg = stored
+    if not cfg:
+        raise HTTPException(400, "No configuration available")
+
+    # Resolve wordlist text
+    wordlist_text = ""
+    if WORDLIST_PATH.exists():
+        wordlist_text = WORDLIST_PATH.read_text(encoding="utf-8")
+
+    # Pretty GPU label / pricing for README
+    gpu_friendly = payload.get("gpu_name")
+    gpu_meta = _gpu_option_by_name(gpu_friendly) if gpu_friendly else None
+    max_dph = float(payload.get("max_dph") or (gpu_meta["usd_per_hour"] * 1.2 if gpu_meta else 0.5))
+
+    files = generate_bundle(
+        cfg=cfg,
+        wordlist_text=wordlist_text,
+        provider=provider,
+        gpu_name=gpu_friendly,
+        max_dph=max_dph,
+        eta_human=payload.get("eta_human"),
+        local_eta_human=payload.get("local_eta_human"),
+        cost_local_eur=payload.get("cost_local_eur"),
+        cost_rental_eur=payload.get("cost_rental_eur"),
+        job_label=payload.get("job_label"),
+    )
+
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for name, content in files.items():
+            zf.writestr(name, content)
+    buf.seek(0)
+
+    fname = f"seed-recovery-deploy-{provider}-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.zip"
+    return StreamingResponse(
+        iter([buf.getvalue()]),
+        media_type="application/zip",
+        headers={"Content-Disposition": f'attachment; filename="{fname}"'},
+    )
+
+
+@api.post("/deploy/preview")
+async def deploy_preview(payload: dict):
+    """Same as /deploy/generate but returns the files as JSON (for preview)."""
+    provider = (payload.get("provider") or "vastai").lower()
+    if provider not in ("vastai", "runpod"):
+        raise HTTPException(400, "provider must be 'vastai' or 'runpod'")
+
+    cfg = payload.get("config")
+    if not cfg and payload.get("job_id"):
+        doc = await db.jobs.find_one({"job_id": payload["job_id"]})
+        if doc:
+            cfg = doc.get("config_snapshot", {})
+    if not cfg:
+        stored = await db.config.find_one({"_id": "default"})
+        if stored:
+            stored.pop("_id", None)
+            cfg = stored
+    if not cfg:
+        raise HTTPException(400, "No configuration available")
+
+    wordlist_text = ""
+    if WORDLIST_PATH.exists():
+        wordlist_text = WORDLIST_PATH.read_text(encoding="utf-8")
+
+    gpu_friendly = payload.get("gpu_name")
+    gpu_meta = _gpu_option_by_name(gpu_friendly) if gpu_friendly else None
+    max_dph = float(payload.get("max_dph") or (gpu_meta["usd_per_hour"] * 1.2 if gpu_meta else 0.5))
+
+    files = generate_bundle(
+        cfg=cfg,
+        wordlist_text=wordlist_text,
+        provider=provider,
+        gpu_name=gpu_friendly,
+        max_dph=max_dph,
+        eta_human=payload.get("eta_human"),
+        local_eta_human=payload.get("local_eta_human"),
+        cost_local_eur=payload.get("cost_local_eur"),
+        cost_rental_eur=payload.get("cost_rental_eur"),
+        job_label=payload.get("job_label"),
+    )
+    # Truncate wordlist preview to avoid huge JSON responses
+    preview = {}
+    for name, content in files.items():
+        if name == "candlist.txt" and len(content) > 4000:
+            lines = content.splitlines()
+            preview[name] = "\n".join(lines[:50]) + f"\n... ({len(lines) - 50} more lines truncated)"
+        else:
+            preview[name] = content
+    return {"provider": provider, "gpu_name": gpu_friendly, "files": preview, "file_count": len(files)}
+
 
 
 

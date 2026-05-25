@@ -1,0 +1,30 @@
+{"ts": "2026-05-25T10:59:05.560378+00:00", "stream": "system", "line": "$ /root/.venv/bin/python -u /opt/btcrecover/seedrecover.py --no-pause --no-gui --disablesecuritywarnings --mnemonic abandon abandon abandon abandon abandon ? ? ? ? ? ? ? --mnemonic-length 12 --language en --wallet-type electrum2 --addrs 1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9 --addr-limit 5 --threads 1"}
+{"ts": "2026-05-25T10:59:05.841684+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T10:59:05.841797+00:00", "stream": "stdout", "line": "Starting seedrecover 1.13.0-CryptoGuide, btcrecover 1.13.0-Cryptoguide on Python 3.11.15 64-bit, 21-bit unicodes, 64-bit ints"}
+{"ts": "2026-05-25T10:59:05.849369+00:00", "stream": "stdout", "line": "Detected supplied address types: BIP44 (P2PKH)"}
+{"ts": "2026-05-25T10:59:05.849428+00:00", "stream": "stdout", "line": "All configured derivation paths match the supplied address types."}
+{"ts": "2026-05-25T10:59:05.849453+00:00", "stream": "stdout", "line": "Using the 'en' wordlist."}
+{"ts": "2026-05-25T10:59:05.861151+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T10:59:05.861655+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T10:59:05.862209+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T10:59:05.862772+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T10:59:05.863327+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T10:59:05.863884+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T10:59:05.864435+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T10:59:05.866616+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Phase 1/4: up to 2 mistakes, excluding entirely different seed words."}
+{"ts": "2026-05-25T10:59:05.866679+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T10:59:05.866698+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Search Complete"}
+{"ts": "2026-05-25T10:59:05.866715+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T10:59:05.866729+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Phase 2/4: 1 mistake which can be an entirely different seed word."}
+{"ts": "2026-05-25T10:59:05.866747+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T10:59:05.866794+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Search Complete"}
+{"ts": "2026-05-25T10:59:05.866810+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T10:59:05.866827+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Phase 3/4: up to 2 mistakes, 1 of which can be an entirely different seed word."}
+{"ts": "2026-05-25T10:59:05.866846+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T10:59:05.866861+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Search Complete"}
+{"ts": "2026-05-25T10:59:05.866873+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T10:59:05.866884+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Phase 4/4: up to 2 mistakes, 2 of which can be an entirely different seed word."}
+{"ts": "2026-05-25T10:59:05.866900+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T10:59:05.866913+00:00", "stream": "stdout", "line": "2026-05-25 10:59:05 : Search Complete"}
+{"ts": "2026-05-25T10:59:05.866925+00:00", "stream": "stdout", "line": " Seed not found, sorry..."}
+{"ts": "2026-05-25T10:59:05.895638+00:00", "stream": "system", "line": "[process exit code=0]"}
