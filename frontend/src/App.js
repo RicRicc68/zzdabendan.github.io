@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { api } from "./lib/api";
 import SystemStatus from "./components/SystemStatus";
 import SeedConfigPanel from "./components/SeedConfigPanel";
@@ -78,7 +78,9 @@ export default function App() {
       try {
         const st = await api.get("/system/status");
         setSystemStatus(st.data);
-      } catch (_) {}
+      } catch (e) {
+        console.debug("[App] status poll failed", e?.message);
+      }
     }, 5000);
     return () => clearInterval(statusInt);
     // eslint-disable-next-line
@@ -101,7 +103,9 @@ export default function App() {
         setArchivedJob(jr.data);
         setArchivedLogs(lr.data?.lines || []);
         if (lr.data?.found_seed) setFoundSeedModal(lr.data.found_seed);
-      } catch (_) {}
+      } catch (e) {
+        console.debug("[App] archived job fetch failed", e?.message);
+      }
     })();
     return () => { cancelled = true; };
   }, [selectedJobId]);
@@ -112,7 +116,9 @@ export default function App() {
       try {
         const j = await api.get("/jobs");
         setJobs(j.data);
-      } catch (_) {}
+      } catch (e) {
+        console.debug("[App] jobs poll failed", e?.message);
+      }
     }, 3000);
     return () => clearInterval(i);
   }, []);

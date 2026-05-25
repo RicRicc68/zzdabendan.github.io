@@ -14,7 +14,9 @@ export default function JobHistory({ jobs, onSelect, selectedId, onDelete }) {
       a.download = `seed-recovery-${jid.slice(0, 8)}-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
-    } catch (_) {}
+    } catch (err) {
+      console.error("[JobHistory] export failed", err);
+    }
   };
   return (
     <div className="card p-5 flex flex-col gap-3" data-testid="job-history">

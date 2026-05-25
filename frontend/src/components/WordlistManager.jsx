@@ -20,7 +20,9 @@ export default function WordlistManager() {
     try {
       const r = await api.get("/wordlists/presets");
       setPresets(r.data.presets || []);
-    } catch (_) {}
+    } catch (e) {
+      console.error("[WordlistManager] presets load failed", e);
+    }
   };
 
   useEffect(() => { load(); loadPresets(); }, []);

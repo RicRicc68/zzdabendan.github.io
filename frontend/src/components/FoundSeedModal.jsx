@@ -10,7 +10,9 @@ export default function FoundSeedModal({ seed, onClose }) {
       await navigator.clipboard.writeText(seed);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
-    } catch (_) {}
+    } catch (e) {
+      console.error("[FoundSeedModal] clipboard error", e);
+    }
   };
 
   return (

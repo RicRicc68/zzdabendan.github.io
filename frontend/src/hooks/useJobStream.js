@@ -26,7 +26,7 @@ export default function useJobStream(jobId, backendUrl) {
     wsRef.current = ws;
     ws.onopen = () => setConnected(true);
     ws.onclose = () => setConnected(false);
-    ws.onerror = () => setConnected(false);
+    ws.onerror = (ev) => { console.error("[useJobStream] WebSocket error", ev); setConnected(false); };
     ws.onmessage = (ev) => {
       try {
         const msg = JSON.parse(ev.data);
@@ -44,10 +44,12 @@ export default function useJobStream(jobId, backendUrl) {
           setStats(msg.stats || {});
           if (msg.found_seed) setFoundSeed(msg.found_seed);
         }
-      } catch (_) {}
+      } catch (e) {
+        console.error("[useJobStream] failed to parse WS message", e);
+      }
     };
     return () => {
-      try { ws.close(); } catch (_) {}
+      try { ws.close(); } catch (e) { console.error("[useJobStream] close error", e); }
     };
   }, [jobId, backendUrl]);
 
