@@ -39,3 +39,7 @@
 {"ts": "2026-05-25T11:34:45.438320+00:00", "stream": "stdout", "line": "Pre-start benchmark completed in 1.31s (11446.66 passwords/s)."}
 {"ts": "2026-05-25T11:34:45.438424+00:00", "stream": "stdout", "line": "Duplicate Check Level: 1 , Add --no-dupchecks up to 4 times fully disable duplicate checking"}
 {"ts": "2026-05-25T11:34:45.438454+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T11:39:38.035729+00:00", "stream": "stdout", "line": "2026-05-25 11:39:38 : Using 1 worker thread"}
+{"ts": "2026-05-25T11:39:38.035838+00:00", "stream": "stdout", "line": "Will try 46,116,876 passwords, ETA 1 hours 12 minutes ..."}
+{"ts": "2026-05-25T11:39:38.041920+00:00", "stream": "stdout", "line": "Duplicate Check Level: 1 , Add --no-dupchecks up to 4 times fully disable duplicate checking"}
+{"ts": "2026-05-25T11:39:38.042008+00:00", "stream": "stdout", "line": ""}

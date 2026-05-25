@@ -41,6 +41,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [estimateEta, setEstimateEta] = useState(0);
   const [costInfo, setCostInfo] = useState(null);
+  const [wordlistVersion, setWordlistVersion] = useState(0);
 
   const stream = useJobStream(selectedJobId, BACKEND_URL);
 
@@ -226,7 +227,7 @@ export default function App() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-5 flex flex-col gap-6" data-testid="config-column">
-            <RecoveryPresets onApplied={(cfg) => setConfig({ ...cfg })} />
+            <RecoveryPresets onApplied={(cfg) => { setConfig({ ...cfg }); setWordlistVersion((v) => v + 1); }} />
             <SeedConfigPanel
               config={config}
               setConfig={setConfig}
@@ -243,7 +244,7 @@ export default function App() {
               costRentalEur={costInfo?.costRentalEur}
             />
             <MaskPreview config={config} />
-            <WordlistManager />
+            <WordlistManager version={wordlistVersion} />
           </div>
 
           <div className="lg:col-span-7 flex flex-col gap-6" data-testid="monitor-column">

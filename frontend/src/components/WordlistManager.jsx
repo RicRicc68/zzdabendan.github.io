@@ -3,7 +3,7 @@ import { api } from "../lib/api";
 import { devError } from "../lib/logger";
 import { BookText, Save, Library } from "lucide-react";
 
-export default function WordlistManager() {
+export default function WordlistManager({ version = 0 }) {
   const [raw, setRaw] = useState("");
   const [count, setCount] = useState(0);
   const [saving, setSaving] = useState(false);
@@ -27,6 +27,7 @@ export default function WordlistManager() {
   };
 
   useEffect(() => { load(); loadPresets(); }, []);
+  useEffect(() => { if (version > 0) load(); }, [version]);
 
   const save = async () => {
     setSaving(true);

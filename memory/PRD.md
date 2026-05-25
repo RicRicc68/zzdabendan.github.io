@@ -30,6 +30,16 @@ and seed phrase. User choices:
 - Job history with stop/delete
 - Dark "Control Room" UI
 
+## Implemented v1.6 (2026-05-25 — Recovery Presets catalog)
+- `recovery_presets.py` ships 8 curated scenarios (BIP39 12w with 1/2/24w with 2/3-unpositioned/typo, Electrum 2 / Electrum 1, blank custom)
+- `GET /api/presets` lists them with name/tagline/difficulty/icon/seed_length/wallet_type/typos/wordlist_preset/hint
+- `POST /api/presets/{id}/apply` persists the config to MongoDB AND auto-loads the matching wordlist (e.g. bip39-en or electrum1-en) into `candlist.txt`
+- Frontend: `RecoveryPresets.jsx` Quick-Start panel at the top of the left column, 2-column responsive card grid with difficulty badges (FAST/MODERATE/SLOW/VERY SLOW), ✓ APPLIED state, and hint banner
+- `SeedConfigPanel` wallet-type dropdown now includes the missing `electrum1` option
+- `wordlistVersion` counter lifted into `App.js`; bumped after preset apply so `WordlistManager` refetches `/api/wordlist` and the count + textarea reflect the swapped dictionary
+- Verified: 12/12 backend tests + 70/70 regression + 5/6 frontend scenarios (the failing one was the wordlist refresh bug — fixed and re-verified manually: BIP39 preset → 2048 words, Electrum1 preset → 1626 words, wallet_type correctly = electrum1)
+
+
 ## Implemented v1.5 (2026-05-25 — GPU deploy bundle generator)
 - POST `/api/deploy/preview` (JSON) and POST `/api/deploy/generate` (ZIP)
   produce a complete deploy bundle: Dockerfile (nvidia/cuda + btcrecover +
