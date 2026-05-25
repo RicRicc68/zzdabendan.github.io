@@ -438,7 +438,7 @@ async def run_job(runtime: JobRuntime, command: List[str]):
             "found_seed": runtime.found_seed,
             "error": runtime.error,
             "command": runtime.command,
-            "logs_tail": [l["line"] for l in runtime.logs[-200:]],
+            "logs_tail": [entry["line"] for entry in runtime.logs[-200:]],
         }},
         upsert=True,
     )
@@ -618,7 +618,7 @@ async def get_job_logs(job_id: str, since: int = 0):
     tail = doc.get("logs_tail", [])
     return {
         "next": len(tail),
-        "lines": [{"ts": None, "stream": "archived", "line": l} for l in tail[since:]],
+        "lines": [{"ts": None, "stream": "archived", "line": line} for line in tail[since:]],
         "status": doc.get("status"),
         "stats": doc.get("stats", {}),
         "found_seed": doc.get("found_seed"),
@@ -722,7 +722,7 @@ async def export_job(job_id: str, include_logs: bool = False, redact_seed: bool 
         config_snapshot = doc.get("config_snapshot", {})
         lines = load_logs_from_disk(job_id)
         if not lines and doc.get("logs_tail"):
-            lines = [{"ts": None, "stream": "archived", "line": l} for l in doc["logs_tail"]]
+            lines = [{"ts": None, "stream": "archived", "line": line} for line in doc["logs_tail"]]
         status = doc.get("status")
         started_at = doc.get("started_at")
         finished_at = doc.get("finished_at")

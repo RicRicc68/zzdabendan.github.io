@@ -54,7 +54,17 @@ export default function EnergyCostCalculator({ etaSeconds }) {
   const isLocal = reco === "local";
   const recoGpu = reco.startsWith("gpu:") ? reco.slice(4) : null;
   const isImpractical = reco === "do_not_run";
-  const recoColor = isImpractical ? "#EF4444" : isLocal ? "#22C55E" : "#3B82F6";
+
+  let recoColor;
+  if (isImpractical) recoColor = "#EF4444";
+  else if (isLocal) recoColor = "#22C55E";
+  else recoColor = "#3B82F6";
+
+  let recoLabel;
+  if (isLocal) recoLabel = "RUN LOCAL";
+  else if (isImpractical) recoLabel = "DO NOT RUN";
+  else if (recoGpu) recoLabel = `RENT GPU · ${recoGpu}`;
+  else recoLabel = "—";
 
   return (
     <div className="card p-5 flex flex-col gap-4" data-testid="energy-cost-calculator">
@@ -76,7 +86,7 @@ export default function EnergyCostCalculator({ etaSeconds }) {
           <span className="w-2.5 h-2.5 rounded-full mt-1 shadow-[0_0_8px_currentColor]" style={{ color: recoColor, background: recoColor }} />
           <div className="flex-1">
             <div className="text-[10px] font-mono uppercase tracking-widest" style={{ color: recoColor }}>
-              {isLocal ? "RUN LOCAL" : isImpractical ? "DO NOT RUN" : recoGpu ? `RENT GPU · ${recoGpu}` : "—"}
+              {recoLabel}
             </div>
             <div className="text-xs text-slate-300 font-mono leading-relaxed mt-1" data-testid="cost-message">
               {data.message}

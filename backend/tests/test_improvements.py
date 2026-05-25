@@ -158,9 +158,10 @@ class TestPersistedLogs:
         ndj = f"/app/backend/data/{job_id}/output.ndjson"
         assert os.path.exists(ndj), f"expected ndjson at {ndj}"
         with open(ndj) as f:
-            lines = [json.loads(l) for l in f if l.strip()]
+            lines = [json.loads(line) for line in f if line.strip()]
         assert len(lines) > 0
         assert all("ts" in e and "line" in e for e in lines)
+        assert final in (None, "not_found", "found", "failed", "stopped")
 
         # Now logs endpoint should still serve them (may still be in memory)
         r2 = session.get(f"{API}/jobs/{job_id}/logs", params={"since": 0})
