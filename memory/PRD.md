@@ -30,6 +30,24 @@ and seed phrase. User choices:
 - Job history with stop/delete
 - Dark "Control Room" UI
 
+## Implemented v1.2 (2026-05-25 — signed JSON audit export)
+- **GET `/api/jobs/{id}/export`** returns a canonical audit-trail JSON
+  (`schema=seed-recovery-audit/v1`) containing job metadata, tool info, full
+  command, redacted config snapshot, stats, result (found seed redacted by
+  default), logs (count + SHA-256 hash, optional embedded lines).
+- **HMAC-SHA256 signature** over canonical (sorted, separator-less) JSON,
+  using a persistent key in `/app/backend/data/.sign_key`.
+- **POST `/api/exports/verify`** re-signs and compares — detects any
+  tampering of the payload or logs.
+- **Query options**: `include_logs=true` to embed all log lines,
+  `redact_seed=false` to include a recovered seed in clear.
+- **Security**: passphrase always redacted in `config_snapshot`.
+- **Frontend**: `export` button in JobMonitor (with reveal/redact toggle when
+  a seed has been recovered) + per-row download icon in JobHistory. File
+  saved as `seed-recovery-{job8}-{iso-timestamp}.json`.
+- Verified: 16/16 pytest cases pass; clean payload `valid=true`, tampered
+  payload `valid=false`.
+
 ## Implemented v1.1 (2026-05-25 — improvements)
 - **Pre-flight Estimate panel** — computes search space (wordlist^unknowns × perms × typos^words), ETA at given rate, and feasibility badge (FAST/MODERATE/SLOW/VERY_SLOW/IMPRACTICAL). Auto-recalcs on config change.
 - **Wordlist presets** — 16 BIP39/Electrum dictionaries (`bip39-en/es/fr/it/ja/...`, `electrum1-en`, etc.) selectable from a dropdown; one-click load into `candlist.txt`.
