@@ -1,0 +1,6 @@
+{"ts": "2026-05-25T12:08:11.434229+00:00", "stream": "system", "line": "$ /root/.venv/bin/python -u /opt/btcrecover/seedrecover.py --no-pause --no-gui --disablesecuritywarnings --mnemonic ? ? ? ? ? ? ? ? ? ? ? ? --mnemonic-length 12 --language en --wallet-type bip39 --threads 4"}
+{"ts": "2026-05-25T12:08:12.643787+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T12:08:12.643927+00:00", "stream": "stdout", "line": "Starting seedrecover 1.13.0-CryptoGuide, btcrecover 1.13.0-Cryptoguide on Python 3.11.15 64-bit, 21-bit unicodes, 64-bit ints"}
+{"ts": "2026-05-25T12:08:12.739702+00:00", "stream": "stdout", "line": "Warning: GUI disabled, you will need to set some recovery arguments manually"}
+{"ts": "2026-05-25T12:08:12.739834+00:00", "stream": "stdout", "line": "Error: No MPK or addresses specified... Exiting..."}
+{"ts": "2026-05-25T12:08:13.038074+00:00", "stream": "system", "line": "[process exit code=0]"}

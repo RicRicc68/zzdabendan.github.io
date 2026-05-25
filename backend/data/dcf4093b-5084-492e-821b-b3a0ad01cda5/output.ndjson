@@ -1,0 +1,37 @@
+{"ts": "2026-05-25T12:15:19.038041+00:00", "stream": "system", "line": "$ /root/.venv/bin/python -u /opt/btcrecover/seedrecover.py --no-pause --no-gui --disablesecuritywarnings --mnemonic ? ? ? ? ? ? ? ? ? ? ? ? --mnemonic-length 12 --language en --wallet-type bip39 --addrs 16RGFo6hjq9ym6Pj7N5H7L1NR1rVPJyw2v --addr-limit 20 --threads 4"}
+{"ts": "2026-05-25T12:15:20.236275+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T12:15:20.236455+00:00", "stream": "stdout", "line": "Starting seedrecover 1.13.0-CryptoGuide, btcrecover 1.13.0-Cryptoguide on Python 3.11.15 64-bit, 21-bit unicodes, 64-bit ints"}
+{"ts": "2026-05-25T12:15:20.243661+00:00", "stream": "stdout", "line": "Detected supplied address types: BIP44 (P2PKH)"}
+{"ts": "2026-05-25T12:15:20.243811+00:00", "stream": "stdout", "line": "Skipping derivation path m/49'/0'/0'/0 (BIP49 (P2SH wrapped Segwit)) because it does not match the supplied address types."}
+{"ts": "2026-05-25T12:15:20.243854+00:00", "stream": "stdout", "line": "Skipping derivation path m/84'/0'/0'/0 (BIP84 (P2WPKH)) because it does not match the supplied address types."}
+{"ts": "2026-05-25T12:15:20.243912+00:00", "stream": "stdout", "line": "Skipping derivation path m/86'/0'/0'/0 (BIP86 (P2TR Taproot)) because it does not match the supplied address types."}
+{"ts": "2026-05-25T12:15:20.243963+00:00", "stream": "stdout", "line": "Using the 'en' wordlist."}
+{"ts": "2026-05-25T12:15:20.244307+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.244888+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.332459+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.332532+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.332554+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.332569+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.332903+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.333623+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.333845+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.334132+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.335021+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.335229+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T12:15:20.336959+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Phase 1/4: up to 2 mistakes, excluding entirely different seed words."}
+{"ts": "2026-05-25T12:15:20.337072+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T12:15:20.337115+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Search Complete"}
+{"ts": "2026-05-25T12:15:20.337144+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T12:15:20.337168+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Phase 2/4: 1 mistake which can be an entirely different seed word."}
+{"ts": "2026-05-25T12:15:20.337511+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T12:15:20.337555+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Search Complete"}
+{"ts": "2026-05-25T12:15:20.337585+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T12:15:20.337613+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Phase 3/4: up to 2 mistakes, 1 of which can be an entirely different seed word."}
+{"ts": "2026-05-25T12:15:20.337668+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T12:15:20.337698+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Search Complete"}
+{"ts": "2026-05-25T12:15:20.337728+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T12:15:20.337779+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Phase 4/4: up to 2 mistakes, 2 of which can be an entirely different seed word."}
+{"ts": "2026-05-25T12:15:20.337820+00:00", "stream": "stdout", "line": "Not enough mistakes permitted to produce a valid seed; skipping this phase."}
+{"ts": "2026-05-25T12:15:20.337853+00:00", "stream": "stdout", "line": "2026-05-25 12:15:20 : Search Complete"}
+{"ts": "2026-05-25T12:15:20.337877+00:00", "stream": "stdout", "line": " Seed not found, sorry..."}
+{"ts": "2026-05-25T12:15:20.538545+00:00", "stream": "system", "line": "[process exit code=0]"}
