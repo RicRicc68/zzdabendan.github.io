@@ -1,0 +1,59 @@
+{
+  "summary": "Tested Seed Recovery Dashboard backend (14 pytest tests, all passing) and frontend (full E2E: load, configure, start real subprocess, terminal streaming, mask preview). Found ONE significant backend bug: premature 'not_found' status detection while the subprocess is still running in later phases.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "/api/jobs/{id} (status field) and stream parser NOT_FOUND_RE in server.py:234,278",
+        "issue": "seedrecover.py runs 4 phases and emits 'Seed not found' at the end of each phase. The stream reader matches NOT_FOUND_RE on each occurrence and sets runtime.status='not_found' as early as after Phase 1/2/3 — while the subprocess is still executing remaining phases. Side effects: (a) finished_at stays None; (b) UI shows NOT_FOUND badge but Stop button still active because the process is alive; (c) DELETE /api/jobs/{id} returns 400 'Cannot delete a running job' even though status is reported as 'not_found'. Repro: POST /api/jobs with config {known_words: ['abandon']*11 + [''], address:'1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9', wallet_type:'electrum2', addr_limit:5, threads:1, typos:0}. Within ~10s status becomes 'not_found' but finished_at is None for many minutes.",
+        "priority": "HIGH"
+      }
+    ],
+    "minor": [
+      {
+        "endpoint": "/api/jobs/{id}/logs",
+        "issue": "Logs are kept only in-memory (capped at 5000 lines). After process exit only logs_tail (last 200 lines) is persisted to Mongo; mid-run logs are lost on backend restart. Acceptable for MVP, but worth documenting."
+      },
+      {
+        "endpoint": "/api/system/status",
+        "issue": "system_status() runs `seedrecover.py --version` synchronously via subprocess.run (10s timeout) on every poll. Frontend polls every 5s. Consider caching the version string at startup."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Job lifecycle UI consistency",
+        "issue": "Because backend sets status='not_found' prematurely, the JobMonitor badge shows NOT_FOUND while the Stop button is still rendered (process is alive). Confusing for the user. Fix at backend (only finalize status after proc.wait()).",
+        "affected_selectors": ["[data-testid='job-monitor']", "[data-testid='stop-job-btn']"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Backend fix: do NOT set runtime.status from log-line regex (FOUND_RE/NOT_FOUND_RE/SEED_PHRASE_RE) directly. Instead, keep a candidate flag and only commit the final status inside run_job after `await proc.wait()`. This makes status/finished_at consistent and DELETE/stop behavior correct.",
+    "Optional: cache seedrecover version at app startup to avoid invoking the script on every /system/status poll.",
+    "Optional: persist incremental logs to Mongo (or a file under JOB_WORKDIR) for forensic access after restart."
+  ],
+  "critical_code_review_comments": [
+    "server.py:278 — NOT_FOUND_RE.search triggers per-phase; status is committed mid-run causing finished_at=None while status='not_found'. Root cause of the running-job-delete and Stop-button-visible bugs.",
+    "server.py:233 SEED_PHRASE_RE matches any 12-24 lowercase words; if seedrecover prints the mnemonic mask in informational output it could be mistaken for a found seed. Consider gating on FOUND_RE context only.",
+    "server.py:332 `pid: runtime.process.pid if runtime.process else None` — when process is killed via SIGTERM the pid is still set; that's fine, but `pid` is never set on the initial Mongo insert (line 449) which leaves it null for the duration of the job.",
+    "server.py:402 update_config strips _id/id but does not coerce numeric fields; if a client posts seed_length as string '12', `int(...)` only runs in PUT — but unrelated fields like addr_limit/threads/typos may be strings in Mongo.",
+    "server.py:430 generate_permutation_masks has factorial growth; for known_unpositioned >= 8 the response can be huge. Already capped to 25 in sample but full count is computed and discarded — could be O(C(12,8)*8!) which is fine, but ought to be guarded with an upper limit (e.g., refuse >9 known)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py"
+  ],
+  "success_rate": {"backend": "100% (14/14 pytest tests pass)", "frontend": "100% (all key flows verified)"},
+  "test_credentials": "N/A (no auth)",
+  "seed_data_creation": "Backend tests create TEST_-labeled jobs and a candlist.txt; jobs are cleaned up by stop+delete. The Mongo `jobs` collection may still contain test entries from prior runs.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 14 pytest tests in /app/backend/tests/backend_test.py pass against the live preview URL. Frontend E2E verified: load -> system READY -> fill seed words 1-11 abandon -> address -> save -> Start Recovery -> live terminal output (real seedrecover.py) -> NOT_FOUND in <10s -> Job History updated. Mask Preview verified producing 'alpha ? ? ? ? ? ? ? ? ? ? ?'. The one outstanding backend bug (premature not_found status while subprocess continues) is the highest-value fix; test_delete_finished_job includes a workaround (POST /stop after status check) — main agent should fix the root cause then simplify the test.",
+  "rca of the issue": "RCA — Premature not_found: server.py's _stream_reader assigns runtime.status='not_found' as soon as the regex NOT_FOUND_RE matches any single log line. seedrecover.py prints 'Seed not found' at the end of EACH of its 4 phases (Phase 1/4..4/4), so status flips to not_found while the subprocess is still alive running the next phase. The run_job coroutine awaits proc.wait() which only returns when all phases complete (or much later). During this window, finished_at remains None and DELETE refuses because runtime.process.returncode is still None. Fix: keep a transient `last_phase_outcome` flag in JobRuntime updated from stdout, but only assign runtime.status (and finished_at) inside run_job AFTER `await proc.wait()` returns. Same applies to FOUND_RE / SEED_PHRASE_RE — capture the seed but defer status finalization."
+}
