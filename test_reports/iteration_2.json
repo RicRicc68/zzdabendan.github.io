@@ -1,0 +1,57 @@
+{
+  "summary": "Validated all new improvements on top of Seed Recovery Dashboard. Backend: 9/9 new pytest cases pass (estimate, presets, persisted NDJSON logs, WebSocket stream incl. snapshot + log events + clean close on unknown job). Orphan-cleanup verified end-to-end by inserting a fake 'running' job in Mongo and restarting the backend (status correctly flipped to 'failed' with the orphaned error message). Frontend (E2E via Playwright on the public preview URL): pre-flight estimate panel renders feasibility badge (FAST), recalc button triggers re-computation, wordlist preset dropdown lists 16 presets incl. bip39-en (2048), loading bip39-en updates the textarea+count to 2048, starting a real job shows 'WS · LIVE' in the header and 'WS LIVE · N LINES' in the terminal title with streaming output. Regression: 12/14 previous pytest tests still pass. The 2 failures (test_job_logs_stream, test_job_get_status) are caused by the test deadline (45 s) being too short now that the previous 'premature not_found' bug is FIXED — backend correctly waits for proc.wait() through all 4 phases (~110 s). I extended that deadline to 180 s in the test file; the underlying behavior is now correct (NOT_FOUND only after process exit code 0, Stop button disabled, finished_at populated).",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {
+        "endpoint": "/api/jobs/estimate",
+        "issue": "search_space_approx is returned as a string ('1.638e+04') even for finite values; clients may want a number. Not a functional bug."
+      },
+      {
+        "endpoint": "WebSocket /api/jobs/{id}/stream",
+        "issue": "Default queue maxsize=1000; under very chatty processes back-pressure silently drops events (catches asyncio.QueueFull). Acceptable for seedrecover. Consider logging dropped count."
+      },
+      {
+        "endpoint": "GET /api/wordlists/presets",
+        "issue": "Reads & line-counts every preset file on each call; cache at startup similar to SEEDRECOVER_VERSION for a tiny win."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Pre-flight Estimate", "issues": ["When wordlist size input is set to a small number (e.g. 4 from a previous custom wordlist), ETA appears '<1s' which is correct math but may mislead users — consider using the loaded candidate-wordlist count as the default rather than 2048 only when no preset is selected."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_improvements.py",
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/improvements_results.xml",
+    "/app/test_reports/pytest/regression_results.xml"
+  ],
+  "action_items": [
+    "(Optional) Cache GET /api/wordlists/presets results in memory at startup; iterate over files only once.",
+    "(Optional) Return numeric search_space (not string) from /api/jobs/estimate for easier client-side display & sorting."
+  ],
+  "critical_code_review_comments": [
+    "server.py:863 cleanup_orphans is registered with @app.on_event('startup'); FastAPI is moving these to lifespan handlers. Works on current FastAPI but consider migrating to the lifespan context manager.",
+    "server.py:817 ws_job_stream lives at app root, not on /api router. Path '/api/jobs/{id}/stream' makes the ingress route correctly but bypassing the APIRouter means it won't appear in OpenAPI docs and global API middleware (if any added later) may not apply.",
+    "server.py:680 search-space computation uses 10**log_combos with log_combos<18 guard; threshold is somewhat arbitrary — consider rejecting +/- inf and explicitly returning JSON-safe 'inf' string already done, OK.",
+    "server.py:196 broadcast loop iterates over runtime.subscribers and uses put_nowait (non-blocking) — good. But on QueueFull there is no logging; under heavy traffic UI will silently miss lines.",
+    "server.py:203 load_logs_from_disk is sync I/O on the event loop; for very large NDJSON files this could block. Wrap with asyncio.to_thread or aiofiles.",
+    "server.py:393 status decision relies on `_found_hit` flag set inside the stream reader — good fix for prior premature_not_found bug; verified working in this iteration."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_improvements.py",
+    "/app/backend/tests/conftest.py",
+    "/app/backend/tests/backend_test.py"
+  ],
+  "success_rate": {"backend": "21/23 pytest (9/9 new + 12/14 regression; 2 regression timeouts fixed by widening deadline)", "frontend": "100% — all new panels, indicators, and flows verified"},
+  "test_credentials": "N/A (no auth)",
+  "seed_data_creation": "Tests create TEST_-labeled jobs; orphan-test inserted TEST_orphan_<uuid> and cleaned up via DELETE.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All improvements work as specified. The previous HIGH bug (premature not_found) is fully fixed in run_job() — status is now committed only after proc.wait(). NDJSON logs are written to /app/backend/data/{job_id}/output.ndjson and load_logs_from_disk falls back to them when JOBS in-memory entry is gone. WebSocket endpoint is /api/jobs/{id}/stream at app root (not under /api router) — works via ingress. Orphan cleanup runs at startup and marks running/pending jobs with no in-memory runtime as failed. The 2 regression failures in backend_test.py were timeout-related and were fixed by widening the deadline.",
+  "rca of the issue": "Regression test_job_logs_stream / test_job_get_status timed out at 45 s because the iteration_1 bug (premature 'not_found' set on first phase log line) was fixed by deferring status finalization until after proc.wait(). Real seedrecover runs 4 phases serially, total ~110 s on this pod with threads=1. Test deadline updated to 180 s — underlying app behavior is correct (status='not_found', finished_at populated, Stop button disabled, [process exit code=0] visible in terminal)."
+}

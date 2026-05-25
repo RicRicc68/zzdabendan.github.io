@@ -141,7 +141,8 @@ class TestJobs:
         cursor = 0
         seen_lines = 0
         terminal = False
-        deadline = time.time() + 45
+        # Backend now correctly waits for proc.wait() across all 4 phases (~2 min)
+        deadline = time.time() + 180
         statuses = []
         while time.time() < deadline:
             r = session.get(f"{API}/jobs/{job_id}/logs", params={"since": cursor})

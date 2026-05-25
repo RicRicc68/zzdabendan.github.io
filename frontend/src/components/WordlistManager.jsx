@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../lib/api";
-import { BookText, Save } from "lucide-react";
+import { BookText, Save, Library } from "lucide-react";
 
 export default function WordlistManager() {
   const [raw, setRaw] = useState("");
   const [count, setCount] = useState(0);
   const [saving, setSaving] = useState(false);
+  const [presets, setPresets] = useState([]);
+  const [selectedPreset, setSelectedPreset] = useState("");
+  const [loadingPreset, setLoadingPreset] = useState(false);
 
   const load = async () => {
     const r = await api.get("/wordlist");
@@ -13,7 +16,14 @@ export default function WordlistManager() {
     setCount(r.data.count || 0);
   };
 
-  useEffect(() => { load(); }, []);
+  const loadPresets = async () => {
+    try {
+      const r = await api.get("/wordlists/presets");
+      setPresets(r.data.presets || []);
+    } catch (_) {}
+  };
+
+  useEffect(() => { load(); loadPresets(); }, []);
 
   const save = async () => {
     setSaving(true);
@@ -21,6 +31,15 @@ export default function WordlistManager() {
       const r = await api.put("/wordlist", { raw });
       setCount(r.data.count);
     } finally { setSaving(false); }
+  };
+
+  const applyPreset = async () => {
+    if (!selectedPreset) return;
+    setLoadingPreset(true);
+    try {
+      await api.post("/wordlist/load-preset", { name: selectedPreset });
+      await load();
+    } finally { setLoadingPreset(false); }
   };
 
   return (
@@ -34,6 +53,31 @@ export default function WordlistManager() {
           {count} words
         </span>
       </div>
+
+      <div className="flex gap-2">
+        <select
+          value={selectedPreset}
+          onChange={(e) => setSelectedPreset(e.target.value)}
+          className="input-base flex-1 px-2 py-1.5"
+          data-testid="wordlist-preset-select"
+        >
+          <option value="">— preset (BIP39 / Electrum) —</option>
+          {presets.map((p) => (
+            <option key={p.name} value={p.name}>
+              {p.name} ({p.size} words)
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={applyPreset}
+          disabled={!selectedPreset || loadingPreset}
+          className="btn-ghost flex items-center gap-1"
+          data-testid="wordlist-load-preset-btn"
+        >
+          <Library className="h-3 w-3" /> {loadingPreset ? "…" : "load"}
+        </button>
+      </div>
+
       <textarea
         value={raw}
         onChange={(e) => setRaw(e.target.value)}

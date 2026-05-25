@@ -4,11 +4,15 @@ import SystemStatus from "./components/SystemStatus";
 import SeedConfigPanel from "./components/SeedConfigPanel";
 import MaskPreview from "./components/MaskPreview";
 import WordlistManager from "./components/WordlistManager";
+import SearchSpaceEstimate from "./components/SearchSpaceEstimate";
 import JobMonitor from "./components/JobMonitor";
 import JobHistory from "./components/JobHistory";
 import TerminalPanel from "./components/TerminalPanel";
 import FoundSeedModal from "./components/FoundSeedModal";
+import useJobStream from "./hooks/useJobStream";
 import { Play, ShieldCheck, Zap } from "lucide-react";
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function App() {
   const [systemStatus, setSystemStatus] = useState(null);
@@ -24,17 +28,34 @@ export default function App() {
   const [savingConfig, setSavingConfig] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [selectedJobId, setSelectedJobId] = useState(null);
-  const [activeJob, setActiveJob] = useState(null);
-  const [logs, setLogs] = useState([]);
-  const [logCursor, setLogCursor] = useState(0);
+  const [archivedJob, setArchivedJob] = useState(null);
+  const [archivedLogs, setArchivedLogs] = useState([]);
   const [autoScroll, setAutoScroll] = useState(true);
   const [stopping, setStopping] = useState(false);
   const [starting, setStarting] = useState(false);
   const [foundSeedModal, setFoundSeedModal] = useState(null);
   const [error, setError] = useState(null);
-  const pollRef = useRef(null);
 
-  // Load initial config + system status + jobs
+  const stream = useJobStream(selectedJobId, BACKEND_URL);
+
+  // Decide if selected job is live (in-memory & has WS data) or archived
+  const liveJob = stream.status
+    ? {
+        job_id: selectedJobId,
+        status: stream.status,
+        stats: stream.stats,
+        found_seed: stream.foundSeed,
+      }
+    : null;
+  const activeJob = liveJob || archivedJob;
+  const logs = liveJob ? stream.logs : archivedLogs;
+
+  // Show seed modal when found
+  useEffect(() => {
+    if (stream.foundSeed) setFoundSeedModal(stream.foundSeed);
+  }, [stream.foundSeed]);
+
+  // Initial load
   useEffect(() => {
     (async () => {
       try {
@@ -46,7 +67,6 @@ export default function App() {
         setConfig({ ...cfg.data });
         setSystemStatus(st.data);
         setJobs(j.data);
-        // Auto-select most recent
         if (j.data?.length > 0 && !selectedJobId) {
           setSelectedJobId(j.data[0].job_id);
         }
@@ -64,43 +84,26 @@ export default function App() {
     // eslint-disable-next-line
   }, []);
 
-  // Poll selected job
+  // Fetch archived job snapshot (when WS can't connect)
   useEffect(() => {
     if (!selectedJobId) {
-      setActiveJob(null); setLogs([]); setLogCursor(0);
+      setArchivedJob(null); setArchivedLogs([]);
       return;
     }
-    setLogs([]); setLogCursor(0);
-    let stopped = false;
-    let cursor = 0;
-    const tick = async () => {
+    let cancelled = false;
+    (async () => {
       try {
         const [jr, lr] = await Promise.all([
           api.get(`/jobs/${selectedJobId}`),
-          api.get(`/jobs/${selectedJobId}/logs`, { params: { since: cursor } }),
+          api.get(`/jobs/${selectedJobId}/logs`, { params: { since: 0 } }),
         ]);
-        if (stopped) return;
-        setActiveJob(jr.data);
-        if (lr.data?.lines?.length) {
-          setLogs((cur) => cur.concat(lr.data.lines));
-          cursor = lr.data.next;
-          setLogCursor(cursor);
-        }
-        if (lr.data?.found_seed && jr.data.status === "found") {
-          setFoundSeedModal(lr.data.found_seed);
-        }
-        const stillRunning = jr.data.status === "running" || jr.data.status === "pending";
-        const interval = stillRunning ? 1000 : 4000;
-        pollRef.current = setTimeout(tick, interval);
-      } catch (e) {
-        if (!stopped) pollRef.current = setTimeout(tick, 3000);
-      }
-    };
-    tick();
-    return () => {
-      stopped = true;
-      if (pollRef.current) clearTimeout(pollRef.current);
-    };
+        if (cancelled) return;
+        setArchivedJob(jr.data);
+        setArchivedLogs(lr.data?.lines || []);
+        if (lr.data?.found_seed) setFoundSeedModal(lr.data.found_seed);
+      } catch (_) {}
+    })();
+    return () => { cancelled = true; };
   }, [selectedJobId]);
 
   // Refresh job list periodically
@@ -163,7 +166,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen text-slate-200 font-sans" data-testid="app-root">
-      {/* Header */}
       <header className="border-b border-slate-800 bg-[#0D0E12]/80 backdrop-blur-xl sticky top-0 z-30">
         <div className="max-w-[1600px] mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -172,7 +174,7 @@ export default function App() {
             </div>
             <div>
               <div className="font-mono text-sm tracking-widest text-slate-200">SEED-RECOVERY</div>
-              <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">control room v1.0</div>
+              <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">control room v1.1</div>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -183,6 +185,11 @@ export default function App() {
             <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400" data-testid="header-status">
               {systemStatus?.btcrecover?.available ? "system ready" : "system offline"}
             </span>
+            {stream.connected && (
+              <span className="text-[10px] font-mono uppercase tracking-widest text-blue-300 border border-blue-500/30 rounded-sm px-1.5 py-0.5" data-testid="ws-indicator">
+                ws · live
+              </span>
+            )}
             <button
               onClick={startJob}
               disabled={!canStart}
@@ -196,7 +203,6 @@ export default function App() {
       </header>
 
       <main className="max-w-[1600px] mx-auto px-6 py-6 flex flex-col gap-6">
-        {/* Top stats */}
         <SystemStatus status={systemStatus} />
 
         {error && (
@@ -207,7 +213,6 @@ export default function App() {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left column — configuration */}
           <div className="lg:col-span-5 flex flex-col gap-6" data-testid="config-column">
             <SeedConfigPanel
               config={config}
@@ -215,19 +220,19 @@ export default function App() {
               onSave={saveConfig}
               saving={savingConfig}
             />
+            <SearchSpaceEstimate config={config} />
             <MaskPreview config={config} />
             <WordlistManager />
           </div>
 
-          {/* Right column — monitor */}
           <div className="lg:col-span-7 flex flex-col gap-6" data-testid="monitor-column">
             <JobMonitor job={activeJob} onStop={stopJob} stopping={stopping} />
             <TerminalPanel
               lines={logs}
               autoScroll={autoScroll}
               onToggleAutoScroll={setAutoScroll}
-              onClear={() => setLogs([])}
-              title={selectedJobId ? `JOB ${selectedJobId.slice(0,8)} · LIVE OUTPUT` : "LIVE OUTPUT"}
+              onClear={() => { setArchivedLogs([]); }}
+              title={selectedJobId ? `JOB ${selectedJobId.slice(0, 8)} · ${stream.connected ? "WS LIVE" : "ARCHIVED"}` : "LIVE OUTPUT"}
             />
             <JobHistory
               jobs={jobs}

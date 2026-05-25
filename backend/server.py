@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import asyncio
 import itertools
+import math
 import os
 import re
 import shutil
@@ -16,12 +17,12 @@ import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Annotated, Any, List, Optional
+from typing import Annotated, Any, Dict, List, Optional
 
 import psutil
 from bson import ObjectId
 from dotenv import load_dotenv
-from fastapi import APIRouter, BackgroundTasks, FastAPI, HTTPException
+from fastapi import APIRouter, BackgroundTasks, FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, BeforeValidator, ConfigDict, Field
@@ -32,11 +33,34 @@ load_dotenv(ROOT_DIR / ".env")
 MONGO_URL = os.environ.get("MONGO_URL")
 DB_NAME = os.environ.get("DB_NAME")
 BTCRECOVER_DIR = Path(os.environ.get("BTCRECOVER_DIR", "/opt/btcrecover"))
+WORDLISTS_DIR = BTCRECOVER_DIR / "btcrecover" / "wordlists"
 JOB_WORKDIR = Path(os.environ.get("JOB_WORKDIR", str(ROOT_DIR / "data")))
 JOB_WORKDIR.mkdir(parents=True, exist_ok=True)
 
 client = AsyncIOMotorClient(MONGO_URL)
 db = client[DB_NAME]
+
+
+def _detect_seedrecover_version() -> Optional[str]:
+    """Run `seedrecover.py --version` once at startup and cache the banner line."""
+    import sys as _sys
+    try:
+        r = subprocess.run(
+            [_sys.executable, str(BTCRECOVER_DIR / "seedrecover.py"), "--version"],
+            capture_output=True, text=True, timeout=10, cwd=str(BTCRECOVER_DIR),
+        )
+        out = (r.stdout or "") + "\n" + (r.stderr or "")
+        for ln in out.splitlines():
+            if ln.strip().lower().startswith("starting"):
+                return ln.strip()
+        return "seedrecover available"
+    except Exception as e:
+        return f"err: {e}"
+
+
+SEEDRECOVER_VERSION = (
+    _detect_seedrecover_version() if (BTCRECOVER_DIR / "seedrecover.py").exists() else None
+)
 
 app = FastAPI(title="Seed Recovery Dashboard")
 api = APIRouter(prefix="/api")
@@ -132,16 +156,70 @@ class JobRuntime:
         self.workdir: Path = JOB_WORKDIR / job_id
         self.stop_requested = False
         self.error: Optional[str] = None
+        # WebSocket subscribers for live log streaming
+        self.subscribers: List[asyncio.Queue] = []
+        # File handle for persisting logs to disk (NDJSON)
+        self._log_file = None
+
+    def open_log_file(self):
+        self.workdir.mkdir(parents=True, exist_ok=True)
+        self._log_file = open(self.workdir / "output.ndjson", "a", encoding="utf-8")
+
+    def close_log_file(self):
+        try:
+            if self._log_file:
+                self._log_file.flush()
+                self._log_file.close()
+        except Exception:
+            pass
+        self._log_file = None
 
     def append_log(self, stream: str, line: str):
-        self.logs.append({
+        import json as _json
+        entry = {
             "ts": datetime.now(timezone.utc).isoformat(),
             "stream": stream,
             "line": line,
-        })
+        }
+        self.logs.append(entry)
         # Cap at 5000 lines in memory
         if len(self.logs) > 5000:
             self.logs = self.logs[-5000:]
+        # Persist to disk
+        if self._log_file:
+            try:
+                self._log_file.write(_json.dumps(entry) + "\n")
+                self._log_file.flush()
+            except Exception:
+                pass
+        # Broadcast to WebSocket subscribers (non-blocking)
+        for q in list(self.subscribers):
+            try:
+                q.put_nowait({"type": "log", "entry": entry, "stats": self.stats.model_dump(), "status": self.status})
+            except asyncio.QueueFull:
+                pass
+
+
+def load_logs_from_disk(job_id: str) -> List[dict]:
+    """Load persisted logs (NDJSON) for a finished job from disk."""
+    import json as _json
+    p = JOB_WORKDIR / job_id / "output.ndjson"
+    if not p.exists():
+        return []
+    out = []
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            for ln in f:
+                ln = ln.strip()
+                if not ln:
+                    continue
+                try:
+                    out.append(_json.loads(ln))
+                except Exception:
+                    pass
+    except Exception:
+        pass
+    return out
 
 
 JOBS: dict[str, JobRuntime] = {}
@@ -169,6 +247,9 @@ def generate_permutation_masks(known_unpositioned: List[str], seed_length: int) 
     """If user knows some words but not their positions, build permutations."""
     known_clean = [w.strip() for w in known_unpositioned if w.strip()]
     if not known_clean or len(known_clean) > seed_length:
+        return []
+    # Guard against combinatorial explosion
+    if len(known_clean) > 9:
         return []
     masks = []
     for positions in itertools.combinations(range(seed_length), len(known_clean)):
@@ -267,26 +348,29 @@ async def _stream_reader(stream, runtime: JobRuntime, name: str):
             line = raw.decode("utf-8", errors="replace").rstrip("\n")
             runtime.append_log(name, line)
             parse_progress(line, runtime.stats)
-            # Seed found detection
+            # Seed-found detection (defer status finalization to run_job)
             if FOUND_RE.search(line):
-                runtime.status = "found"
-            # Lines containing 12-24 lowercase words may be the recovered seed
+                runtime._found_hit = True
+            # A line containing 12-24 lowercase words may be the recovered seed
             stripped = line.strip()
-            if SEED_PHRASE_RE.match(stripped) and runtime.status in ("running", "found"):
+            if SEED_PHRASE_RE.match(stripped) and getattr(runtime, "_found_hit", False):
                 runtime.found_seed = stripped
-                runtime.status = "found"
-            if NOT_FOUND_RE.search(line):
-                if runtime.status != "found":
-                    runtime.status = "not_found"
+            # NOT_FOUND_RE matches per-phase; do not change status here
     except Exception as e:
         runtime.append_log("system", f"[stream-reader error] {e}")
 
 
 async def run_job(runtime: JobRuntime, command: List[str]):
     runtime.workdir.mkdir(parents=True, exist_ok=True)
+    runtime.open_log_file()
     runtime.command = command
     runtime.status = "running"
     runtime.started_at = datetime.now(timezone.utc)
+    # Update Mongo immediately with started_at
+    await db.jobs.update_one(
+        {"job_id": runtime.job_id},
+        {"$set": {"status": "running", "started_at": runtime.started_at, "command": command}},
+    )
     runtime.append_log("system", f"$ {' '.join(command)}")
     try:
         proc = await asyncio.create_subprocess_exec(
@@ -306,12 +390,13 @@ async def run_job(runtime: JobRuntime, command: List[str]):
         runtime.append_log("system", f"[process exit code={rc}]")
         if runtime.stop_requested:
             runtime.status = "stopped"
-        elif runtime.status not in ("found", "not_found"):
-            if rc == 0:
-                runtime.status = "not_found"
-            else:
-                runtime.status = "failed"
-                runtime.error = f"Exit code {rc}"
+        elif runtime.found_seed or getattr(runtime, "_found_hit", False):
+            runtime.status = "found"
+        elif rc == 0:
+            runtime.status = "not_found"
+        else:
+            runtime.status = "failed"
+            runtime.error = f"Exit code {rc}"
     except FileNotFoundError as e:
         runtime.status = "failed"
         runtime.error = f"btcrecover not available: {e}"
@@ -322,6 +407,14 @@ async def run_job(runtime: JobRuntime, command: List[str]):
         runtime.error = str(e)
         runtime.append_log("system", f"[error] {e}")
         runtime.finished_at = datetime.now(timezone.utc)
+    finally:
+        runtime.close_log_file()
+        # Notify WebSocket subscribers of final state
+        for q in list(runtime.subscribers):
+            try:
+                q.put_nowait({"type": "end", "status": runtime.status, "stats": runtime.stats.model_dump(), "found_seed": runtime.found_seed, "error": runtime.error})
+            except asyncio.QueueFull:
+                pass
     # Persist final state to MongoDB
     await db.jobs.update_one(
         {"job_id": runtime.job_id},
@@ -350,23 +443,7 @@ async def root():
 async def system_status():
     """System / btcrecover availability + host vitals."""
     btcrecover_ok = (BTCRECOVER_DIR / "seedrecover.py").exists()
-    seedrecover_version = None
-    if btcrecover_ok:
-        try:
-            import sys as _sys
-            r = subprocess.run(
-                [_sys.executable, str(BTCRECOVER_DIR / "seedrecover.py"), "--version"],
-                capture_output=True, text=True, timeout=10, cwd=str(BTCRECOVER_DIR),
-            )
-            out = (r.stdout or "") + "\n" + (r.stderr or "")
-            for ln in out.splitlines():
-                if ln.strip().lower().startswith("starting"):
-                    seedrecover_version = ln.strip()
-                    break
-            if not seedrecover_version:
-                seedrecover_version = "seedrecover available"
-        except Exception as e:
-            seedrecover_version = f"err: {e}"
+    seedrecover_version = SEEDRECOVER_VERSION
     cpu = psutil.cpu_percent(interval=0.1)
     mem = psutil.virtual_memory()
     disk = psutil.disk_usage("/")
@@ -516,6 +593,17 @@ async def get_job_logs(job_id: str, since: int = 0):
     doc = await db.jobs.find_one({"job_id": job_id})
     if not doc:
         raise HTTPException(404, "Job not found")
+    # Prefer persisted NDJSON log file over Mongo logs_tail
+    disk_logs = load_logs_from_disk(job_id)
+    if disk_logs:
+        sliced = disk_logs[since:]
+        return {
+            "next": since + len(sliced),
+            "lines": sliced,
+            "status": doc.get("status"),
+            "stats": doc.get("stats", {}),
+            "found_seed": doc.get("found_seed"),
+        }
     tail = doc.get("logs_tail", [])
     return {
         "next": len(tail),
@@ -549,7 +637,120 @@ async def delete_job(job_id: str):
         raise HTTPException(400, "Cannot delete a running job; stop it first")
     JOBS.pop(job_id, None)
     await db.jobs.delete_one({"job_id": job_id})
+    # Remove on-disk log file
+    p = JOB_WORKDIR / job_id
+    if p.exists():
+        try:
+            shutil.rmtree(p)
+        except Exception:
+            pass
     return {"ok": True}
+
+
+# ---------- Search-space estimate ----------
+@api.post("/jobs/estimate")
+async def estimate_job(payload: dict):
+    """
+    Pre-flight estimate of search space and expected runtime BEFORE launching
+    a job. Considers number of '?' (unknown positions), candidate wordlist
+    size, typos, and reference benchmark rate (~50k candidates/sec).
+    """
+    seed_length = int(payload.get("seed_length", 12))
+    known_words = payload.get("known_words") or []
+    known_unpositioned = payload.get("known_unpositioned") or []
+    typos = int(payload.get("typos", 0))
+    wordlist_size = int(payload.get("wordlist_size") or 2048)  # BIP39 default
+    threads = max(1, int(payload.get("threads", 2)))
+    # Allow custom benchmark; default seedrecover bench ~50k/s/thread on this pod
+    rate_per_thread = float(payload.get("rate_per_thread", 50000))
+
+    unknown_count = sum(1 for w in (known_words[:seed_length] or []) if not (w or "").strip())
+    # If we have positioned-known words, unknown_count is what we have
+    # If we have unpositioned-known words, they reduce unknown count
+    if known_unpositioned:
+        unknown_count = max(0, unknown_count - len(known_unpositioned))
+
+    # Search space: per unknown slot, you try `wordlist_size` words. seedrecover
+    # actually iterates through valid mnemonics, but as a first approximation
+    # the size is wordlist_size ** unknown_count (very rough upper bound).
+    if unknown_count > 0:
+        log_combos = unknown_count * math.log10(max(1, wordlist_size))
+    else:
+        log_combos = 0
+    combos = 10 ** log_combos if log_combos < 18 else float("inf")
+
+    # Add permutations of unpositioned known words
+    if known_unpositioned:
+        kup = len([w for w in known_unpositioned if w.strip()])
+        if kup <= seed_length:
+            # C(seed_length, kup) * kup!
+            try:
+                perms = math.factorial(seed_length) // math.factorial(seed_length - kup)
+                combos = combos * perms if combos != float("inf") else float("inf")
+                log_combos = math.log10(max(1, combos)) if combos != float("inf") else float("inf")
+            except Exception:
+                pass
+
+    # Typo factor (rough): each big-typo multiplies by ~wordlist_size
+    if typos > 0 and combos != float("inf"):
+        combos = combos * (wordlist_size ** typos)
+        log_combos = math.log10(max(1, combos)) if combos != float("inf") else float("inf")
+
+    effective_rate = rate_per_thread * threads
+    if combos == float("inf"):
+        eta_seconds = float("inf")
+        eta_human = "∞ (too large)"
+    else:
+        eta_seconds = combos / max(1, effective_rate)
+        eta_human = _humanize_eta(eta_seconds)
+
+    feasibility = "feasible"
+    if eta_seconds == float("inf") or eta_seconds > 3650 * 86400:  # > 10 years
+        feasibility = "impractical"
+    elif eta_seconds > 365 * 86400:
+        feasibility = "very_slow"
+    elif eta_seconds > 86400:
+        feasibility = "slow"
+    elif eta_seconds > 3600:
+        feasibility = "moderate"
+    else:
+        feasibility = "fast"
+
+    return {
+        "unknown_positions": unknown_count,
+        "wordlist_size": wordlist_size,
+        "typos": typos,
+        "threads": threads,
+        "rate_per_thread": rate_per_thread,
+        "effective_rate": effective_rate,
+        "log10_search_space": None if log_combos == float("inf") else round(log_combos, 2),
+        "search_space_approx": "1e+inf" if combos == float("inf") else f"{combos:.3e}",
+        "eta_seconds": None if eta_seconds == float("inf") else eta_seconds,
+        "eta_human": eta_human,
+        "feasibility": feasibility,
+    }
+
+
+def _humanize_eta(sec: float) -> str:
+    if sec == float("inf"):
+        return "∞"
+    units = [
+        ("y", 365 * 86400),
+        ("d", 86400),
+        ("h", 3600),
+        ("m", 60),
+        ("s", 1),
+    ]
+    out = []
+    rem = int(sec)
+    for u, v in units:
+        if rem >= v:
+            n = rem // v
+            rem -= n * v
+            out.append(f"{n}{u}")
+        if len(out) >= 2:
+            break
+    return " ".join(out) if out else "<1s"
 
 
 # ---------- Wordlist (candlist) ----------
@@ -575,7 +776,109 @@ async def put_wordlist(payload: dict):
     return {"count": len(words), "path": str(WORDLIST_PATH)}
 
 
+# ---------- Wordlist presets ----------
+@api.get("/wordlists/presets")
+async def list_wordlist_presets():
+    """List the available BIP39 / Electrum wordlists shipped with btcrecover."""
+    out = []
+    if not WORDLISTS_DIR.exists():
+        return {"presets": out}
+    for f in sorted(WORDLISTS_DIR.glob("*.txt")):
+        try:
+            with open(f, "r", encoding="utf-8") as fh:
+                count = sum(1 for _ in fh)
+        except Exception:
+            count = 0
+        out.append({
+            "name": f.stem,
+            "language": (f.stem.split("-")[-1] if "-" in f.stem else "unknown"),
+            "family": f.stem.split("-")[0],
+            "size": count,
+            "path": str(f),
+        })
+    return {"presets": out}
+
+
+@api.post("/wordlist/load-preset")
+async def load_preset_wordlist(payload: dict):
+    name = (payload.get("name") or "").strip()
+    if not name:
+        raise HTTPException(400, "name required")
+    src = WORDLISTS_DIR / f"{name}.txt"
+    if not src.exists():
+        raise HTTPException(404, f"Preset '{name}' not found")
+    raw = src.read_text(encoding="utf-8")
+    WORDLIST_PATH.write_text(raw, encoding="utf-8")
+    words = [w for w in raw.split() if w.strip()]
+    return {"count": len(words), "preset": name, "path": str(WORDLIST_PATH)}
+
+
+# ---------- WebSocket live logs ----------
+@app.websocket("/api/jobs/{job_id}/stream")
+async def ws_job_stream(websocket: WebSocket, job_id: str):
+    await websocket.accept()
+    runtime = JOBS.get(job_id)
+    if not runtime:
+        await websocket.send_json({"type": "error", "message": "Job not found in memory"})
+        await websocket.close()
+        return
+    # Send backlog of existing logs first
+    try:
+        await websocket.send_json({
+            "type": "snapshot",
+            "status": runtime.status,
+            "stats": runtime.stats.model_dump(),
+            "found_seed": runtime.found_seed,
+            "logs": runtime.logs,
+        })
+    except Exception:
+        return
+    queue: asyncio.Queue = asyncio.Queue(maxsize=1000)
+    runtime.subscribers.append(queue)
+    try:
+        while True:
+            try:
+                msg = await asyncio.wait_for(queue.get(), timeout=15.0)
+                await websocket.send_json(msg)
+                if msg.get("type") == "end":
+                    break
+            except asyncio.TimeoutError:
+                # heartbeat
+                await websocket.send_json({"type": "ping"})
+    except WebSocketDisconnect:
+        pass
+    except Exception:
+        pass
+    finally:
+        try:
+            runtime.subscribers.remove(queue)
+        except ValueError:
+            pass
+
+
 app.include_router(api)
+
+
+# ---------- Orphan cleanup on startup ----------
+@app.on_event("startup")
+async def cleanup_orphans():
+    """
+    Any job persisted as 'running'/'pending' in Mongo but not in JOBS memory
+    means the backend restarted mid-job — mark them as failed (orphaned).
+    """
+    cur = db.jobs.find({"status": {"$in": ["running", "pending"]}})
+    async for doc in cur:
+        jid = doc["job_id"]
+        if jid in JOBS:
+            continue
+        await db.jobs.update_one(
+            {"job_id": jid},
+            {"$set": {
+                "status": "failed",
+                "finished_at": datetime.now(timezone.utc),
+                "error": "Backend restarted while job was running (orphaned)",
+            }},
+        )
 
 
 @app.on_event("shutdown")
