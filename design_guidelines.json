@@ -1,0 +1,98 @@
+{
+  "project_context": {
+    "domain": "Security, Forensics, Crypto Recovery",
+    "vibe": "Technical, Trustworthy, Serious, Operations Dashboard",
+    "theme": "dark",
+    "archetype": "Swiss & High-Contrast (Dark Mode variant)"
+  },
+  "colors": {
+    "background": {
+      "main": "#0D0E12",
+      "panel": "#14151A",
+      "terminal": "#050505"
+    },
+    "text": {
+      "primary": "#E2E8F0",
+      "secondary": "#94A3B8",
+      "muted": "#64748B"
+    },
+    "brand_primary": "#3B82F6",
+    "status": {
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444",
+      "running": "#3B82F6",
+      "terminal_green": "#22C55E",
+      "terminal_error": "#F87171"
+    },
+    "borders": "#1E293B"
+  },
+  "typography": {
+    "headings": "IBM Plex Sans, sans-serif",
+    "body": "IBM Plex Sans, sans-serif",
+    "monospace": "JetBrains Mono, monospace",
+    "scale": {
+      "h1": "text-2xl font-semibold tracking-tight",
+      "h2": "text-xl font-medium tracking-tight",
+      "h3": "text-lg font-medium",
+      "body": "text-sm",
+      "stats": "text-3xl font-mono tracking-tighter",
+      "terminal": "text-xs font-mono leading-relaxed"
+    }
+  },
+  "layout": {
+    "strategy": "Control Room Grid",
+    "grid_classes": "grid grid-cols-1 md:grid-cols-12 gap-6",
+    "areas": {
+      "top_stats": "col-span-1 md:col-span-12 flex flex-col md:flex-row gap-4",
+      "config_panel": "col-span-1 md:col-span-5 flex flex-col gap-6",
+      "monitor_panel": "col-span-1 md:col-span-7 flex flex-col gap-6"
+    }
+  },
+  "spacing": {
+    "containers": "p-5 sm:p-6",
+    "density": "tight",
+    "elements_gap": "gap-4"
+  },
+  "surfaces": {
+    "cards": "bg-[#14151A] border border-slate-800 rounded-sm shadow-sm",
+    "terminal": "bg-[#050505] border border-slate-800 rounded-sm overflow-hidden flex flex-col relative",
+    "modals": "backdrop-blur-xl bg-[#0D0E12]/95 border border-slate-800 shadow-2xl rounded-sm"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-blue-600 hover:bg-blue-700 text-white rounded-sm px-4 py-2 font-medium transition-colors focus:ring-2 focus:ring-blue-500/50 flex items-center justify-center gap-2",
+      "danger": "bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 rounded-sm px-4 py-2 transition-colors flex items-center justify-center gap-2",
+      "terminal_action": "bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-sm px-3 py-1 text-xs font-mono transition-colors"
+    },
+    "inputs": "bg-[#0D0E12] border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-sm text-sm font-mono text-slate-200 placeholder-slate-600 transition-colors",
+    "status_led": "w-2.5 h-2.5 rounded-full shadow-[0_0_8px_currentColor]"
+  },
+  "icons_and_assets": {
+    "library": "lucide-react",
+    "usage": "Use technical/system icons: Activity, Terminal, Shield, ShieldCheck, ShieldAlert, Cpu, HardDrive, Key, CheckCircle, AlertTriangle, Play, Square, Pause, Loader2.",
+    "images": []
+  },
+  "interactions": {
+    "hover": "Keep hover states sharp and instantaneous. Fast transitions (150ms).",
+    "terminal": "Logs should visually append at the bottom. The terminal container should scroll cleanly.",
+    "focus": "High contrast ring for accessibility (blue-500)."
+  },
+  "accessibility": {
+    "test_ids_required": true,
+    "contrast": "Ensure APCA contrast compliance, especially for terminal logs (bright green/white/red on solid black).",
+    "motion": "Use reduced-motion for progress bars if needed, keep terminal text updates performant."
+  },
+  "instructions_to_main_agent": [
+    "CRITICAL: Write standard React Javascript (.js, .jsx) files. DO NOT USE Typescript.",
+    "Implement a Dark Mode exclusively. The app is a forensic/security dashboard, do not add a light mode toggle.",
+    "Layout: Build a 'Control Room' dense grid. Top section for system vitals (CPU, Disk, btcrecover ready state). Left side for configuration (Seed length, known words, masks). Right side for live execution and logs.",
+    "Terminal Panel: Design a realistic terminal output window for live logs. Use JetBrains Mono or standard monospace font. Background #050505, text #22C55E (success/info), #F87171 (errors), #E2E8F0 (standard stdout).",
+    "Live Progress Widget: Must include real-time ETA, candidates/sec (in font-mono), current candidate string being tested, and a highly visible horizontal progress bar.",
+    "Seed Config Panel: For known words, render a grid of 12 or 24 input boxes. Use monospace fonts for the inputs to give a technical feel.",
+    "Found-Seed Reveal Modal: When the job finishes with 'found', dim the entire UI heavily (`bg-black/80 backdrop-blur-md`). Show the recovered seed prominently in a bordered, glowing, highly visible box. Include 'Copy to Clipboard' and 'Clear & Close' security actions.",
+    "ALL interactive elements and key informational displays MUST include 'data-testid' attributes (e.g., data-testid='start-job-btn', data-testid='seed-word-input-3').",
+    "Use lucide-react for all iconography.",
+    "Component styling: When using Shadcn UI components, override their border-radius to `rounded-sm` or `rounded-none` to fit the technical/CLI wrapper vibe. Do not use soft, rounded interfaces."
+  ]
+}
