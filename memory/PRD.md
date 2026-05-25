@@ -30,6 +30,21 @@ and seed phrase. User choices:
 - Job history with stop/delete
 - Dark "Control Room" UI
 
+## Implemented v1.3 (2026-05-25 — BTC address preflight)
+- **POST `/api/address/verify`** — local format check + on-chain stats from
+  mempool.space (with Blockstream Esplora fallback). Returns one of four
+  recommendations: `ok` (valid + has history), `unused` (valid format but no
+  on-chain activity), `invalid` (format check failed), `unknown` (explorers
+  unreachable).
+- **`/app/backend/btc_address.py`** — zero-dependency mainnet validator
+  supporting P2PKH, P2SH, P2WPKH/P2WSH (Bech32) and P2TR (Bech32m); rejects
+  testnet/signet/regtest addresses.
+- **Frontend**: `check` button next to the address input in SeedConfigPanel
+  with color-coded verdict badge (green ON-CHAIN / amber UNUSED / red INVALID
+  / slate EXPLORER OFFLINE), tx count, balance in BTC and explorer source.
+- Verified: 14/14 pytest + 5/5 Playwright; Genesis address correctly shows
+  62,952 tx and 57.2 BTC balance.
+
 ## Implemented v1.2 (2026-05-25 — signed JSON audit export)
 - **GET `/api/jobs/{id}/export`** returns a canonical audit-trail JSON
   (`schema=seed-recovery-audit/v1`) containing job metadata, tool info, full
