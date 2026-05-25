@@ -30,6 +30,33 @@ and seed phrase. User choices:
 - Job history with stop/delete
 - Dark "Control Room" UI
 
+## Implemented v1.4 (2026-05-25 — Energy & GPU cost calculator)
+- **POST `/api/jobs/cost-estimate`** — pure-math endpoint that takes
+  `eta_seconds`, `system_watts`, `eur_per_kwh`, `usd_to_eur`, optional
+  `provisioning_overhead_min` and returns:
+  - `local.energy_kwh / energy_cost_eur / classification`
+  - `gpu_options[]` for 7 typical configs (vast.ai 3060/3090/4090,
+    RunPod A4000/A6000/A100/H100): hourly rate in €, GPU ETA, total
+    rental cost, savings vs local, classification
+  - `recommendation` ∈ {`local`, `gpu:<name>`, `do_not_run`, `n/a`} +
+    human-readable message
+- **Frontend `EnergyCostCalculator.jsx`** panel below Pre-flight Estimate:
+  banner with color-coded recommendation, editable inputs (W, €/kWh,
+  USD→EUR), Local CPU row + table of GPU options with the recommended
+  one highlighted in blue. Footer reminder to use `--enable-opencl`.
+- **Wiring**: `SearchSpaceEstimate` lifts `eta_seconds` to `App.js` via
+  `onEtaChange`, which feeds `EnergyCostCalculator`.
+- Verified by testing agent: 14/14 backend + 6/7 frontend tests (the 1 minor
+  failure was a backend bug, see below).
+
+### Bug fixes applied after iteration_5
+- **MIN**: `/api/jobs/estimate` returned `2e-05s` (search_space=1/50000) when
+  the seed was fully known. Now short-circuits to `eta_seconds=0` →
+  energy panel correctly shows the empty state.
+- **MIN**: `cost_estimate` used `payload.get(k) or default` idiom which
+  silently replaced user-supplied `0` (e.g. `system_watts=0`,
+  `provisioning_overhead_min=0`). Replaced with explicit `is None` check.
+
 ## Implemented v1.3 (2026-05-25 — BTC address preflight)
 - **POST `/api/address/verify`** — local format check + on-chain stats from
   mempool.space (with Blockstream Esplora fallback). Returns one of four

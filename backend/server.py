@@ -855,7 +855,11 @@ async def estimate_job(payload: dict):
         log_combos = math.log10(max(1, combos)) if combos != float("inf") else float("inf")
 
     effective_rate = rate_per_thread * threads
-    if combos == float("inf"):
+    if unknown_count == 0 and typos == 0 and not known_unpositioned:
+        # Fully-known seed: nothing to search.
+        eta_seconds = 0.0
+        eta_human = "<1s"
+    elif combos == float("inf"):
         eta_seconds = float("inf")
         eta_human = "∞ (too large)"
     else:
@@ -1085,11 +1089,15 @@ async def cost_estimate(payload: dict):
       recommendation: 'local' | 'gpu:<name>' | 'do_not_run'
       message
     """
-    eta_seconds = float(payload.get("eta_seconds") or 0)
-    system_watts = float(payload.get("system_watts") or 150)
-    eur_per_kwh = float(payload.get("eur_per_kwh") or 0.30)
-    usd_to_eur = float(payload.get("usd_to_eur") or 0.92)
-    overhead_min = float(payload.get("provisioning_overhead_min") or 10)
+    def _num(key, default):
+        v = payload.get(key)
+        return float(default if v is None else v)
+
+    eta_seconds = _num("eta_seconds", 0)
+    system_watts = _num("system_watts", 150)
+    eur_per_kwh = _num("eur_per_kwh", 0.30)
+    usd_to_eur = _num("usd_to_eur", 0.92)
+    overhead_min = _num("provisioning_overhead_min", 10)
 
     # Local CPU run
     eta_hours_local = eta_seconds / 3600.0
