@@ -1,0 +1,42 @@
+{
+  "summary": "Tested Recovery Presets (new feature): 12 backend tests + 5 frontend scenarios. All 12 backend tests pass (100%). Frontend renders 8 cards, applies configs, shows hint banner correctly. Found 1 integration bug: WordlistManager UI does not refresh after a preset apply (backend wordlist IS swapped to electrum1-en with 1626 words — verified via GET /api/wordlist — but the wordlist-count widget keeps showing the stale BIP39 count of 2048 words and the candidate textarea still shows BIP39 words until a manual page reload). Regression smoke (70 tests across config/wordlist/estimate/cost/export/deploy/address-verify/improvements) all pass.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Recovery preset apply -> wordlist auto-load",
+        "issue": "After clicking preset-card-electrum1_12 the backend correctly swaps the candlist to electrum1-en (GET /api/wordlist returns count=1626), but the WordlistManager UI keeps showing 'wordlist-count' = '2048 words' and the Candidate Wordlist textarea still displays BIP39 words (abandon/ability/...). Page reload fixes it (count becomes 1626, words become like/just/love/...). The RecoveryPresets onApplied callback in App.js only does setConfig() and never asks WordlistManager to refetch. This is a real risk: a user could launch a recovery believing electrum1 is loaded while UI still shows BIP39 candidates.",
+        "affected_selectors": ["[data-testid='wordlist-count']", "[data-testid='preset-card-electrum1_12']"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_recovery_presets.py",
+    "/app/test_reports/pytest/recovery_presets_results.xml",
+    "/app/test_reports/pytest/regression_results.xml"
+  ],
+  "action_items": [
+    "Make WordlistManager refetch GET /api/wordlist whenever a preset is applied. Easiest path: lift a wordlistVersion counter into App.js, bump it inside the RecoveryPresets onApplied callback, and pass it as a prop to WordlistManager whose useEffect depends on it. Alternatively, return the new wordlist payload from POST /presets/{id}/apply and forward it via a setWordlist setter.",
+    "(Optional) When a preset has wordlist_preset=null (e.g. blank), explicitly clear the WordlistManager state too so the user starts from a known baseline."
+  ],
+  "critical_code_review_comments": [
+    "App.js line 229: <RecoveryPresets onApplied={(cfg) => setConfig({ ...cfg })} /> only syncs config; WordlistManager state is left stale.",
+    "server.py apply_preset: when wordlist_preset is None it does NOT clear WORDLIST_PATH — so 'blank' preset leaves the previously-loaded wordlist on disk. Probably fine, but worth a UX note.",
+    "recovery_presets.py: PRESETS_INDEX is rebuilt from the list; consider making PRESETS a tuple/frozen to avoid accidental mutation."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_recovery_presets.py (new)"
+  ],
+  "success_rate": {"backend": "100% (12/12 new + 70/70 regression)", "frontend": "~85% (5/6 scenarios — wordlist-count post-apply fails)"},
+  "test_credentials": "none (no auth in this app)",
+  "seed_data_creation": "None — feature is read-only against shipped wordlists + db.config singleton.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend Recovery Presets is solid: GET /api/presets returns 8 entries with the expected ids; POST /api/presets/{id}/apply persists to db.config and auto-loads wordlists (verified electrum1-en=1626, bip39-en=2048). Frontend cards work and seed-config-panel + typos-input + seed-length-select all react correctly. The ONE remaining issue is wiring WordlistManager to refetch after preset apply. After fix, just re-run /app/backend/tests/test_recovery_presets.py and the Playwright flow that clicks preset-card-electrum1_12 then asserts wordlist-count contains '1626'.",
+  "rca_of_the_issue": "Root cause: components/WordlistManager.jsx fetches /api/wordlist only on mount; the parent (App.js) does not signal it to refetch after a preset apply. The RecoveryPresets.apply() handler does post the apply endpoint (backend writes new candlist.txt) and calls onApplied(config), but config doesn't include the wordlist payload, so WordlistManager remains stale. Reproduction: open the app, click [data-testid='preset-card-electrum1_12'], observe [data-testid='wordlist-count'] still shows '2048 words'. Fetch GET /api/wordlist directly → returns 1626. Reload page → UI shows 1626. Mitigation: lift a wordlistVersion in App.js, bump it on preset apply, and depend WordlistManager's fetch effect on it (or have the apply endpoint return the wordlist payload which App.js forwards into a wordlist context)."
+}

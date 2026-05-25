@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { api } from "./lib/api";
 import { devDebug } from "./lib/logger";
 import SystemStatus from "./components/SystemStatus";
+import RecoveryPresets from "./components/RecoveryPresets";
 import SeedConfigPanel from "./components/SeedConfigPanel";
 import MaskPreview from "./components/MaskPreview";
 import WordlistManager from "./components/WordlistManager";
@@ -225,6 +226,7 @@ export default function App() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-5 flex flex-col gap-6" data-testid="config-column">
+            <RecoveryPresets onApplied={(cfg) => setConfig({ ...cfg })} />
             <SeedConfigPanel
               config={config}
               setConfig={setConfig}

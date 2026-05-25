@@ -31,6 +31,7 @@ from pydantic import BaseModel, BeforeValidator, ConfigDict, Field
 
 from btc_address import validate_btc_mainnet_address
 from deploy_generator import generate_bundle
+from recovery_presets import list_presets, get_preset, PRESETS_INDEX
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
@@ -1321,6 +1322,68 @@ async def deploy_preview(payload: dict):
         else:
             preview[name] = content
     return {"provider": provider, "gpu_name": gpu_friendly, "files": preview, "file_count": len(files)}
+
+
+
+# ---------- Recovery Presets ----------
+@api.get("/presets")
+async def get_presets_endpoint():
+    """Curated recovery scenarios (Trezor/Ledger/Electrum/etc.)."""
+    return {"presets": list_presets()}
+
+
+@api.post("/presets/{preset_id}/apply")
+async def apply_preset(preset_id: str):
+    """
+    Apply a preset to the stored config and optionally load its wordlist.
+    Returns the new config so the frontend can refresh its state.
+    """
+    if preset_id not in PRESETS_INDEX:
+        raise HTTPException(404, f"Preset '{preset_id}' not found")
+    preset = get_preset(preset_id)
+
+    # Build the new config: defaults + preset.config + blank known_words
+    seed_length = int(preset["config"]["seed_length"])
+    new_cfg = {
+        "seed_length": seed_length,
+        "wallet_type": preset["config"]["wallet_type"],
+        "language": preset["config"]["language"],
+        "threads": preset["config"]["threads"],
+        "typos": preset["config"]["typos"],
+        "addr_limit": preset["config"]["addr_limit"],
+        "known_words": [""] * seed_length,
+        "passphrase_enabled": False,
+        "passphrase": None,
+        "address": "",
+        "mpk": "",
+        "wallet_file_path": "",
+        "updated_at": datetime.now(timezone.utc),
+    }
+
+    # Persist
+    await db.config.update_one({"_id": "default"}, {"$set": new_cfg}, upsert=True)
+
+    # Auto-load the recommended wordlist preset if any
+    wordlist_status = None
+    wl_name = preset.get("wordlist_preset")
+    if wl_name:
+        src = WORDLISTS_DIR / f"{wl_name}.txt"
+        if src.exists():
+            raw = src.read_text(encoding="utf-8")
+            WORDLIST_PATH.write_text(raw, encoding="utf-8")
+            wordlist_status = {"loaded": wl_name, "count": len([w for w in raw.split() if w.strip()])}
+        else:
+            wordlist_status = {"loaded": None, "error": f"preset wordlist '{wl_name}' not found"}
+
+    # Return fresh config
+    doc = await db.config.find_one({"_id": "default"})
+    doc.pop("_id", None)
+    return {
+        "applied_preset": preset_id,
+        "config": doc,
+        "wordlist": wordlist_status,
+        "hint": preset.get("hint"),
+    }
 
 
 

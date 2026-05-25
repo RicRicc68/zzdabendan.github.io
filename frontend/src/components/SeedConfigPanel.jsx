@@ -67,6 +67,7 @@ export default function SeedConfigPanel({ config, setConfig, onSave, saving }) {
             data-testid="wallet-type-select"
           >
             <option value="electrum2">Electrum v2</option>
+            <option value="electrum1">Electrum v1 (legacy)</option>
             <option value="bip39">BIP39</option>
             <option value="bip32">BIP32</option>
             <option value="ethereum">Ethereum</option>
