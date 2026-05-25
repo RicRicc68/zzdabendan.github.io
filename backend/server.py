@@ -1044,6 +1044,145 @@ async def verify_address(payload: dict):
 
 
 
+# ---------- Energy & GPU rental cost estimator ----------
+# Reference table of typical GPU rental options + measured/typical seedrecover
+# speedup vs CPU on this kind of workload. Conservative defaults — user can
+# override anything from the UI.
+GPU_OPTIONS = [
+    {"name": "vast.ai · RTX 3060",       "provider": "vast.ai",    "vram_gb": 12, "speedup_x": 15,  "usd_per_hour": 0.18},
+    {"name": "vast.ai · RTX 3090",       "provider": "vast.ai",    "vram_gb": 24, "speedup_x": 35,  "usd_per_hour": 0.30},
+    {"name": "vast.ai · RTX 4090",       "provider": "vast.ai",    "vram_gb": 24, "speedup_x": 55,  "usd_per_hour": 0.55},
+    {"name": "RunPod · RTX A4000",       "provider": "RunPod",     "vram_gb": 16, "speedup_x": 25,  "usd_per_hour": 0.34},
+    {"name": "RunPod · RTX A6000",       "provider": "RunPod",     "vram_gb": 48, "speedup_x": 60,  "usd_per_hour": 0.79},
+    {"name": "RunPod · A100 40GB",       "provider": "RunPod",     "vram_gb": 40, "speedup_x": 90,  "usd_per_hour": 1.69},
+    {"name": "RunPod · H100 80GB",       "provider": "RunPod",     "vram_gb": 80, "speedup_x": 160, "usd_per_hour": 2.99},
+]
+
+
+def _classify_cost(eur: float) -> str:
+    if eur < 0.5:
+        return "trivial"
+    if eur < 5:
+        return "low"
+    if eur < 50:
+        return "moderate"
+    if eur < 500:
+        return "high"
+    return "extreme"
+
+
+@api.post("/jobs/cost-estimate")
+async def cost_estimate(payload: dict):
+    """
+    Energy + GPU rental cost calculator.
+    Input:
+      eta_seconds, system_watts (local box draw), eur_per_kwh, usd_to_eur,
+      provisioning_overhead_min (extra time for spinning up a GPU box)
+    Returns:
+      local: {energy_kwh, energy_cost_eur, eta_human}
+      gpu_options: [{name, provider, speedup_x, usd_per_hour, eur_per_hour,
+                     eta_seconds, eta_human, rental_cost_eur, savings_vs_local_eur, classification}]
+      recommendation: 'local' | 'gpu:<name>' | 'do_not_run'
+      message
+    """
+    eta_seconds = float(payload.get("eta_seconds") or 0)
+    system_watts = float(payload.get("system_watts") or 150)
+    eur_per_kwh = float(payload.get("eur_per_kwh") or 0.30)
+    usd_to_eur = float(payload.get("usd_to_eur") or 0.92)
+    overhead_min = float(payload.get("provisioning_overhead_min") or 10)
+
+    # Local CPU run
+    eta_hours_local = eta_seconds / 3600.0
+    energy_kwh = (system_watts / 1000.0) * eta_hours_local
+    energy_cost_eur = energy_kwh * eur_per_kwh
+    local = {
+        "eta_seconds": eta_seconds,
+        "eta_human": _humanize_eta(eta_seconds),
+        "system_watts": system_watts,
+        "eur_per_kwh": eur_per_kwh,
+        "energy_kwh": round(energy_kwh, 4),
+        "energy_cost_eur": round(energy_cost_eur, 2),
+        "classification": _classify_cost(energy_cost_eur),
+    }
+
+    # GPU options
+    options = []
+    for gpu in GPU_OPTIONS:
+        # Effective ETA with GPU + overhead
+        gpu_eta = eta_seconds / max(1, gpu["speedup_x"]) + overhead_min * 60.0
+        eur_per_hour = gpu["usd_per_hour"] * usd_to_eur
+        rental_cost = (gpu_eta / 3600.0) * eur_per_hour
+        options.append({
+            **gpu,
+            "eur_per_hour": round(eur_per_hour, 3),
+            "eta_seconds": round(gpu_eta, 1),
+            "eta_human": _humanize_eta(gpu_eta),
+            "rental_cost_eur": round(rental_cost, 2),
+            "savings_vs_local_eur": round(energy_cost_eur - rental_cost, 2),
+            "classification": _classify_cost(rental_cost),
+        })
+
+    # Recommendation logic
+    # - If eta is impractical even on H100 → do_not_run
+    # - Else pick the cheapest option that finishes in <= local eta (i.e. saves time)
+    #   prefer local if its cost is within ~1.5x of best GPU AND eta < 4h (no point renting)
+    # - Else recommend the GPU with the best (savings + reasonable speed) trade-off
+    fastest = min(options, key=lambda o: o["eta_seconds"])
+    if eta_seconds == 0:
+        recommendation = "n/a"
+        message = "Pre-flight estimate has not been computed yet."
+    elif fastest["eta_seconds"] > 30 * 86400:
+        recommendation = "do_not_run"
+        message = (
+            f"Even the fastest GPU ({fastest['name']}) would take "
+            f"{fastest['eta_human']}. The search space is impractical — "
+            f"please reduce unknown positions, typos, or wordlist size."
+        )
+    else:
+        cheapest_gpu = min(options, key=lambda o: o["rental_cost_eur"])
+        if eta_hours_local < 1 and energy_cost_eur < 1:
+            recommendation = "local"
+            message = (
+                f"Just run it locally — costs only €{energy_cost_eur:.2f} of "
+                f"electricity and finishes in {local['eta_human']}."
+            )
+        elif cheapest_gpu["rental_cost_eur"] < energy_cost_eur * 0.6:
+            recommendation = f"gpu:{cheapest_gpu['name']}"
+            message = (
+                f"Rent {cheapest_gpu['name']} — €{cheapest_gpu['rental_cost_eur']:.2f} "
+                f"vs €{energy_cost_eur:.2f} local energy "
+                f"(saves €{energy_cost_eur - cheapest_gpu['rental_cost_eur']:.2f}, "
+                f"finishes in {cheapest_gpu['eta_human']} instead of {local['eta_human']})."
+            )
+        elif eta_hours_local > 24:
+            best_speed = fastest
+            recommendation = f"gpu:{best_speed['name']}"
+            message = (
+                f"Consider {best_speed['name']}: €{best_speed['rental_cost_eur']:.2f} "
+                f"and only {best_speed['eta_human']} instead of {local['eta_human']} locally."
+            )
+        else:
+            recommendation = "local"
+            message = (
+                f"Local CPU is fine: €{energy_cost_eur:.2f} of electricity in "
+                f"{local['eta_human']}. GPU rental wouldn't save enough to justify "
+                "the setup time."
+            )
+
+    return {
+        "local": local,
+        "gpu_options": options,
+        "recommendation": recommendation,
+        "message": message,
+        "assumptions": {
+            "usd_to_eur": usd_to_eur,
+            "provisioning_overhead_min": overhead_min,
+            "note": "Speedup figures are conservative estimates for seedrecover (BIP39/Electrum) workloads. Real performance varies with GPU OpenCL drivers and wallet type. Use --enable-opencl on seedrecover.py when running on GPU.",
+        },
+    }
+
+
+
 
 # ---------- Wordlist presets ----------
 @api.get("/wordlists/presets")

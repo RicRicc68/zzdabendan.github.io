@@ -1,0 +1,40 @@
+{
+  "summary": "Tested new Energy & GPU rental cost calculator end-to-end. Backend: 14/14 new pytest cases passed against POST /api/jobs/cost-estimate (schema with 7 GPU options, local energy math, recommendation branches local/gpu/do_not_run/n/a, watts+kwh+usd_to_eur scaling, provisioning overhead) plus 17/17 regression pass on test_improvements.py and backend_test.py (cost-estimate has no external deps - pure math). Frontend: 6/7 Playwright assertions pass against the live preview - with 9 abandons + 3 unknowns ETA=1d 23h, calculator renders with banner 'RENT GPU · vast.ai · RTX 3090', €2.15 local cost, 7 cost-gpu-* rows, watts 150->300 doubles cost (2.15->4.29, ratio 1.995), kWh 0.30->0.50 scales (4.29->7.16, ratio 1.669); 1 unknown -> RUN LOCAL banner; 6 unknowns -> empty state with no crash. One spec mismatch: all 12 known should show energy-cost-empty but backend returns eta_seconds=2e-05 instead of 0, so frontend renders the calculator with €0.00.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/jobs/estimate", "issue": "When unknown_positions=0 (all words known) backend returns eta_seconds=2e-05 (search_space=1 / rate=50000) instead of 0. This propagates to the energy panel and prevents the 'empty state' from rendering as specified ('all 12 known -> Pre-flight ETA = 0 -> empty state'). Fix: short-circuit estimate to return eta_seconds=0 when unknown_positions==0."},
+      {"endpoint": "/api/jobs/cost-estimate", "issue": "Idiom `payload.get('provisioning_overhead_min') or 10` silently replaces user-supplied 0 with 10. Same pattern is used for system_watts/eur_per_kwh/usd_to_eur — passing 0 falls back to defaults. Prefer `payload.get(key, default)` plus explicit None check, or Pydantic model with defaults."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "EnergyCostCalculator", "issue": "useMemo guard `etaSeconds && isFinite(etaSeconds) ? etaSeconds : 0` does not treat sub-second ETAs as 'no-op'. With all 12 known words backend returns 2e-05 -> calculator renders with €0.00 instead of the empty state. Either change the guard to `etaSeconds > 1` or fix backend to return 0 (preferred).", "selector": "[data-testid='energy-cost-calculator']", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_cost_estimate.py",
+    "/app/test_reports/pytest/cost_estimate_results.xml"
+  ],
+  "action_items": [
+    "Short-circuit /api/jobs/estimate to return eta_seconds=0 when unknown_positions==0 so the energy panel correctly shows the empty state with a fully-known seed.",
+    "Fix `payload.get(...) or default` pattern in cost_estimate() — passing provisioning_overhead_min=0 (or system_watts=0, etc.) is silently overridden by the default."
+  ],
+  "critical_code_review_comments": [
+    "server.py has grown past ~1295 lines. Energy/GPU cost (GPU_OPTIONS, _classify_cost, cost_estimate) plus the address-verify and wordlist preset modules should be extracted into dedicated files (e.g. backend/cost_estimator.py, backend/address_verify.py).",
+    "cost_estimate() accepts a raw dict and uses `or` idiom for defaults — replace with a Pydantic CostEstimateRequest(eta_seconds: float >= 0, system_watts: float = 150, eur_per_kwh: float = 0.30, usd_to_eur: float = 0.92, provisioning_overhead_min: float = 10). This both fixes the 0-falsy bug and surfaces 422 errors on bad input.",
+    "GPU_OPTIONS is a module-level constant — fine for now but consider promoting prices/speedup factors to /app/backend/config or DB so they can be updated without redeploy (vast.ai/RunPod prices fluctuate weekly).",
+    "Recommendation logic mixes thresholds and branches in a single if/elif chain — readable now but will be hard to test/extend. Consider returning a scored list and picking max(score) with a clear scoring function.",
+    "Frontend EnergyCostCalculator re-POSTs to /jobs/cost-estimate on every keystroke in watts/kWh/usd inputs because useEffect deps include all four scalars. Add a 200ms debounce to avoid spamming the backend while user is typing."
+  ],
+  "updated_files": ["/app/backend/tests/test_cost_estimate.py"],
+  "success_rate": {"backend": "100% (14/14 new + regression green)", "frontend": "86% (6/7 spec assertions; 12-known-empty-state fails due to backend eta=2e-05)"},
+  "test_credentials": "n/a (no auth)",
+  "seed_data_creation": "None — cost-estimate is stateless.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "POST /api/jobs/cost-estimate lives in /app/backend/server.py lines 1051-1182 (GPU_OPTIONS + cost_estimate). Frontend component /app/frontend/src/components/EnergyCostCalculator.jsx posts via /lib/api.js. Pytest file /app/backend/tests/test_cost_estimate.py runs 14 tests in ~2s and covers: schema, local math, recommendation branches (local/gpu/do_not_run/n/a), watts+kWh+usd_to_eur scaling, provisioning overhead. The single observed bug is that estimate returns 2e-05 instead of 0 when all words are known — fix in /api/jobs/estimate, not the cost endpoint. Existing seed-word inputs use data-testid='seed-word-input-{1..12}' (1-indexed). GPU row testids are slugified e.g. 'cost-gpu-vast-ai---rtx-3090' (triple dash because the slugifier replaces all non-alphanumerics including dots and the centre-dot character). To count GPU rows reliably use `[data-testid^=\"cost-gpu-\"]:not([data-testid=\"cost-gpu-options\"])` because the wrapper container also matches the prefix.",
+  "rca of the issue": "Empty-state spec mismatch RCA: /api/jobs/estimate computes eta_seconds = search_space / effective_rate. When all words are known, search_space=1 (no combinations), divided by 50000 c/s yields 2e-05. The frontend useMemo in EnergyCostCalculator.jsx treats any non-zero finite value as a valid ETA, so the calculator renders. Two valid fixes: (a) backend: `if unknown_positions == 0: eta_seconds = 0` (preferred, makes API contract explicit); (b) frontend: change `etaSeconds && isFinite(etaSeconds) ? etaSeconds : 0` to `etaSeconds > 1 ? etaSeconds : 0`. Recommend (a)."
+}

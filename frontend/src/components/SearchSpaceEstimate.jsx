@@ -17,7 +17,7 @@ const FEAS_LABEL = {
   impractical: "IMPRACTICAL",
 };
 
-export default function SearchSpaceEstimate({ config }) {
+export default function SearchSpaceEstimate({ config, onEtaChange }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [wordlistSize, setWordlistSize] = useState(2048);
@@ -42,6 +42,7 @@ export default function SearchSpaceEstimate({ config }) {
         rate_per_thread: rate,
       });
       setData(r.data);
+      if (onEtaChange) onEtaChange(r.data?.eta_seconds || 0);
     } finally { setLoading(false); }
   };
 

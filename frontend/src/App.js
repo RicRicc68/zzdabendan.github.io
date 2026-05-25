@@ -5,6 +5,7 @@ import SeedConfigPanel from "./components/SeedConfigPanel";
 import MaskPreview from "./components/MaskPreview";
 import WordlistManager from "./components/WordlistManager";
 import SearchSpaceEstimate from "./components/SearchSpaceEstimate";
+import EnergyCostCalculator from "./components/EnergyCostCalculator";
 import JobMonitor from "./components/JobMonitor";
 import JobHistory from "./components/JobHistory";
 import TerminalPanel from "./components/TerminalPanel";
@@ -35,6 +36,7 @@ export default function App() {
   const [starting, setStarting] = useState(false);
   const [foundSeedModal, setFoundSeedModal] = useState(null);
   const [error, setError] = useState(null);
+  const [estimateEta, setEstimateEta] = useState(0);
 
   const stream = useJobStream(selectedJobId, BACKEND_URL);
 
@@ -226,7 +228,8 @@ export default function App() {
               onSave={saveConfig}
               saving={savingConfig}
             />
-            <SearchSpaceEstimate config={config} />
+            <SearchSpaceEstimate config={config} onEtaChange={setEstimateEta} />
+            <EnergyCostCalculator etaSeconds={estimateEta} />
             <MaskPreview config={config} />
             <WordlistManager />
           </div>
