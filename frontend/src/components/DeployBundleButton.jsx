@@ -65,9 +65,9 @@ export default function DeployBundleButton({ recommendedGpu, etaHuman, localEtaH
           <Rocket className="h-4 w-4 text-purple-400" />
           GPU Deploy Bundle
         </h3>
-        {recommendedGpu && (
+        {(recommendedGpu || true) && (
           <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500" data-testid="deploy-gpu-name">
-            target: {recommendedGpu}
+            target: {recommendedGpu || "RTX 3090 (default)"}
           </span>
         )}
       </div>

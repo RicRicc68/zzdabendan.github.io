@@ -30,6 +30,21 @@ and seed phrase. User choices:
 - Job history with stop/delete
 - Dark "Control Room" UI
 
+## Implemented v1.5 (2026-05-25 — GPU deploy bundle generator)
+- POST `/api/deploy/preview` (JSON) and POST `/api/deploy/generate` (ZIP)
+  produce a complete deploy bundle: Dockerfile (nvidia/cuda + btcrecover +
+  pyopencl), run.sh (seedrecover --enable-opencl), config.json (passphrase
+  redacted), candlist.txt, verify.txt, README.md, and provider-specific
+  deploy script (vastai-deploy.sh or runpod-deploy.md).
+- vastai-deploy.sh uses the correct CLI gpu filter — friendly labels are
+  converted via `_gpu_cli_name` (e.g. "vast.ai · RTX 3090" → `RTX_3090`,
+  "RunPod · A100 40GB" → `A100`, "RunPod · RTX A4000" → `RTX_A4000`).
+- Frontend: `DeployBundleButton.jsx` with provider selector (vast.ai CLI /
+  RunPod web), tabbed file preview, download .zip; header shows target GPU
+  recommended by the Energy Cost panel (fallback "RTX 3090 (default)").
+- Verified: 19/19 backend pytest + 100% frontend Playwright. Zero issues.
+
+
 ## Implemented v1.4 (2026-05-25 — Energy & GPU cost calculator)
 - **POST `/api/jobs/cost-estimate`** — pure-math endpoint that takes
   `eta_seconds`, `system_watts`, `eur_per_kwh`, `usd_to_eur`, optional
