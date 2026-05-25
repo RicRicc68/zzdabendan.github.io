@@ -1,0 +1,41 @@
+{"ts": "2026-05-25T09:27:29.835552+00:00", "stream": "system", "line": "$ /root/.venv/bin/python -u /opt/btcrecover/seedrecover.py --no-pause --no-gui --disablesecuritywarnings --mnemonic abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon ? --mnemonic-length 12 --language en --wallet-type electrum2 --addrs 1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9 --addr-limit 5 --threads 1"}
+{"ts": "2026-05-25T09:27:31.149780+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T09:27:31.149924+00:00", "stream": "stdout", "line": "Starting seedrecover 1.13.0-CryptoGuide, btcrecover 1.13.0-Cryptoguide on Python 3.11.15 64-bit, 21-bit unicodes, 64-bit ints"}
+{"ts": "2026-05-25T09:27:31.238730+00:00", "stream": "stdout", "line": "Detected supplied address types: BIP44 (P2PKH)"}
+{"ts": "2026-05-25T09:27:31.238850+00:00", "stream": "stdout", "line": "All configured derivation paths match the supplied address types."}
+{"ts": "2026-05-25T09:27:31.238900+00:00", "stream": "stdout", "line": "Using the 'en' wordlist."}
+{"ts": "2026-05-25T09:27:31.346957+00:00", "stream": "stdout", "line": "'?' was in your seed, but there is no similar seed word."}
+{"ts": "2026-05-25T09:27:31.350433+00:00", "stream": "stdout", "line": "2026-05-25 09:27:31 : Phase 1/4: up to 2 mistakes, excluding entirely different seed words."}
+{"ts": "2026-05-25T09:27:31.350752+00:00", "stream": "stdout", "line": "Not enough entirely different seed words permitted; skipping this phase."}
+{"ts": "2026-05-25T09:27:31.350817+00:00", "stream": "stdout", "line": "2026-05-25 09:27:31 : Search Complete"}
+{"ts": "2026-05-25T09:27:31.350951+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T09:27:31.350979+00:00", "stream": "stdout", "line": "2026-05-25 09:27:31 : Phase 2/4: 1 mistake which can be an entirely different seed word."}
+{"ts": "2026-05-25T09:27:31.435233+00:00", "stream": "stdout", "line": "Wallet Type: btcrseed.WalletElectrum2"}
+{"ts": "2026-05-25T09:27:31.435365+00:00", "stream": "stdout", "line": "Pre-start benchmark: measuring verification speed (limit 30 seconds). Use --skip-pre-start to skip or --pre-start-seconds to limit this step."}
+{"ts": "2026-05-25T09:27:32.737124+00:00", "stream": "stdout", "line": "Pre-start benchmark completed in 1.30s (10715.73 passwords/s)."}
+{"ts": "2026-05-25T09:27:32.737218+00:00", "stream": "stdout", "line": "Duplicate Check Level: 0 , Add --no-dupchecks up to 4 times fully disable duplicate checking"}
+{"ts": "2026-05-25T09:27:32.737238+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T09:27:32.740708+00:00", "stream": "stdout", "line": "2026-05-25 09:27:32 : Using 1 worker thread"}
+{"ts": "2026-05-25T09:27:32.740887+00:00", "stream": "stdout", "line": "Will try 2,048 passwords, ETA 1 seconds ..."}
+{"ts": "2026-05-25T09:27:32.749501+00:00", "stream": "stdout", "line": "Duplicate Check Level: 0 , Add --no-dupchecks up to 4 times fully disable duplicate checking"}
+{"ts": "2026-05-25T09:27:32.749605+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T09:27:33.039018+00:00", "stream": "stdout", "line": "2026-05-25 09:27:33 : Search Complete"}
+{"ts": "2026-05-25T09:27:33.039147+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T09:27:33.039306+00:00", "stream": "stdout", "line": "2026-05-25 09:27:33 : Phase 3/4: up to 2 mistakes, 1 of which can be an entirely different seed word."}
+{"ts": "2026-05-25T09:27:33.133461+00:00", "stream": "stdout", "line": "Wallet Type: btcrseed.WalletElectrum2"}
+{"ts": "2026-05-25T09:27:33.133595+00:00", "stream": "stdout", "line": "Pre-start benchmark: measuring verification speed (limit 30 seconds). Use --skip-pre-start to skip or --pre-start-seconds to limit this step."}
+{"ts": "2026-05-25T09:27:34.444711+00:00", "stream": "stdout", "line": "Pre-start benchmark completed in 1.31s (10641.71 passwords/s)."}
+{"ts": "2026-05-25T09:27:34.444819+00:00", "stream": "stdout", "line": "Duplicate Check Level: 0 , Add --no-dupchecks up to 4 times fully disable duplicate checking"}
+{"ts": "2026-05-25T09:27:34.444844+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T09:27:34.935662+00:00", "stream": "stdout", "line": "2026-05-25 09:27:34 : Using 1 worker thread"}
+{"ts": "2026-05-25T09:27:34.935874+00:00", "stream": "stdout", "line": "Will try 47,104 passwords, ETA 5 seconds ..."}
+{"ts": "2026-05-25T09:27:34.941566+00:00", "stream": "stdout", "line": "Duplicate Check Level: 0 , Add --no-dupchecks up to 4 times fully disable duplicate checking"}
+{"ts": "2026-05-25T09:27:34.941823+00:00", "stream": "stdout", "line": ""}
+{"ts": "2026-05-25T09:27:40.035451+00:00", "stream": "stdout", "line": "2026-05-25 09:27:40 : Search Complete"}
+{"ts": "2026-05-25T09:27:40.035601+00:00", "stream": "stdout", "line": " Seed not found"}
+{"ts": "2026-05-25T09:27:40.035751+00:00", "stream": "stdout", "line": "2026-05-25 09:27:40 : Phase 4/4: up to 2 mistakes, 2 of which can be an entirely different seed word."}
+{"ts": "2026-05-25T09:27:40.042738+00:00", "stream": "stdout", "line": "Wallet Type: btcrseed.WalletElectrum2"}
+{"ts": "2026-05-25T09:27:40.042902+00:00", "stream": "stdout", "line": "Pre-start benchmark: measuring verification speed (limit 30 seconds). Use --skip-pre-start to skip or --pre-start-seconds to limit this step."}
+{"ts": "2026-05-25T09:27:41.533579+00:00", "stream": "stdout", "line": "Pre-start benchmark completed in 1.49s (9359.10 passwords/s)."}
+{"ts": "2026-05-25T09:27:41.533859+00:00", "stream": "stdout", "line": "Duplicate Check Level: 1 , Add --no-dupchecks up to 4 times fully disable duplicate checking"}
+{"ts": "2026-05-25T09:27:41.533920+00:00", "stream": "stdout", "line": ""}

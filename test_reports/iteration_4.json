@@ -1,0 +1,26 @@
+{
+  "summary": "Tested new BTC address verification preflight (POST /api/address/verify) end-to-end. Backend: 14/14 pytest cases passed (400 on missing/empty, garbage->invalid, P2PKH Genesis ok+history with 62,952 tx and 57.2 BTC, P2SH Satoshi-Dice valid, BIP173 P2WPKH valid, BIP350 P2TR valid, testnet tb1 rejected, response schema). Regression suites also still green: test_export.py 16/16, test_improvements.py 9/9, backend_test.py 8/8. Frontend: 5/5 Playwright assertions passed against the live preview URL — empty disables button, valid genesis shows 'VALID · ON-CHAIN · p2pkh' verdict with tx:62,952 and bal:57.20013258 BTC line and 'via mempool.space/api', typing in the input clears verdict, 'garbage' shows 'INVALID' verdict with message starting 'Invalid address', clearing input hides verdict and disables button. mempool.space is reachable from this sandbox, so the 'unknown' path was not exercised live (but tests accept it as valid).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_address_verify.py",
+    "/app/test_reports/pytest/address_verify_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py is now ~1156 lines — past the 700-line guideline; address-verify + explorer fetch is a natural module to extract into backend/address_verify.py alongside the existing btc_address.py.",
+    "verify_address accepts a raw dict — consider a Pydantic AddressVerifyRequest(address: str = Field(min_length=1, max_length=120)) to surface 422 validation errors and prevent oversized payloads.",
+    "_fetch_address_stats: on 429/5xx from mempool.space, it falls back to Blockstream but never surfaces *which* explorer rate-limited; consider returning a 'tried' list in the response for observability.",
+    "Address validator treats unknown witness versions (v2..v16) as valid with type='witness_v{n}'. For a mainnet wallet preflight, this is overly permissive — wallets do not currently produce these and they will most likely be the user's typo. Consider returning invalid (or at least 'unused' guard) for witver > 1.",
+    "Frontend AddressVerdict shows the raw backend error string (e.g. 'base58 decode failed: Invalid checksum'); fine but slightly leaks implementation detail. A friendlier 'This is not a valid Bitcoin mainnet address' would be more user-facing.",
+    "verify-address-btn has no aria-label and the icon-only state during loading (just a spinner + 'check' text) is fine, but consider aria-busy='true' while verifying for a11y."
+  ],
+  "updated_files": ["/app/backend/tests/test_address_verify.py"],
+  "success_rate": {"backend": "100% (14/14 new + 33/33 regression)", "frontend": "100% (5/5 flows)"},
+  "test_credentials": "n/a (no auth)",
+  "seed_data_creation": "None for this iteration (verify endpoint is stateless, no DB writes).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "POST /api/address/verify lives in /app/backend/server.py lines 996-1043; explorer fetch helper at 943-993; validator in /app/backend/btc_address.py. Frontend integration is in /app/frontend/src/components/SeedConfigPanel.jsx (verify-address-input, verify-address-btn, address-verdict, address-verdict-message). External calls to mempool.space succeeded from the sandbox; if a future run hits the 'unknown' recommendation due to network policy, that is still a valid response path per spec. Regression suite: pytest backend/tests/test_address_verify.py backend/tests/test_export.py backend/tests/test_improvements.py backend/tests/backend_test.py.",
+  "rca of the issue": "No issues found — feature works as specified."
+}

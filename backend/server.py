@@ -20,12 +20,15 @@ from pathlib import Path
 from typing import Annotated, Any, Dict, List, Optional
 
 import psutil
+import httpx
 from bson import ObjectId
 from dotenv import load_dotenv
 from fastapi import APIRouter, BackgroundTasks, FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, BeforeValidator, ConfigDict, Field
+
+from btc_address import validate_btc_mainnet_address
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
@@ -929,6 +932,117 @@ async def put_wordlist(payload: dict):
     WORDLIST_PATH.write_text(raw, encoding="utf-8")
     words = [w for w in raw.split() if w.strip()]
     return {"count": len(words), "path": str(WORDLIST_PATH)}
+
+# ---------- BTC Address verification (preflight check via blockchain explorer) ----------
+EXPLORERS = [
+    "https://mempool.space/api",
+    "https://blockstream.info/api",
+]
+
+
+async def _fetch_address_stats(address: str) -> dict:
+    """Try mempool.space first, then Blockstream Esplora as fallback."""
+    timeout = httpx.Timeout(8.0, connect=4.0)
+    last_error = None
+    async with httpx.AsyncClient(timeout=timeout, headers={"User-Agent": "seed-recovery-dashboard/1.0"}) as client:
+        for base in EXPLORERS:
+            try:
+                resp = await client.get(f"{base}/address/{address}")
+            except httpx.RequestError as e:
+                last_error = f"{base}: {e}"
+                continue
+            if resp.status_code == 400:
+                return {
+                    "explorer": base, "reachable": True,
+                    "exists": False, "error": "explorer rejected the address",
+                }
+            if resp.status_code == 404:
+                return {
+                    "explorer": base, "reachable": True,
+                    "exists": False, "tx_count": 0, "balance_sats": 0, "has_history": False,
+                }
+            if resp.status_code == 429:
+                last_error = f"{base}: rate limited"
+                continue
+            if resp.status_code >= 500:
+                last_error = f"{base}: {resp.status_code}"
+                continue
+            try:
+                data = resp.json()
+            except Exception as e:
+                last_error = f"{base}: invalid JSON ({e})"
+                continue
+            chain = data.get("chain_stats") or {}
+            mem = data.get("mempool_stats") or {}
+            tx_chain = int(chain.get("tx_count", 0) or 0)
+            tx_mem = int(mem.get("tx_count", 0) or 0)
+            funded = int(chain.get("funded_txo_sum", 0) or 0) + int(mem.get("funded_txo_sum", 0) or 0)
+            spent = int(chain.get("spent_txo_sum", 0) or 0) + int(mem.get("spent_txo_sum", 0) or 0)
+            balance = funded - spent
+            return {
+                "explorer": base,
+                "reachable": True,
+                "exists": True,
+                "has_history": (tx_chain + tx_mem) > 0,
+                "tx_count": tx_chain,
+                "mempool_tx_count": tx_mem,
+                "funded_sats": funded,
+                "spent_sats": spent,
+                "balance_sats": balance,
+            }
+    return {"explorer": None, "reachable": False, "error": last_error or "all explorers unreachable"}
+
+
+@api.post("/address/verify")
+async def verify_address(payload: dict):
+    """
+    Preflight check on a BTC verification target.
+    - Validates address format locally (P2PKH/P2SH/P2WPKH/P2WSH/P2TR mainnet)
+    - Queries mempool.space → Blockstream for on-chain history & balance
+    Returns a recommendation string:
+      ok          — valid + has history (good target)
+      unused      — valid but no on-chain activity (probably wrong address)
+      invalid     — format invalid
+      unknown     — valid format but explorer unreachable
+    """
+    address = (payload.get("address") or "").strip()
+    if not address:
+        raise HTTPException(400, "address required")
+
+    fmt = validate_btc_mainnet_address(address)
+    out = {
+        "address": address,
+        "format": fmt,
+        "onchain": None,
+        "recommendation": "invalid",
+        "message": None,
+    }
+    if not fmt["valid"]:
+        out["message"] = f"Invalid address: {fmt.get('error')}"
+        return out
+
+    stats = await _fetch_address_stats(address)
+    out["onchain"] = stats
+    if not stats.get("reachable"):
+        out["recommendation"] = "unknown"
+        out["message"] = f"Address format OK ({fmt['type']}) but explorers unreachable: {stats.get('error')}"
+        return out
+    if stats.get("has_history"):
+        out["recommendation"] = "ok"
+        bal = stats.get("balance_sats", 0)
+        out["message"] = (
+            f"Valid {fmt['type']} address with {stats['tx_count']} confirmed tx · "
+            f"current balance: {bal:,} sats ({bal/1e8:.8f} BTC)"
+        )
+    else:
+        out["recommendation"] = "unused"
+        out["message"] = (
+            f"Address format OK ({fmt['type']}) but it has NO on-chain activity. "
+            "Recovery against an unused address won't help unless you are sure it's yours."
+        )
+    return out
+
+
 
 
 # ---------- Wordlist presets ----------

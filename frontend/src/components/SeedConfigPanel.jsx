@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { api } from "../lib/api";
+import { ShieldCheck, ShieldAlert, Loader2, Search } from "lucide-react";
 
 export default function SeedConfigPanel({ config, setConfig, onSave, saving }) {
+  const [verifying, setVerifying] = useState(false);
+  const [verifyResult, setVerifyResult] = useState(null);
+
+  const verifyAddress = async () => {
+    if (!config.address) return;
+    setVerifying(true);
+    setVerifyResult(null);
+    try {
+      const r = await api.post("/address/verify", { address: config.address });
+      setVerifyResult(r.data);
+    } catch (e) {
+      setVerifyResult({ recommendation: "error", message: e.response?.data?.detail || e.message });
+    } finally { setVerifying(false); }
+  };
+
   const seedLength = config.seed_length || 12;
 
   const setWord = (i, val) => {
@@ -109,14 +126,28 @@ export default function SeedConfigPanel({ config, setConfig, onSave, saving }) {
 
       <div className="border-t border-slate-800 pt-4 flex flex-col gap-3">
         <Field label="Verification target — at least one (address, mpk, or wallet file)">
-          <input
-            type="text"
-            placeholder="BTC address (e.g. bc1q...)"
-            value={config.address || ""}
-            onChange={(e) => setConfig({ ...config, address: e.target.value })}
-            className="input-base w-full px-2 py-1.5"
-            data-testid="verify-address-input"
-          />
+          <div className="flex gap-2">
+            <input
+              type="text"
+              placeholder="BTC address (e.g. bc1q...)"
+              value={config.address || ""}
+              onChange={(e) => { setConfig({ ...config, address: e.target.value }); setVerifyResult(null); }}
+              className="input-base flex-1 px-2 py-1.5"
+              data-testid="verify-address-input"
+            />
+            <button
+              type="button"
+              onClick={verifyAddress}
+              disabled={!config.address || verifying}
+              className="btn-ghost"
+              title="Check address format + on-chain history"
+              data-testid="verify-address-btn"
+            >
+              {verifying ? <Loader2 className="h-3 w-3 animate-spin" /> : <Search className="h-3 w-3" />}
+              check
+            </button>
+          </div>
+          {verifyResult && <AddressVerdict result={verifyResult} />}
         </Field>
         <div className="grid grid-cols-2 gap-3">
           <Field label="Master pub key (xpub)">
@@ -201,5 +232,42 @@ function Field({ label, children }) {
       <span className="text-[10px] uppercase tracking-widest text-slate-500 font-mono">{label}</span>
       {children}
     </label>
+  );
+}
+
+
+const VERDICT_COLOR = {
+  ok: { c: "#22C55E", icon: <ShieldCheck className="h-3 w-3" />, label: "VALID · ON-CHAIN" },
+  unused: { c: "#F59E0B", icon: <ShieldAlert className="h-3 w-3" />, label: "VALID · UNUSED" },
+  invalid: { c: "#EF4444", icon: <ShieldAlert className="h-3 w-3" />, label: "INVALID" },
+  unknown: { c: "#94A3B8", icon: <ShieldAlert className="h-3 w-3" />, label: "EXPLORER OFFLINE" },
+  error: { c: "#EF4444", icon: <ShieldAlert className="h-3 w-3" />, label: "ERROR" },
+};
+
+function AddressVerdict({ result }) {
+  const v = VERDICT_COLOR[result.recommendation] || VERDICT_COLOR.error;
+  return (
+    <div
+      className="mt-2 border rounded-sm px-3 py-2 flex flex-col gap-1"
+      style={{ borderColor: v.c + "55", background: v.c + "10" }}
+      data-testid="address-verdict"
+    >
+      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest" style={{ color: v.c }}>
+        {v.icon} {v.label}
+        {result.format?.type && (
+          <span className="text-slate-500 normal-case tracking-normal">· {result.format.type}</span>
+        )}
+      </div>
+      <div className="text-[11px] font-mono text-slate-300 leading-relaxed" data-testid="address-verdict-message">
+        {result.message}
+      </div>
+      {result.onchain?.balance_sats != null && (
+        <div className="text-[10px] font-mono text-slate-500 flex gap-4">
+          <span>tx: {result.onchain.tx_count?.toLocaleString?.()}</span>
+          <span>bal: {(result.onchain.balance_sats / 1e8).toFixed(8)} BTC</span>
+          {result.onchain.explorer && <span>via {result.onchain.explorer.replace("https://", "")}</span>}
+        </div>
+      )}
+    </div>
   );
 }

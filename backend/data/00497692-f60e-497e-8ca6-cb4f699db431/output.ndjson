@@ -1,0 +1,2 @@
+{"ts": "2026-05-25T09:26:49.633310+00:00", "stream": "system", "line": "$ /root/.venv/bin/python -u /opt/btcrecover/seedrecover.py --no-pause --no-gui --disablesecuritywarnings --mnemonic abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon ? --mnemonic-length 12 --language en --wallet-type electrum2 --addrs 1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9 --addr-limit 5 --threads 1 --big-typos 2"}
+{"ts": "2026-05-25T09:26:50.434748+00:00", "stream": "system", "line": "[process exit code=-15]"}
