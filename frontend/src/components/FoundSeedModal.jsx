@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ShieldCheck, Copy, X } from "lucide-react";
+import { devError } from "../lib/logger";
 
 export default function FoundSeedModal({ seed, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -11,7 +12,7 @@ export default function FoundSeedModal({ seed, onClose }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch (e) {
-      console.error("[FoundSeedModal] clipboard error", e);
+      devError("[FoundSeedModal] clipboard error", e);
     }
   };
 

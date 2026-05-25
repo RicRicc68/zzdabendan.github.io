@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { api } from "../lib/api";
+import { devError } from "../lib/logger";
 import { Zap, Cpu, Cloud, Check } from "lucide-react";
 
 const CLASS_COLOR = {
@@ -43,7 +44,7 @@ export default function EnergyCostCalculator({ etaSeconds, onCostInfo }) {
         });
       }
     } catch (e) {
-      console.error("[EnergyCostCalculator] failed", e);
+      devError("[EnergyCostCalculator] failed", e);
     } finally { setLoading(false); }
   };
 

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { api } from "./lib/api";
+import { devDebug } from "./lib/logger";
 import SystemStatus from "./components/SystemStatus";
 import SeedConfigPanel from "./components/SeedConfigPanel";
 import MaskPreview from "./components/MaskPreview";
@@ -83,7 +84,7 @@ export default function App() {
         const st = await api.get("/system/status");
         setSystemStatus(st.data);
       } catch (e) {
-        console.debug("[App] status poll failed", e?.message);
+        devDebug("[App] status poll failed", e?.message);
       }
     }, 5000);
     return () => clearInterval(statusInt);
@@ -108,7 +109,7 @@ export default function App() {
         setArchivedLogs(lr.data?.lines || []);
         if (lr.data?.found_seed) setFoundSeedModal(lr.data.found_seed);
       } catch (e) {
-        console.debug("[App] archived job fetch failed", e?.message);
+        devDebug("[App] archived job fetch failed", e?.message);
       }
     })();
     return () => { cancelled = true; };
@@ -121,7 +122,7 @@ export default function App() {
         const j = await api.get("/jobs");
         setJobs(j.data);
       } catch (e) {
-        console.debug("[App] jobs poll failed", e?.message);
+        devDebug("[App] jobs poll failed", e?.message);
       }
     }, 3000);
     return () => clearInterval(i);

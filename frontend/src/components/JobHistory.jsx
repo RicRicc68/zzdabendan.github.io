@@ -1,5 +1,6 @@
 import React from "react";
 import { api, fmtDuration, STATUS_COLOR } from "../lib/api";
+import { devError } from "../lib/logger";
 import { History, Trash2, Download } from "lucide-react";
 
 export default function JobHistory({ jobs, onSelect, selectedId, onDelete }) {
@@ -15,7 +16,7 @@ export default function JobHistory({ jobs, onSelect, selectedId, onDelete }) {
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
     } catch (err) {
-      console.error("[JobHistory] export failed", err);
+      devError("[JobHistory] export failed", err);
     }
   };
   return (

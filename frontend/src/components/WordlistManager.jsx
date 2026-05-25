@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../lib/api";
+import { devError } from "../lib/logger";
 import { BookText, Save, Library } from "lucide-react";
 
 export default function WordlistManager() {
@@ -21,7 +22,7 @@ export default function WordlistManager() {
       const r = await api.get("/wordlists/presets");
       setPresets(r.data.presets || []);
     } catch (e) {
-      console.error("[WordlistManager] presets load failed", e);
+      devError("[WordlistManager] presets load failed", e);
     }
   };
 
