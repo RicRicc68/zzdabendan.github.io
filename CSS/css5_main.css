@@ -1,7 +1,7 @@
 /* main */
 
 .main {
-    padding: 1rem;
+    padding: 4rem 2rem;
 }
 
 .section {
@@ -20,14 +20,44 @@
 /* 词云 */
 
 .ciyun {
-    background-color: #eee;
     background-color: #fff;
 }
 
 .ciyun .article {
-    background-color: #fff;
     border: 0px solid #cccccc;
 }
+
+.cloud-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    gap: 0.6rem;
+    padding: 0.3rem;
+}
+
+.cloud-word {
+    padding: 0.3rem;
+
+    background-color: #eee;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #444;
+    color: #003366;
+
+
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-size: 11px;
+}
+
+.cloud-word:hover {
+    border-color: #007bff;
+}
+
+
 
 /* 书签墙 */
 
@@ -49,42 +79,12 @@
     font-size: 0.9rem;
     background-color: #eee;
     font-weight: bold;
+    font-size: 11px;
 }
 
 .link-card:hover {
     border-color: #007bff;
 }
-
-
-
-/* 词云 */
-
-.cloud-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding: 0.3rem;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.cloud-word {
-    padding: 0.3rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    color: #444;
-    color: #003366;
-    white-space: nowrap;
-    background-color: #eee;
-}
-
-.cloud-word:hover {
-    border-color: #007bff;
-}
-
-
 
 
 

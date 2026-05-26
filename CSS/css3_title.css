@@ -1,5 +1,7 @@
 .title {
-    flex: 0 0 auto;
+    flex: 1;
+    justify-content: flex-start;
+    background-color: rgba(249, 249, 249, 0);
 }
 
 .title {
