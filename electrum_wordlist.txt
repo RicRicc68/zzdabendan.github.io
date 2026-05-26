@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/spesmilo/electrum/master/electrum/wordlist/english.txt

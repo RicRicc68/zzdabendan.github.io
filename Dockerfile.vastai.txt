@@ -1,0 +1,52 @@
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+
+LABEL maintainer="seed-recovery" \
+      description="Electrum 2 Seed Recovery with btcrecover"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    WALLET_ADDRESS="16RGFo6hjq9ym6Pj7N5H7L1NR1rVPJyw2v" \
+    PUBLIC_KEY="02145d2611c823a396ef6712ce0f712f09b9b4f3135e3e0aa3230fb9b6d08d1e16"
+
+ARG WALLET_ADDRESS
+ARG PUBLIC_KEY
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.10 \
+    python3-pip \
+    python3-dev \
+    git \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    wget \
+    curl \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python packages
+RUN pip3 install --upgrade pip setuptools wheel && \
+    pip3 install \
+    pycryptodome>=3.15.0 \
+    requests>=2.28.0 \
+    web3>=6.0.0 \
+    ecdsa>=0.18.0
+
+# Clone btcrecover
+RUN git clone https://github.com/3rdIteration/btcrecover.git /opt/btcrecover && \
+    cd /opt/btcrecover && \
+    pip3 install -e .
+
+# Create directories
+RUN mkdir -p /app/recovery /app/logs && chmod -R 777 /app
+
+WORKDIR /app/recovery
+
+# Copy recovery files
+COPY recovery_config.json /app/recovery/
+COPY electrum_wordlist.txt /app/recovery/
+COPY recovery_electrum2.py /app/recovery/
+COPY addresslist.txt /app/recovery/
+
+ENTRYPOINT ["python3", "/app/recovery/recovery_electrum2.py"]
