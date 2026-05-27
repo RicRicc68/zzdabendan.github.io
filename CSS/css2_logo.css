@@ -97,7 +97,7 @@
 
 .grxx {
     display: flex;
-    width: 20%;
+    width: 50%;
     position: absolute;
     top: 65px;
     left: 0;
@@ -106,8 +106,8 @@
 }
 
 .logodivdiv {
-    display: block;
     display: none;
+    display: block;
     flex: 1;
     margin: 10px;
     background-color: #ffffff;
