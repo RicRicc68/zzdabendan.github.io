@@ -2,18 +2,6 @@
     flex: 0 0 auto;
 }
 
-.logo {
-    border: 0px solid #000000;
-    background-color: rgba(249, 249, 249, 0);
-}
-
-.grtx {
-    position: relative;
-}
-
-
-
-
 
 
 /* 头像容器：相对定位，让波纹可扩散出去 */
@@ -85,14 +73,12 @@
     }
 
     100% {
-        transform: scale(8.5);
+        transform: scale(2.5);
         border-width: 1px;
         border-color: rgba(0, 0, 0, 0);
         opacity: 0;
     }
 }
-
-
 
 
 .grxx {
@@ -106,8 +92,8 @@
 }
 
 .logodivdiv {
-    display: none;
     display: block;
+    display: none;
     flex: 1;
     margin: 10px;
     background-color: #ffffff;

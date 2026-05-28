@@ -1,7 +1,7 @@
 /* main */
 
 .main {
-    padding: 4rem 2rem;
+    padding: 100px 2rem;
 }
 
 .section {
@@ -36,6 +36,8 @@
     gap: 0.6rem;
     padding: 0.3rem;
 }
+
+/* 词云词 */
 
 .cloud-word {
     padding: 0.3rem;
@@ -92,15 +94,30 @@
 /* 三分组 */
 .danbendada {
     margin: 0 auto;
+    padding: 40px;
+    border: 0px solid #cccccc;
 }
-
 
 
 /* 直播 */
 .live {
     margin: 0 auto;
-    background-color: #111;
-    background-color: #f2f2f0;
-    justify-content: center;
     padding: 40px;
+    border: 0px solid #cccccc;
+}
+
+.wzjj {
+    margin: 0 auto;
+    padding: 40px;
+    border: 0px solid #cccccc;
+}
+
+.danbendada h2,
+.live h2,
+.wzjj h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #003366;
+    background-color: #cccccc;
+    margin: 10px 10px;
 }
