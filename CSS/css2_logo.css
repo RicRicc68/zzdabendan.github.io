@@ -68,15 +68,17 @@
     0% {
         transform: scale(1);
         border-width: 1px;
-        border-color: rgba(0, 0, 0, 0.6);
+        border-color: rgba(255, 102, 153, 0.8);
         opacity: 1;
+        /* 初始可见 */
     }
 
     100% {
-        transform: scale(2.5);
+        transform: scale(1.5);
         border-width: 1px;
-        border-color: rgba(0, 0, 0, 0);
+        border-color: rgba(255, 102, 153, 0.8);
         opacity: 0;
+        /* 最终完全透明 */
     }
 }
 
