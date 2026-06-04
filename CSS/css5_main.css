@@ -1,7 +1,7 @@
 /* main */
 
 .main {
-    padding: 3rem 1rem;
+    padding: 7rem 1rem;
 }
 
 .section {
@@ -80,7 +80,6 @@
     text-decoration: none;
     font-size: 0.9rem;
     background-color: #eee;
-    font-weight: bold;
     font-size: 11px;
 }
 
