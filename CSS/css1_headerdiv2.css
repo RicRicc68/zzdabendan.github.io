@@ -1,0 +1,34 @@
+/*  ////////////////////////// headerdiv2 总属性 ////////////////////////// */
+.headerdiv2 {
+    border: 0px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    margin: 1rem 0 1rem 0;
+    gap: 0.9rem;
+
+}
+
+
+/*  ////////////////////////// span 总属性 ////////////////////////// */
+.headerdiv2 span {
+    display: inline-block;
+    /* 保证弹性盒子表现 */
+    font-size: 14px;
+    padding: 0.3rem;
+}
+
+.headerdiv2 span a {
+    text-decoration: none;
+    list-style: none;
+    padding: 0.3rem;
+    background-color: #eee;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #003366;
+    font-size: 14px;
+}
