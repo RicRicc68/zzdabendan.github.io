@@ -1,12 +1,99 @@
+/*  ////////////////////////// header 总属性 ////////////////////////// */
 .header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 0.6rem;
+}
 
-    justify-content: space-between;
-    align-items: center;
 
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 2px #00000024, 0 3px 1px -2px #0003, 0 1px 5px #0000001f;
-    height: 100px;
-    padding: 0 20px;
+
+
+/*  ////////////////////////// 头像 ////////////////////////// */
+
+/* 头像容器：相对定位，让波纹可扩散出去 */
+.grtx {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border-radius: 50%;
+    /* 必须 visible，否则扩大的波纹会被裁剪 */
+    overflow: visible;
+}
+
+/* 头像图片：黑色圆形头像 */
+.avatar-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    background-color: #000000;
+}
+
+/* 单层波纹：只有边框扩大，没有背景填充 */
+.ripple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+    /* 黑色边框，初始可见 */
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    /* 无限循环，平滑扩大 */
+    animation: expandBorder 1.5s infinite ease-out;
+}
+
+/* 三个波纹不同延迟：错开启动时间,立即开始,延迟0.5秒,延迟1.0秒 */
+.ripple-1 {
+    animation-delay: 0s;
+}
+
+.ripple-2 {
+    animation-delay: 0.5s;
+}
+
+.ripple-3 {
+    animation-delay: 1.0s;
+}
+
+/* 关键帧：边框从贴合头像逐渐扩大到2.5倍，同时边框颜色变淡直至完全透明 */
+@keyframes expandBorder {
+    0% {
+        transform: scale(1);
+        border-width: 1px;
+        border-color: rgba(255, 102, 153, 0.8);
+        opacity: 1;
+        /* 初始可见 */
+    }
+
+    100% {
+        transform: scale(3.5);
+        border-width: 1px;
+        border-color: rgba(255, 102, 153, 0.8);
+        opacity: 0;
+        /* 最终完全透明 */
+    }
+}
+
+
+
+
+/*  ////////////////////////// 输入框 ////////////////////////// */
+
+.input-field {
+    width: 18rem;
+    border: 1px solid #ccc;
+    padding: 0.3rem;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-field:focus {
+    border-color: #3b82f6;
 }

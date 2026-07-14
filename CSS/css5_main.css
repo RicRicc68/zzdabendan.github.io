@@ -1,7 +1,7 @@
 /* main */
 
 .main {
-    padding: 1rem;
+    margin: 10px 0 0 0;
 }
 
 .section {
@@ -16,68 +16,37 @@
     flex: 3;
 }
 
-
-/* 词云 */
+/* //////////////////////////词云////////////////////////// */
 
 .ciyun {
-    background-color: #eee;
-    background-color: #fff;
+    background-color: #f5f5f5;
+    padding: 1rem;
 }
 
 .ciyun .article {
-    background-color: #fff;
     border: 0px solid #cccccc;
 }
 
-/* 书签墙 */
-
-.link-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding: 0.3rem;
-    box-sizing: border-box;
-}
-
-.link-card {
-    padding: 0.3rem;
-    color: #444;
-    color: #003366;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    background-color: #eee;
-    font-weight: bold;
-}
-
-.link-card:hover {
-    border-color: #007bff;
-}
-
-
-
-/* 词云 */
-
+/* //////////////////////////词云词////////////////////////// */
 .cloud-wrap {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
     padding: 0.3rem;
-    align-items: center;
-    justify-content: flex-start;
+    gap: 0.8rem;
 }
 
+/* 词云词 */
 .cloud-word {
     padding: 0.3rem;
+    background-color: #FFF;
+    background-color: #eee;
     border: 1px solid #e0e0e0;
+    border: 1px solid #007bff62;
+    color: #003366;
     border-radius: 6px;
     text-decoration: none;
-    font-size: 0.9rem;
-    color: #444;
-    color: #003366;
     white-space: nowrap;
-    background-color: #eee;
+    font-size: 14px;
 }
 
 .cloud-word:hover {
@@ -85,22 +54,66 @@
 }
 
 
+/* //////////////////////////书签墙////////////////////////// */
+
+.link-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.3rem;
+    gap: 0.8rem;
+}
+
+.link-card {
+    padding: 0.3rem;
+    background-color: #FFF;
+    background-color: #eee;
+    border: 1px solid #e0e0e0;
+    color: #007bff;
+
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.link-card:hover {
+    border-color: #007bff;
+}
 
 
+/* wzjj */
+.wzjj {
+    padding: 20px;
+    border: 0px solid #cccccc;
+    background-color: #555555;
+    color: #fff;
+}
 
-
-/* 三分组 */
+/* danbendada */
 .danbendada {
-    margin: 0 auto;
+    padding: 20px;
+    border: 0px solid #cccccc;
+    background-color: #555555;
+    color: #fff;
+}
+
+/* 直播live */
+.live {
+    padding: 20px;
+    border: 0px solid #cccccc;
+    background-color: #555555;
+    color: #fff;
 }
 
 
 
-/* 直播 */
-.live {
-    margin: 0 auto;
-    background-color: #111;
-    background-color: #f2f2f0;
-    justify-content: center;
-    padding: 40px;
+.danbendada h2,
+.live h2,
+.wzjj h2 {
+    color: #fff;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 10px;
 }
