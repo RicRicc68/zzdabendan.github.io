@@ -1,8 +1,26 @@
 .title {
-    flex: 0 0 auto;
+    flex: 1;
+    justify-content: flex-start;
+    background-color: rgba(249, 249, 249, 0);
 }
 
 .title {
-    border: 0px solid #000000;
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.title h1,
+.title h2 {
+
+    padding: 0.3rem;
+    background-color: #eee;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #003366;
+    font-size: 11px;
 }

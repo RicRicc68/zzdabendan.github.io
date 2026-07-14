@@ -1,0 +1,36 @@
+/*  ////////////////////////// headerdiv1 总属性 ////////////////////////// */
+.headerdiv1 {
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    margin: 1rem 3rem;
+    border-radius: 15px;
+    background: linear-gradient(0deg, rgba(000, 000, 000, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+    box-shadow: 0 2px 2px #00000024, 0 3px 1px -2px #0003, 0 1px 5px #0000001f;
+
+}
+
+
+/*  ////////////////////////// span 总属性 ////////////////////////// */
+.headerdiv1 span {
+    display: inline-block;
+    /* 保证弹性盒子表现 */
+    font-size: 14px;
+    padding: 0.3rem;
+}
+
+.headerdiv1 span a {
+    text-decoration: none;
+    list-style: none;
+    padding: 0.3rem;
+    background-color: #eee;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #003366;
+    font-size: 14px;
+}
