@@ -36,6 +36,6 @@ POLY_FUNDER = os.getenv("POLY_FUNDER")
 
 # Guard-rail di sicurezza per la sessione di test
 LIVE_MAX_USD_PER_TRADE = 5.0    # tetto per singolo ordine
-LIVE_MAX_OPEN_POSITIONS = 3     # massimo posizioni contemporanee
-LIVE_MAX_TOTAL_USD = 15.0       # capitale totale massimo impegnabile
+LIVE_MAX_OPEN_POSITIONS = 6     # massimo posizioni contemporanee
+LIVE_MAX_TOTAL_USD = 30.0       # capitale totale massimo impegnabile
 LIVE_MIN_SHARES = 5.0           # minimo del CLOB Polymarket
