@@ -31,10 +31,11 @@ echo "==> Genero password proxy"
 PROXY_PASS="$(openssl rand -base64 18 | tr -d '=+/')"
 
 echo "==> Cerco l'AMI Amazon Linux 2023 piu' recente in $REGION"
-AMI_ID="$(aws ssm get-parameter \
-  --region "$REGION" \
-  --name /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64 \
-  --query 'Parameter.Value' --output text)"
+# Usiamo describe-images (permesso incluso in AmazonEC2FullAccess) invece di
+# SSM Parameter Store, che richiederebbe un permesso IAM aggiuntivo (ssm:GetParameter).
+AMI_ID="$(aws ec2 describe-images --region "$REGION" --owners amazon \
+  --filters "Name=name,Values=al2023-ami-2023.*-x86_64" "Name=state,Values=available" \
+  --query 'sort_by(Images, &CreationDate)[-1].ImageId' --output text)"
 echo "    $AMI_ID"
 
 if ! aws ec2 describe-key-pairs --region "$REGION" --key-names "$KEY_NAME" >/dev/null 2>&1; then

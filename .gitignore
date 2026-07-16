@@ -82,6 +82,9 @@ web_modules/
 .myenv.local
 .myenv.development.local
 .myenv.test.local
+
+# SSH private keys (es. deploy/aws_spain_proxy/*.pem generata da setup.sh)
+*.pem
 .myenv.production.local
 
 # parcel-bundler cache (https://parceljs.org/)
