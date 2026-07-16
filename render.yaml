@@ -20,3 +20,25 @@ services:
         sync: false
       - key: PROXY_URL
         sync: false
+
+  - type: web
+    name: polymarket-arb-bot
+    env: node
+    plan: free
+    rootDir: arb-bot
+    buildCommand: npm install
+    # Dry-run: NIENTE --live. Logga solo i segnali, nessun ordine reale.
+    # Passare a live cambiando questo comando in "node server.js --live"
+    # solo dopo aver verificato i segnali nei log.
+    startCommand: node server.js
+    envVars:
+      - key: POLY_PRIVATE_KEY
+        sync: false
+      - key: POLY_FUNDER
+        sync: false
+      - key: POLY_SIGNATURE_TYPE
+        sync: false
+      - key: POLYGON_RPC_URL
+        sync: false
+      - key: PROXY_URL
+        sync: false

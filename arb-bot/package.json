@@ -1,0 +1,18 @@
+{
+  "name": "polybot-arb",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bot arbitraggio/momentum BTC Up-Down su Polymarket (CLOB v2 + RTDS)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "live": "node index.js --live"
+  },
+  "dependencies": {
+    "@polymarket/clob-client-v2": "1.0.8",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.5",
+    "viem": "^2.21.0",
+    "ws": "^8.18.0"
+  }
+}
