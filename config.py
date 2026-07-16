@@ -15,6 +15,18 @@ DATA_API = "https://data-api.polymarket.com"
 PRIVATE_KEY = os.getenv("POLY_PRIVATE_KEY")
 WALLET_ADDR = os.getenv("POLY_WALLET")
 
+# Proxy HTTP/HTTPS opzionale per le chiamate al CLOB (es. VPS con uscita in
+# Spagna, per far coincidere l'IP del bot con la propria reale residenza,
+# dato che Render non offre region in Spagna). Formato:
+# http://user:pass@host:porta oppure socks5://user:pass@host:porta
+# Deve essere impostata PRIMA di importare py_clob_client_v2 (in executor.py),
+# perché il suo httpx.Client legge le env HTTP_PROXY/HTTPS_PROXY solo alla
+# creazione del client, quindi lo facciamo qui che viene importato per primo.
+PROXY_URL = os.getenv("PROXY_URL")
+if PROXY_URL:
+    os.environ.setdefault("HTTPS_PROXY", PROXY_URL)
+    os.environ.setdefault("HTTP_PROXY", PROXY_URL)
+
 # Alert Telegram (opzionali: se mancano, gli alert sono disattivati)
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")

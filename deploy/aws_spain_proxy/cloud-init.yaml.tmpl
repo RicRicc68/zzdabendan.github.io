@@ -1,0 +1,28 @@
+#cloud-config
+package_update: true
+packages:
+  - squid
+  - httpd-tools
+
+write_files:
+  - path: /etc/squid/squid.conf
+    owner: root:root
+    permissions: "0644"
+    content: |
+      http_port __PROXY_PORT__
+      auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd
+      auth_param basic realm proxy
+      acl authenticated proxy_auth REQUIRED
+      http_access allow authenticated
+      http_access deny all
+      dns_v4_first on
+      forwarded_for delete
+      via off
+      request_header_access X-Forwarded-For deny all
+
+runcmd:
+  - htpasswd -cb /etc/squid/passwd "__PROXY_USER__" "__PROXY_PASS__"
+  - chown root:squid /etc/squid/passwd
+  - chmod 640 /etc/squid/passwd
+  - systemctl enable squid
+  - systemctl restart squid
