@@ -85,6 +85,9 @@ web_modules/
 
 # SSH private keys (es. deploy/aws_spain_proxy/*.pem generata da setup.sh)
 *.pem
+
+# Log runtime dei bot (es. arb-bot/trade_arb_log_v2.jsonl, bybit-scanner/pump_events.jsonl)
+*.jsonl
 .myenv.production.local
 
 # parcel-bundler cache (https://parceljs.org/)

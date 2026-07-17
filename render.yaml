@@ -42,3 +42,13 @@ services:
         sync: false
       - key: PROXY_URL
         sync: false
+
+  - type: web
+    name: bybit-pump-scanner
+    env: node
+    plan: free
+    rootDir: bybit-scanner
+    buildCommand: npm install
+    startCommand: node server.js
+    # Nessuna env var: solo dati di mercato pubblici, nessuna chiave API,
+    # nessun ordine. Vedi bybit-scanner/README.md.

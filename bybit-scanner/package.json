@@ -1,0 +1,13 @@
+{
+  "name": "bybit-pump-scanner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monitora tutti i perpetual future Bybit e logga cosa succede DOPO un movimento anomalo di prezzo (solo dati pubblici, nessun ordine, nessuna chiave API)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9"
+  }
+}
