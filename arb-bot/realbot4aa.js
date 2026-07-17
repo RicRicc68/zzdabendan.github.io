@@ -48,6 +48,14 @@ const RTDS_URL = 'wss://ws-live-data.polymarket.com';
 const INTERVAL_MIN = 5;
 const INTERVAL_SEC = INTERVAL_MIN * 60;
 
+// ---------- Order-flow imbalance (filtro di conferma) ----------
+// Banda di prezzo (in probabilità, es. 0.05 = 5 centesimi) attorno al
+// best bid/ask entro cui sommare le size per il calcolo dell'imbalance.
+const ORDER_FLOW_BAND = 0.05;
+// Rapporto minimo bid/(bid+ask) richiesto per confermare il segnale:
+// serve più pressione in acquisto che in vendita vicino al prezzo corrente.
+const ORDER_FLOW_MIN_RATIO = 0.55;
+
 // ---------- Guardrail di rischio (indipendenti da quelli del bot Python:
 // usando lo stesso wallet, si sommano ai suoi 6 posizioni / 30$ totali) ----------
 const MAX_TRADE_SIZE_USDC = 5;
@@ -91,6 +99,8 @@ module.exports = {
   RTDS_URL,
   INTERVAL_MIN,
   INTERVAL_SEC,
+  ORDER_FLOW_BAND,
+  ORDER_FLOW_MIN_RATIO,
   MAX_TRADE_SIZE_USDC,
   MAX_TRADES_PER_HOUR,
   MAX_DAILY_LOSS_USDC,

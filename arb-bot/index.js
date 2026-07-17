@@ -33,29 +33,48 @@ const {
   RTDS_URL, CLOB_WS_URL, CLOB_HOST, GAMMA_BASE, CHAIN_ID,
 } = cfg;
 
-// ===== PARAMETRI V2 — TUNING CONSERVATIVO =====
+// ===== PARAMETRI V3 — MOMENTUM, NON CONTRARIAN =====
+//
+// V2 calcolava un "fair value" ipersemplificato (0.5 + variazione%*0.5) e
+// comprava quando l'ask era "sotto" quel fair value. Verificato coi log
+// diagnostici reali: il mercato riprezza molto più aggressivamente di
+// quanto quella formula preveda, quindi il lato che sembrava "scontato"
+// era quasi sempre il lato PERDENTE (es. DOWN a 0.09 mentre BTC saliva
+// deciso) — la formula finiva per far scommettere contro il trend, non
+// con il trend. Probabile causa dell'azzeramento della "V1" citato nei
+// commenti storici.
+//
+// V3: compra il lato che il mercato GIÀ favorisce (come l'entry originale
+// ask>=0.52), ma solo se il movimento BTC conferma la direzione, l'ask
+// non è già agli estremi (troppo tardi, nessun edge residuo) e
+// l'order-flow (bid/ask depth reale) conferma pressione ancora a favore.
 
-// V2: Entrambi solo se c'è DISCONNESSIONE DIREZIONALE chiara
-// Compra UP solo se ask > 0.52 (il mercato dice UP con >52% prob)
-// Compra DOWN solo se ask < 0.48 (il mercato dice DOWN con >52% prob)
-const UP_ENTRY_MIN_ASK = 0.52;   // buy UP solo se il mercato già pensa sia probabile
-const DOWN_ENTRY_MAX_ASK = 0.48; // buy DOWN solo se il mercato già pensa sia probabile
+// Il mercato deve aver già mostrato una preferenza chiara per un lato...
+const MOMENTUM_MIN_ASK = 0.55;
+// ...ma non deve essere già agli estremi: oltre questo livello il book è
+// verificato "esaurito" (visto ask 1.000/0.010 già a metà finestra), size
+// minima e rischio di slippage/no-fill senza edge residuo.
+const MOMENTUM_MAX_ASK = 0.90;
 
-// Discount reale: ask deve essere ALMENO 3 centesimi sotto il fair value implicito
-// (non chiedere "quanto è scontato da 0.5" — chiedi "quanto è scontato dal prezzo indicato")
-const MIN_EDGE_BPS = 30; // 30 basis points = 0.03 di edge minimo
+// Movimento BTC minimo (dal prezzo di inizio finestra) per considerare la
+// direzione "confermata" e non rumore. In basis points (5bps = 0.05%).
+const MIN_MOVE_BPS = 5;
 
-// Size: proporzionale all'edge. Max $5 (mantenuto da guardrail).
-// Se edge > 5% → size pieno. Se edge 0.3% → size ridotta.
-const SIZE_FRACTION = 0.3; // frazione di MAX_TRADE_SIZE_USDC da usare
+// Entry: su (quasi) tutta la finestra, non solo gli ultimi 45s.
+// Verificato coi log diagnostici: già a t=257s/300s il book è ESAURITO
+// (ask a 1.000/0.010, mercato già convergo) — non resta più nessun edge
+// da sfruttare così tardi. Il vero disallineamento, se c'è, va cercato
+// prima; lasciamo che i gate su edge/volatilità/order-flow decidano DOVE
+// nella finestra scatta davvero l'ingresso, invece di forzare un istante
+// fisso a ridosso della scadenza.
+const ENTRY_WINDOW_START_SEC = 15;  // salta i primi secondi (book non ancora popolato)
+const ENTRY_WINDOW_END_SEC = 285;   // stop 15s prima della fine (già convergo, vedi sopra)
 
-// Entry: SOLO negli ultimi 45 secondi della finestra
-// (non 120s, non 180s — 45 secondi. Il prezzo deve ESSERE vicino a convergenza)
-const ENTRY_WINDOW_LAST_SECONDS = 45;
-
-// Volatilità minima per entrare: deviazione standard 5min di BTC
-// deve essere > 0.3% (altrimenti il mercato è sideways e il prezzo è random)
-const MIN_VOLAT_BPS = 30; // 30 bps = 0.3%
+// getRecentVolBps() (deviazione standard tick-a-tick) resta calcolata e
+// loggata a scopo informativo, ma NON è più un gate: nei test è rimasta
+// vicino a 0bps anche con BTC in movimento reale (misura il rumore fra
+// un tick e l'altro, non lo spostamento netto di finestra) — il vero
+// gate sul movimento è MIN_MOVE_BPS su priceChangePct, sopra.
 
 const IS_LIVE = process.argv.includes('--live');
 const LOG_FILE = 'trade_arb_log_v2.jsonl';
@@ -178,9 +197,32 @@ let currentTokenIdUp = null;
 let currentTokenIdDown = null;
 let currentBestBidUp = null, currentBestAskUp = null;
 let currentBestBidDown = null, currentBestAskDown = null;
+let currentBookUp = null, currentBookDown = null;
 let signalFiredThisWindow = false;
 let activeClobWs = null;
 let activeClobPingInterval = null;
+let lastDiagLogMs = 0;
+
+// ========== Order-flow imbalance ==========
+// Rapporto tra size in bid e size totale (bid+ask), limitato ai livelli
+// entro ORDER_FLOW_BAND dal best bid/ask (non l'intero book profondo).
+// > 0.5 = più pressione in acquisto che in vendita vicino al prezzo corrente.
+function getOrderFlowRatio(book, bestBid, bestAsk) {
+  if (!book || bestBid === null || bestAsk === null) return null;
+  const band = cfg.ORDER_FLOW_BAND;
+
+  const bidDepth = (book.bids || [])
+    .filter((b) => parseFloat(b.price) >= bestBid - band)
+    .reduce((sum, b) => sum + parseFloat(b.size), 0);
+
+  const askDepth = (book.asks || [])
+    .filter((a) => parseFloat(a.price) <= bestAsk + band)
+    .reduce((sum, a) => sum + parseFloat(a.size), 0);
+
+  const total = bidDepth + askDepth;
+  if (total <= 0) return null;
+  return bidDepth / total;
+}
 
 // ========== RTDS WebSocket ==========
 function connectRTDS() {
@@ -255,25 +297,34 @@ function connectClobMarket(tokenIdUp, tokenIdDown) {
     if (slugAtOpen !== currentMarketSlug) return;
     const text = raw.toString();
     if (text === 'PONG') return;
-    let msg;
-    try { msg = JSON.parse(text); } catch { return; }
+    let parsed;
+    try { parsed = JSON.parse(text); } catch { return; }
 
-    if (msg.event_type === 'best_bid_ask') {
-      if (msg.asset_id === tokenIdUp) {
-        currentBestBidUp = msg.best_bid ? parseFloat(msg.best_bid) : null;
-        currentBestAskUp = msg.best_ask ? parseFloat(msg.best_ask) : null;
-      }
-      if (msg.asset_id === tokenIdDown) {
-        currentBestBidDown = msg.best_bid ? parseFloat(msg.best_bid) : null;
-        currentBestAskDown = msg.best_ask ? parseFloat(msg.best_ask) : null;
-      }
-      evaluateSignal();
-    } else if (msg.event_type === 'book') {
-      if (msg.asset_id === tokenIdUp && msg.asks?.length > 0) {
-        currentBestAskUp = Math.min(...msg.asks.map((a) => parseFloat(a.price)));
-      }
-      if (msg.asset_id === tokenIdDown && msg.asks?.length > 0) {
-        currentBestAskDown = Math.min(...msg.asks.map((a) => parseFloat(a.price)));
+    // Il primo messaggio dopo la sottoscrizione (snapshot iniziale) arriva
+    // come ARRAY di più eventi (uno per asset); gli aggiornamenti
+    // incrementali arrivano come oggetto singolo. Normalizziamo sempre
+    // a un array per gestire entrambi i casi allo stesso modo.
+    const msgs = Array.isArray(parsed) ? parsed : [parsed];
+
+    for (const msg of msgs) {
+      if (msg.event_type === 'best_bid_ask') {
+        if (msg.asset_id === tokenIdUp) {
+          currentBestBidUp = msg.best_bid ? parseFloat(msg.best_bid) : null;
+          currentBestAskUp = msg.best_ask ? parseFloat(msg.best_ask) : null;
+        }
+        if (msg.asset_id === tokenIdDown) {
+          currentBestBidDown = msg.best_bid ? parseFloat(msg.best_bid) : null;
+          currentBestAskDown = msg.best_ask ? parseFloat(msg.best_ask) : null;
+        }
+        evaluateSignal();
+      } else if (msg.event_type === 'book') {
+        // NB: non usiamo più 'book' per il prezzo (i livelli coprono
+        // l'intero range 0.01-0.99, Math.min(asks) prendeva il livello
+        // più profondo del book, non il best ask reale). 'best_bid_ask'
+        // resta l'unica fonte del prezzo. Il book serve solo per
+        // l'order-flow imbalance (vedi getOrderFlowRatio).
+        if (msg.asset_id === tokenIdUp) currentBookUp = msg;
+        if (msg.asset_id === tokenIdDown) currentBookDown = msg;
       }
     }
   });
@@ -294,7 +345,7 @@ function computeCurrentWindow() {
   return { windowStart, windowEnd: windowStart + INTERVAL_SEC };
 }
 
-// ========== LOGICA V2: valuta segnale ==========
+// ========== LOGICA V3: momentum, non contrarian ==========
 function evaluateSignal() {
   if (signalFiredThisWindow) return;
   if (chainlinkPrice === null || currentWindowStart === null) return;
@@ -302,82 +353,71 @@ function evaluateSignal() {
   const { windowStart } = computeCurrentWindow();
   if (windowStart !== currentWindowStart) return;
 
-  // 1. GATE TEMPORALE: solo ultimi 45 secondi
+  // 1. GATE TEMPORALE: (quasi) tutta la finestra, vedi commento sopra
   const secondsIntoWindow = Math.floor(Date.now() / 1000) - currentWindowStart;
-  if (secondsIntoWindow < INTERVAL_SEC - ENTRY_WINDOW_LAST_SECONDS) return;
-  if (secondsIntoWindow >= INTERVAL_SEC) return;
+  if (secondsIntoWindow < ENTRY_WINDOW_START_SEC) return;
+  if (secondsIntoWindow >= ENTRY_WINDOW_END_SEC) return;
 
-  // 2. GATE VOLATILITÀ: deviazione std 5min > 0.3%
+  // volBps resta solo informativo (vedi commento sopra sulla sua inaffidabilità)
   const volBps = getRecentVolBps();
-  if (volBps < MIN_VOLAT_BPS) return;
-
-  // 3. Calcolo fair value basato su prezzo di window start
-  // Se BTC è salito > 0.2% → fair value UP > 0.52
-  // Se BTC è sceso > 0.2% → fair value DOWN > 0.52
   const priceChangePct = ((chainlinkPrice - priceAtWindowStart) / priceAtWindowStart) * 100;
-  const fairValueUp = 0.5 + (priceChangePct * 0.5); // amplifico per essere conservativo
-  const fairValueDown = 1 - fairValueUp;
+  const moveBps = Math.abs(priceChangePct) * 100;
 
-  // 4. Valuta UP
-  let upSignal = null;
-  if (currentBestAskUp !== null) {
-    // Solo se ask > 0.52 (il mercato dice UP probabile)
-    if (currentBestAskUp >= UP_ENTRY_MIN_ASK) {
-      const discount = fairValueUp - currentBestAskUp;
-      if (discount >= MIN_EDGE_BPS / 100) {
-        upSignal = {
-          tokenName: 'UP',
-          tokenId: currentTokenIdUp,
-          bestAsk: currentBestAskUp,
-          fairValue: fairValueUp,
-          discount,
-          edgeBps: discount * 10000,
-        };
-      }
+  // 2. Direzione favorita dal movimento BTC reale (non da una formula di
+  // "fair value" — vedi commento in cima al file sul perché era invertita)
+  const favorsUp = priceChangePct > 0;
+  const tokenName = favorsUp ? 'UP' : 'DOWN';
+  const tokenId = favorsUp ? currentTokenIdUp : currentTokenIdDown;
+  const ask = favorsUp ? currentBestAskUp : currentBestAskDown;
+  const bid = favorsUp ? currentBestBidUp : currentBestBidDown;
+  const book = favorsUp ? currentBookUp : currentBookDown;
+
+  let signal = null;
+  let rejectReason = null;
+
+  if (moveBps < MIN_MOVE_BPS) {
+    rejectReason = `movimento ${moveBps.toFixed(1)}bps < ${MIN_MOVE_BPS}bps`;
+  } else if (ask === null) {
+    rejectReason = 'ask n/d';
+  } else if (ask < MOMENTUM_MIN_ASK) {
+    rejectReason = `ask ${ask.toFixed(3)} < ${MOMENTUM_MIN_ASK} (mercato non ancora convinto)`;
+  } else if (ask > MOMENTUM_MAX_ASK) {
+    rejectReason = `ask ${ask.toFixed(3)} > ${MOMENTUM_MAX_ASK} (già convergo, nessun edge residuo)`;
+  } else {
+    const flowRatio = getOrderFlowRatio(book, bid, ask);
+    if (flowRatio === null || flowRatio < cfg.ORDER_FLOW_MIN_RATIO) {
+      rejectReason = `order-flow ${flowRatio === null ? 'n/d' : flowRatio.toFixed(2)} < ${cfg.ORDER_FLOW_MIN_RATIO}`;
+    } else {
+      signal = { tokenName, tokenId, bestAsk: ask, priceChangePct, flowRatio };
     }
   }
 
-  // 5. Valuta DOWN
-  let downSignal = null;
-  if (currentBestAskDown !== null) {
-    // Solo se ask < 0.48 (il mercato dice DOWN probabile)
-    if (currentBestAskDown <= DOWN_ENTRY_MAX_ASK) {
-      const discount = fairValueDown - currentBestAskDown;
-      if (discount >= MIN_EDGE_BPS / 100) {
-        downSignal = {
-          tokenName: 'DOWN',
-          tokenId: currentTokenIdDown,
-          bestAsk: currentBestAskDown,
-          fairValue: fairValueDown,
-          discount,
-          edgeBps: discount * 10000,
-        };
-      }
-    }
+  // Log diagnostico (throttled, ~1 ogni 10s) per capire perché non si entra,
+  // anche quando nessun gate viene superato.
+  if (Date.now() - lastDiagLogMs > 10000) {
+    lastDiagLogMs = Date.now();
+    console.log(
+      `[DIAG] t=${secondsIntoWindow}s | BTC ${priceChangePct >= 0 ? '+' : ''}${priceChangePct.toFixed(3)}% (${moveBps.toFixed(1)}bps) | ` +
+      `vol=${volBps.toFixed(0)}bps(info) | favorito=${tokenName} ask=${ask?.toFixed(3) ?? 'n/d'} ` +
+      `[${signal ? 'OK' : rejectReason}]`
+    );
   }
 
-  // 6. Scegli il migliore (edge più alto)
-  const bestSignal = upSignal && downSignal
-    ? (upSignal.edgeBps > downSignal.edgeBps ? upSignal : downSignal)
-    : (upSignal || downSignal);
-
-  if (!bestSignal) return;
+  if (!signal) return;
 
   signalFiredThisWindow = true;
 
-  const size = Math.min(
-    MAX_TRADE_SIZE_USDC,
-    (bestSignal.edgeBps / (MIN_EDGE_BPS * 2)) * MAX_TRADE_SIZE_USDC * SIZE_FRACTION + MAX_TRADE_SIZE_USDC * 0.5
-  );
+  const size = MAX_TRADE_SIZE_USDC;
 
   console.log(
-    `\n[SEGNALE V2] ${bestSignal.tokenName} | t=${secondsIntoWindow}s | ask=${bestSignal.bestAsk.toFixed(3)} | ` +
-    `fair=${bestSignal.fairValue.toFixed(3)} | edge=${bestSignal.edgeBps.toFixed(0)}bps | vol=${volBps.toFixed(0)}bps | size=$${size.toFixed(2)}`
+    `\n[SEGNALE V3] ${signal.tokenName} | t=${secondsIntoWindow}s | ask=${signal.bestAsk.toFixed(3)} | ` +
+    `BTC ${signal.priceChangePct >= 0 ? '+' : ''}${signal.priceChangePct.toFixed(3)}% | ` +
+    `flow=${signal.flowRatio.toFixed(2)} | size=$${size.toFixed(2)}`
   );
 
   logEvent({
-    type: 'signal_v2',
-    ...bestSignal,
+    type: 'signal_v3',
+    ...signal,
     secondsIntoWindow,
     volBps,
     size,
@@ -385,7 +425,7 @@ function evaluateSignal() {
     slug: currentMarketSlug,
   });
 
-  executeTrade(bestSignal, size);
+  executeTrade(signal, size);
 }
 
 // ========== Esecuzione trade ==========
@@ -604,11 +644,10 @@ async function refreshMarketLoop() {
 
 // ========== Main ==========
 async function main() {
-  console.log('=== Bot Arbitraggio BTC Up/Down V2 ===');
+  console.log('=== Bot Momentum BTC Up/Down V3 ===');
   console.log(`Modalità: ${IS_LIVE ? 'LIVE ⚠️' : 'DRY-RUN'}`);
-  console.log(`Threshold: UP > ${UP_ENTRY_MIN_ASK}, DOWN < ${DOWN_ENTRY_MAX_ASK}, edge min ${MIN_EDGE_BPS}bps`);
-  console.log(`Entry window: ultimi ${ENTRY_WINDOW_LAST_SECONDS}s`);
-  console.log(`Vol min: ${MIN_VOLAT_BPS}bps`);
+  console.log(`Momentum: ask tra ${MOMENTUM_MIN_ASK} e ${MOMENTUM_MAX_ASK}, movimento min ${MIN_MOVE_BPS}bps, order-flow min ${cfg.ORDER_FLOW_MIN_RATIO}`);
+  console.log(`Entry window: t=${ENTRY_WINDOW_START_SEC}s..${ENTRY_WINDOW_END_SEC}s (finestra ${INTERVAL_SEC}s)`);
   console.log(`Kill switch: ${KILL_SWITCH_FILE}\n`);
 
   if (IS_LIVE) {
