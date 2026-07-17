@@ -50,5 +50,9 @@ services:
     rootDir: bybit-scanner
     buildCommand: npm install
     startCommand: node server.js
-    # Nessuna env var: solo dati di mercato pubblici, nessuna chiave API,
-    # nessun ordine. Vedi bybit-scanner/README.md.
+    # Nessuna chiave API: solo dati di mercato pubblici, nessun ordine.
+    # PROXY_URL serve solo perché Bybit blocca l'IP datacenter di Render
+    # (403), vedi config.js e ../deploy/aws_spain_proxy/.
+    envVars:
+      - key: PROXY_URL
+        sync: false
