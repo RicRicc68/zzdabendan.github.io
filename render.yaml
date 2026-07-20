@@ -27,10 +27,10 @@ services:
     plan: free
     rootDir: arb-bot
     buildCommand: npm install
-    # Dry-run: NIENTE --live. Logga solo i segnali, nessun ordine reale.
-    # Passare a live cambiando questo comando in "node server.js --live"
-    # solo dopo aver verificato i segnali nei log.
-    startCommand: node server.js
+    # LIVE dal 2026-07-20: capitale reale, wallet dedicato.
+    # Passato dopo ~3.5 giorni di dry-run (295 trade, 81% win rate,
+    # +$98.11 P&L simulato corretto). Per tornare a dry-run: rimuovi "--live".
+    startCommand: node server.js --live
     envVars:
       - key: POLY_PRIVATE_KEY
         sync: false
