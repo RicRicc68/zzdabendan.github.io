@@ -58,8 +58,12 @@ const MOMENTUM_MIN_ASK = 0.55;
 const MOMENTUM_MAX_ASK = 0.90;
 
 // Movimento BTC minimo (dal prezzo di inizio finestra) per considerare la
-// direzione "confermata" e non rumore. In basis points (5bps = 0.05%).
-const MIN_MOVE_BPS = 5;
+// direzione "confermata" e non rumore. In basis points (10bps = 0.10%).
+// Alzato da 5 a 10 il 2026-07-20: quasi tutti i segnali (dry-run e la
+// sessione live) scattavano entro i primi 15-100s su movimenti minimi,
+// probabile rumore più che momentum confermato — primo tentativo di
+// filtrarlo, da rivedere in base ai dati che arrivano.
+const MIN_MOVE_BPS = 10;
 
 // Entry: su (quasi) tutta la finestra, non solo gli ultimi 45s.
 // Verificato coi log diagnostici: già a t=257s/300s il book è ESAURITO
