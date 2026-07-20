@@ -150,6 +150,9 @@ async function initClobClient() {
 
   const account = privateKeyToAccount(privateKey);
   const signer = {
+    // Il client si aspetta uno shape "WalletClient" (viem): serve
+    // signer.account.address, non solo un metodo getAddress().
+    account,
     getAddress: async () => account.address,
     signTypedData: async (typedData) => account.signTypedData(typedData),
   };
