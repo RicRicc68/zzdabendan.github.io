@@ -66,6 +66,13 @@ const MAX_TRADES_PER_HOUR = 999; // nessun cap orario esplicito, come richiesto
 const MAX_DAILY_LOSS_USDC = 30;
 const KILL_SWITCH_FILE = 'STOP_ARB';
 
+// Capitale committed in posizioni non ancora risolte: prima mancava del
+// tutto (bug trovato il 2026-07-20 in sessione live: 9 posizioni da 5$
+// aperte quasi in parallelo con solo 21.67$ disponibili). Stessi valori
+// del bot Python per coerenza — aggiorna se il wallet ha meno fondi.
+const MAX_OPEN_POSITIONS = 6;
+const MAX_TOTAL_COMMITTED_USDC = 30;
+
 function getWalletConfig() {
   const rawKey = process.env.POLY_PRIVATE_KEY;
   if (!rawKey) {
@@ -107,6 +114,8 @@ module.exports = {
   MAX_TRADE_SIZE_USDC,
   MAX_TRADES_PER_HOUR,
   MAX_DAILY_LOSS_USDC,
+  MAX_OPEN_POSITIONS,
+  MAX_TOTAL_COMMITTED_USDC,
   KILL_SWITCH_FILE,
   getWalletConfig,
 };

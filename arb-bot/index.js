@@ -29,7 +29,8 @@ const cfg = require('./realbot4aa.js');
 const {
   USDC_ADDRESS, COLLATERAL_SYMBOL, COLLATERAL_DECIMALS,
   CLOB_SPENDERS, ERC20_ABI, MAX_TRADE_SIZE_USDC, MAX_TRADES_PER_HOUR,
-  MAX_DAILY_LOSS_USDC, KILL_SWITCH_FILE, INTERVAL_MIN, INTERVAL_SEC,
+  MAX_DAILY_LOSS_USDC, MAX_OPEN_POSITIONS, MAX_TOTAL_COMMITTED_USDC,
+  KILL_SWITCH_FILE, INTERVAL_MIN, INTERVAL_SEC,
   RTDS_URL, CLOB_WS_URL, CLOB_HOST, GAMMA_BASE, CHAIN_ID,
 } = cfg;
 
@@ -116,6 +117,27 @@ function checkDailyLoss() {
   }
   if (realizedPnL <= -MAX_DAILY_LOSS_USDC) {
     console.error(`[STOP] P&L ${realizedPnL.toFixed(2)} <= -${MAX_DAILY_LOSS_USDC}`);
+    return false;
+  }
+  return true;
+}
+
+// Capitale già committed in posizioni non ancora risolte (pendingReconciliation
+// funge anche da elenco "posizioni aperte"). Mancava fino al 2026-07-20: senza
+// questo controllo il bot aveva aperto 9 posizioni da 5$ quasi in parallelo
+// con solo 21.67$ disponibili sul wallet. Attivo sia in live che in dry-run,
+// così le simulazioni restano realistiche rispetto a quanto farebbe live.
+function checkCapitalGuardrail(size) {
+  const openCount = pendingReconciliation.length;
+  if (openCount >= MAX_OPEN_POSITIONS) {
+    console.warn(`[GUARDRAIL] ${openCount}/${MAX_OPEN_POSITIONS} posizioni aperte, niente nuove entry`);
+    return false;
+  }
+  const committed = pendingReconciliation.reduce((sum, p) => sum + p.size, 0);
+  if (committed + size > MAX_TOTAL_COMMITTED_USDC) {
+    console.warn(
+      `[GUARDRAIL] committed $${committed.toFixed(2)} + $${size.toFixed(2)} > $${MAX_TOTAL_COMMITTED_USDC}, niente nuove entry`
+    );
     return false;
   }
   return true;
@@ -443,6 +465,10 @@ async function executeTrade(signal, size) {
   }
   if (!checkDailyLoss()) {
     logEvent({ type: 'blocked_daily_loss', tokenName: signal.tokenName, slug: currentMarketSlug });
+    return;
+  }
+  if (!checkCapitalGuardrail(size)) {
+    logEvent({ type: 'blocked_capital_guardrail', tokenName: signal.tokenName, slug: currentMarketSlug });
     return;
   }
 
