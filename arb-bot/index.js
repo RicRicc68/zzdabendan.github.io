@@ -548,7 +548,12 @@ async function reconcileClosedWindows() {
 
       const won = actualOutcome === pending.tokenName;
       const settlePrice = won ? 1.0 : 0.0;
-      const realPnl = won ? (settlePrice - pending.bestAsk) * pending.size : -pending.bestAsk * pending.size;
+      // pending.size è in dollari, non in shares: va prima convertito
+      // (shares = size/ask) prima di applicare il payoff. La versione
+      // precedente moltiplicava direttamente size per (settle-ask),
+      // sottostimando sia vincite che perdite di un fattore ~1/ask.
+      const shares = pending.size / pending.bestAsk;
+      const realPnl = shares * (settlePrice - pending.bestAsk);
 
       realizedPnL += realPnl;
       reconciledCount++;
