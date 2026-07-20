@@ -173,6 +173,13 @@ def run_live():
 
                 resp, px, shares = execu.buy(sig.token_id, size)
                 if resp is None:
+                    if execu.last_buy_error and "not enough balance" in execu.last_buy_error.lower():
+                        tg.send(
+                            "⚠️ <b>SALDO ESAURITO</b>\n"
+                            "Niente nuove entry finché non si libera capitale "
+                            "(posizione che si chiude) o non depositi altro USDC.",
+                            dedup_key="LOW_BALANCE",
+                        )
                     continue
                 # Fill REALI dalla risposta del matching engine:
                 #   makingAmount = USDC effettivamente spesi

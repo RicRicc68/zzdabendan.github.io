@@ -60,6 +60,7 @@ class Executor:
 
         self.client = ClobClient(**kwargs)
         self.client.set_api_creds(self.client.create_or_derive_api_key())
+        self.last_buy_error: str | None = None
         logger.info(
             "Executor V2 pronto (signature_type=%d, funder=%s)",
             POLY_SIGNATURE_TYPE,
@@ -137,9 +138,11 @@ class Executor:
                 "[LIVE V2] BUY %.2f$ (~%.2f shares) @ %.4f -> %s",
                 amount_usd, est_shares, px, resp,
             )
+            self.last_buy_error = None
             return resp, px, est_shares
         except Exception as e:  # noqa: BLE001
             logger.error("Ordine BUY fallito: %s", e)
+            self.last_buy_error = str(e)
             return None, 0.0, 0.0
 
     def sell(self, token_id: str, shares: float) -> tuple[dict | None, float]:
