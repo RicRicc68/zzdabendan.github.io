@@ -13,7 +13,10 @@ if (process.env.PROXY_URL) {
 
 // ---------- Rete / contratti (Polygon mainnet) ----------
 const CHAIN_ID = 137;
-const RPC_URL = process.env.POLYGON_RPC_URL || 'https://polygon-rpc.com';
+// polygon-rpc.com rifiuta le richieste (401 "tenant disabled") dall'IP di
+// Render: usiamo un RPC pubblico senza chiave che risponde correttamente
+// (verificato con la stessa chiamata balanceOf usata dal check saldo).
+const RPC_URL = process.env.POLYGON_RPC_URL || 'https://polygon-bor-rpc.publicnode.com';
 
 // USDC.e (collaterale usato da Polymarket CTF), 6 decimali
 const USDC_ADDRESS = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174';
