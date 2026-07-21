@@ -27,9 +27,12 @@ services:
     plan: free
     rootDir: arb-bot
     buildCommand: npm install
-    # LIVE dal 2026-07-20: capitale reale, wallet dedicato.
-    # Passato dopo ~3.5 giorni di dry-run (295 trade, 81% win rate,
-    # +$98.11 P&L simulato corretto). Per tornare a dry-run: rimuovi "--live".
+    # LIVE dal 2026-07-21 (secondo tentativo). Il primo (2026-07-20) e' stato
+    # fermato dopo poche ore: -$23.69 su 8 trade, causato da un guardrail sul
+    # capitale committed mancante (fix in questo stesso repo) e da segnali
+    # troppo rumorosi (soglia MIN_MOVE_BPS alzata da 5 a 10). Con la soglia
+    # nuova: 22 trade in dry-run, 90.9% win rate, +$12.93. Per tornare a
+    # dry-run: rimuovi "--live".
     startCommand: node server.js --live
     envVars:
       - key: POLY_PRIVATE_KEY
