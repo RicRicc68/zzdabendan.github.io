@@ -20,15 +20,12 @@
 const WebSocket = require('ws');
 const axios = require('axios');
 const fs = require('fs');
-const { ClobClient, Side, OrderType } = require('@polymarket/clob-client-v2');
-const { http, createPublicClient, formatUnits } = require('viem');
-const { polygon } = require('viem/chains');
+const { ClobClient, Side, OrderType, AssetType } = require('@polymarket/clob-client-v2');
 const { privateKeyToAccount } = require('viem/accounts');
 
 const cfg = require('./realbot4aa.js');
 const {
-  USDC_ADDRESS, COLLATERAL_SYMBOL, COLLATERAL_DECIMALS,
-  CLOB_SPENDERS, ERC20_ABI, MAX_TRADE_SIZE_USDC, MAX_TRADES_PER_HOUR,
+  MAX_TRADE_SIZE_USDC, MAX_TRADES_PER_HOUR,
   MAX_DAILY_LOSS_USDC, MAX_OPEN_POSITIONS, MAX_TOTAL_COMMITTED_USDC,
   KILL_SWITCH_FILE, INTERVAL_MIN, INTERVAL_SEC,
   RTDS_URL, CLOB_WS_URL, CLOB_HOST, GAMMA_BASE, CHAIN_ID,
@@ -201,14 +198,17 @@ async function initClobClient() {
 
   console.log('[CLOB] Client pronto.');
 
-  // Check saldo
+  // Check saldo: usa il saldo/allowance REALE del CLOB via API, non una
+  // lettura on-chain diretta sull'indirizzo funder. Per un wallet
+  // signature_type=3 (deposit wallet flow) il collaterale non risiede come
+  // balance ERC20 semplice su quell'indirizzo (letture dirette, sia su
+  // USDC.e sia su pUSD, davano sempre $0.00 nonostante il trading reale
+  // funzionasse) — questo è lo stesso saldo che l'API controlla quando
+  // rifiuta un ordine con "not enough balance".
   try {
-    const publicClient = createPublicClient({ chain: polygon, transport: http(cfg.RPC_URL) });
-    const balance = await publicClient.readContract({
-      address: USDC_ADDRESS, abi: ERC20_ABI, functionName: 'balanceOf', args: [funderAddress],
-    });
-    const balanceUsd = Number(formatUnits(balance, COLLATERAL_DECIMALS));
-    console.log(`[CHECK] Saldo ${COLLATERAL_SYMBOL}: $${balanceUsd.toFixed(2)}`);
+    const bal = await clobClient.getBalanceAllowance({ asset_type: AssetType.COLLATERAL });
+    const balanceUsd = Number(bal.balance) / 1e6;
+    console.log(`[CHECK] Saldo collaterale (pUSD): $${balanceUsd.toFixed(2)}`);
     if (balanceUsd < MAX_TRADE_SIZE_USDC) {
       console.warn(`[CHECK] Saldo insufficiente per un trade da $${MAX_TRADE_SIZE_USDC}`);
     }

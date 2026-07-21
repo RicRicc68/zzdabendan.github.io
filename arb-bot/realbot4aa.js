@@ -13,31 +13,6 @@ if (process.env.PROXY_URL) {
 
 // ---------- Rete / contratti (Polygon mainnet) ----------
 const CHAIN_ID = 137;
-// polygon-rpc.com rifiuta le richieste (401 "tenant disabled") dall'IP di
-// Render: usiamo un RPC pubblico senza chiave che risponde correttamente
-// (verificato con la stessa chiamata balanceOf usata dal check saldo).
-const RPC_URL = process.env.POLYGON_RPC_URL || 'https://polygon-bor-rpc.publicnode.com';
-
-// USDC.e (collaterale usato da Polymarket CTF), 6 decimali
-const USDC_ADDRESS = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174';
-const COLLATERAL_SYMBOL = 'USDC.e';
-const COLLATERAL_DECIMALS = 6;
-
-// Contratti che richiedono allowance sul collaterale
-const CLOB_SPENDERS = [
-  '0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E', // CTF Exchange
-  '0xC5d563A36AE78145C45a50134d48A1215220f80a', // Neg Risk CTF Exchange
-];
-
-const ERC20_ABI = [
-  {
-    constant: true,
-    inputs: [{ name: 'owner', type: 'address' }],
-    name: 'balanceOf',
-    outputs: [{ name: '', type: 'uint256' }],
-    type: 'function',
-  },
-];
 
 // ---------- Endpoint Polymarket ----------
 const CLOB_HOST = 'https://clob.polymarket.com';
@@ -97,12 +72,6 @@ function getWalletConfig() {
 
 module.exports = {
   CHAIN_ID,
-  RPC_URL,
-  USDC_ADDRESS,
-  COLLATERAL_SYMBOL,
-  COLLATERAL_DECIMALS,
-  CLOB_SPENDERS,
-  ERC20_ABI,
   CLOB_HOST,
   CLOB_WS_URL,
   GAMMA_BASE,
