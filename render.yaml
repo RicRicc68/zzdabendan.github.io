@@ -27,15 +27,12 @@ services:
     plan: free
     rootDir: arb-bot
     buildCommand: npm install
-    # Tornato a dry-run il 2026-07-21: dopo il fix del POLY_FUNDER (indirizzo
-    # sbagliato, corretto in 0xA5D6a7776713c4bd2DF7c25480AFF2aA9f26FE8e), ogni
-    # ordine falliva con "the order signer address has to be the address of
-    # the API KEY" - la chiave privata non risulta autorizzata a firmare per
-    # quel funder su Polymarket (va collegata/importata lato loro, non basta
-    # l'env var). Nessun fondo perso (tutti i tentativi falliti in sicurezza
-    # prima dell'esecuzione). Rimettere "--live" solo dopo aver verificato il
-    # collegamento wallet su Polymarket.
-    startCommand: node server.js
+    # LIVE dal 2026-07-21 (terzo tentativo). POLY_FUNDER era stato cambiato
+    # per errore in 0xA5D6a77... (non autorizzato, ogni ordine falliva).
+    # Ripristinato 0x8a421653819CC5f004D6aBdB763b1E61073b41E3, l'unico
+    # indirizzo con prove concrete di funzionamento (ordini reali riusciti
+    # nella sessione del 2026-07-20).
+    startCommand: node server.js --live
     envVars:
       - key: POLY_PRIVATE_KEY
         sync: false
