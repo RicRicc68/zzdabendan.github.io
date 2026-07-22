@@ -34,19 +34,22 @@ const ORDER_FLOW_BAND = 0.05;
 // serve più pressione in acquisto che in vendita vicino al prezzo corrente.
 const ORDER_FLOW_MIN_RATIO = 0.55;
 
-// ---------- Guardrail di rischio (indipendenti da quelli del bot Python:
-// usando lo stesso wallet, si sommano ai suoi 6 posizioni / 30$ totali) ----------
-const MAX_TRADE_SIZE_USDC = 5;
+// ---------- Guardrail di rischio (wallet indipendente dal bot Python —
+// funder diverso, vedi render.yaml) ----------
+// Alzato da 5$ a 15$ il 2026-07-22 dopo ~47 trade (91.5% win rate,
+// +$31 totali) su saldo cresciuto da $21.67 a ~$44-50.
+const MAX_TRADE_SIZE_USDC = 15;
 const MAX_TRADES_PER_HOUR = 999; // nessun cap orario esplicito, come richiesto
 const MAX_DAILY_LOSS_USDC = 30;
 const KILL_SWITCH_FILE = 'STOP_ARB';
 
 // Capitale committed in posizioni non ancora risolte: prima mancava del
 // tutto (bug trovato il 2026-07-20 in sessione live: 9 posizioni da 5$
-// aperte quasi in parallelo con solo 21.67$ disponibili). Stessi valori
-// del bot Python per coerenza — aggiorna se il wallet ha meno fondi.
-const MAX_OPEN_POSITIONS = 6;
-const MAX_TOTAL_COMMITTED_USDC = 30;
+// aperte quasi in parallelo con solo 21.67$ disponibili). Ridotto il numero
+// di posizioni parallele (6->3) nello stesso aggiornamento della size, così
+// il committed massimo (3x15=45$) resta sotto il saldo reale (~44-50$).
+const MAX_OPEN_POSITIONS = 3;
+const MAX_TOTAL_COMMITTED_USDC = 45;
 
 function getWalletConfig() {
   const rawKey = process.env.POLY_PRIVATE_KEY;
