@@ -67,11 +67,18 @@ const MIN_MOVE_BPS = 10;
 // sul lato opposto: riduce la perdita in caso di sconfitta (da -size a
 // circa -(size-hedge_payoff)) ma costa una parte del guadagno atteso ogni
 // volta che si vince (l'hedge lo si perde quasi sempre, visto il win rate
-// alto). Calcolato sui nostri numeri (89.5% win rate, ask medio 0.803):
-// EV/trade passa da +$0.57 a +$0.11 — un vero costo, non "assicurazione
-// gratis". Attivabile/disattivabile qui per il test.
+// alto). Attivabile/disattivabile qui per il test.
+//
+// A $1 (calcolato su 89.5% win rate, ask medio 0.803): EV/trade da +$0.57
+// a +$0.11 — un costo reale, non "assicurazione gratis".
+// A $2 (valore attuale, test esplicito del 2026-07-23 nonostante il
+// calcolo): l'hedge costa più del guadagno medio di una vincita ($1.227),
+// quindi l'EV/trade diventa NEGATIVO (-$0.36 stimato) — significa perdere
+// soldi in media anche restando "vincenti" sul lato principale il 90%
+// delle volte. Monitorare da vicino, il rischio per singola finestra resta
+// comunque contenuto (max $7 esposti), non una perdita improvvisa.
 const HEDGE_ENABLED = true;
-const HEDGE_SIZE_USDC = 1;
+const HEDGE_SIZE_USDC = 2;
 
 // Entry: su (quasi) tutta la finestra, non solo gli ultimi 45s.
 // Verificato coi log diagnostici: già a t=257s/300s il book è ESAURITO
