@@ -36,20 +36,22 @@ const ORDER_FLOW_MIN_RATIO = 0.55;
 
 // ---------- Guardrail di rischio (wallet indipendente dal bot Python —
 // funder diverso, vedi render.yaml) ----------
-// Alzato da 5$ a 15$ il 2026-07-22 dopo ~47 trade (91.5% win rate,
-// +$31 totali) su saldo cresciuto da $21.67 a ~$44-50.
-const MAX_TRADE_SIZE_USDC = 15;
+// Riportato da 15$ a 5$ il 2026-07-23: a 15$/trade il book non ha abbastanza
+// liquidità al prezzo migliore, lo slippage reale è salito a +5.95 centesimi
+// medi (18/23 ordini riempiti peggio del segnale, alcuni fino a +31c) — a
+// 5$ lo slippage misurato era di 1-2 centesimi. Vedi anche il fix in
+// index.js che ora traccia il prezzo di riempimento reale, non l'ask
+// del segnale, per il P&L.
+const MAX_TRADE_SIZE_USDC = 5;
 const MAX_TRADES_PER_HOUR = 999; // nessun cap orario esplicito, come richiesto
 const MAX_DAILY_LOSS_USDC = 30;
 const KILL_SWITCH_FILE = 'STOP_ARB';
 
 // Capitale committed in posizioni non ancora risolte: prima mancava del
 // tutto (bug trovato il 2026-07-20 in sessione live: 9 posizioni da 5$
-// aperte quasi in parallelo con solo 21.67$ disponibili). Ridotto il numero
-// di posizioni parallele (6->3) nello stesso aggiornamento della size, così
-// il committed massimo (3x15=45$) resta sotto il saldo reale (~44-50$).
-const MAX_OPEN_POSITIONS = 3;
-const MAX_TOTAL_COMMITTED_USDC = 45;
+// aperte quasi in parallelo con solo 21.67$ disponibili).
+const MAX_OPEN_POSITIONS = 6;
+const MAX_TOTAL_COMMITTED_USDC = 30;
 
 function getWalletConfig() {
   const rawKey = process.env.POLY_PRIVATE_KEY;

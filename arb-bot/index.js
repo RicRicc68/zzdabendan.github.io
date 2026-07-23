@@ -509,13 +509,29 @@ async function executeTrade(signal, size) {
       throw new Error(`CLOB error: ${resp.error}`);
     }
 
-    console.log('[LIVE] Ordine piazzato:', resp);
+    // Prezzo di riempimento REALE (makingAmount = USDC spesi, takingAmount =
+    // shares ricevute), non l'ask del segnale: verificato che a size più
+    // alte il book non ha abbastanza profondità al miglior prezzo e lo
+    // slippage reale può essere anche di decine di centesimi — usare l'ask
+    // pre-trade per il P&L lo faceva sembrare migliore di quanto fosse.
+    let fillPrice = signal.bestAsk;
+    const makingAmt = parseFloat(resp?.makingAmount);
+    const takingAmt = parseFloat(resp?.takingAmount);
+    if (takingAmt > 0 && Number.isFinite(makingAmt)) {
+      fillPrice = makingAmt / takingAmt;
+    }
+
+    console.log(
+      `[LIVE] Ordine piazzato @ ${fillPrice.toFixed(3)} (segnale ${signal.bestAsk.toFixed(3)}):`,
+      resp
+    );
     logEvent({
       type: 'live_trade_submitted',
       tokenName: signal.tokenName,
       tokenId: signal.tokenId,
       size,
-      bestAsk: signal.bestAsk,
+      bestAsk: fillPrice,
+      signalAsk: signal.bestAsk,
       fairValue: signal.fairValue,
       slug: currentMarketSlug,
       response: resp,
@@ -526,7 +542,7 @@ async function executeTrade(signal, size) {
       slug: currentMarketSlug,
       tokenName: signal.tokenName,
       size,
-      bestAsk: signal.bestAsk,
+      bestAsk: fillPrice,
       fairValue: signal.fairValue,
       signaledAtMs: Date.now(),
       live: true,
