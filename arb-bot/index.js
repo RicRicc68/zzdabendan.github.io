@@ -473,7 +473,12 @@ function evaluateSignal() {
   const oppAsk = favorsUp ? currentBestAskDown : currentBestAskUp;
 
   (async () => {
-    await executeTrade(signal, size);
+    const mainOpened = await executeTrade(signal, size);
+    // L'hedge ha senso solo se il main si è aperto DAVVERO: se il trade
+    // principale fallisce (FOK non riempito, saldo insufficiente, ecc.)
+    // non c'è nessuna posizione da coprire — un hedge senza main aperto
+    // sarebbe solo una scommessa scoperta sul lato opposto, non un hedge.
+    if (!mainOpened) return;
     if (HEDGE_ENABLED) {
       if (oppTokenId && oppAsk !== null) {
         await executeTrade(
@@ -489,24 +494,27 @@ function evaluateSignal() {
 }
 
 // ========== Esecuzione trade ==========
+// Ritorna true solo se una posizione è stata DAVVERO aperta (dry-run
+// simulato incluso), false se bloccata da un guardrail o se l'ordine
+// reale è fallito — usato per decidere se ha senso piazzare l'hedge.
 async function executeTrade(signal, size, isHedge = false) {
   const tag = isHedge ? '[HEDGE]' : '[LIVE]';
 
   if (checkKillSwitch()) {
     logEvent({ type: 'blocked_kill_switch', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
-    return;
+    return false;
   }
   if (!checkRateLimit()) {
     logEvent({ type: 'blocked_rate_limit', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
-    return;
+    return false;
   }
   if (!checkDailyLoss()) {
     logEvent({ type: 'blocked_daily_loss', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
-    return;
+    return false;
   }
   if (!checkCapitalGuardrail(size)) {
     logEvent({ type: 'blocked_capital_guardrail', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
-    return;
+    return false;
   }
 
   if (!IS_LIVE) {
@@ -529,7 +537,7 @@ async function executeTrade(signal, size, isHedge = false) {
       signaledAtMs: Date.now(),
       live: false,
     });
-    return;
+    return true;
   }
 
   try {
@@ -580,6 +588,7 @@ async function executeTrade(signal, size, isHedge = false) {
       signaledAtMs: Date.now(),
       live: true,
     });
+    return true;
   } catch (err) {
     console.error(`${tag} Errore: ${err.message}`);
     logEvent({
@@ -591,6 +600,7 @@ async function executeTrade(signal, size, isHedge = false) {
       isHedge,
       slug: currentMarketSlug,
     });
+    return false;
   }
 }
 
