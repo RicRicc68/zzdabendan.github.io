@@ -62,6 +62,17 @@ const MOMENTUM_MAX_ASK = 0.90;
 // filtrarlo, da rivedere in base ai dati che arrivano.
 const MIN_MOVE_BPS = 10;
 
+// ---------- Hedge sul lato opposto (sperimentale, 2026-07-23) ----------
+// Ogni volta che scatta un trade sul lato favorito, ne piazza uno piccolo
+// sul lato opposto: riduce la perdita in caso di sconfitta (da -size a
+// circa -(size-hedge_payoff)) ma costa una parte del guadagno atteso ogni
+// volta che si vince (l'hedge lo si perde quasi sempre, visto il win rate
+// alto). Calcolato sui nostri numeri (89.5% win rate, ask medio 0.803):
+// EV/trade passa da +$0.57 a +$0.11 — un vero costo, non "assicurazione
+// gratis". Attivabile/disattivabile qui per il test.
+const HEDGE_ENABLED = true;
+const HEDGE_SIZE_USDC = 1;
+
 // Entry: su (quasi) tutta la finestra, non solo gli ultimi 45s.
 // Verificato coi log diagnostici: già a t=257s/300s il book è ESAURITO
 // (ask a 1.000/0.010, mercato già convergo) — non resta più nessun edge
@@ -454,37 +465,59 @@ function evaluateSignal() {
     slug: currentMarketSlug,
   });
 
-  executeTrade(signal, size);
+  // Hedge sul lato opposto: stesso mercato, direzione contraria, size fissa
+  // piccola. Va dopo il main (await in sequenza) così il guardrail sul
+  // capitale vede già il main come committed prima di valutare l'hedge.
+  const oppTokenName = favorsUp ? 'DOWN' : 'UP';
+  const oppTokenId = favorsUp ? currentTokenIdDown : currentTokenIdUp;
+  const oppAsk = favorsUp ? currentBestAskDown : currentBestAskUp;
+
+  (async () => {
+    await executeTrade(signal, size);
+    if (HEDGE_ENABLED) {
+      if (oppTokenId && oppAsk !== null) {
+        await executeTrade(
+          { tokenName: oppTokenName, tokenId: oppTokenId, bestAsk: oppAsk, priceChangePct },
+          HEDGE_SIZE_USDC,
+          true,
+        );
+      } else {
+        console.warn('[HEDGE] ask lato opposto non disponibile, salto l\'hedge per questa finestra');
+      }
+    }
+  })();
 }
 
 // ========== Esecuzione trade ==========
-async function executeTrade(signal, size) {
+async function executeTrade(signal, size, isHedge = false) {
+  const tag = isHedge ? '[HEDGE]' : '[LIVE]';
+
   if (checkKillSwitch()) {
-    logEvent({ type: 'blocked_kill_switch', tokenName: signal.tokenName, slug: currentMarketSlug });
+    logEvent({ type: 'blocked_kill_switch', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
     return;
   }
   if (!checkRateLimit()) {
-    logEvent({ type: 'blocked_rate_limit', tokenName: signal.tokenName, slug: currentMarketSlug });
+    logEvent({ type: 'blocked_rate_limit', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
     return;
   }
   if (!checkDailyLoss()) {
-    logEvent({ type: 'blocked_daily_loss', tokenName: signal.tokenName, slug: currentMarketSlug });
+    logEvent({ type: 'blocked_daily_loss', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
     return;
   }
   if (!checkCapitalGuardrail(size)) {
-    logEvent({ type: 'blocked_capital_guardrail', tokenName: signal.tokenName, slug: currentMarketSlug });
+    logEvent({ type: 'blocked_capital_guardrail', tokenName: signal.tokenName, isHedge, slug: currentMarketSlug });
     return;
   }
 
   if (!IS_LIVE) {
-    console.log(`[DRY-RUN] Comprerei $${size.toFixed(2)} di ${signal.tokenName} a ${signal.bestAsk.toFixed(3)}`);
+    console.log(`${tag} [DRY-RUN] Comprerei $${size.toFixed(2)} di ${signal.tokenName} a ${signal.bestAsk.toFixed(3)}`);
     logEvent({
       type: 'dry_run_trade',
       tokenName: signal.tokenName,
       tokenId: signal.tokenId,
       size,
       bestAsk: signal.bestAsk,
-      fairValue: signal.fairValue,
+      isHedge,
       slug: currentMarketSlug,
     });
     pendingReconciliation.push({
@@ -492,7 +525,7 @@ async function executeTrade(signal, size) {
       tokenName: signal.tokenName,
       size,
       bestAsk: signal.bestAsk,
-      fairValue: signal.fairValue,
+      isHedge,
       signaledAtMs: Date.now(),
       live: false,
     });
@@ -500,7 +533,7 @@ async function executeTrade(signal, size) {
   }
 
   try {
-    console.log(`[LIVE] BUY $${size.toFixed(2)} ${signal.tokenName} @ ${signal.bestAsk.toFixed(3)}`);
+    console.log(`${tag} BUY $${size.toFixed(2)} ${signal.tokenName} @ ${signal.bestAsk.toFixed(3)}`);
     const marketOrder = { tokenID: signal.tokenId, amount: size, side: Side.BUY };
     const signedOrder = await clobClient.createMarketOrder(marketOrder);
     const resp = await clobClient.postOrder(signedOrder, OrderType.FOK);
@@ -522,7 +555,7 @@ async function executeTrade(signal, size) {
     }
 
     console.log(
-      `[LIVE] Ordine piazzato @ ${fillPrice.toFixed(3)} (segnale ${signal.bestAsk.toFixed(3)}):`,
+      `${tag} Ordine piazzato @ ${fillPrice.toFixed(3)} (segnale ${signal.bestAsk.toFixed(3)}):`,
       resp
     );
     logEvent({
@@ -532,7 +565,7 @@ async function executeTrade(signal, size) {
       size,
       bestAsk: fillPrice,
       signalAsk: signal.bestAsk,
-      fairValue: signal.fairValue,
+      isHedge,
       slug: currentMarketSlug,
       response: resp,
     });
@@ -543,18 +576,19 @@ async function executeTrade(signal, size) {
       tokenName: signal.tokenName,
       size,
       bestAsk: fillPrice,
-      fairValue: signal.fairValue,
+      isHedge,
       signaledAtMs: Date.now(),
       live: true,
     });
   } catch (err) {
-    console.error(`[LIVE] Errore: ${err.message}`);
+    console.error(`${tag} Errore: ${err.message}`);
     logEvent({
       type: 'live_trade_failed',
       tokenName: signal.tokenName,
       tokenId: signal.tokenId,
       size,
       error: err.message,
+      isHedge,
       slug: currentMarketSlug,
     });
   }
@@ -607,8 +641,9 @@ async function reconcileClosedWindows() {
       realizedPnL += realPnl;
       reconciledCount++;
 
+      const tag = pending.isHedge ? '[RECONCILE HEDGE]' : '[RECONCILE]';
       console.log(
-        `[RECONCILE] ${pending.slug}: ${pending.tokenName} @ ${pending.bestAsk.toFixed(3)} → ${actualOutcome} ` +
+        `${tag} ${pending.slug}: ${pending.tokenName} @ ${pending.bestAsk.toFixed(3)} → ${actualOutcome} ` +
         `(${won ? 'WIN' : 'LOSS'}) | P&L: $${realPnl.toFixed(3)} | Cum: $${realizedPnL.toFixed(3)}`
       );
 
@@ -621,7 +656,7 @@ async function reconcileClosedWindows() {
         realPnl,
         bestAsk: pending.bestAsk,
         settlePrice,
-        fairValue: pending.fairValue,
+        isHedge: pending.isHedge,
         live: pending.live,
         cumulativeRealizedPnL: realizedPnL,
       });
