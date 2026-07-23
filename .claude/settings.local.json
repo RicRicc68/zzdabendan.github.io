@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod +x /workspaces/zzdabendan.github.io/run_bot_watchdog.sh)",
+      "Bash(nohup ./run_bot_watchdog.sh)",
+      "Bash(disown)",
+      "Bash(ps -eo pid,args)",
+      "Bash(kill -9 181457)",
+      "WebSearch",
+      "Bash(python3 -c ' *)",
+      "Bash(mkdir -p /tmp/claude-1000/-workspaces-zzdabendan-github-io/da8486a1-0656-461f-bfe1-1d99c4f9e545/scratchpad)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
