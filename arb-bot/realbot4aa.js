@@ -41,8 +41,8 @@ const ORDER_FLOW_MIN_RATIO = 0.55;
 // medi (18/23 ordini riempiti peggio del segnale, alcuni fino a +31c) — a
 // 5$ lo slippage misurato era di 1-2 centesimi. Vedi anche il fix in
 // index.js che ora traccia il prezzo di riempimento reale, non l'ask
-// del segnale, per il P&L.
-const MAX_TRADE_SIZE_USDC = 5;
+// del segnale, per il P&L. Aumentato da 5$ a 7$ il 2026-07-24.
+const MAX_TRADE_SIZE_USDC = 7;
 const MAX_TRADES_PER_HOUR = 999; // nessun cap orario esplicito, come richiesto
 const MAX_DAILY_LOSS_USDC = 30;
 const KILL_SWITCH_FILE = 'STOP_ARB';
