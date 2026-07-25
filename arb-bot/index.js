@@ -60,7 +60,7 @@ const MOMENTUM_MAX_ASK = 0.90;
 // sessione live) scattavano entro i primi 15-100s su movimenti minimi,
 // probabile rumore più che momentum confermato — primo tentativo di
 // filtrarlo, da rivedere in base ai dati che arrivano.
-const MIN_MOVE_BPS = 10;
+const MIN_MOVE_BPS = 8;
 
 // ---------- Hedge sul lato opposto (sperimentale, 2026-07-23) ----------
 // Ogni volta che scatta un trade sul lato favorito, ne piazza uno piccolo
